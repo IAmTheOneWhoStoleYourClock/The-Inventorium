@@ -1,0 +1,42 @@
+#base "custom_items_game.txt"
+"Clocks_NOWP_plus_pack_patch"
+{
+    "attributes"
+	{
+        "17514" //Should probably do this. -Clock
+		{
+			"name"					"decrease player capture value civ"
+			"attribute_class"		"add_player_capturevalue"
+			"description_string"	"%s1 capture rate on wearer"
+			"description_format"	"value_is_additive"
+			"effect_type"			"negative"
+		}
+        "17515" //Should probably do this. -Clock
+		{
+			"name"					"decrease player capture value civ universal"
+			"attribute_class"		"jarate_backstabber"
+			"description_string"	"%s1 capture rate on wearer"
+			"description_format"	"value_is_additive"
+            "hidden"				"1"
+			"effect_type"			"negative"
+		}
+        "17516" //Should probably do this. -Clock
+		{
+			"name"					"increase player capture value civ"
+			"attribute_class"		"add_player_capturevalue"
+			"description_string"	"+%s1 capture rate on wearer"
+			"description_format"	"value_is_additive"
+			"effect_type"			"positive"
+		}
+        "17517" //Should probably do this. -Clock
+		{
+			"name"					"base civ nerf"
+			"attribute_class"		"jarate_backstabber"
+			"description_string"	"Civilian has -2 capture rate in non-vip gamemodes"
+			"custom_color"			"252 200 77 255" //pee colour
+			"description_format"	"value_is_additive"
+            "hidden"				"1"
+			"effect_type"			"positive"
+		}
+    }
+}
