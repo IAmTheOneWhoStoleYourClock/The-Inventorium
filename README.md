@@ -11,3 +11,4 @@ A TF2C modpack run on the server of the same name.
 <br>Codename: reVALVe: https://gamebanana.com/mods/534107
 <br>Mombae's Fun Pack ᗜˬᗜ: https://gamebanana.com/mods/416688 (Note that this one will not work without some modifications, as it has not been updated in a while)
 <br>Model credits can be found there.
+<br>Note that you will need to manually rename medieval_items_game and vip_maps_items_game to whatver vip and medieval maps you have installed if testing privately.
