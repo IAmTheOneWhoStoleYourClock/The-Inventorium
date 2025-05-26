@@ -1255,6 +1255,28 @@
 }
 
 // ------------------------------------------------------------------------------------ //
+// Medic Healing Double Barrel
+// Added by Inventorium for the Callous Callus
+// ------------------------------------------------------------------------------------ //
+
+"Weapon_HealDB.Single"
+{
+	"channel"		"CHAN_WEAPON"
+	"soundlevel"	"SNDLVL_94dB"
+	"volume"		"0.9"
+	"pitch"			"103,107"
+	"wave"			"weapons/cyclops_fire.wav"
+}
+"Weapon_HealDB.SingleCrit"
+{
+	"channel"		"CHAN_WEAPON"
+	"soundlevel"	"SNDLVL_94dB"
+	"volume"		"0.9"
+	"pitch"			"103,107"
+	"wave"			"weapons/cyclops_fire_crit.wav"
+}
+
+// ------------------------------------------------------------------------------------ //
 // Jumper Noises Backport
 // ------------------------------------------------------------------------------------ //
 
@@ -8015,6 +8037,147 @@
 	"soundlevel"	"SNDLVL_94dB"
 	"volume"	"1.0"
 	"wave"		")weapons\tf_sniper_bazaar_bargain_crit.wav"
+}
+
+// ------------------------------------------------------------------------------------ //
+// SURVIVALIST
+// ------------------------------------------------------------------------------------ //
+
+"Weapon_ScrapShotgun.Single"
+{
+	"channel"	"CHAN_WEAPON"
+	"soundlevel"	"SNDLVL_94dB"
+	"volume"	"1.0"
+	"wave"		")weapons\dumpster_shotgun_shoot.wav"
+}
+
+"Weapon_ScrapShotgun.SingleCrit"
+{
+	"channel"	"CHAN_WEAPON"
+	"soundlevel"	"SNDLVL_94dB"
+	"volume"	"1.0"
+	"wave"		")weapons\dumpster_shotgun_shoot_crit.wav"
+}
+
+// ------------------------------------------------------------------------------------ //
+// SAIGA GUN (SURGE BREAKER)
+// ------------------------------------------------------------------------------------ //
+
+"Weapon_SAIGUN.Single"
+{
+	"channel"	"CHAN_WEAPON"
+	"soundlevel"	"SNDLVL_94dB"
+	"volume"	"1.0"
+	"wave"		")weapons\saigagun_shoot.wav"
+}
+
+"Weapon_SAIGUN.SingleCrit"
+{
+	"channel"	"CHAN_WEAPON"
+	"soundlevel"	"SNDLVL_94dB"
+	"volume"	"1.0"
+	"wave"		")weapons\saigagun_shoot_crit.wav"
+}
+
+// ------------------------------------------------------------------------------------ //
+// SILVER GUN (D.E.Y.E)
+// ------------------------------------------------------------------------------------ //
+
+"Weapon_SilverGun.Single"
+{
+	"channel"	"CHAN_WEAPON"
+	"soundlevel"	"SNDLVL_94dB"
+	"volume"	"1.0"
+	"wave"		")weapons\silvergun_shot.wav"
+}
+
+"Weapon_SilverGun.SingleCrit"
+{
+	"channel"	"CHAN_WEAPON"
+	"soundlevel"	"SNDLVL_94dB"
+	"volume"	"1.0"
+	"wave"		")weapons\silvergun_shot_critcharged.wav"
+}
+
+// ------------------------------------------------------------------------------------ //
+// Machina
+// ------------------------------------------------------------------------------------ //
+"Weapon_Raygun.Single"
+{
+	"channel"	"CHAN_WEAPON"
+	"soundlevel"	"SNDLVL_94dB"
+	"volume"	"1.0"
+	"rndwave"
+	{
+		"wave"		")weapons/sniper_railgun_single_01.wav"
+		"wave"		")weapons/sniper_railgun_single_02.wav"
+	}
+}
+
+"Weapon_Raygun.SingleCrit"
+{
+	"channel"	"CHAN_WEAPON"
+	"soundlevel"	"SNDLVL_94dB"
+	"volume"	"1.0"
+	"rndwave"
+	{
+		"wave"		")weapons/sniper_railgun_single_crit.wav"
+		"wave"		")weapons/sniper_railgun_single_crit_02.wav"
+	}
+}
+
+"Weapon_Raygun.Misfire"
+{
+	"channel"	"CHAN_WEAPON"
+	"soundlevel"	"SNDLVL_94dB"
+	"volume"	"1.0"
+	"wave"		")weapons/sniper_railgun_no_fire.wav"
+}
+
+"Weapon_Raygun.WorldReload"
+{
+	"channel"	"CHAN_STATIC"
+	"volume"	"0.35"
+	"soundlevel"	"SNDLVL_NORM"
+
+	"wave"		"weapons/sniper_worldreload.wav"
+}
+
+"Weapon_Raygun.ClipEmpty"
+{
+	"channel"	"CHAN_STATIC"
+	"volume"	"0.7"
+	"soundlevel"	"SNDLVL_NORM"
+
+	"wave"		"weapons/sniper_railgun_dry_fire.wav"
+}
+
+"Weapon_Raygun.BoltForward"
+{
+	"channel"	"CHAN_STATIC"
+	"soundlevel"	"SNDLVL_74dB"
+	"volume"	".45"
+	"wave"		"weapons/sniper_railgun_bolt_back.wav"
+}
+
+"Weapon_Raygun.BoltBack"
+{
+	"channel"	"CHAN_STATIC"
+	"soundlevel"	"SNDLVL_74dB"
+	"volume"	".45"
+	"wave"		"weapons/sniper_railgun_bolt_forward.wav"
+}
+
+// ------------------------------------------------------------------------------------ //
+// BAZAAR BARGAIN
+// ------------------------------------------------------------------------------------ //
+
+"Weapon_SMLE.Single"
+{
+	"channel"	"CHAN_WEAPON"
+	"soundlevel"	"SNDLVL_94dB"
+	"volume"	"1.0"
+	"wave"		")weapons\smle_shoot.wav"
 }
 
 // ------------------------------------------------------------------------------------ //
@@ -15457,85 +15620,23 @@
 		"wave"		"weapons/dubstep_shoot2.wav"
 		"wave"		"weapons/dubstep_shoot1.wav"
 		"wave"		"weapons/dubstep_shoot2.wav"
-		"wave"		"weapons/dubstep_shoot1.wav"
-		"wave"		"weapons/dubstep_shoot2.wav"
-		"wave"		"weapons/dubstep_shoot1.wav"
-		"wave"		"weapons/dubstep_shoot2.wav"
-		"wave"		"weapons/dubstep_shoot1.wav"
-		"wave"		"weapons/dubstep_shoot2.wav"
-		"wave"		"weapons/dubstep_shoot1.wav"
-		"wave"		"weapons/dubstep_shoot2.wav"
-		"wave"		"weapons/dubstep_shoot1.wav"
-		"wave"		"weapons/dubstep_shoot2.wav"
-		"wave"		"weapons/dubstep_shoot1.wav"
-		"wave"		"weapons/dubstep_shoot2.wav"
-		"wave"		"weapons/dubstep_shoot1.wav"
-		"wave"		"weapons/dubstep_shoot2.wav"
-		"wave"		"weapons/dubstep_shoot1.wav"
-		"wave"		"weapons/dubstep_shoot2.wav"
-		"wave"		"weapons/dubstep_shoot1.wav"
-		"wave"		"weapons/dubstep_shoot2.wav"
-		"wave"		"weapons/dubstep_shoot1.wav"
-		"wave"		"weapons/dubstep_shoot2.wav"
-		"wave"		"weapons/dubstep_shoot1.wav"
-		"wave"		"weapons/dubstep_shoot2.wav"
-		"wave"		"weapons/dubstep_shoot1.wav"
-		"wave"		"weapons/dubstep_shoot2.wav"
-		"wave"		"weapons/dubstep_shoot1.wav"
-		"wave"		"weapons/dubstep_shoot2.wav"
-		"wave"		"weapons/dubstep_shoot1.wav"
-		"wave"		"weapons/dubstep_shoot2.wav"
-		"wave"		"weapons/dubstep_shoot1.wav"
-		"wave"		"weapons/dubstep_shoot2.wav"
-		"wave"		"weapons/dubstep_shoot1.wav"
-		"wave"		"weapons/dubstep_shoot2.wav"
-		"wave"		"weapons/dubstep_shoot1.wav"
-		"wave"		"weapons/dubstep_shoot2.wav"
-		"wave"		"weapons/dubstep_shoot1.wav"
-		"wave"		"weapons/dubstep_shoot2.wav"
-		"wave"		"weapons/dubstep_shoot1.wav"
-		"wave"		"weapons/dubstep_shoot2.wav"
-		"wave"		"weapons/dubstep_shoot1.wav"
-		"wave"		"weapons/dubstep_shoot2.wav"
-		"wave"		"weapons/dubstep_shoot1.wav"
-		"wave"		"weapons/dubstep_shoot2.wav"
-		"wave"		"weapons/dubstep_shoot1.wav"
-		"wave"		"weapons/dubstep_shoot2.wav"
-		"wave"		"weapons/dubstep_shoot1.wav"
-		"wave"		"weapons/dubstep_shoot2.wav"
-		"wave"		"weapons/dubstep_shoot1.wav"
-		"wave"		"weapons/dubstep_shoot2.wav"
-		"wave"		"weapons/dubstep_shoot1.wav"
-		"wave"		"weapons/dubstep_shoot2.wav"
-		"wave"		"weapons/dubstep_shoot1.wav"
-		"wave"		"weapons/dubstep_shoot2.wav"
-		"wave"		"weapons/dubstep_shoot1.wav"
-		"wave"		"weapons/dubstep_shoot2.wav"
-		"wave"		"weapons/dubstep_shoot1.wav"
-		"wave"		"weapons/dubstep_shoot2.wav"
-		"wave"		"weapons/dubstep_shoot1.wav"
-		"wave"		"weapons/dubstep_shoot2.wav"
-		"wave"		"weapons/dubstep_shoot1.wav"
-		"wave"		"weapons/dubstep_shoot2.wav"
-		"wave"		"weapons/dubstep_shoot1.wav"
-		"wave"		"weapons/dubstep_shoot2.wav"
-		"wave"		"weapons/kind_of_easteregg.wav" //TO DO: Surely there's a better way of doing this? -Clock
+		"wave"		"weapons/kind_of_easteregg.wav"
 	}
 }
 "Weapon_DubstepGun.FireCrit"	
 {
 	"channel"	"CHAN_STATIC"
 	"soundlevel"	"SNDLVL_94dB"
-	"volume"	"1.0"
+	"volume"	"10.0"
 	"rndwave"
 	{
-		"wave"		"weapons/dubstep_shoot1_crit.wav"
-		"wave"		"weapons/dubstep_shoot2_crit.wav"
-		"wave"		"weapons/dubstep_shoot1_crit.wav"
-		"wave"		"weapons/dubstep_shoot2_crit.wav"
-		"wave"		"weapons/dubstep_shoot1_crit.wav"
-		"wave"		"weapons/dubstep_shoot2_crit.wav"
-		"wave"		"weapons/kind_of_easteregg.wav" //Crit charges increase your change of getting it. -Clock
+//		"wave"		"weapons/dubstep_shoot1_crit.wav"
+//		"wave"		"weapons/dubstep_shoot2_crit.wav"
+//		"wave"		"weapons/dubstep_shoot1_crit.wav"
+//		"wave"		"weapons/dubstep_shoot2_crit.wav"
+//		"wave"		"weapons/dubstep_shoot1_crit.wav"
+//		"wave"		"weapons/dubstep_shoot2_crit.wav"
+		"wave"		"weapons/kind_of_easteregg.wav"
 	}
 }
 "Weapon_DubstepGun.WindDown"	
@@ -16163,7 +16264,7 @@
 	}
 }
 
-"Greade_Vaccinader.Max"
+"Grenade_Vaccinader.Max"
 {
 	"channel"	"CHAN_AUTO"
 	"volume"	"1.0"
@@ -16316,7 +16417,7 @@
 	}
 }
 
-"Greade_Protonader.Max"
+"Grenade_Protonader.Max"
 {
 	"channel"	"CHAN_AUTO"
 	"volume"	"1.0"
@@ -16328,6 +16429,98 @@
 		"wave"			"weapons/grenade_heal_overheal2.wav"
 		"wave"			"weapons/grenade_heal_overheal3.wav"
 	}
+}
+
+// ------------------------------------------------------------------------------------ //
+// NUERNBERG NADER
+// ------------------------------------------------------------------------------------ //
+"QuickHealGrenade.Shoot"
+{
+	"channel"	"CHAN_WEAPON"
+	"volume"	"0.90"
+	"soundlevel"	"SNDLVL_94dB"
+	"pitch"		"100, 110"
+	"wave"		")weapons/quick_nader_fire.wav"
+}
+
+"QuickHealGrenade.ShootUber"
+{
+	"channel"	"CHAN_WEAPON"
+	"volume"	"1.0"
+	"soundlevel"	"SNDLVL_110dB"
+	"pitch"		"PITCH_NORM"
+	"wave"		")weapons/grenade_ubergen_shoot.wav"
+}
+
+"QuickHealGrenade.LeverBack"
+{
+	"channel"	"CHAN_STATIC"
+	"soundlevel"	"SNDLVL_NORM"
+	"volume"	"1.0"
+	"wave"		"weapons/quick_nader_reload_lever_back.wav"
+}
+
+"QuickHealGrenade.LeverForward"
+{
+	"channel"	"CHAN_AUTO"
+	"soundlevel"	"SNDLVL_74dB"
+	"volume"	"1.0"
+	"wave"		"weapons/quick_nader_reload_lever_forward.wav"
+}
+
+// ------------------------------------------------------------------------------------ //
+// BIOWASTE PUMP
+// - just an edit of the Protonader sounds. It fires much faster, so it should have quieter sounds.
+// ------------------------------------------------------------------------------------ //
+
+"Weapon_Biowaste.Shoot"
+{
+	"channel"	"CHAN_WEAPON"
+	"volume"	"0.6"
+	"soundlevel"	"SNDLVL_94dB"
+	"pitch"		"92,102"
+	"wave"		")weapons/proto_nader_fire.wav"
+}
+
+// ------------------------------------------------------------------------------------ //
+// Microbial Microblaster
+// ------------------------------------------------------------------------------------ //
+
+"Weapon_Microblaster.Explosion"
+{
+	"channel"	"CHAN_WEAPON"
+	"volume"	"0.6"
+	"soundlevel"	"SNDLVL_95dB"
+	"pitch"		"113, 117"
+
+	"rndwave"
+	{
+			"wave"	")weapons/screw_explode1.wav"
+			"wave"	")weapons/screw_explode2.wav"
+			"wave"	")weapons/screw_explode3.wav"
+	}
+}
+
+// ------------------------------------------------------------------------------------ //
+// Uber Generator Cannon
+// ------------------------------------------------------------------------------------ //
+
+"Weapon_UberGenGun.Single"
+{
+	"channel"	"CHAN_WEAPON"
+	"soundlevel"	"SNDLVL_94dB"
+	"volume"	"0.65"
+	"pitch"		"96, 98"
+	"wave"		")weapons/family_business_shoot.wav"
+}
+
+"Weapon_UberGenGun.SingleCrit"
+{
+	"channel"	"CHAN_WEAPON"
+	"soundlevel"	"SNDLVL_94dB"
+	"volume"	"0.65"
+	"pitch"		"96, 98"
+	"wave"		")weapons/family_business_shoot_crit.wav"
 }
 
 // ------------------------------------------------------------------------------------ //
@@ -17948,6 +18141,41 @@
 }
 
 // ------------------------------------------------------------------------------------ //
+// STICKY BOMB LAUNCHER
+// ------------------------------------------------------------------------------------ //
+"Weapon_ThermiteLauncher.Single"
+{
+	"channel"	"CHAN_WEAPON"
+	"soundlevel"	"SNDLVL_94dB"
+	"volume"	"1.0"
+	"wave"		"weapons/thermite_shoot.wav"
+}
+
+"Weapon_ThermiteLauncher.SingleCrit"
+{
+	"channel"	"CHAN_WEAPON"
+	"soundlevel"	"SNDLVL_94dB"
+	"volume"	"1.0"
+	"wave"		"weapons/thermite_shoot_crit.wav"
+}
+
+"Weapon_ThermiteLauncher.WorldReload"
+{
+	"channel"	"CHAN_STATIC"
+	"soundlevel"	"SNDLVL_NORM"
+	"volume"	".35"
+	"wave"		"weapons/stickybomblauncher_worldreload.wav"
+}
+
+"Weapon_ThermiteLauncher.ChargeUp"
+{
+	"channel"		"CHAN_WEAPON"
+	"soundlevel"	"SNDLVL_NORM"
+	"volume"		"1"
+	"wave"		"weapons/thermite_inbarrel_det.wav"
+}
+
+// ------------------------------------------------------------------------------------ //
 // BACK BURNER 
 // ------------------------------------------------------------------------------------ //
 
@@ -19196,6 +19424,17 @@
 	"wave"		")weapons/bleedgun_wind_down.wav"
 }
 
+// ------------------------------------------------------------------------------------ //
+// LOUDER DISGUISE
+// ------------------------------------------------------------------------------------ //
+
+"Weapon_SilverGun_Disguise.Single"	
+{
+	"channel"	"CHAN_STATIC"
+	"soundlevel"	"SNDLVL_94dB"
+	"volume"	"1"
+	"wave"		")player/silvergun_disguise.wav"
+}
 
 // ------------------------------------------------------------------------------------ //
 // TOMISLAV
@@ -20504,7 +20743,7 @@
 {
 	"channel"		"CHAN_WEAPON"
 	"soundlevel"	"SNDLVL_94dB"
-	"volume"		".5"
+	"volume"		".4"
 	"wave"			")weapons/barrikada_shoot.wav"
 }
 "Weapon_Barrikada.SingleCrit"	
@@ -25560,7 +25799,8 @@
 {
 	"channel"	"CHAN_WEAPON"
 	"volume"	"1"
-	"soundlevel"	"SNDLVL_110dB"
+	"soundlevel"	"SNDLVL_84dB" // Previously 110dB. Presumably this controls how far people can hear the sound from?
+	"volume"	"0.5"
 	"wave"		"weapons\boomstick_shoot.wav"
 }
 
@@ -26590,7 +26830,42 @@
 	"soundlevel"	"SNDLVL_94dB"
 	"volume"	"1"
 	"wave"		")weapons/cleaver_throw.wav"
+}
 
+"Cleaver.SingleQuiet" // a quiter variant for if the sound is going to be spammed a lot. This is supposed to be easier on the ears than the sharper sound used by most cooldown-based throwables
+{
+	"channel"	"CHAN_WEAPON"
+	"soundlevel"	"SNDLVL_94dB"
+	"volume"	"0.45"
+	"pitch"			"97, 100"
+	"wave"		")weapons/cleaver_throw.wav"
+}
+
+"Cleaver.SingleCritQuiet" // crit variant of the above
+{
+	"channel"		"CHAN_WEAPON"
+	"soundlevel"	"SNDLVL_94dB"
+	"volume"		"0.45"
+	"pitch"			"97, 100"
+	"wave"			")weapons/cleaver_throw_crit.wav"
+}
+
+"Cleaver.SingleLow" // A lower in pitch, slightl louder variant of the above throw meant for heavier weapons.
+{
+	"channel"	"CHAN_WEAPON"
+	"soundlevel"	"SNDLVL_94dB"
+	"volume"	"0.5"
+	"pitch"			"94, 97"
+	"wave"		")weapons/cleaver_throw.wav"
+}
+
+"Cleaver.SingleCritLow" // crit variant of the above
+{
+	"channel"		"CHAN_WEAPON"
+	"soundlevel"	"SNDLVL_94dB"
+	"volume"		"0.5"
+	"pitch"			"94, 97"
+	"wave"			")weapons/cleaver_throw_crit.wav"
 }
 
 "Cleaver.Draw"
@@ -27943,5 +28218,3 @@
 	"pitch"			"PITCH_NORM"
 	"wave"			")weapons/rocket_pack_land.wav"
 }
-
-
