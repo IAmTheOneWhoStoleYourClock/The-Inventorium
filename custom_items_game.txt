@@ -4955,7 +4955,7 @@ Note: Reworked."
 		{
 			"name"						"TF_WEAPON_BREAD_JARATE"
 			"prefab"					"weapon_smg"
-			"item_class"				"tf_weapon_grenade_mirv2"
+			"item_class"				"tf_weapon_grenade_mirv"
 			"show_in_armory"			"1"
 			"anim_slot"					"melee" //Niether melee or melee_allclass works well, and melee_allclass breaks on scientist so....
 			"item_name"					"Self-Aware Beauty Mark"
@@ -9643,11 +9643,6 @@ anything that could be opened..."
 					"attribute_class"	"mult_crit_chance"
 					"value"				"0"
 				}
-				"hide_attrib_percentage"
-				{
-					"attribute_class"	"mult_maxammo_metal" // just incase
-					"value"				"1000"
-				}
 				"hide_attrib_additive"
 				{
 					"attribute_class"	"mod_rocket_gravity" // has to be here for it to not display
@@ -9678,6 +9673,11 @@ anything that could be opened..."
 				{
 					"attribute_class"	"or_crit_vs_playercond"
 					"value"				"1048576"
+				}
+				"hide_attrib_additive"
+				{
+					"attribute_class"	"mod_ammo_per_shot"
+					"value"				"-1"
 				}
 			}
 			"visuals"
@@ -9795,11 +9795,6 @@ anything that could be opened..."
 					"attribute_class"	"mult_crit_chance"
 					"value"				"0"
 				}
-				"hide_attrib_percentage"
-				{
-					"attribute_class"	"mult_maxammo_metal" // just incase
-					"value"				"1000"
-				}
 				"hide_attrib_additive"
 				{
 					"attribute_class"	"mod_rocket_gravity" // has to be here for it to not display
@@ -9824,6 +9819,11 @@ anything that could be opened..."
 				{
 					"attribute_class"	"mult_decloak_rate"										// For the balisong/vanish, the lowest possible number i've found it can be before the game just goes "no, screw you" and rejects it. -Clock
 					"value"				"0.02"
+				}
+				"hide_attrib_additive"
+				{
+					"attribute_class"	"mod_ammo_per_shot"
+					"value"				"-1"
 				}
 			}
 			"visuals"
@@ -9942,11 +9942,6 @@ anything that could be opened..."
 					"attribute_class"	"mult_crit_chance"
 					"value"				"0"
 				}
-				"hide_attrib_percentage"
-				{
-					"attribute_class"	"mult_maxammo_metal" // just incase
-					"value"				"1000"
-				}
 				"hide_attrib_additive"
 				{
 					"attribute_class"	"mod_rocket_gravity" // has to be here for it to not display
@@ -9971,6 +9966,11 @@ anything that could be opened..."
 				{
 					"attribute_class"	"mult_decloak_rate"										// For the balisong/vanish, the lowest possible number i've found it can be before the game just goes "no, screw you" and rejects it. -Clock
 					"value"				"0.02"
+				}
+				"hide_attrib_additive"
+				{
+					"attribute_class"	"mod_ammo_per_shot"
+					"value"				"-1"
 				}
 			}
 			"visuals"
@@ -10089,11 +10089,6 @@ anything that could be opened..."
 					"attribute_class"	"mult_crit_chance"
 					"value"				"0"
 				}
-				"hide_attrib_percentage"
-				{
-					"attribute_class"	"mult_maxammo_metal" // just incase
-					"value"				"1000"
-				}
 				"hide_attrib_additive"
 				{
 					"attribute_class"	"mod_rocket_gravity" // has to be here for it to not display
@@ -10118,6 +10113,11 @@ anything that could be opened..."
 				{
 					"attribute_class"	"mult_decloak_rate"										// For the balisong/vanish, the lowest possible number i've found it can be before the game just goes "no, screw you" and rejects it. -Clock
 					"value"				"0.02"
+				}
+				"hide_attrib_additive"
+				{
+					"attribute_class"	"mod_ammo_per_shot"
+					"value"				"-1"
 				}
 			}
 			"visuals"
@@ -10237,11 +10237,6 @@ anything that could be opened..."
 					"attribute_class"	"mult_crit_chance"
 					"value"				"0"
 				}
-				"hide_attrib_percentage"
-				{
-					"attribute_class"	"mult_maxammo_metal" // just incase
-					"value"				"1000"
-				}
 				"hide_attrib_additive"
 				{
 					"attribute_class"	"mod_rocket_gravity" // has to be here for it to not display
@@ -10266,6 +10261,11 @@ anything that could be opened..."
 				{
 					"attribute_class"	"mult_decloak_rate"										// For the balisong/vanish, the lowest possible number i've found it can be before the game just goes "no, screw you" and rejects it. -Clock
 					"value"				"0.02"
+				}
+				"hide_attrib_additive"
+				{
+					"attribute_class"	"mod_ammo_per_shot"
+					"value"				"-1"
 				}
 			}
 			"visuals"
@@ -10440,11 +10440,6 @@ anything that could be opened..."
 					"attribute_class"	"mult_crit_chance"
 					"value"				"0"
 				}
-				"hide_attrib_percentage"
-				{
-					"attribute_class"	"mult_maxammo_metal" // just incase
-					"value"				"1000"
-				}
 				"hide_attrib_additive"
 				{
 					"attribute_class"	"mod_rocket_gravity" // has to be here for it to not display
@@ -10469,6 +10464,11 @@ anything that could be opened..."
 				{
 					"attribute_class"	"mult_decloak_rate"										// For the balisong/vanish, the lowest possible number i've found it can be before the game just goes "no, screw you" and rejects it. -Clock
 					"value"				"0.02"
+				}
+				"hide_attrib_additive"
+				{
+					"attribute_class"	"mod_ammo_per_shot"
+					"value"				"-1"
 				}
 			}
 			"visuals"
@@ -10588,11 +10588,6 @@ anything that could be opened..."
 					"attribute_class"	"mult_crit_chance"
 					"value"				"0"
 				}
-				"hide_attrib_percentage"
-				{
-					"attribute_class"	"mult_maxammo_metal" // just incase
-					"value"				"1000"
-				}
 				"hide_attrib_additive"
 				{
 					"attribute_class"	"mod_rocket_gravity" // has to be here for it to not display
@@ -10617,6 +10612,11 @@ anything that could be opened..."
 				{
 					"attribute_class"	"mult_decloak_rate"										// For the balisong/vanish, the lowest possible number i've found it can be before the game just goes "no, screw you" and rejects it. -Clock
 					"value"				"0.02"
+				}
+				"hide_attrib_additive"
+				{
+					"attribute_class"	"mod_ammo_per_shot"
+					"value"				"-1"
 				}
 			}
 			"visuals"
@@ -10770,11 +10770,6 @@ anything that could be opened..."
 					"value"				"110"
 				}
 
-				"hide_attrib_percentage"
-				{
-					"attribute_class"	"mult_maxammo_metal" // just incase
-					"value"				"1000"
-				}
 				"hide_attrib_additive"
 				{
 					"attribute_class"	"mod_rocket_gravity" // has to be here for it to not display
@@ -10785,7 +10780,7 @@ anything that could be opened..."
 					"attribute_class"	"mult_spread_scale"
 					"value"				"0"
 				}
-				"strange restriction type 1"
+				"hide_attrib_additive"
 				{
 					"attribute_class"	"mod_ammo_per_shot"
 					"value"				"-1"
@@ -11587,7 +11582,7 @@ than one Force-A-Nature? Two.”"
 //Festive Bonk! Atomic Punch by shualdock
 		"4950" //Changed number to awkardly shift this past where the normal bonk from NOWP is.
 		{
-			"name"						"The Sandvich" //The only fix I could think of to make scout actually have an animation for this..... -Clock
+			"name"						"TF_WEAPON_ENERGY_DRINK_FESTIVE"
 			"item_class"				"tf_weapon_lunchbox"
 			"show_in_armory"			"1"
 			"item_slot"					"secondary"
@@ -12669,7 +12664,7 @@ An apology present from the Pyro after a haphazardous accident involving the Fla
 		{
 			"name"						"TF_WEAPON_JARATE_FESTIVE"
 			"prefab"					"weapon_smg"
-			"item_class"				"tf_weapon_grenade_mirv2"
+			"item_class"				"tf_weapon_grenade_mirv"
 			"show_in_armory"			"1"
 			"anim_slot"					"item1"
 			"item_name"					"Festive Jarate"
@@ -18034,7 +18029,8 @@ Note: Incase the description is unclear, the target is only wet while afterburn 
 			"item_name_color"			"255 240 183 255"
 			"item_name"					"Sandman"
 			"item_type_name"			"Baseball-less Bat"
-			"item_description"			"
+			"item_description"			"Taunt does not kill
+
 Oh, “Night-night”, ya big freakin' dumbass.
 Ya need your little baby-blankie, too?"
 			"item_logname"				"sandman"
@@ -23219,7 +23215,7 @@ I'll make those wounds of yours even worse!"
 //--------------------------------------------------
 		"3442"
 		{
-			"name"						"The Sandvich" //Hacky fix for taunt -Clock
+			"name"						"TF_WEAPON_ENERGY_DRINK" //Hacky fix for taunt -Clock
 			"item_class"				"tf_weapon_lunchbox"									// Technically a Sandvich, with a bunch of complex functions handled off-house by taunts.txt
 			"show_in_armory"			"1"
 			"item_slot"					"secondary"
@@ -32886,7 +32882,7 @@ It's da second best way to kill with sugar!
 //--------------------------------------------------
 		"3543"
 		{
-			"name"						"The Sandvich" //The only one that works normally, but I changed it anyways for consistency
+			"name"						"TF_WEAPON_ENERGY_DRINK_CRIT"
 			"item_class"				"tf_weapon_lunchbox"
 			"show_in_armory"			"1"
 			"item_slot"					"secondary"
@@ -34292,10 +34288,10 @@ acceptable disguise, thank you very much!"
 					"attribute_class"	"no_primary_ammo_from_dispensers_always"				// Nope! No being cheeky for you - if you want a refill, you'll have to find a dropped weapon or ammo pack, or run all the way back to spawn. What'll it be, little guy?
 					"value"				"1"
 				}
-				"hide_attrib_percentage"
+				"hide_attrib_additive"
 				{
 					"attribute_class"	"effectbar_recharge_rate"								// This doesn't APPEAR to work - Riot Shield seems to have a charge cd of 12s. That seems a little hefty for it being HALF the duration of the regular shield charge, but mweh. If this worked, it'd be 8s like a regular charge!
-					"value"				"0.001"
+					"value"				"0.67"
 				}
 				"add condition on hit weapon"													// Copied from Cyclops, yada yada. I think this might encourage Civs to be a LITTLE more proactive about being at the front?
 				{
@@ -38579,7 +38575,7 @@ This has around 11 siblings. Need I say more?"
 		{
 			"name"						"TF_WEAPON_BARRIKADA"
 			"prefab"					"weapon_shotgun"
-			"item_class"				"tf_weapon_shotgun_pyro"
+			"item_class"				"tf_weapon_scattergun"
 			"show_in_armory"			"1"
 			"item_slot"					"primary"
 			"anim_slot"					"secondary"
@@ -38706,7 +38702,7 @@ Note: Made this one a bit stronger and more clear. -Clock"
 		{
 			"name"						"TF_WEAPON_BARRIKADA"
 			"prefab"					"weapon_shotgun"
-			"item_class"				"tf_weapon_shotgun_pyro"
+			"item_class"				"tf_weapon_scattergun"
 			"show_in_armory"			"1"
 			"item_slot"					"primary"
 			"anim_slot"					"secondary"
@@ -38741,6 +38737,7 @@ Note: Of course heavy needed a force of nature why wouldn't he? -Clock"
 				//"mod use custom ammo type"					"2"				// This weapon uses 8 gauge as ammo now (other shotguns uses 12g)
 				"apply self knockback hidden"			"280"
 				"reload time increased hidden"			"1.33"
+				"custom rampup"							"1.5"
 			}
 			"attributes" //This weapon's had a lot of changes over this packs development. I'm not sure if this resembles the original in any way at this point. Although, it's better off for it tbh. -Clock
 			{
@@ -51740,6 +51737,7 @@ It's Hammer Time!"
 		{
 			"name"						"TF_WEAPON_MED_HEALER"
 			"prefab"					"weapon_bonesaw"
+			"item_class"				"tf_weapon_bottle"
 			"show_in_armory"			"1"
 
 			"propername"				"1"
@@ -60150,9 +60148,9 @@ Notes: Removed due to only doing anything on death. Which, while admittedly hill
 		{
 			"tags"
 			{
-				"bots_cant_use"			"1" //They can't wrap their head around this. No idea why. -Clock
+				"bots_cant_use"			"1" //They simply can't wrap their head around this. No idea why. -Clock
 			}
-			"name"						"TF_WEAPON_QUICKIEBOMB_LAUNCHER"
+			"name"						"TF_WEAPON_SCOTTISH_RESISTANCE"
 			"prefab"					"weapon_stickybomb_launcher"
 			"show_in_armory"			"1"
 
@@ -63441,7 +63439,7 @@ Even though it looks ugly, it gets the job done"
 //-----------------------------
 		"5409"
 		{
-			"name"						"TF_WEAPON_ENERGY_DRINK_SPEED"
+			"name"						"TF_WEAPON_CLOAK_BREW"
 			"item_class"				"tf_weapon_lunchbox"
 			"show_in_armory"			"1"
 			"item_slot"					"secondary"
@@ -71482,7 +71480,7 @@ Nothing like the fresh feel of scratched steel and burnt tyres.."
 //----------------------------
 		"30513"
 		{
-			"name"						"TF_WEAPON_BEARTRAP"
+			"name"						"TF_WEAPON_SNATCHERS"
 			"prefab"					"weapon_fists"
 			"show_in_armory"			"1"
 
@@ -74511,6 +74509,7 @@ Who ever said you can't teach an old gun new calibres!"
 				"Mombae weapon"							"1"
 				"override projectile type" 				"3"
 				"damage bonus hidden"					"0.3"
+				"meter_label"							"CAN"
 			}
 			"attributes"
 			{
