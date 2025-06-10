@@ -91,19 +91,28 @@ just doesn't sound as cool."
 			{
 				"Mannly weapon"							"1"
 			}
-			"attributes" //Boston Basher reskin
+			"attributes" // They unexpectedly added this in the latest update... strange. Still don't like this weapon designwise, but that's for another time. I'll just have this accurate to base game ftm. -Clock
 			{
 				"bleeding duration"
 				{
 					"attribute_class"	"bleeding_duration"
-					"value" "5"
+					"value" 			"5"
 				}
-				"mark self on miss"
+				"hit self on miss"
 				{
-					"attribute_class"	"self_mark_for_death_on_miss"
-					"value"	"5"
+					"attribute_class"	"hit_self_on_miss"
+					"value"				"0.5"
 				}
-				
+				"hide_attrib_additive" // Presumably associated with the above? Doesn't have an entry, but was added with it and this is the only thing I would think it could do. (expect self afterburn or maybe even mfd, which would admitedly be funny and useful.) -Clock
+				{
+					"attribute_class"	"mod_allow_self_dmg_dot_weapon"
+					"value"				"1"
+				}
+				"hide_attrib_additive"
+				{
+					"attribute_class"	"mult_decloak_rate"										// For the balisong/vanish, the lowest possible number i've found it can be before the game just goes "no, screw you" and rejects it. -Clock
+					"value"				"0.02"
+				}
 			}
 			"visuals"
 			{

@@ -357,17 +357,22 @@ Delinquents all over the country have been harassing old ladies while you're stu
 			{
 				"Mannly weapon"							"1"
 			}
-			"attributes" //Unfortunately hitting yourself as an attribute (STILL) doesn't work. Fortunately, you can kinda make up for it by giving it "mark on miss" instead
+			"attributes" // They unexpectedly added this in the latest update... strange. Still don't like this weapon designwise, but that's for another time. I'll just have this accurate to base game ftm. -Clock
 			{
 				"bleeding duration"
 				{
 					"attribute_class"	"bleeding_duration"
-					"value" "5"
+					"value" 			"5"
 				}
-				"mark self on miss"
+				"hit self on miss"
 				{
-					"attribute_class"	"self_mark_for_death_on_miss"
-					"value"	"5"
+					"attribute_class"	"hit_self_on_miss"
+					"value"				"0.5"
+				}
+				"hide_attrib_additive" // Presumably associated with the above? Doesn't have an entry, but was added with it and this is the only thing I would think it could do. (expect self afterburn or maybe even mfd, which would admitedly be funny and useful.) -Clock
+				{
+					"attribute_class"	"mod_allow_self_dmg_dot_weapon"
+					"value"				"1"
 				}
 				"hide_attrib_additive"
 				{
@@ -391,7 +396,7 @@ Delinquents all over the country have been harassing old ladies while you're stu
 			"item_description"			"
 Something something stop reading this. -Clock"
 			"item_logname"				"gayralt_of_ridgia"
-			"item_iconname"				"scout_sword"
+			"item_iconname"				"spy_sword"
 			"item_quality"              "unique"
 			"image_inventory"			"backpack/workshop/weapons/c_models/c_scout_sword/c_scout_sword"
 			"model_world"				"models/weapons/c_models/c_scout_sword/c_scout_sword.mdl" //Reskins of unique weapons aren't common. But they are cool
@@ -4106,10 +4111,10 @@ Note: Lowered blast damage res. -Clock"
 					"attribute_class"	"custom_projectile_model"
 					"value"				"models/weapons/w_models/w_coilgun_projectile.mdl"
 				}
-				"hide_attrib_additive" // Apperently multiplicative can lead to some... odd results. (How does it even end up coming out to -32???) So this should fix the issue. -Clock
+				"hide_attrib_percentage"
 				{
 					"attribute_class"	"mult_maxammo_metal" //Wasn't even nessesary when this was an engie pistol, but unfortunately, the widowmaker REQUIRES it. Hence all this pain. -Clock
-					"value"				"168" //Should work better now... hopefully. -Clock
+					"value"				"5.56" // Needed to go change this back, because now it works the OTHER way where additive doesn't work but this does.... -Clock
 				}
 			}
 			"hide_bodygroups_deployed_only"	"1"
@@ -4332,7 +4337,7 @@ with a little elbow grease.”"
 				}
 				"maxammo metal reduced" 
 				{
-					"attribute_class"	"mult_maxammo_metal"
+					"attribute_class"	"DISPLAY_ONLY"
 					"value"				"0.7"
 				}
 				"hide_attrib_additive" //Decided to change these so that internally reduces it by a flat amount. -Clock
@@ -5011,6 +5016,11 @@ can make a mean weapon!"
 					"attribute_class"	"stickybomb_charge_rate"
 					"value"				"0.75"
 				}
+//				"hide_attrib_additive" // This one doesn't work...
+//				{
+//					"attribute_class"	"mod_allow_self_dmg_dot_weapon"
+//					"value"				"1"
+//				}
 				"hide_attrib_additive"															// TF2C v2.1.0 - Explodes on world now! It's back to being a pipe bomb now, then!
 				{
 					"attribute_class"	"set_detonate_mode"
@@ -5979,9 +5989,14 @@ you the cold shoulder...”"
 					"attribute_class"	"mult_dmgtaken_from_burning_target_active"
 					"value"				"0.8"
 				}
-				"mult cloak rate" //This makes it so that when you cloak, Spy raises his arms but the cloak doesn't start until a full second later. It'll feel longer ingame
+				"mult cloak rate small" //This makes it so that when you cloak, Spy raises his arms but the cloak doesn't start until a full second later. It'll feel longer ingame
 				{
-					"attribute_class"	"mult_cloak_rate" //Despite the name, doesn't multiply anything! It's an additive value! -Clock
+					"attribute_class"	"DISPLAY_ONLY" //Despite the name, doesn't multiply anything! It's an additive value! -Clock
+					"value" 			"6"
+				}
+				"hide_attrib_additive"
+				{
+					"attribute_class"	"mult_cloak_rate"
 					"value" 			"0.6"
 				}
 			}
@@ -7567,9 +7582,9 @@ massive amount of bomblets!
 			"static_attrs"
 			{
 				"Mannly weapon"							"1"
-				"meter_label"							"BOMB"
+				"meter_label"							"SPELL"
 				"min_viewmodel_offset"					"0 -10 -10"
-				"bomblets count mod mult hidden"		"3" //12 bomblets, that's a lot!
+				"bomblets count mod mult hidden"		"3" // 12 bomblets, that's a lot! -Clock
 				"damage penalty hidden"					"0.75"
 				"mirv drag mod mult hidden"				"0.55"
 			}
@@ -10669,7 +10684,7 @@ anything that could be opened..."
 		{
 			"name"						"TF_WEAPON_KEY_SPY"
 			"prefab"					"weapon_knife"
-			"item_class"				"tf_weapon_shotgun"
+			"item_class"				"tf_weapon_shotgun_hwg"
 			"anim_slot"					"melee"
 			"bucket"					"2"
 			"bucket_position"			"3"
@@ -23377,6 +23392,11 @@ Zhis chase will be over soon, I promise."
 					"attribute_class"	"mod_tranq_onhit"
 					"value"				"2.5"
 				}
+//				"hide_attrib_additive" // Hm. This doesn't work either.
+//				{
+//					"attribute_class"	"mod_allow_self_dmg_dot_weapon"
+//					"value"				"1"
+//				}
 				"hide_attrib_additive"		
 				{
 					"attribute_class"	"add_viewpunch_onhit"
@@ -28562,6 +28582,11 @@ Throw some flames, the old-fashioned way."
 				{
 					"attribute_class"	"projectile_spread_angle"
 					"value"				"5"
+				}
+				"hide_attrib_additive"
+				{
+					"attribute_class"	"mod_allow_self_dmg_dot_weapon"
+					"value"				"1"
 				}
 				"hide_attrib_percentage"
 				{
@@ -38637,6 +38662,11 @@ Note: Made this one a bit stronger and more clear. -Clock"
 					"attribute_class"	"DISPLAY_ONLY"
 					"value"				"1.35"
 				}
+				"dmg bonus vs buildings" // A tad pathetic against buildings otherwise... -Clock
+				{
+					"attribute_class"	"mult_dmg_vs_buildings"
+					"value"				"1.25"
+				}
 				"damage force reduction"
 				{
 					"attribute_class"	"damage_force_reduction"
@@ -38647,19 +38677,9 @@ Note: Made this one a bit stronger and more clear. -Clock"
 					"attribute_class"	"mult_flinch_resist_active"
 					"value"				"0.15"
 				}
-				"dmg from ranged reduced"
+				"dmg taken from bullets reduced" // I realised that the damge from ranged was on wearer previously, which got me thinking... isn't this a lil' much?
 				{
 					"attribute_class"	"mult_dmgtaken_from_bullets"
-					"value"				"0.8"
-				}
-				"hide_attrib_percentage"
-				{
-					"attribute_class"	"mult_dmgtaken_from_explosions"
-					"value"				"0.8"
-				}
-				"hide_attrib_percentage"
-				{
-					"attribute_class"	"mult_dmgtaken_from_fire_active"
 					"value"				"0.8"
 				}
 				"healing received penalty"
@@ -39393,22 +39413,29 @@ Not all tasks can be done quietly."
 		"5160"
 		{
 			"name"						"TF_WEAPON_RESERVE_SHOOTER"
-			"prefab"					"weapon_shotgun"								
-			"show_in_armory"			"0"
+//			"prefab"					"weapon_shotgun"
+			"item_class"				"tf_weapon_shotgun_soldier"
+			"show_in_armory"			"1" //With spy's new primary animations, Thought I should give him an actual shotgun of his own. -Clock
 			"item_slot"					"primary"
 			"anim_slot"					"secondary"	
 
 			"propername"				"1"
 			"item_name_color"			"255 240 183 255"
-			"item_name"					"Silent Treatment"
+			"item_name"					"Ego Deflater"
 			"item_type_name"			"#TF_Weapon_Shotgun"
 			"item_description"			"
-Shhh..."
+Rated ''The most efective tool for 
+assassinating cocky morons''
+7 years in a row!
+
+Spy Primary/Shotgun world animations
+created for Open Fortress and
+ported by littlefirz On Gamebanana"
 			"item_logname"				"reserve_shooter"
 			"item_iconname"				"reserve_shooter"
-			"image_inventory"			"backpack\weapons\w_models\w_broken_steel_pyro\w_broken_steel"
+			"image_inventory"			"backpack\weapons\w_models\w_silent_shotgun_spy\w_silent_shotgun_spy"
 			"model_world"				"models\w_models\w_silent_shotgun_spy.mdl"			// Shotgun spy? ye, i added this after playing TFC
-			"model_player"				"models\v_models\v_silent_shotgun_spy.mdl" //I'll keep this aroudn in case i'ts useful for naything later ig... -Clock
+			"model_player"				"models\v_models\v_silent_shotgun_spy.mdl"
 			"attach_to_hands"			"2"
 			"used_by_classes"
 			{
@@ -39417,10 +39444,62 @@ Shhh..."
 			"static_attrs"
 			{
 				"ReValve weapon"						"1"
-				"special taunt"							"1"
+				"provide on active"						"1"
 				"silent killer no scream"				"1"
+				"add cloak on kill"						"20"
 				"clip size penalty"						"0.5"
 				"hidden secondary max ammo penalty"		"0.5"
+				"damage penalty"						"0.9"
+				"dmg penalty vs buildings"				"0.8"
+				"never draw tracer"						"1"
+				"linked item id"						"8872"
+			}
+			"attributes"
+			{				
+			}
+			"visuals"
+			{
+				"sound_single_shot"		"Weapon_SilentReserveShooter.Single"
+				"sound_burst"			"Weapon_SilentReserveShooter.SingleCrit"
+			}
+			"mouse_pressed_sound"		"#ui/item_heavy_gun_pickup.wav"
+			"drop_sound"				"#ui/item_heavy_gun_drop.wav"
+		}
+		"8872"
+		{
+			"name"						"TF_WEAPON_RESERVE_SHOOTER"
+			"prefab"					"weapon_shotgun"								
+			"show_in_armory"			"1"
+			"item_slot"					"primary"
+			"anim_slot"					"primary"	
+
+			"propername"				"1"
+			"item_name_color"			"255 240 183 255"
+			"item_name"					"Ego Deflater"
+			"item_type_name"			"#TF_Weapon_Shotgun"
+			"item_description"			"
+Rated the most efective tool for assassinating cocky morons 7 years in a row!"
+			"item_logname"				"reserve_shooter"
+			"item_iconname"				"reserve_shooter"
+			"image_inventory"			"backpack\weapons\w_models\w_broken_steel_pyro\w_broken_steel"
+			"model_world"				"models\w_models\w_silent_shotgun_spy.mdl"			// Shotgun spy? ye, i added this after playing TFC
+			"model_player"				"models\v_models\v_silent_shotgun_spy.mdl" //I'll keep this aroudn in case i'ts useful for naything later ig... -Clock
+			"attach_to_hands"			"2"
+			"used_by_classes"
+			{
+				"mercenary"					"1"
+			}
+			"static_attrs"
+			{
+				"ReValve weapon"						"1"
+				"special taunt"							"1"
+				"silent killer no scream"				"1"
+				"mod use custom ammo type"				"2"
+				"add cloak on kill"						"20"
+				"clip size penalty"						"0.5"
+				"hidden secondary max ammo penalty"		"0.5"
+				"damage penalty"						"0.9"
+				"dmg penalty vs buildings"				"0.8"
 				"never draw tracer"						"1"
 			}
 			"attributes"
@@ -48306,6 +48385,7 @@ Note: Increased damage. -Clock"
 				"allowed in medieval mode"				"1"
 				"chargeweapon no extra speed"			"1" 					// LoL no!
 				"override projectile type"				"3"
+				"blast dmg to self increased hidden"	"0.25"
 				"mod use custom ammo type"				"4"
 				"add condition on hit weapon"			"101 0.66"
 			}
@@ -48325,6 +48405,11 @@ Note: Increased damage. -Clock"
 				{
 					"attribute_class"	"mult_projectile_speed"
 					"value"				"2"
+				}
+				"hide_attrib_additive" // Hm. Works. Interesting.
+				{
+					"attribute_class"	"mod_allow_self_dmg_dot_weapon"
+					"value"				"1"
 				}
 				"crit mod disabled"
 				{
@@ -50399,7 +50484,7 @@ Your reactions won't help you escape this lil' baby coward!"
 				"hide_attrib_percentage"
 				{
 					"attribute_class"	"stickybomb_charge_rate"
-					"value"				"0.6"
+					"value"				"0.53333333"
 				}
 				"fire rate bonus"
 				{
@@ -50526,7 +50611,7 @@ The nearness of death will not divert a true soldier from the path!"
 				"hide_attrib_percentage"
 				{
 					"attribute_class"	"stickybomb_charge_rate"
-					"value"				"0.6"
+					"value"				"0.562222166"
 				}
 				"fire rate bonus"
 				{
@@ -50653,7 +50738,7 @@ Oh dow how dow!"
 				"hide_attrib_percentage"
 				{
 					"attribute_class"	"stickybomb_charge_rate"
-					"value"				"0.6"
+					"value"				"0.562222166"
 				}
 				"fire rate bonus"
 				{
@@ -50779,7 +50864,7 @@ You're a bit of a fixer upper pal. Consider this load of lead the start of your 
 				"hide_attrib_percentage"
 				{
 					"attribute_class"	"stickybomb_charge_rate"
-					"value"				"0.6"
+					"value"				"0.53333333"
 				}
 				"fire rate bonus"
 				{
@@ -51007,16 +51092,20 @@ On top of that, the rumors that the legendary ranger still roams continue..."
 		{
 			"name"						"TF_WEAPON_SPEEDWATCH"
 			"prefab"					"weapon_invis"
-			"show_in_armory"			"0"										// I love v_models bones (and model's UNIQUE bones) (I HATE it!)
+			"show_in_armory"			"1"										// I love v_models bones (and model's UNIQUE bones) (I HATE it!)
 
 			"item_name_color"			"255 240 183 255"
-			"item_name"					"Bloodsucker"
-			"item_type_name"			"Invis Watches"
-			"item_description"			"
-The only way to survive is
-feed it with your own blood!"
-//			"image_inventory"			"backpack/workshop_partner/weapons/v_models/v_hm_watch/v_hm_watch"	// Making the backpack icons for Watches is a nightmare.
-//			"model_player"				"models\v_models\v_bleeding_watch_spy.mdl" //Broken and I have no idea how to work with watches. -Clock
+			"item_name"					"Bloodlust" // old name was 'Bloodsucker' but was replaced to fit new design
+			"item_type_name"			"Invis Watch"
+			"item_description"			"Cloak is replaced with a swift dash
+Jumping can extend your dash
+
+The only way to survive is to feed it with your blood! 
+(For your adversaries, that is.)
+
+Model by Cbast on Gamebanana"
+			"image_inventory"			"backpack\weapons\v_models\v_bloodwatch\v_bloodwatch"	// Making the backpack icons for Watches is a nightmare.
+			"model_player"				"models\v_models\v_blood_watch.mdl" // Went and fixed this, was not pleasant. Uses dead ringer anims. -Clock
 			"attach_to_hands"			"0"														// This is unique to watches, any other value has very strange behavior...
 			"used_by_classes"
 			{
@@ -51025,51 +51114,117 @@ feed it with your own blood!"
 			"static_attrs"
 			{
 				"ReValve weapon"						"1"
+				"Heavily modified"						"1"
 			}
 			"attributes"
 			{
-				"health drain"
+				"move speed bonus while cloaked"
 				{
-					"attribute_class"	"add_health_regen"
-					"value"				"-2"	
+					"attribute_class"	"mult_player_movespeed_cloaked"
+					"value"				"2.0" // 2.25 brings you from base spy speed to max movespeed. Any movespeed penalties on wearer still affect you, bonuses wouldn't.
+				}
+//				"mult cloak meter regen rate"
+//				{
+//					"attribute_class"	"DISPLAY_ONLY"
+//					"value"				"4"
+//				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mult_cloak_meter_regen_rate"
+					"value"				"4.6875" // base is 30s to refill. refill is 7s, accounting for the 0.6s you're cloaked for to make it a cooldown
+				}
+				"health from packs increased"
+				{
+					"attribute_class"	"mult_health_frompacks"
+					"value"				"1.2"
+				}
+				"mult decloak rate show"
+				{
+					"attribute_class"	"DISPLAY_ONLY"
+					"value"				"0.6"
+				}
+				"hide_attrib_additive"
+				{
+					"attribute_class"	"mult_cloak_rate"
+					"value"				"-0.4" // mostly just for visual flair
+				}
+				"hide_attrib_additive"
+				{
+					"attribute_class"	"mult_decloak_rate"
+					"value"				"0.6"
+				}
+				"set watch panel"
+				{
+					"attribute_class"	"set_watch_panel"
+					"value"				"1"
+				}
+				"mod min cloak to activate"
+				{
+					"attribute_class"	"mod_min_cloak_to_activate"
+					"value"				"100"
+				}
+				"mult cloak capacity VISUAL ONLY"
+				{
+					"attribute_class"	"DISPLAY_ONLY"
+					"value"				"0.05"
 				}
 				"hidden separator"		"1"
+//				"smoke bomb on full cloak"
+//				{
+//					"attribute_class"	"smoke_bomb_on_full_cloak"
+//					"value"				"1"
+//				}
+				"allow reload while cloaked"
+				{
+					"attribute_class"	"mod_can_reload_in_cloak"
+					"value"				"1" // unsure if this actually works, but it would fit. -Clock's assistant
+				}
+				"cannot pickup ammo packs while cloaked"
+				{
+					"attribute_class"	"cannot_pickup_ammo_packs_while_cloaked" // extending a dash like this could feel weird, especially since the timing for dashes is usually so consistent.
+					"value"				"1"
+				}
+				"cannot pickup dropped weapons while cloaked"
+				{
+					"attribute_class"	"cannot pickup dropped weapons while cloaked"
+					"value"				"1"
+				}
+				"lose cloak on decloak"
+				{
+					"attribute_class"	"lose_cloak_on_decloak"
+					"value"				"100" // no cloak left after decloaking
+				}
 				"mult cloak meter consume rate"
 				{
 					"attribute_class"	"mult_cloak_meter_consume_rate"
-					"value"				"0"
+					"value"				"16.6666" // 0.6 seconds
 				}
-				"mult cloak meter regen rate"
-				{
-					"attribute_class"	"mult_cloak_meter_regen_rate"
-					"value"				"0.000000000000000000000000000000000000000000000000000000001"
-				}
-				"health regen delay time when damaged"
-				{
-					"attribute_class"	"mod_health_regen_hurt_delay"
-					"value"				"0.01"
-				}	
 				
-				"lose cloak on damage"
-				{
-					"attribute_class"	"lose_cloak_on_damage"
-					"value"				"5"
-				}
-				"add cloak on kill"
-				{
-					"attribute_class"	"add_cloak_on_kill"
-					"value"				"0.5"
-				}
-				"heal on kill"
-				{
-					"attribute_class"	"heal_on_kill"
-					"value"				"20"
-				}
+//				"health drain"
+//				{
+//					"attribute_class"	"add_health_regen"
+//					"value"				"-2"	
+//				}
+//				"health regen delay time when damaged"
+//				{
+//					"attribute_class"	"mod_health_regen_hurt_delay"
+//					"value"				"0.01"
+//				}				
+//				"lose cloak on damage"
+//				{
+//					"attribute_class"	"lose_cloak_on_damage"
+//					"value"				"5"
+//				}
+//				"add cloak on kill"
+//				{
+//					"attribute_class"	"add_cloak_on_kill"
+//					"value"				"0.5"
+//				}
 			}
 			"visuals"
 			{
-				"sound_special1"		"Player.Spy_TacticalCloak"								// TF2C v2.1.0 - THESE FINALLY HAVE WORKING CLOAK SOUNDS!! This uses a sound-edit of the original speed-cloak sound, but spicier!
-				"sound_special2"		"Player.Spy_TacticalUnCloak"
+				"sound_special1"		"Player.Spy_DashCloak" // quieter speedwatch sounds
+				"sound_special2"		"Player.Spy_SilverUnCloak" // quiet sound, like a rush of wind. Decloak doesn't matter much as it's always played right after cloaking.
 			}
 			"mouse_pressed_sound"		"#ui/item_watch_pickup.wav"
 			"drop_sound"				"#ui/item_watch_drop.wav"
@@ -51613,8 +51768,11 @@ It's Hammer Time!"
 				"ReValve weapon"					"1"
 				"Mombaes parallel"						"1"
 				"always draw tracer"				"1"
+				"mult lunchbox throwable velocity"	"4"
+				"can headshot"						"1"
+				"damage bonus"						"1.5"
 			}
-			"attributes"																		// To be blunt I'm just too afraid to even touch this, Tomi is one of THOSE weapons that are defined by its very specific stats and not a niche...
+			"attributes"
 			{
 				"minigun no spin sounds"
 				{
@@ -51640,6 +51798,11 @@ It's Hammer Time!"
 				{
 					"attribute_class"	"mult_bullets_per_shot"
 					"value"				"0.25"
+				}
+				"headshot is minicrit"
+				{
+					"attribute_class"	"headshot_is_minicrit"
+					"value"				"1"
 				}
 				// Backend stuff
 				"hide_attrib_additive"		
@@ -52036,7 +52199,7 @@ Note 2: This now soaks. -Clock's assistant"
 			{
 				"ReValve weapon"						"1"
 				"fire rate penalty hidden"				"1.05"
-				"add condition on hit weapon"			"101 10" // apply wet
+//				"add condition on hit weapon"			"101 10" // apply wet
 				"attributes no trigger on DOT modifier"	"1" //I don't think this works on this. Shoot.
 				"cannot use stored crits NO DISPLAY"				"1"
 			}
@@ -52047,20 +52210,10 @@ Note 2: This now soaks. -Clock's assistant"
 //					"attribute_class"	"provide_on_active"
 //					"value"				"1"
 //				}
-				"primary fire vacuum"
-				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"1"
-				}
-				"wet replaces afterburn" // Combos with like, 2 weapons. I honestly just thought this looked better - it has some buildcrafting potential, but this is actually mostly a downside. It's just the most prominent stat for the weapon.
-				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"1"
-				}
-//				"Set DamageType Ignite" // This is... weird. This is rarely ever set to 0, but if used on a flamethrower, afterburn is completely removed (barring a few particles and kill effects) and it's still counted as fire damage for resistances and such. Neat! -Clock's assistant
+//				"wet replaces afterburn" // Combos with like, 2 weapons. I honestly just thought this looked better - it has some buildcrafting potential, but this is actually mostly a downside. It's just the most prominent stat for the weapon.
 //				{
-//					"attribute_class"	"set_dmgtype_ignite"
-//					"value" 			"0"
+//					"attribute_class"	"DISPLAY_ONLY"
+//					"value"				"1"
 //				}
 				"mult airblast refire time"
 				{
@@ -52107,17 +52260,26 @@ Note 2: This now soaks. -Clock's assistant"
 					"attribute_class"	"apply_look_velocity_on_damage"
 					"value"				"-120"
 				}
-
+				"weapon burn time reduced" // I found a bit of a digusting hack that lets your other weapons still afterburn...
+				{
+					"attribute_class"	"DISPLAY_ONLY"
+					"value"				"0"
+				}
+				"add condition on hit weapon" // Upon hitting with the weapon, give the afterburn starter helper.... for so short a time it's removed before the fire can even hit again (or even visually appear). Makes the sound a bit off though. -Clock
+				{
+					"attribute_class"	"add_onhit_addcond_weapon"
+					"value"				"22 0.01"
+				}
 				// No prim-fire penalties
 				"hide_attrib_percentage"	
 				{
 					"attribute_class"	"mult_flame_ammopersec"
 					"value"				"0"
 				}
-				"no afterburn on wearer" // Makes it a bit clearer that afterburn really does not exist for you anymore -Clock's assistant
+				"primary fire vacuum"
 				{
-					"attribute_class"	"mult_wpn_burntime"
-					"value"				"0"
+					"attribute_class"	"DISPLAY_ONLY"
+					"value"				"1"
 				}
 				"hide_attrib_percentage"	
 				{
@@ -54777,7 +54939,7 @@ Doesn't work with primaries that heal (technical reasons)"
 			"item_name_color"			"255 240 183 255"
 			"item_name"					"Overtanner"
 			"item_type_name"			"#TF_Weapon_RocketLauncher"
-			"item_description"			""
+			"item_description"			"Afterburn has rampup" // No idea why. It just... does. Inexplicably. I'd be more mad if that didn't kind of work with the weapon.... -Clock
 			"item_logname"				"overtanner"
 			"item_iconname"				""
 			"image_inventory"			"backpack\weapons\w_models\w_overtanner\w_overtanner"
@@ -54793,12 +54955,13 @@ Doesn't work with primaries that heal (technical reasons)"
 				"ReValve weapon"						"1"
 				"mod max primary clip override"			"-1"
 				"hidden primary max ammo bonus"			"2"
-				"damage bonus hidden"					"0.5"
+				"damage bonus hidden"					"0.7"
 				"custom rampup"							"1.75"
 				"punch angle mod add hidden"			"2"
 				
 				"fire rate bonus hidden"				"1.33"				// Bonus :)
 				"cannot use stored crits NO DISPLAY"				"1"
+				"blast dmg to self increased hidden"	"0.75"
 			}
 			"attributes"
 			{
@@ -54817,10 +54980,15 @@ Doesn't work with primaries that heal (technical reasons)"
 					"attribute_class"	"single_minicrit_vs_playercond_no_dot"
 					"value"				"23"
 				}
+				"hide_attrib_additive"
+				{
+					"attribute_class"	"mod_allow_self_dmg_dot_weapon"
+					"value"				"1"
+				}
 				"Blast radius decreased"
 				{
 					"attribute_class"	"mult_explosion_radius"
-					"value"				"0.76"
+					"value"				"0.75"
 				}
 				"weapon burn time reduced"
 				{
@@ -54830,7 +54998,7 @@ Doesn't work with primaries that heal (technical reasons)"
 				"weapon burn dmg reduced"						// Now you should use mini-crit combo for real damage
 				{
 					"attribute_class"	"mult_wpn_burndmg"
-					"value"				"0.25"
+					"value"				"0.75"
 				}
 				"airblast disabled"
 				{
@@ -54840,7 +55008,7 @@ Doesn't work with primaries that heal (technical reasons)"
 				"self dmg push force decreased"
 				{
 					"attribute_class"	"mult_dmgself_push_force"
-					"value"				"0"
+					"value"				"0.25"
 				}
 			}
 			"visuals"
@@ -55064,7 +55232,7 @@ Note: Increased impact damage. -Clock"
 				"fire rate bonus"
 				{
 					"attribute_class"	"mult_postfiredelay"
-					"value"				"0.5"
+					"value"				"0.65"
 				}
 				"stickybomb charge rate"
 				{
@@ -58801,7 +58969,7 @@ going to let you outrun me!”"
 			"mouse_pressed_sound"		"#ui/item_heavy_gun_pickup.wav"
 			"drop_sound"				"#ui/item_heavy_gun_drop.wav"
 		}
-		"7792" //Spy ver.
+		"7792" //Spy frontend ver.
 		{
 			"name"						"TF_WEAPON_FAMILY_BUSINESS"
 			"item_class"				"tf_weapon_shotgun_hwg"
@@ -58818,7 +58986,11 @@ going to let you outrun me!”"
 Otherwise functions identically
 to the Family Business
 
-”I suppose it'd be nice to have something handy for close encounters.”"
+”I suppose it'd be nice to have something handy for close encounters.”
+
+Spy Primary/Shotgun world animations
+Created by Open Fortress and
+ported by littlefirz On Gamebanana"
 			"item_logname"				"slipgate"
 			"item_iconname"				""
 			"image_inventory"			"backpack\weapons\w_models\w_quake_shotgun\w_quake_shotgun"
@@ -58835,6 +59007,7 @@ to the Family Business
 				"mod use custom ammo type"				"2"
 				"class select override vcd"				"taunt02"
 				"centerfire projectile"					"1" //Neither the setting or this attribute seem to work on bullets, or anything that could potentially adjust them. Dang. -Clock
+				"linked item id"						"7793" // Switch to using the much nicer world anims. -Clock
 			}
 			"attributes"
 			{
@@ -58874,7 +59047,80 @@ to the Family Business
 			"mouse_pressed_sound"		"#ui/item_heavy_gun_pickup.wav"
 			"drop_sound"				"#ui/item_heavy_gun_drop.wav"
 		}
-		"7793" //Sniper ver.
+		"7793" //Spy backend ver.
+		{
+			"name"						"TF_WEAPON_FAMILY_BUSINESS"
+			"item_class"				"tf_weapon_shotgun_hwg"
+			"show_in_armory"			"1"
+			"item_slot"					"primary"
+			"anim_slot"					"primary"
+			"bucket"					"0"
+
+			"propername"				"1"
+			"item_name_color"			"255 240 183 255"
+			"item_name"					"Quaker's Slipgate"
+			"item_type_name"			"#TF_Weapon_Shotgun"
+			"item_description"			"Cannot effectively use shotguns
+Otherwise functions identically
+to the Family Business
+
+”I suppose it'd be nice to have something handy for close encounters.”"
+			"item_logname"				"slipgate"
+			"item_iconname"				""
+			"image_inventory"			"backpack\weapons\w_models\w_quake_shotgun\w_quake_shotgun"
+			"model_world"				"models\w_models\w_quake_shotgun.mdl"
+			"model_player"				"models\v_models\v_quake_shotgun_soldier.mdl"
+			"attach_to_hands"			"2"
+			"used_by_classes"
+			{
+				"mercenary"				"1"
+			}
+			"static_attrs"
+			{
+				"ReValve weapon"						"1"
+				"mod use custom ammo type"				"2"
+				"class select override vcd"				"taunt02"
+				"centerfire projectile"					"1" //Neither the setting or this attribute seem to work on bullets, or anything that could potentially adjust them. Dang. -Clock
+			}
+			"attributes"
+			{
+				"clip size bonus"
+				{
+					"attribute_class"	"mult_clipsize"
+					"value"				"1.33"
+				}
+				"fire rate bonus"
+				{
+					"attribute_class"	"mult_postfiredelay"
+					"value"				"0.85"
+				}
+				"damage penalty"
+				{
+					"attribute_class"	"DISPLAY_ONLY"
+					"value"				"0.7"
+				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mult_dmg"
+					"value"				"0.675"
+				}
+			}
+			"visuals"
+			{
+				"sound_single_shot"		"Weapon_QShotgun.Single"
+				"sound_burst"			"Weapon_QShotgun.SingleCrit"
+				"sound_reload"			"Weapon_QShotgun.WorldReload"
+//				"animation_replacement"
+//				{
+//					"ACT_MP_RELOAD_STAND_SECONDARY_LOOP"		"ACT_MP_RELOAD_STAND_SECONDARY"
+//					"ACT_MP_RELOAD_CROUCH_SECONDARY_LOOP"		"ACT_MP_RELOAD_CROUCH_SECONDARY"
+//					"ACT_MP_RELOAD_SWIM_SECONDARY_LOOP"			"ACT_MP_RELOAD_SWIM_SECONDARY"
+//				}
+			}
+			"mouse_pressed_sound"		"#ui/item_heavy_gun_pickup.wav"
+			"drop_sound"				"#ui/item_heavy_gun_drop.wav"
+		}
+		"7794" //Sniper ver.
 		{
 			"name"						"TF_WEAPON_FAMILY_BUSINESS"
 			"prefab"					"weapon_shotgun"
@@ -60896,8 +61142,8 @@ I'm ghoing to spfell on ya!"
 			"item_name_color"			"255 240 183 255"
 			"item_name"					"Loud Waste Destroyer"
 			"item_type_name"			"#TF_WEAPON_SHOTGUN"
-			"item_description"			"Fires a large jet of shrapnel
-Applies very short bleeding
+			"item_description"			"Fires a hail of hitscan shrapnel
+Bleed stacks
 
 REAL waste-free production!"
 			"item_logname"				"burster"
@@ -60913,13 +61159,18 @@ REAL waste-free production!"
 			"static_attrs"
 			{
 				"ReValve weapon"						"1"
-				"never draw tracer"						"1"
+//				"never draw tracer"						"1"
 				"punch angle mod add hidden"			"2"
 				"punch angle is constant"				"1"
 				"mod max primary clip override"			"-1"
 			}
 			"attributes"
 			{
+				"bleeding duration"
+				{
+					"attribute_class"	"bleeding_duration"
+					"value"				"2"
+				}
 				"mod no reload DISPLAY ONLY"
 				{
 					"attribute_class"	"mod_max_primary_clip_override"
@@ -60928,7 +61179,7 @@ REAL waste-free production!"
 				"fire rate bonus"
 				{
 					"attribute_class"	"mult_postfiredelay"
-					"value"				"0.25"
+					"value"				"0.3"
 				}
 				"bullets per shot bonus"
 				{
@@ -60938,36 +61189,29 @@ REAL waste-free production!"
 				"shorter damage falloff distance show"
 				{
 					"attribute_class"	"mult_falloff_distance"
-					"value"				"0.25"
+					"value"				"0.7"
 				}
 				"damage penalty"
 				{
 					"attribute_class"	"mult_dmg"
-					"value"				"0.35"
+					"value"				"0.3"
 				}
 				"spread penalty"
 				{
 					"attribute_class"	"mult_spread_scale"
-					"value"				"3.0"
+					"value"				"2.0"
 				}
 				"limited range DISPLAY ONLY"	
 				{
 					"attribute_class"	"mult_projectile_range"
-					"value"				"0.05"
+					"value"				"0.025"
 				}
 				"apply self knockback"
 				{
 					"attribute_class"	"apply_self_knockback"
 					"value"				"75"
 				}
-				"hide_attrib_additive"
-				{
-					"attribute_class"	"bleeding_duration"
-					"value"				"0.5"
-				}
-
 				// Hidden technical stuff
-
 			}
 			"visuals"
 			{
@@ -63922,10 +64166,15 @@ Good old-fashioned healing" // Fixed the very broken grammar... by removing almo
 //					"attribute_class"	"mult_cloak_meter_consume_rate"
 //					"value"				"999"
 //				}
-				"mult decloak rate"
+				"mult cloak rate small" //This makes it so that when you cloak, Spy raises his arms but the cloak doesn't start until a full second later. It'll feel longer ingame
 				{
-					"attribute_class"	"mult_decloak_rate"
-					"value"				"1.35"
+					"attribute_class"	"DISPLAY_ONLY" // Despite the name, doesn't multiply anything! It's an additive value! -Clock
+					"value" 			"4"
+				}
+				"hide_attrib_additive"
+				{
+					"attribute_class"	"mult_cloak_rate" // Decloak rate just doesn't work properly when stacked anymore....
+					"value" 			"0.4"
 				}
 			}
 			"visuals"
@@ -68511,6 +68760,8 @@ Why breath fire, when you can shoot fire?"
 			{
 				"Mombae weapon"							"1"
 				"cannot use stored crits NO DISPLAY"				"1"
+				"provide on active"						"1"
+				"add condition on hit"					"22 0.5"
 			}
 			"attributes"																
 			{
@@ -68521,14 +68772,24 @@ Why breath fire, when you can shoot fire?"
 				}
 				"weapon burn time reduced"
 				{
-					"attribute_class"	"mult_wpn_burntime"
+					"attribute_class"	"DISPLAY_ONLY"
 					"value"				"0.30"
+				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mult_wpn_burntime"
+					"value"				"2"
 				}
 				"spread penalty"
 				{
 					"attribute_class"	"mult_spread_scale"
 					"value"				"1.3"
 				}
+//				"hit self on miss" // Doesn't seem to work on non-melee weapons. Fair enough.
+//				{
+//					"attribute_class"	"hit_self_on_miss"
+//					"value"				"0.5"
+//				}
 				"damage penalty"
 				{
 					"attribute_class"	"mult_dmg"
@@ -70771,15 +71032,15 @@ A modified Huo-long once repurposed for celebrations. Now it returns to the batt
 					"attribute_class"	"mult_postfiredelay"
 					"value" 			"1.4"													
 				}
-				"crit vs burning players"
+				"minicrit vs burning players"
 				{
-					"attribute_class"	"or_crit_vs_playercond"
+					"attribute_class"	"DISPLAY_ONLY"
 					"value" 			"1"													
 				}
-				"crits become minicrits"
+				"minicrit vs cond no dot"
 				{
-					"attribute_class"	"crits_become_minicrits"
-					"value" 			"1"													
+					"attribute_class"	"single_minicrit_vs_playercond_no_dot"
+					"value" 			"23"													
 				}
 				"weapon burn dmg reduced" //Because this would be REALLY annoying otherwise. -Clock
 				{
@@ -70790,6 +71051,16 @@ A modified Huo-long once repurposed for celebrations. Now it returns to the batt
 				{
 					"attribute_class"	"DISPLAY_ONLY"
 					"value" 			"0.5"
+				}
+				"crit damage reduced" // Not for any technical reason, just doesn't seem very fair to fight... -Clock
+				{
+					"attribute_class"	"DISPLAY_ONLY"
+					"value"				"200"
+				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mult_dmg_crit_multiplier"
+					"value"				"0.66666"
 				}
 				"hide_attrib_percentage"														
 				{
@@ -71124,7 +71395,7 @@ Note: Made into incendiary cannon -Clock"
 			"item_description"			"
 'Who touched my gun!'
 
-Note: Proabably doesn't need to exist but why not ig. -Clock"
+Note: Probably doesn't need to exist but why not ig. -Clock"
 			"image_inventory"			"backpack/goons_goggles/goons_goggles"
 			"model_player"				"models/player/items/goons_goggles/goons_goggles.mdl"
 			"extra_wearable"			"models/player/items/goons_goggles/goons_goggles.mdl"
@@ -75240,9 +75511,24 @@ That's me.”"
 			{
 				"Mombae weapon"							"1"
 				"Heavily modified"						"1"
-				"SET BONUS: quiet unstealth"			"0" //Doesn't actually use it, that's WAY too low. This instead uses sounds with reduced volume.
+				"SET BONUS: quiet unstealth"			"0" //Doesn't actually use the stat, that's WAY too low. This instead uses sounds with reduced volume.
 				"mult cloak meter regen rate"			"1.4"
-				"decloak time increased"				"1.8"
+			}
+			"attributes"
+			{
+				"decloak time increased"
+				{
+					"attribute_class"	"DISPLAY_ONLY"
+					"value"				"1.8"
+				}
+				"hide_attrib_additive"
+				{
+					"attribute_class"	"mult_decloak_rate" //For some mind bogglin reason, they silently changed this in the new patch, and now this is treated like a percentage, and the percentage is treated like a lunatic.
+					"value"				"2"
+				}
+			}
+			"static_attrs"
+			{
 				"cloak blink time percentage penalty"	"1.5"
 				"mod min cloak to activate"				"60"
 				"lose cloak on decloak"					"45"
@@ -84165,7 +84451,7 @@ I held the whole nation in awe with this comrade!"
 		"4444"
 		{
 			"name"						"TF_WEAPON_CHEVALIER"
-			"item_class"				"tf_weapon_shotgun" // has to be a weapon type spy doesn't already have, so it doesn't conflict and delete one of your weapons.
+			"item_class"				"tf_weapon_shotgun_hwg" // has to be a weapon type spy doesn't already have, so it doesn't conflict and delete one of your weapons.
 			"show_in_armory"			"1"
 			"item_slot"					"melee"
 			"anim_slot"					"melee"
@@ -84847,11 +85133,11 @@ Note: Don't use with big earner. -Clock"
 			}
 			"attributes" //Ultimately minor but likely unfixable bug, the big earner still applies its health penalty. -Clock
 			{
-				"drop health pack on kill"
-				{
-					"attribute_class"	"drop_health_pack_on_kill"
-					"value"				"1"
-				}
+//				"drop health pack on kill" // Not interesting. -Clock
+//				{
+//					"attribute_class"	"drop_health_pack_on_kill"
+//					"value"				"1"
+//				}
 				"set watch panel" //This changes the watch screen to the L'escampette's, a circular design
 				{
 					"attribute_class"	"set_watch_panel"
@@ -89457,9 +89743,9 @@ as health decreases"
 		"17437" // stat for the GutGuster
 		{
 			"name"					"primary fire vacuum"
-			"description_string"	"On primary fire: vacuum"
+			"description_string"	"Primary-fire: Vacuum"
 			"description_format"	"value_is_additive"
-			"effect_type"			"positive"
+			"effect_type"			"neutral"
 		}
 		"17438" // Meat smasher joke stat
 		{
@@ -89784,7 +90070,7 @@ recently-teleported players"
 		{
 			"name"					"decloak time increased"
 			"attribute_class"		"mult_decloak_rate"
-			"description_string"	"%s1 sec increase in time to decloak" //Bad wording, but it's how it works. -Clock
+			"description_string"	"%s1s increase in time to decloak" //Bad wording, but it's how it works. -Clock
 			"description_format"	"value_is_additive"
 			"effect_type"			"negative"
 		}
@@ -90070,6 +90356,37 @@ projectile and rocket instantly"
 			"description_string"	"100% minicrits vs slowed"
 			"description_format"	"value_is_additive"
 			"effect_type"			"positive"
+		}
+		"17538"
+		{
+			"name"					"dmg from ranged reduced wearer"
+			"description_string"	"%s1% damage from ranged sources on wearer"
+			"description_format"	"value_is_percentage"
+			"effect_type"			"positive"
+		}
+		"17539"
+		{
+			"name"					"mult decloak rate show"
+			"attribute_class"		"mult_decloak_rate"
+			"description_string"	"%s1% decloak time"
+			"description_format"	"value_is_percentage"
+			"effect_type"			"positive"
+		}
+		"17540"
+		{
+			"name"					"decloak time increased small"
+			"attribute_class"		"mult_decloak_rate"
+			"description_string"	"0.%s1s increase in decloak time"
+			"description_format"	"value_is_percentage"
+			"effect_type"			"negative"
+		}
+		"17540"
+		{
+			"name"					"mult cloak rate small"
+			"attribute_class"		"mult_cloak_rate"
+			"description_string"	"0.%s1s increase in cloak time"
+			"description_format"	"value_is_percentage"
+			"effect_type"			"negative"
 		}
 //
 //

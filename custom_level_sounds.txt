@@ -3964,6 +3964,13 @@
 	"volume"		"0.35"
 	"wave"			"player/spy_uncloakanddagger.wav"
 }
+"Player.Spy_DashCloak"
+{
+	"channel"		"CHAN_STATIC"
+	"soundlevel"  	"SNDLVL_85dB"
+	"volume"		"0.8"
+	"wave"			")player/spy_speedcloak.wav"
+}
 "Player.Spy_TacticalCloak"
 {
 	"channel"		"CHAN_STATIC"
