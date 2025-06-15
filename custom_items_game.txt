@@ -1658,17 +1658,32 @@ Fill (split) your buddies' tummies (stomachs) with delicious candy (cold steel).
 			{
 				"Mannly weapon"							"1"
 			}
-			"attributes" // I do not care for the Lolichop. You'd think I would, but I don't. No special stats for you! -Clock
+			"attributes" // Alright, somebody specifically asked for a "gambling weapon." So here you go. Congrats that one person whos name I don't even remember.
 			{
+				"fire rate bonus"
+				{
+					"attribute_class" 	"mult_postfiredelay"
+					"value"		  		"0.75"
+				}
 				"pyrovision substitute"
 				{
 					"attribute_class" 	"hand_scale"
 					"value"		  		"1.6" // TO DO: Does this do anything? -Clock
 				}
+				"random failure"
+				{
+					"attribute_class" 	"mult_crit_chance"
+					"value"		  		"1.45"
+				}
 				"cannot eat weapon" // Might as well give it this, since it makes sense here. -Clock
 				{
 					"attribute_class"	"DISPLAY_ONLY"
 					"value"				"1"
+				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mult_dmg_crit_multiplier"
+					"value"				"0.001"
 				}
 				"hide_attrib_additive"
 				{
@@ -3280,11 +3295,11 @@ Turn every one of your fingers into the Four Horsemen of the Apocalypse! That's 
 					"attribute_class"	"mult_postfiredelay"
 					"value"				"1.25"
 				}
-				"maxammo primary reduced"
-				{
-					"attribute_class"	"mult_maxammo_primary"
-					"value"				"0.65"
-				}
+//				"maxammo primary reduced"
+//				{
+//					"attribute_class"	"mult_maxammo_primary"
+//					"value"				"0.65"
+//				}
 				"crit mod disabled"
 				{
 					"attribute_class"	"mult_crit_chance"
@@ -8316,13 +8331,13 @@ Note: A bad idea made manifest. -Clock"
 			"propername"				"1"
 			"item_slot"					"primary"
 			"anim_slot"					"secondary"
-			"item_name"					"Perun" //Based on the old Kievan Rus deity of the same name, not the Agrgentine dictator. -Clock
+			"item_name"					"Perun" //Based on the old Kievan Rus deity of the same name, not the Argentine dictator. -Clock
 			"item_name_color"			"218 165 32 255"
 			"item_type_name"			"#TF_Weapon_Shotgun"
 			"item_description"			"
 “You will go out with bang.”
 
-Note: Greatly reduced the movespeed bonus, this is mostly good enough without it."
+Note: Greatly nerfed."
 			"item_logname" 				"kick_ass_and_chew_sandvich"
 			"item_iconname" 			"Perun"
 			"item_quality"              "unique"
@@ -8344,14 +8359,14 @@ Note: Greatly reduced the movespeed bonus, this is mostly good enough without it
 				"Mannly weapon"							"1"
 				"class select override vcd"				"taunt02"
 			}
-			"attributes" //This weapon has gotten so many nerfs... Deserved, but this is way weaker than its original incarnation
+			"attributes" //This weapon has gotten so many nerfs... Deserved nerfs, but this is way weaker than its original incarnation
 			{
-				"damage bonus" //About 120 dmg point blank
-				{
-					"attribute_class"	"mult_dmg"
-					"value" 			"1.2"
-				}
-				"clip size bonus"
+//				"damage bonus" //About 120 dmg point blank
+//				{
+//					"attribute_class"	"mult_dmg"
+//					"value" 			"1.2"
+//				}
+				"clip size bonus" //This is THE most generic concept possible, on THE most generic model possible... It's hard to imagine this doing anything super complex.
 				{
 					"attribute_class"	"mult_clipsize"
 					"value" 			"1.5"
@@ -8369,12 +8384,12 @@ Note: Greatly reduced the movespeed bonus, this is mostly good enough without it
 			    "increased fire rate at low health" //Copied from the Shahanshah, but I think this is fun. It encourages Heavies to tank more hits in order to dish out more pain
 				{
 					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"25" //Reduced to 25% max
+					"value"				"30" //Reduced to 25% max
 				}
 				"hide_attrib_percentage"
 				{
 					"attribute_class"	"mult_postfiredelay_with_reduced_health"
-					"value"				"0.75"
+					"value"				"0.7"
 				}
 //				"Reload time decreased"
 //				{
@@ -20034,10 +20049,14 @@ Note: Gave it a bit more damage. -Clock"
 			"item_name"					"Eureka Effect"
 			"item_type_name"			"Telemax Wrench"
 			"item_description"			"
-I still need to tinker with this ol' number.
-Workin' or not... it's good for skull-crackin'!
+She may be a lil' strange sometimes, 
+but that's the teleportin' buisness partner. 
+Nobody in it's fully sane. 
+I'd know.
 
-Note: Upgrade rate nerfed. -Clock"
+Note: Source plugin test. Notify me about any bugs! -Clock" 
+// I still need to tinker with this ol' number.
+// Workin' or not... it's good for skull-crackin'! -Old desc
 			"item_logname"				"eureka_effect"
 			"item_iconname"				"eureka_effect"
 			"image_inventory"			"backpack/workshop/weapons/c_models/c_drg_wrenchmotron/c_drg_wrenchmotron"
@@ -20051,23 +20070,30 @@ Note: Upgrade rate nerfed. -Clock"
 			"static_attrs"
 			{
 				"NOWP weapon"							"1"
+				"Heavily modified"						"1"
 				"Mannly parallel"						"1"
+				"Sourcemod user"						"1"
 				"particle on melee hit"					"sapper_elec"							// drg_manmelter_impact also works, but is a little too visually loud imo...
 				"special taunt"							"1"
 			}
-			"attributes"																		// Not too accurate, but kinda accidentally fills the same "niche" of staying near spawn to quickly build buildings
+			"attributes" // While trying to fix a persistent bug using sourcemod, I found out I could make the golden wrench fairly easily by piggybacking off an existing plugin. Same here, but significantly more complicated (I basically had to rewrite the entire teleswapping plugin...) -Clock	// Not too accurate, but kinda accidentally fills the same "niche" of staying near spawn to quickly build buildings
 			{
+				"teleport additional bonus" // This is mostly to practice making Sourcemods btw. Don't expect this to stick around.
+				{
+					"attribute_class"	"DISPLAY_ONLY"
+					"value"				"1"
+				}
 				"damage bonus"
 				{
 					"attribute_class"	"mult_dmg"
 					"value"				"1.15"
 				}
-				"upgrade rate increase"															// NOWP v2.5.0 - THIS LINE ISN'T IN TF2C_ENGLISH!! It's a custom attribute, so be wary! This might change sooner or later!
-				{
-					"attribute_class"	"upgrade_rate_mod"
-					"value"				"1.6" //1.8 is just too much, letting engies setup that fast would be very powerful and frustrating. Plus, this makes it upgrade cleanly. -Clock
-				}
-				"fire rate penalty"
+//				"upgrade rate increase"															// NOWP v2.5.0 - THIS LINE ISN'T IN TF2C_ENGLISH!! It's a custom attribute, so be wary! This might change sooner or later!
+//				{
+//					"attribute_class"	"upgrade_rate_mod"
+//					"value"				"1.6" // 1.8 is just too much, letting engies setup that fast would be very powerful and frustrating. Plus, this makes it upgrade cleanly. -Clock
+//				}
+				"fire rate penalty" // TO DO: Are the downsides too lenient? No idea how good the upside will be in practice.
 				{
 					"attribute_class"	"mult_postfiredelay"
 					"value"				"1.1"
@@ -20075,7 +20101,7 @@ Note: Upgrade rate nerfed. -Clock"
 				"metal_pickup_decreased"
 				{
 					"attribute_class"	"mult_metal_pickup"
-					"value"				"0.67"
+					"value"				"0.8"
 				}
 				// Backend stuff
 //				"hide_attrib_percentage"														// Too STRONG
@@ -20619,11 +20645,11 @@ You will not know we are coming, coward!"
 					"attribute_class"	"DISPLAY_ONLY"
 					"value"				"1.25"
 				}
-				"hide_attrib_percentage"	
-				{
-					"attribute_class"	"mult_bullets_per_shot"
-					"value"				"1.1"
-				}
+//				"hide_attrib_percentage" // Nerfing most of heavy's primary shotguns, they've just gotten too strong for my liking...
+//				{
+//					"attribute_class"	"mult_bullets_per_shot"
+//					"value"				"1.1"
+//				}
 				"spread penalty"
 				{
 					"attribute_class"	"mult_spread_scale"
@@ -23384,7 +23410,7 @@ Zhis chase will be over soon, I promise."
 			{
 				"NOWP weapon"
 				{
-					"attribute_class"	"jarate backstabber" //PISS YOURSELF -Clock
+					"attribute_class"	"jarate_backstabber" //PISS YOURSELF -Clock
 					"value"				"1"
 				}
 				"set tripmine conc tranq"
@@ -25027,6 +25053,11 @@ And for that: you can do more, with less."
 				{
 					"attribute_class"	"mult_dispenser_radius"									// You have to get really close to the Dispenser to activate healing / ammo giving actions
 					"value"				"0.67"
+				}
+				"hide_attrib_percentage"	
+				{
+					"attribute_class"	"mod_sentry_cost"
+					"value"				"0.7"													// -30 build cost
 				}
 				"hide_attrib_percentage"	
 				{
@@ -38789,7 +38820,7 @@ Note: Of course heavy needed a force of nature why wouldn't he? -Clock"
 				"bullets per shot bonus"	
 				{
 					"attribute_class"	"mult_bullets_per_shot"
-					"value"				"1.25"
+					"value"				"1.1"
 				}
 				"weapon spread bonus"
 				{
@@ -38831,11 +38862,11 @@ Note: Of course heavy needed a force of nature why wouldn't he? -Clock"
 					"attribute_class"	"mult_postfiredelay"
 					"value"				"1.25"
 				}
-				"damage penalty"	
-				{
-					"attribute_class"	"mult_dmg"
-					"value"				"0.95"
-				}
+//				"damage penalty"	
+//				{
+//					"attribute_class"	"mult_dmg"
+//					"value"				"0.95"
+//				}
 				"clip size penalty"
 				{
 					"attribute_class"	"mult_clipsize"
@@ -40329,10 +40360,10 @@ Ported by Goopswagger" // I assume they used the ported version? -Clock
 
 			"propername"				"1"
 			"item_name_color"			"255 240 183 255"
-			"item_name"					"Jury Rig"
+			"item_name"					"Railer"
 			"item_type_name"			"#TF_Weapon_Scattergun"
 			"item_description"			"
-Only 5 bolts between you and a hole in your chest."
+No, that's the gun's name, but i'm faltered."
 			"item_logname"				"boltgun"
 			"item_iconname"				""
 			"image_inventory"			"backpack\weapons\w_models\w_boltgun\w_boltgun"
@@ -40382,15 +40413,11 @@ Only 5 bolts between you and a hole in your chest."
 					"attribute_class"	"no_primary_ammo_from_dispensers"
 					"value"				"1"
 				}
-				"hide_attrib_additive"
-				{
-
-				}
 			}
 			"visuals"
 			{
 				"sound_single_shot"		"Weapon_Boltgun.Single"
-				"sound_burst"			"Weapon_Boltgun.Single"
+				"sound_burst"			"Weapon_Boltgun.SingleCrit"
 			}
 			"mouse_pressed_sound"		"#ui/scattergun_alt_pickup_scrap.wav"
 			"drop_sound"				"#ui/item_metal_scrap_drop.wav"
@@ -42501,22 +42528,22 @@ While she may be tiny... she is fierce fighter."
 				"bullets per shot bonus"
 				{
 					"attribute_class"	"mult_bullets_per_shot"
-					"value"				"2"
+					"value"				"40"
 				}
 				"fire rate penalty"
 				{
 					"attribute_class"	"mult_postfiredelay"
-					"value"				"2.5"
+					"value"				"0.5"
 				}
 				"damage penalty"
 				{
 					"attribute_class"	"mult_dmg"
 					"value"				"0.5"
 				}
-				"spread penalty"
+				"hide_attrib_additive"
 				{
 					"attribute_class"	"mult_spread_scale"
-					"value"				"2.33"
+					"value"				"1"
 				}
 				"maxammo primary reduced"
 				{
@@ -45050,6 +45077,8 @@ Model by Ertz™ and Captain Kibbleknight on Steam" //https://steamcommunity.com
 				"ReValve weapon"						"1"
 				"Heavily modified"						"1"
 //				"override projectile type"				"37"
+//				"mod burst fire"						"6" // try uncommenting these and see what happens
+//				"fire rate burst"						"0.2"
 			}
 			"attributes"
 			{
@@ -50090,10 +50119,10 @@ I do everything from a distance"
 			}
 			"name"						"TF_WEARABLE_JIGGERNAUT"
 			"prefab"					"weapon_pda"
-			"item_class"				"tf_wearable"
 			"show_in_armory"			"1"
 //			"item_slot"					"building"
 			"equip_region"				"shirt"
+			"bucket"					"999999"
 
 			"anim_slot"					"FORCE_NOT_USED"
 			"image_inventory_size_w"	"128"
@@ -50111,6 +50140,7 @@ Note: Nerfed the resistances and metal, but let you move at near full speed. -Cl
 			"item_iconname"				""											// Kill icon for wearable?
 			"image_inventory"			"backpack\player\w_jiggernaut\w_jiggernaut_large.vtf"
 			"model_player"				"models\player\items\hwn2015_iron_lung\hwn2015_iron_lung.mdl" //Changed it so it's just the iron lung, everything else was causing clipping issues!
+			"extra_wearable"			"models\player\items\hwn2015_iron_lung\hwn2015_iron_lung.mdl"
 			"used_by_classes"
 			{
 				"engineer"				"1"
@@ -51115,19 +51145,20 @@ Model by Cbast on Gamebanana"
 			{
 				"ReValve weapon"						"1"
 				"Heavily modified"						"1"
+//				"mult decloak rate"						"0.2"
 			}
 			"attributes"
 			{
 				"move speed bonus while cloaked"
 				{
 					"attribute_class"	"mult_player_movespeed_cloaked"
-					"value"				"2.0" // 2.25 brings you from base spy speed to max movespeed. Any movespeed penalties on wearer still affect you, bonuses wouldn't.
+					"value"				"2" // 2.25 brings you from base spy speed to max movespeed. Any movespeed penalties on wearer still affect you, bonuses wouldn't.
 				}
-//				"mult cloak meter regen rate"
-//				{
-//					"attribute_class"	"DISPLAY_ONLY"
-//					"value"				"4"
-//				}
+				"mult cloak meter regen rate"
+				{
+					"attribute_class"	"DISPLAY_ONLY"
+					"value"				"4"
+				}
 				"hide_attrib_percentage"
 				{
 					"attribute_class"	"mult_cloak_meter_regen_rate"
@@ -51141,17 +51172,17 @@ Model by Cbast on Gamebanana"
 				"mult decloak rate show"
 				{
 					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"0.6"
+					"value"				"0.3"
 				}
 				"hide_attrib_additive"
 				{
 					"attribute_class"	"mult_cloak_rate"
-					"value"				"-0.4" // mostly just for visual flair
+					"value"				"-0.15" // mostly just for visual flair
 				}
-				"hide_attrib_additive"
+				"charge time increased"
 				{
 					"attribute_class"	"mult_decloak_rate"
-					"value"				"0.6"
+					"value"				"0.25"
 				}
 				"set watch panel"
 				{
@@ -54002,7 +54033,7 @@ Model by boomsta on Gamebanana" //https://gamebanana.com/mods/198596 Thank goodn
 				"ReValve weapon"						"1"
 				"Heavily modified"						"1"
 			}
-			"attributes"
+			"attributes" //An excercise in absurdism, maybe the most top heavy gun in the this whole mod. You do one thing, you do it REALLY well. You otherwise can barely even play the video game. Sentries now kill you in real life.
 			{
 				"rampup bonus"
 				{
@@ -54142,7 +54173,7 @@ Saxton Hale's favorite water substitute!"
 			"name"						"TF_WEARABLE_SHOGUN_SET"
 			"prefab"					"weapon_shovel"
 			"item_class"				"tf_weapon_umbrella"
-			"show_in_armory"			"1" //Disabling all banners other than the frontline informant until I can find a way to make them feel satifying. -Clock //I guess in lew of Unstock's banner... -Clock
+			"show_in_armory"			"1" //Disabling all banners other than the frontline informant until I can find a way to make them feel satifying. -Clock //I guess in lew of Unstock's banner getting removed... Fine.-Clock
 			"item_slot"					"secondary"
 			"equip_region"				"hat"
 			"bucket"					"1"	
@@ -54155,7 +54186,7 @@ Saxton Hale's favorite water substitute!"
 			"item_name_color"			"255 240 183 255"
 			"item_name"					"Anti-Tanker Set"
 			"item_type_name"			"Army Helmet"
-			"item_description"			"Alt-Fire: Damage reduction from all sources (8s)
+			"item_description"			"Alt-Fire: Grant an ally and yourself a damage reduction from all sources (8s)
 
 Note: The boost alone is enough upside, no need for max health on top. -Clock"
 			"item_logname"				"anti-tanker"
@@ -55057,7 +55088,7 @@ Doesn't work with primaries that heal (technical reasons)"
 			"item_name"					"Welrod"
 			"item_type_name"			"#TF_Weapon_Tranq"
 			"item_description"			"
-Note: Reworked. -Clock" //On a side note, I keep forgetting to offset these and put my name on them, I'll need to double check before beta launch. -Clock
+Note: Reworked. -Clock" //On a side note, I keep forgetting to offset these and put my name on them. -Clock
 			"item_logname"				"hitscan_tranq"
 			"item_iconname"				"Wellrod.mp3"
 			"image_inventory"			"backpack\weapons\w_models\w_welrod\w_welrod"
@@ -55764,7 +55795,7 @@ God bless America!"
 					"attribute_class"	"mult_dmgself_push_force"
 					"value"				"0"
 				}
-				"fly forwards on fire"
+				"fly forwards on fire" // "Oh wow Clock, another secondary to increase pyro's mobility? How originial..." Hey, would you rather a boring anti-air flaregun? Thought not. Sides, Colrot already did that with this anyways, and doing the same thing here wouldn't sit right with me.
 				{
 					"attribute_class"	"apply_self_knockback"
 					"value"				"-470"
@@ -55881,7 +55912,7 @@ Note: Shotgun. -Clock"
 				"ReValve weapon"						"1"
 				"Mannly parallel"						"1"
 			}
-			"attributes"
+			"attributes" //A shotgun minigun. Perhaps not the most useful, but pretty darn fun.
 			{
 				"Set DamageType Ignite"		
 				{
@@ -55992,7 +56023,7 @@ Note: Removed because A: 75% damage resistance and always reved make this weapon
 				"dmg taken from burning target reduced on active"	"0.25"
 				"maxammo primary increased"				"1.25"
 			}
-			"attributes" //This weapon SUCKS geniunely I can't even begin to think of a way to rework this into aything even midly fun... -Clock
+			"attributes" //This weapon SUCKS. Even now, after reworking over a hundered other weapons, I still have no idea where to even START with reworking this... Don't expect this to ever be added. -Clock
 			{
 				"aiming movespeed increased"
 				{
@@ -56316,10 +56347,10 @@ Every second brings you closer to death and killing is the only way to survive! 
 					"attribute_class"	"mult_player_movespeed"
 					"value"				"1.15"
 				}
-				"wearable add cond on right click"
+				"gain stored crits on kill"
 				{
-					"attribute_class"	"add_wearable_cond_on_secondary_attack"
-					"value"				"17 4 8.0"
+					"attribute_class"	"add_onkill_critboost_time"
+					"value"				"5"
 				}
 				"wearable cond on effect percent"
 				{
@@ -63624,11 +63655,16 @@ Even though it looks ugly, it gets the job done"
 					"attribute_class"	"mult_dmg"
 					"value"				"1.15"
 				}
-				"max health additive bonus"
+				"drop health pack on kill"
 				{
-					"attribute_class"	"add_maxhealth"
-					"value"				"15"
+					"attribute_class"	"drop_health_pack_on_kill"
+					"value"				"1"
 				}
+//				"max health additive bonus" //Got to talking about the old number 29, and I thought that this was really lame... exchanged with above.
+//				{
+//					"attribute_class"	"add_maxhealth"
+//					"value"				"15"
+//				}
 				"cloak consume rate increased" //Also nerf cloaking abilities, not as much, but people tend to (unjustly, in my opinion) think that disguises are not very useful to begin with.
 				{
 					"attribute_class"	"mult_cloak_meter_consume_rate" //Honestly, disguises are a very powerful part of spies kit, but players who don't know any better consistantly undervalue it.
@@ -70302,7 +70338,7 @@ Note: Reworked. -Clock"
 				"max pipebombs decreased"
 				{
 					"attribute_class"	"add_max_pipebombs"
-					"value"				"-6"
+					"value"				"-5"
 				}
 //				"stickies dont stick"
 //				{
@@ -70759,13 +70795,14 @@ the ghost is through, his power ends!'"
 				"Heavily modified"						"1"
 				"Override projectile type"				"31" // dynamite pack
 				"bomblets count mod mult hidden"		"0.75"
-				"mirv drag mod mult hidden"				"3.7" // modifies the drag of the projectile shot, which can help based on the model chosen.
+				"mirv drag mod mult hidden"				"12.7" // modifies the drag of the projectile shot, which can help based on the model chosen.
 //				"Projectile speed increased hidden"		"2.1" // seemingly does not work
 //				"grenade no bounce"						"1"
 				"mirv impact"							"1"
-				"mult mirv impact damage"				"0.7"
+				"mult mirv impact damage"				"0.6"
+				"self dmg push force hidden"			"0.7"
 //				"custom projectile model"				"models\w_models\w_polyphemus_pumpling.mdl" // pumpkin :D
-				"custom projectile model"				"models\passtime\ball\passtime_ball_halloween.mdl"
+				"custom projectile model"				"models\passtime\ball\passtime_ball_halloween.mdl" // found this one while messing around :P
 
 				// the model here matters a lot as to how the projectile sits, so here's a few options:
 				// "models\w_models\w_polyphemus_pumpling.mdl" - small, but the trail makes it noticable. This one rolls a lot. Fairly low drag.
@@ -70773,14 +70810,14 @@ the ghost is through, his power ends!'"
 				// "models/weapons/w_models/w_drg_ball.mdl" - tiny marble, practically invisible. Makes it entirely the trail effect, which actually looks neat, but it's not for here.
 				// adjust this for whatever works best. -Clock's assistant
 
-				"custom projectile origin offset"		"20 -2 -7"
+				"custom projectile origin offset"		"19 -2 -7"
 			}
 			"attributes"
 			{
 				"damage bonus"
 				{
 					"attribute_class"	"mult_dmg"
-					"value"				"1.65"
+					"value"				"1.75"
 				}
 				"minigun spin time decreased"
 				{
@@ -70810,12 +70847,12 @@ the ghost is through, his power ends!'"
 				"hide_attrib_percentage"
 				{
 					"attribute_class"	"mult_explosion_radius"
-					"value"				"1.2"
+					"value"				"1.1"
 				}
 //				"fire rate penalty"
 //				{
 //					"attribute_class"	"mult_postfiredelay"
-//					"value" 			"1.4"
+//					"value" 			"1.15"
 //				}
 				"maxammo primary reduced"
 				{
@@ -70827,25 +70864,30 @@ the ghost is through, his power ends!'"
 					"attribute_class"	"no_primary_ammo_from_dispensers_always"
 					"value" 			"1"
 				}
-				"primary ammo from pickups penalty"
-				{
-					"attribute_class"	"mult_primary_ammo_from_ammo_packs"
-					"value" 			"0.5"
-				}
-				"hide_attrib_percentage"
-				{
-					"attribute_class"	"mult_primary_ammo_from_dropped_weapons"
-					"value" 			"0.5"
-				}
+//				"primary ammo from pickups penalty"
+//				{
+//					"attribute_class"	"mult_primary_ammo_from_ammo_packs"
+//					"value" 			"0.5"
+//				}
+//				"hide_attrib_percentage"
+//				{
+//					"attribute_class"	"mult_primary_ammo_from_dropped_weapons"
+//					"value" 			"0.5"
+//				}
 				"dmg penalty vs buildings"
 				{
 					"attribute_class"	"mult_dmg_vs_buildings" // added shortly before release after realizing this was a bit much :P -Clock's assistant
-					"value" 			"0.5"
+					"value" 			"0.6"
 				}
 				"hide_attrib_percentage"
 				{
 					"attribute_class"	"fuse_mult"
-					"value" 			"0.8"
+					"value" 			"0.7"
+				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"weapon_enemy_knockback_mod"
+					"value" 			"0.75" // otherwise they just go flying
 				}
 				"crit mod disabled"
 				{
@@ -71024,7 +71066,7 @@ A modified Huo-long once repurposed for celebrations. Now it returns to the batt
 				}
 				"explosive bullets"													
 				{
-					"attribute_class"	"strange_restriction_type_1"
+					"attribute_class"	"DISPLAY_ONLY"
 					"value"				"1"
 				}
 				"fire rate bonus hidden"	
@@ -71055,12 +71097,12 @@ A modified Huo-long once repurposed for celebrations. Now it returns to the batt
 				"crit damage reduced" // Not for any technical reason, just doesn't seem very fair to fight... -Clock
 				{
 					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"200"
+					"value"				"225"
 				}
 				"hide_attrib_percentage"
 				{
 					"attribute_class"	"mult_dmg_crit_multiplier"
-					"value"				"0.66666"
+					"value"				"0.75"
 				}
 				"hide_attrib_percentage"														
 				{
@@ -76287,7 +76329,7 @@ war crimes against would-be crime-doers."														// Let's not kid ourselve
 			{
 				"spy"					"1"
 			}
-			"static_attrs" //Very simple stats, nothing too crazy here. -Clock
+			"static_attrs" //Very simple stats, nothing too crazy here. Might make these two more inline with their OG games at some point (once i've actually played them) but this is good for now. -Clock
 			{
 				"NOWP weapon"							"1"
 				"Mannly parallel"						"1"
@@ -76296,7 +76338,7 @@ war crimes against would-be crime-doers."														// Let's not kid ourselve
 				"always draw tracer"					"1"
 				"apply weapon damage boost on kill custom"		"6"
 				"instant reload on kill"				"2"
-				"shorter damage falloff distance show"	"0.8"
+				"shorter damage falloff distance show"	"0.8" // Not too many weapons rely on this as their main downside, although I will admit I have a tendancy to overuse this stat...
 			}
 			"attributes"
 			{
@@ -76383,7 +76425,7 @@ I'll knock ya teeth out if ya do it again."
 				"hide_attrib_percentage"	
 				{
 					"attribute_class"	"mult_spread_scale"
-					"value"				"2" //The lugermorph can suck though, idc. -Clock
+					"value"				"2"
 				}
 				"custom magazine model"
 				{
@@ -77313,13 +77355,17 @@ someone that's been buried six-feet under."
 //--------------------------------------------------
 		"4336"
 		{
+			"tags"
+			{
+				"bots_cant_use"			"1" //This isn't even possible in the base game, what did you expect? (tbf, they do TRY, but something makes them put the box away...)
+			}
 			"name"						"TF_WEAPON_GOLD_WRENCH"									// Believe it or not, this is actually a returning weapon! Back in NOWP's first update, I was flirting with the idea of including this, but decided against it. But it's finally back!
 			"prefab"					"weapon_wrench"
 			"show_in_armory"			"1"
 			"testing"					"1"														// Unlike most other weapons, this is a Secret Weapon. It only shows up if you have a certain cvar set.
 
 			"propername"				"1"
-			"item_name_color"			"255 240 183 255"										// I was deliberating for a while on having this actually use Unique quality (since it's yellow), but it's still very garish. No, for now.
+			"item_name_color"			"collectors" //Changed to collectors with the new stats.	// I was deliberating for a while on having this actually use Unique quality (since it's yellow), but it's still very garish. No, for now.
 			"item_name"					"Golden Wrench"
 			"item_type_name"			"Gold-Plated Wrench"
 			"item_description"			"Wrench no. 321
@@ -77340,8 +77386,10 @@ Where in Sam Hill did you get this beauty!?"													// I'll probably change
 			{
 				"NOWP weapon"							"1"
 				"Mannly parallel"						"1"
+				"Heavily modified"						"1"
+				"Sourcemod user"						"1"
 			}
-			"attributes"																		// It does have one silent downside - it's 100% more visible in the dark. You aren't hiding from anyone with this weapon drawn.
+			"attributes" // I figured this was a stat worthy of being on the golden wrench.
 			{
 //				"secret weapon"
 //				{
@@ -77353,16 +77401,56 @@ Where in Sam Hill did you get this beauty!?"													// I'll probably change
 					"attribute_class"	"ragdolls_become_ash"
 					"value"				"1"
 				}
-				"hide_attrib_percentage"
+				"more buildings" // A VERY powerful stat (ya duh obviously), but also one that i'd feel remissed to pass up when I know I can make it happen...
 				{
-					"attribute_class"	"mult_dmgtaken_from_crit"
-					"value"				"1.2"													// hehe
+					"attribute_class"	"DISPLAY_ONLY" // I'd like this stat to remain on this wrench, despite requiring Sourcemod. However if you're somebody inheriting this pack from me in the future... do what you feel is right. -Clock
+					"value"				"1"
 				}
-				"hide_attrib_percentage" //So it's not just a straight downgrade, also seems appropriate. -Clock
+				"buildings max level penalty" // Need VERY potent downsides to counter balance that huge upside.
 				{
-					"attribute_class"	"mult_dmg_crit_multiplier"
-					"value"				"1.2"
+					"attribute_class"	"add_buildings_max_level"
+					"value"				"-1"
 				}
+				"engy sentry damage penalty"
+				{
+					"attribute_class"	"mult_engy_sentry_damage"
+					"value"				"0.6"
+				}
+				"slower sentry turn rate"
+				{
+					"attribute_class"	"mult_sentry_turnrate_overriden"
+					"value"				"0.65"
+				}
+				"dispenser rate decreased"
+				{
+					"attribute_class"	"mult_dispenser_rate"
+					"value"				"0.4"
+				}
+				"engy dispenser radius decreased"
+				{
+					"attribute_class"	"mult_dispenser_radius"
+					"value"				"0.67"
+				}
+				"dispenser healing received penalty"
+				{
+					"attribute_class"	"mult_dispenser_healing_received"
+					"value"				"0.6"
+				}
+				"engy building health penalty"
+				{
+					"attribute_class"	"mult_engy_building_health"
+					"value"				"0.67"
+				}
+//				"hide_attrib_percentage" // Has real stats now, sorgy -Clock
+//				{
+//					"attribute_class"	"mult_dmgtaken_from_crit"
+//					"value"				"1.2"													// hehe
+//				}
+//				"hide_attrib_percentage" //So it's not just a straight downgrade, also seems appropriate. -Clock
+//				{
+//					"attribute_class"	"mult_dmg_crit_multiplier"
+//					"value"				"1.2"
+//				}
 				"hide_attrib_additive"
 				{
 					"attribute_class"	"mult_decloak_rate"										// For the balisong/vanish, the lowest possible number i've found it can be before the game just goes "no, screw you" and rejects it. -Clock
@@ -77391,7 +77479,8 @@ Where in Sam Hill did you get this beauty!?"													// I'll probably change
 			"item_description"			"Wrench no. 13
 
 I ain't the superstitious type, never was.
-It don't come easy to say, this metal's magic."													// Current update number! Future ref: Added in NOWP v2.5.0, Update 8
+It don't come easy to say, this metal's magic.
+Boss mods TF2C."													// Current update number! Future ref: Added in NOWP v2.5.0, Update 8
 			"item_logname"				"wrench_golden"
 			"item_iconname"				"wrench_golden"
 			"image_inventory"			"backpack/weapons/c_models/c_wrench/gold_wrench_tc"		// The wrench BP icon is actually shared, but since the RED skin is the exact same, might as well...
@@ -77406,8 +77495,10 @@ It don't come easy to say, this metal's magic."													// Current update nu
 			{
 				"NOWP weapon"							"1"
 				"Mannly parallel"						"1"
+				"Heavily modified"						"1"
+				"Sourcemod user"						"1"
 			}
-			"attributes"
+			"attributes" //BOSS MOD, BOSS MOD TF2C!!!!~ (Funny admin-only weapon, at least I think so.)
 			{
 				"secret weapon"
 				{
@@ -77423,6 +77514,81 @@ It don't come easy to say, this metal's magic."													// Current update nu
 				{
 					"attribute_class"	"ragdolls_become_ash"
 					"value"				"1"
+				}
+				"infinite buildings"
+				{
+					"attribute_class"	"DISPLAY_ONLY"
+					"value"				"1"
+				}
+				"max health additive bonus"
+				{
+					"attribute_class"	"add_maxhealth"
+					"value" 			"69295"
+				}
+				"maxammo metal increased"
+				{
+					"attribute_class"	"mult_maxammo_metal"
+					"value"				"999"
+				}
+				"damage force increase text"
+				{
+					"attribute_class"	"damage_force_reduction"
+					"value"				"0.2"
+				}
+				"cannot be backstabbed"
+				{
+					"attribute_class"	"cannot_be_backstabbed"
+					"value"				"1"
+				}
+				"health from packs decreased"
+				{
+					"attribute_class"	"mult_health_frompacks"
+					"value"				"0"
+				}
+				"engy sentry knockback penalty"
+				{
+					"attribute_class"	"mult_sentry_knockback"
+					"value"				"0.25"
+				}
+				"engy sentry damage penalty"
+				{
+					"attribute_class"	"mult_engy_sentry_damage"
+					"value"				"0.6"
+				}
+				"hide_attrib_percentage"	
+				{
+					"attribute_class"	"sentry_build_rate_multiplier"
+					"value"				"2"
+				}
+				"hide_attrib_percentage"	
+				{
+					"attribute_class"	"mult_dmgtaken"
+					"value"				"10"
+				}
+				"hide_attrib_percentage"	
+				{
+					"attribute_class"	"dmg_from_sentry_reduced"
+					"value"				"0.5"
+				}
+				"hide_attrib_percentage"	
+				{
+					"attribute_class"	"mult_crit_chance"
+					"value"				"2"
+				}
+				"hide_attrib_additive"											
+				{
+					"attribute_class"	"apply_self_knockback"						
+					"value"				"-265"								
+				}
+				"hide_attrib_percentage"	
+				{
+					"attribute_class"	"dispenser_build_rate_multiplier"
+					"value"				"2.5"
+				}
+				"hide_attrib_percentage"	
+				{
+					"attribute_class"	"teleporter_build_rate_multiplier"						// Teleporter is MUCH faster since there's not much else they do - brings it in line with Jump Pad setup speed
+					"value"				"3.65"
 				}
 				"hide_attrib_additive"
 				{
@@ -77485,8 +77651,8 @@ Freely express your creativity!
 			{
 				"NOWP weapon"
 				{
-					"attribute_class"	"melts_in_fire" //Piss free! -Clock
-					"value"				"1"				//I don't think anybody can even access this anyway? Hopefully?
+					"attribute_class"	"taunt_move_acceleration" 	//Piss free! -Clock
+					"value"				"999"						//I don't think anybody can even access this anyway? Hopefully?
 				}
 				"secret weapon"																	// NOWP v2.7.5 - I decided to add these tags to secret weapons, to further differentiate them.
 				{
@@ -77740,7 +77906,7 @@ them, is a change of perspective."
 				"NOWP weapon"							"1"
 				"no damage falloff over distance"		"1"										// TF2C v2.1.3 - I'm not 100% certain on the version, but SMG was made to not have falloff as a feature. Doesn't hurt to have on the rest of the SMGs, I suppose...
 			}
-			"attributes"
+			"attributes" // Can't think of anything LEGENDARY enough stat-wise to give to this. 
 			{
 //				"secret weapon"
 //				{
@@ -77805,7 +77971,7 @@ Australia in my own two hands."																	// Number of new NOWP weapons Sn
 				"NOWP weapon"							"1"
 				"no damage falloff over distance"		"1"										// TF2C v2.1.3 - I'm not 100% certain on the version, but SMG was made to not have falloff as a feature. Doesn't hurt to have on the rest of the SMGs, I suppose...
 			}
-			"attributes"
+			"attributes" //Don't even have a variant for the normal version, definately none here.
 			{
 				"secret weapon"
 				{
@@ -84450,6 +84616,10 @@ I held the whole nation in awe with this comrade!"
 //--------------------------------------------------
 		"4444"
 		{
+			"tags"
+			{
+				"bots_cant_use"			"1" // They turn into weird stalkers :/
+			}
 			"name"						"TF_WEAPON_CHEVALIER"
 			"item_class"				"tf_weapon_shotgun_hwg" // has to be a weapon type spy doesn't already have, so it doesn't conflict and delete one of your weapons.
 			"show_in_armory"			"1"
@@ -86172,6 +86342,115 @@ Note: funni. -Clock" //But in all seriousness, I always thought the idea of the 
 			}	
 			"mouse_pressed_sound"		"#ui/item_rubber_pickup.wav"							// Unlike some other weapons, the straps imply more action in order to pick up and use it, so convey that here!
 			"drop_sound"				"#ui/item_boxing_gloves_drop.wav"
+		}
+//-----
+// (ID 4458) 	|	Celebration / Party Popper			|	Tags: (Secondary), (Fun), (Pyro)
+//-----
+// A rather unserious weapon, mainly because I found a cool particle effect :P -Clock's assistant
+//--------------------------------------------------
+		"4458"
+		{
+			"name"						"TF_WEAPON_FLAREGUN_FESTIVE"
+//			"prefab"				    "weapon_flaregun"
+			"item_class"				"tf_weapon_heallauncher"
+			"show_in_armory"			"0" // Disabled for now
+			"item_slot"					"secondary"
+			"anim_slot"					"item1"
+			"bucket"					"1"
+			"bucket_position"			"2"
+			"show_in_armory"			"1"
+			"item_name"					"Celebration Mk3"
+			"item_type_name"			"D.I.Y. Party Popper"
+			"item_description"			"This weapon will reload when not active
+
+It's time to party!"
+			"item_logname"				"spicy_festivities"
+			"item_quality"              "unique"
+			"image_inventory"			"backpack/weapons/c_models/c_xms_flaregun/c_xms_flaregun"
+			"model_world"				"models/weapons/c_models/c_xms_flaregun/c_xms_flaregun.mdl"
+			"model_player"				"models/weapons/c_models/c_xms_flaregun/c_xms_flaregun.mdl"
+			"attach_to_hands"			"1"
+			"used_by_classes"
+			{
+				"pyro"					"1"
+			}
+			"static_attrs"
+			{
+//				"Mannly weapon"							"1"
+				"cannot use stored crits NO DISPLAY"				"1"
+				"mod use custom ammo type"				"2"
+				"damage flat bonus"						"15"
+				"hidden secondary max ammo penalty"		"3.125"
+				"fire rate bonus hidden"				"2.5"
+				"override projectile type"				"3"
+//				"rocket gravity"						"1"
+//				"energy weapon no ammo"					"1"
+				"Projectile speed increased hidden"		"2"
+				"mod max primary clip override"			"-1"
+				"punch angle mod mult hidden"			"0.5"
+				"custom projectile model"				"models/weapons/w_models/w_tear_jerker/w_tear_jerker_flare.mdl"
+			}
+			"attributes"
+			{
+				"allowed in medieval mode"
+				{
+					"attribute_class"	"allowed_in_medieval_mode"
+					"value"				"1"
+				}
+				"special taunt"
+				{
+					"attribute_class"	"special_taunt"
+					"value"				"1"
+				}
+				"single wep deploy time hidden"
+				{
+					"attribute_class"	"mult_single_wep_deploy_time"
+					"value"				"0.85"
+				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"fuse_mult"
+					"value" 			"0.325" // explodes shortly after it stops emitting the trail
+				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mult_explosion_radius"
+					"value" 			"0.5" // explodes shortly after it stops emitting the trail
+				}
+			}
+			"visuals"
+			{
+				"sound_single_shot"		"Weapon_PartyPopper.Single"
+				"sound_burst"			"Weapon_PartyPopper.SingleCrit"
+				"sound_special1"		"Weapon_PartyPopper.Explode"
+				"explosion_effect"		"ExplosionCore_MidAir_flare"
+			}
+			"visuals_red"
+			{
+				"trail_effect"			"teleported_red"
+				"trail_effect_crit"		"flaregun_trail_crit_red"
+				"explosion_effect_crit"	"explosion_shrapnel_PARENT_red_crit"
+			}
+			"visuals_blu"
+			{
+				"trail_effect"			"teleported_blue"
+				"trail_effect_crit"		"flaregun_trail_crit_blue"
+				"explosion_effect_crit"	"explosion_shrapnel_PARENT_blue_crit"
+			}
+			"visuals_grn"
+			{
+				"trail_effect"			"teleported_green"
+				"trail_effect_crit"		"flaregun_trail_crit_green"
+				"explosion_effect_crit"	"explosion_shrapnel_PARENT_green_crit"
+			}
+			"visuals_ylw"
+			{
+				"trail_effect"			"teleported_yellow"
+				"trail_effect_crit"		"flaregun_trail_crit_yellow"
+				"explosion_effect_crit"	"explosion_shrapnel_PARENT_yellow_crit"
+			}
+			"mouse_pressed_sound"		"#ui/item_light_gun_pickup.wav"
+			"drop_sound"				"#ui/item_light_gun_drop.wav"
 		}
 
 //-----
@@ -89859,7 +90138,7 @@ recently-teleported players"
 		"17452" // Figured I should display this as an actual downside
 		{
 			"name"					"cane duration penalty"
-			"attribute_class"		"jarate backstabber"
+			"attribute_class"		"jarate_backstabber"
 			"description_string"	"Boost time decreased to %s1s"
 			"description_format"	"value_is_additive"
 			"effect_type"			"negative"
@@ -89867,7 +90146,7 @@ recently-teleported players"
 		"17453" // Upside too, backup plan has this.
 		{
 			"name"					"cane duration bonus"
-			"attribute_class"		"jarate backstabber"
+			"attribute_class"		"jarate_backstabber"
 			"description_string"	"Boost time increased to %s1s"
 			"description_format"	"value_is_additive"
 			"effect_type"			"positive"
@@ -89902,7 +90181,7 @@ recently-teleported players"
 		"17458" // The shellshock's full weapon type isn't displaying properly
 		{
 			"name"					"shellshocked"
-			"attribute_class"		"jarate backstabber"
+			"attribute_class"		"jarate_backstabber"
 			"description_string"	"Fed Pump Grenade Shotgun"
 			"custom_color"			"118 107 94 255"
 		}
@@ -90388,6 +90667,65 @@ projectile and rocket instantly"
 			"description_format"	"value_is_percentage"
 			"effect_type"			"negative"
 		}
+		"17541"
+		{
+			"name"					"more buildings"
+			"attribute_class"		"jarate_backstabber"
+			"description_string"	"You can build 2 sentries
+and dispensers at once"
+			"description_format"	"value_is_additive"
+			"effect_type"			"positive"
+		}
+		"17542"
+		{
+			"name"					"slower sentry turn rate"
+			"attribute_class"		"mult_sentry_turnrate_overriden"
+			"description_string"	"%s1% Slower sentry turn rate"
+			"description_format"	"value_is_percentage"
+			"effect_type"			"negative"
+		}
+		"17543"
+		{
+			"name"					"dispenser rate decreased"
+			"attribute_class"		"mult_dispenser_rate"
+			"description_string"	"Dispenser generates %s1% less resources"					// Wording this was, and still is, tricky, since it's extremely ambiguous how this attribute works.
+			"description_format"	"value_is_percentage"
+			"effect_type"			"negative"
+		}
+		"17543"
+		{
+			"name"					"dispenser rate decreased"
+			"attribute_class"		"mult_dispenser_rate"
+			"description_string"	"Dispenser generates %s1% less resources"					// Wording this was, and still is, tricky, since it's extremely ambiguous how this attribute works.
+			"description_format"	"value_is_percentage"
+			"effect_type"			"negative"
+		}
+		"17544" //Eureka effect unique stat
+		{
+			"name"					"teleport additional bonus"
+			"attribute_class"		"jarate_backstabber"
+			"description_string"	"Players stepping on your active Exit Teleporter swaps it with its Entrance 
+For Jump Pads, you can place an additional Jump Pad instead" //To Capitalise Or not to capitalise, that is the question. This is mostly to test my ability to create Sourcemod plugins, this likely won't stay as is for very long.
+			"description_format"	"value_is_additive"
+			"effect_type"			"positive"
+		}
+		"17545"
+		{
+			"name"					"infinite buildings"
+			"attribute_class"		"jarate_backstabber"
+			"description_string"	"Infinite buildings"
+			"description_format"	"value_is_additive"
+			"effect_type"			"positive"
+		}
+		"17546"
+		{
+			"name"					"random failure"
+			"attribute_class"		"jarate_backstabber"
+			"description_string"	"Random crits are %s1% more likely
+Crits deal no damage"
+			"description_format"	"value_is_percentage"
+			"effect_type"			"negative"
+		}
 //
 //
 //			Clock's weapon pack credits (17480-17500)
@@ -90397,7 +90735,7 @@ projectile and rocket instantly"
 		{
 			"name"					"NOWP weapon"
 			"description_string"	"Weapon added by NOWP" //Has to have some sort of attribute so it shows up so.... -Clock
-			"attribute_class"		"jarate backstabber" //That's right, every single weapon makes you PISS YOURSELF. -Clock
+			"attribute_class"		"jarate_backstabber" //That's right, every single weapon makes you PISS YOURSELF. -Clock
 			"custom_color"			"112 176 74 255"
 			"effect_type"			"positive"
 		}
@@ -90405,7 +90743,7 @@ projectile and rocket instantly"
 		{
 			"name"					"ReValve weapon"
 			"description_string"	"Weapon added by ReValve"
-			"attribute_class"		"jarate backstabber"
+			"attribute_class"		"jarate_backstabber"
 			"custom_color"			"112 176 74 255"
 			"effect_type"			"positive"
 		}
@@ -90413,7 +90751,7 @@ projectile and rocket instantly"
 		{
 			"name"					"UnStock weapon"
 			"description_string"	"Weapon added by UnStock"
-			"attribute_class"		"jarate backstabber"
+			"attribute_class"		"jarate_backstabber"
 			"custom_color"			"112 176 74 255"
 			"effect_type"			"positive"
 		}
@@ -90421,7 +90759,7 @@ projectile and rocket instantly"
 		{
 			"name"					"Mombae weapon"
 			"description_string"	"Weapon added by Mombaes"
-			"attribute_class"		"jarate backstabber"
+			"attribute_class"		"jarate_backstabber"
 			"custom_color"			"112 176 74 255"
 			"effect_type"			"positive"
 		}
@@ -90429,7 +90767,7 @@ projectile and rocket instantly"
 		{
 			"name"					"Mannly weapon"
 			"description_string"	"Weapon added by Mannly Munitions"
-			"attribute_class"		"jarate backstabber"
+			"attribute_class"		"jarate_backstabber"
 			"custom_color"			"112 176 74 255"
 			"effect_type"			"positive"
 		}
@@ -90438,7 +90776,7 @@ projectile and rocket instantly"
 		{
 			"name"					"NOWP parallel"
 			"description_string"	"With a parrallel in NOWP"
-			"attribute_class"		"jarate backstabber"
+			"attribute_class"		"jarate_backstabber"
 			"custom_color"			"112 176 74 255"
 			"effect_type"			"positive"
 		}
@@ -90446,7 +90784,7 @@ projectile and rocket instantly"
 		{
 			"name"					"ReValve parallel"
 			"description_string"	"With a parrallel in ReValve"
-			"attribute_class"		"jarate backstabber"
+			"attribute_class"		"jarate_backstabber"
 			"custom_color"			"112 176 74 255"
 			"effect_type"			"positive"
 		}
@@ -90454,7 +90792,7 @@ projectile and rocket instantly"
 		{
 			"name"					"UnStock parallel"
 			"description_string"	"With a parrallel in UnStock"
-			"attribute_class"		"jarate backstabber"
+			"attribute_class"		"jarate_backstabber"
 			"custom_color"			"112 176 74 255"
 			"effect_type"			"positive"
 		}
@@ -90462,7 +90800,7 @@ projectile and rocket instantly"
 		{
 			"name"					"Mombaes parallel"
 			"description_string"	"With a parrallel in Mombaes"
-			"attribute_class"		"jarate backstabber"
+			"attribute_class"		"jarate_backstabber"
 			"custom_color"			"112 176 74 255"
 			"effect_type"			"positive"
 		}
@@ -90470,7 +90808,7 @@ projectile and rocket instantly"
 		{
 			"name"					"Mannly parallel"
 			"description_string"	"With a parrallel in Mannly Munitions"
-			"attribute_class"		"jarate backstabber"
+			"attribute_class"		"jarate_backstabber"
 			"custom_color"			"112 176 74 255"
 			"effect_type"			"positive"
 		}
@@ -90479,7 +90817,7 @@ projectile and rocket instantly"
 		{
 			"name"					"NOWP and"
 			"description_string"	"And NOWP"
-			"attribute_class"		"jarate backstabber"
+			"attribute_class"		"jarate_backstabber"
 			"custom_color"			"112 176 74 255"
 			"effect_type"			"positive"
 		}
@@ -90487,7 +90825,7 @@ projectile and rocket instantly"
 		{
 			"name"					"ReValve and"
 			"description_string"	"And ReValve"
-			"attribute_class"		"jarate backstabber"
+			"attribute_class"		"jarate_backstabber"
 			"custom_color"			"112 176 74 255"
 			"effect_type"			"positive"
 		}
@@ -90495,7 +90833,7 @@ projectile and rocket instantly"
 		{
 			"name"					"UnStock and"
 			"description_string"	"And UnStock"
-			"attribute_class"		"jarate backstabber"
+			"attribute_class"		"jarate_backstabber"
 			"custom_color"			"112 176 74 255"
 			"effect_type"			"positive"
 		}
@@ -90503,7 +90841,7 @@ projectile and rocket instantly"
 		{
 			"name"					"Mombaes and"
 			"description_string"	"And Mombaes"
-			"attribute_class"		"jarate backstabber"
+			"attribute_class"		"jarate_backstabber"
 			"custom_color"			"112 176 74 255"
 			"effect_type"			"positive"
 		}
@@ -90511,15 +90849,23 @@ projectile and rocket instantly"
 		{
 			"name"					"Mannly and"
 			"description_string"	"And Mannly Munitions"
-			"attribute_class"		"jarate backstabber"
+			"attribute_class"		"jarate_backstabber"
 			"custom_color"			"112 176 74 255"
 			"effect_type"			"positive"
+		}
+		"17499"
+		{
+			"name"					"Sourcemod user"
+			"description_string"	"Requires sourcemods to function"
+			"attribute_class"		"jarate_backstabber"
+			"custom_color"			"170 0 0 255" //Collectors colour
+			"effect_type"			"neutral"
 		}
 		"17500"
 		{
 			"name"					"Heavily modified"
 			"description_string"	"Heavily modified from base form"
-			"attribute_class"		"jarate backstabber"
+			"attribute_class"		"jarate_backstabber"
 			"custom_color"			"171 200 54 255"
 			"effect_type"			"positive"
 		}

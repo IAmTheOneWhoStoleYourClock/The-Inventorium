@@ -16531,6 +16531,38 @@
 }
 
 // ------------------------------------------------------------------------------------ //
+// Party Popper
+// ------------------------------------------------------------------------------------ //
+
+"Weapon_PartyPopper.Single"
+{
+	"channel"		"CHAN_WEAPON"
+	"soundlevel"	"SNDLVL_82dB"
+	"volume"		"0.8"
+	"pitch"			"120, 125"
+	"wave"			")weapons/boltgun_shoot.wav"
+//	"wave"			")weapons/artillerycannon_shoot.wav"
+}
+"Weapon_PartyPopper.SingleCrit"
+{
+	"channel"		"CHAN_WEAPON"
+	"soundlevel"	"SNDLVL_82dB"
+	"volume"		"0.8"
+	"pitch"			"120, 125"
+	"wave"			")weapons/boltgun_shoot_crit.wav"
+//	"wave"			")weapons/artillerycannon_shoot_crit.wav"
+}
+
+"Weapon_PartyPopper.Explode"
+{
+	"channel"		"CHAN_WEAPON"
+	"soundlevel"	"SNDLVL_94dB"
+	"volume"		"0.9"
+	"pitch"			"62, 70"
+	"wave"			")weapons\flare_detonator_launch.wav"
+}
+
+// ------------------------------------------------------------------------------------ //
 // Sniper Slug Lever Action Shotgun
 // ------------------------------------------------------------------------------------ //
 

@@ -10319,75 +10319,7 @@ Not until you are very... very dead!"
 //--------------------------------------------------
 		"3467"
 		{
-			"name"						"TF_WEAPON_FRONTIERJUSTICE"
-			"prefab"					"weapon_shotgun"
 			"show_in_armory"			"0"
-			"item_slot"					"primary"
-
-			"propername"				"1"
-			"item_name_color"			"255 240 183 255"
-			"item_name"					"Frontier Justice"
-			"item_type_name"			"#TF_Weapon_Shotgun"
-			"item_description"			"Weapon must be out to gain Revenge Crits
-
-“Why don't y'all get along,
-before one of you gets hurt.”"
-			"item_logname"				"frontier_justice"
-			"item_iconname"				"frontier_kill"
-			"image_inventory"			"backpack/weapons/c_models/c_frontierjustice/c_frontierjustice"
-			"model_world"				"models/weapons/w_models/w_frontierjustice.mdl"
-			"model_player"				"models/weapons/v_models/v_frontierjustice_engineer.mdl"
-			"attach_to_hands"			"2"
-			"used_by_classes"
-			{
-				"engineer"				"1"
-			}
-			"static_attrs"
-			{
-				"NOWP weapon"							"1"
-				"Mannly parallel"						"1"
-				"special taunt"							"1"
-			}
-			"attributes"
-			{
-				"provide on active"																// This is actually interesting this time. See, addcond attributes tend to escape if you don't explicitly prevent them from doing so, like making them active-only like with this attrib
-				{																				// What's interesting is - this DOES trigger for any Lvl. 3 building death, and applies kritz to ALL your weapons!
-					"attribute_class"	"provide_on_active"										// It's a very interesting fold, but one I'm not sure about yet. I'll keep it on the FJ only for now until I can figure out how I feel about it...
-					"value"				"1"
-				}
-				"building add condition on death"
-				{
-					"attribute_class"	"building_maxlvl_lost_addcond"							// When it says Maxlevel, it does mean Lvl. 3, it doesn't trigger if you have something that lowers the max level of your buildings
-					"value"				"34 8.0"
-				}
-				"mod maxlevel killed revenge"
-				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"8"
-				}
-				"clip size penalty"
-				{
-					"attribute_class"	"mult_clipsize"
-					"value"				"0.5"
-				}
-				"crit mod disabled"
-				{
-					"attribute_class"	"mult_crit_chance"
-					"value"				"0"
-				}
-				"special taunt"
-				{
-					"attribute_class"	"special_taunt"
-					"value"				"1"
-				}
-			}
-			"visuals"
-			{
-				"sound_single_shot"		"Weapon_FrontierJustice.Single"
-				"sound_burst"			"Weapon_FrontierJustice.SingleCrit"
-			}
-			"mouse_pressed_sound"		"#ui/item_heavy_gun_pickup.wav"
-			"drop_sound"				"#ui/item_heavy_gun_drop.wav"
 		}
 
 //-----
@@ -10422,138 +10354,7 @@ before one of you gets hurt.”"
 //--------------------------------------------------
 		"3470"
 		{
-			"name"						"TF_WEAPON_BASEBALLGUN"									// This was a doozy, the idea came to me last-minute while talking to some folks in the Discord. A unique Scout primary!
-			"prefab"					"weapon_scattergun"
-			"item_class"				"tf_weapon_grenadelauncher"								// Fixes some issues with the grenades not being affected by speed and doing no damage sometimes
-			"anim_slot"					"primary"
 			"show_in_armory"			"0"
-
-			"propername"				"1"
-			"item_name_color"			"204 204 250 255"
-			"item_name"					"B.R. Base-Hitter"										// Named after The Bambino himself
-			"item_type_name"			"Baseball Gun"
-			"item_description"			"
-Perfect for baseball practice at home,
-or for free concussions on the battlefield."
-			"item_logname"				"baseball_gun"
-			"item_iconname"				"baseball_gun"
-			"image_inventory"			"backpack/weapons/w_models/w_baseballgun_alt"
-			"model_world"				"models/weapons/w_models/w_baseballgun_alt.mdl"
-			"model_player"				"models/weapons/v_models/v_baseballgun_alt_scout.mdl"	// Don't think too hard about how he reloads it, at least he does SOMETHING unlike the Sniper Crossbow...
-			"attach_to_hands"			"2"
-			"used_by_classes"
-			{
-				"scout"					"1"
-			}
-			"static_attrs"
-			{
-				"NOWP weapon"							"1"
-//				"override projectile type"				"3"
-//				"clip size penalty hidden"				"1.5"
-				"reload time increased hidden"			"0.83"
-				"Reload time start additive"			"-0.325"
-				"hidden primary max ammo bonus"			"2"
-				"damage bonus hidden"					"0.4"
-				"custom rampup"							"1.75"									// Rampup / falloff on a projectile weapon feels very scuffed
-				"custom falloff"						"0.5"									// I don't think this actually works yet????
-			}
-			"attributes"
-			{
-				"weapon fires baseballs"
-				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"1"
-				}
-//				"tmp dmgbuff on hit"
-				"minicritboost on hit" //Saying it does 35% more damage on hit is technically untrue, and plus I think most people playing a custom weapons server will know what a mini-crit is.
-				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"1"
-				}
-				"fire rate bonus"
-				{
-					"attribute_class"	"mult_postfiredelay"
-					"value"				"0.6"
-				}
-				"hide_attrib_percentage"														// Hidden since it doesn't help imply much about weapon function
-				{
-					"attribute_class"	"mult_projectile_speed"
-					"value"				"2.35"
-				}
-				"clip size penalty"
-				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"0.67"
-				}
-				// Backend stuff
-				"hide_attrib_percentage"														// Mostly removes the blast radius - you have to score a direct hit for this to do anything.
-				{
-					"attribute_class"	"mult_explosion_radius"
-					"value"				"0.15"
-				}
-				"hide_attrib_percentage"	
-				{
-					"attribute_class"	"blast_dmg_to_self"
-					"value"				"0"
-				}
-				"self dmg push force hidden"
-				{
-					"attribute_class"	"mult_dmgself_push_force"
-					"value"				"0"
-				}
-				"custom projectile model"
-				{
-					"attribute_class"	"custom_projectile_model"
-					"value"				"models/weapons/w_models/w_baseball.mdl"
-				}
-				"add condition on hit weapon"													// Copied from TF_WEAPON_CYCLOPS_DBL for convenience
-				{
-					"attribute_class"	"add_onhit_addcond_weapon"
-					"value"				"106 1.0"												// Add TF_COND_PASSTIME_INTERCEPTION for about a sec, which does nothing on its own
-				}
-				"minicrit vs cond no dot"
-				{
-					"attribute_class"	"single_minicrit_vs_playercond_no_dot"
-					"value"				"107"													// ...and then, if the successive hit lands, deal minicrits! Same cond as Cyclops, since they're mutually exclusive
-				}
-			}
-			"visuals"
-			{
-				"sound_single_shot"		"Weapon_BaseballGun.Single"
-				"sound_burst"			"Weapon_BaseballGun.SingleCrit"
-				"sound_special1"		"Weapon_Brick.Hit"										// Better than nothing, I guess!
-				"sound_special2"		"Weapon_BaseballGun.Single"								// Placeholder
-				"sound_special3"		"Weapon_BaseballGun.SingleCrit"
-				"sound_reload"			"Weapon_Scatter_Gun.WorldReload"
-				"muzzle_flash"			"muzzle_pipelauncher"
-				"explosion_effect"		"taunt_heavy_flip_land"									// Even lower-key dust effect than the Brick!
-			}
-			"visuals_red"
-			{
-				"trail_effect"			"stunballtrail_red"
-				"trail_effect_crit"		"stunballtrail_red_crit"
-				"explosion_effect_crit"	"coilgun_boom_red"
-			}
-			"visuals_blu"
-			{
-				"trail_effect"			"stunballtrail_blue"
-				"trail_effect_crit"		"stunballtrail_blue_crit"
-				"explosion_effect_crit"	"coilgun_boom_blue"
-			}
-			"visuals_grn"
-			{
-				"trail_effect"			"stunballtrail_green"
-				"trail_effect_crit"		"stunballtrail_green_crit"
-				"explosion_effect_crit"	"coilgun_boom_green"
-			}
-			"visuals_ylw"
-			{
-				"trail_effect"			"stunballtrail_yellow"
-				"trail_effect_crit"		"stunballtrail_yellow_crit"
-				"explosion_effect_crit"	"coilgun_boom_yellow"
-			}
-			"mouse_pressed_sound"		"#ui/item_heavy_gun_pickup.wav"
-			"drop_sound"				"#ui/item_heavy_gun_drop.wav"
 		}
 
 
@@ -10597,197 +10398,11 @@ or for free concussions on the battlefield."
 //--------------------------------------------------
 		"3472"
 		{
-			"name"						"TF_WEAPON_DECOYGUN"									// This one is REALLY weird, I honestly can't guarantee it'll stay around but here goes;
-			"prefab"					"weapon_tranq"
 			"show_in_armory"			"0"
-
-			"propername"				"1"
-			"item_name_color"			"204 204 250 255"
-			"item_name"					"Falz Frequency"
-			"item_type_name"			"Dart Gun"
-			"item_description"			"
-Excellent for all things deception,
-distraction, and psychological warfare.
-In other words; Just the tool for the job.
-
-Note: Added meme stat. -Clock"														// Selection of sounds is in game_sounds_custom_nowp, but honestly it's far too many to memorize. In any case, it serves to disorient people!
-			"item_logname"				"radiogun"
-			"item_iconname"				"radiogun"
-			"image_inventory"			"backpack/weapons/w_models/w_radiogun"
-			"model_world"				"models/weapons/w_models/w_radiogun.mdl"
-			"model_player"				"models/weapons/v_models/v_radiogun_spy.mdl"
-			"attach_to_hands"			"2"
-			"used_by_classes"
-			{
-				"spy"					"1"
-			}
-			"static_attrs"
-			{
-				"NOWP weapon"							"1"
-				"radiogun noisemaker"					"1"
-				"keep disguise"							"1"										// To fill a similar niche to the Covert as a Sneaky Gun
-				"energy weapon no ammo"					"1"
-//				"reload time increased"					"1.33"									// Reduce spammability for both dmg and sounds, it still does do dmg btw but it only does like 20
-//				"maxammo secondary reduced"				"0.34"
-			}
-			"attributes"
-			{
-				"crit vs teleported players" //With the amount of hidden meme stats in NOWP, suprised this wasn't already here tbh. -Clock
-				{
-					"attribute_class"	"or_crit_vs_playercond"
-					"value"				"128"
-				}
-				"rocket limited lifetime"														// Copied from Flechette, but honestly 2s feels like a decent interval here too.
-				{
-					"attribute_class"	"rocket_lifetime"
-					"value"				"2"
-				}
-				"custom projectile model"
-				{
-					"attribute_class"	"custom_projectile_model"
-					"value"				"models/weapons/w_models/w_dart_wood.mdl"
-				}
-				"reload time increased"	//Moved down to make room for the meme stat
-				{
-					"attribute_class"	"mult_reload_time"
-					"value"				"1.33"
-				}
-				"hide_attrib_percentage"														// Disables blast radius for everyone but you
-				{
-					"attribute_class"	"mult_explosion_radius"
-					"value"				"0"
-				}
-				"hide_attrib_percentage"	
-				{
-					"attribute_class"	"blast_dmg_to_self"
-					"value"				"0"
-				}
-				"hide_attrib_additive"	
-				{
-					"attribute_class"	"set_silent_killer_no_pain_scream"
-					"value"				"1"
-				}
-			}
-			"visuals"
-			{
-				"sound_single_shot"		"Weapon_RadioGun.Single"
-				"sound_burst"			"Weapon_RadioGun.SingleCrit"
-				"sound_special1"		"Weapon_RadioGun.DecoyNoise"							// As said before, this is the main meat of the gun. Also, fun fact; this entry doesn't work if you try to make a Team-specific Visuals section like with visuals_red or something. It just refuses to.
-				"explosion_effect"		"explosioncore_sapperdestroyed"							// A lower-key blue sparks effect - the regular explosions draw too much attention!
-			}
-			"mouse_pressed_sound"		"#ui/item_nvg_pickup.wav"
-			"drop_sound"				"#ui/item_light_gun_drop.wav"
 		}
-
-//-----
-// (ID 3473) |	Third Degree					|	Tags: (v2.3.5), (Old), (Pyro), (Melee), (Offense), (Weapon)
-//-----
-// [Authors: Valve (Assets, "Team Fortress 2" https://store.steampowered.com/app/440)]
-// [Overview: Pyro - A Fireaxe that does much more damage to players being healed! Not too much else goin' on. See: Axtinguisher]
-//
-// The Third Degree - hey, waitwait! Don't go!! It ISN'T a direct upgrade this time...! Phew, okay, sorry, I got worried there for a sec, but yeah, not a direct upgrade this time!
-// This was mostly spurred about as I realized, the crit-vs-cond attribute DOES happen to, mysteriously, have a bitflag for a few odd healing ones... including one for actively being healed right now! That got me thinking, and I eventually decided to try my hand at this!
-// All said, though, it does have ONE downside, but it's a notable one; you do half as much damage. Simple upside, simple downside, but it means your average axe swings deal a measly 33 DMG, and 99 against a heal-target! So, make it count, and catch them off guard before they realize what's happening...
-//--------------------------------------------------
-//-----
-// (ID 3474) |	Industry Startup				|	Tags: (v2.3.5), (New), (Civilian), (Melee), (Support), (Weapon)
-//-----
-// [Authors: CoBalt (Models, "Overbite" https://steamcommunity.com/sharedfiles/filedetails/?id=697431996) | N-Cognito (Anims, "Torbjorn-Inspired Wrench Anims" https://gamebanana.com/mods/197680)]
-// [Overview: Civilian - A Wrench that helps friendly Engineers, while also doing more raw damage! See: Homewrecker, Jag]
-//
-// Every businessman starts from somewhere. Reflect on your beginnings, wrench in hand, and help the blue-collar businesses thrive by repairing buildings! Like the Trust Fund, I wanted to give Civ more things to do in his downtime.
-// So, this wrench, true to it being a wrench, helps repair friendly buildings, can destroy sappers in just 1 hit, and is even good at plain old skull-smashing murder! If you can stomach letting go of the Offense Boost once again, your Engineers can rest easy, and focus on gunning-down your persuers with reckless abandon.
-//--------------------------------------------------
-//-----
-// (ID 3475~3484) |	Bonkulele II				|	Tags: (v2.3.5), (New), (MultiClass), (Melee), (Support), (Weapon)						|	Extra: (Pyro), (Engineer), (Medic)
-//-----
-// [Authors: August Spies, Mexican, & [Square] (Models, "Ukulele" https://gamebanana.com/mods/203248)]
-// [Overview: A Melee that passively heals you while held out, but isn't good for combat and leaves you vulnerable. Also swings faster!]
-//
-// Since having seen and played Yakibomb's Renaissance Revival weapons pack, I immediately loved the comedy value of their own guitar that became the namesake for this, the Bonkulele (1)! In that mod, it always crits on the first hit and does normal damage after.
-// To be honest, I sorta started there, and worked backwards. As it is right now, it's a simple healstick - you get health back while it's held out, but you're at risk from enemy attack while doing so! Can imagine you'd be sitting down, relaxing, strumming a tune...
-// ...before, of course, bashing someone's head clean in with it. Hey, something special happens if you hit someone that's airborne with this! That'll teach 'em.
-//--------------------------------------------------
-//-----
-// (ID 3485) |	Liberty Launcher				|	Tags: (v2.3.5), (Old), (Soldier), (Primary), (Utility), (Weapon)
-//-----
-// [Authors: Valve (Assets, "Team Fortress 2" https://store.steampowered.com/app/440)]
-// [Overview: Soldier - A RL with lower damage but allows very risk-free blast jumping. See: RL, RJ]
-//
-// A peculiar weapon, the Liberty Launcher makes its appearance! It's quite an odd weapon at first blush, since none of the stats particularly jump out at you... or even seem to work together at all.
-// After some time, though, I've figured that it acts as something of a middle-ground between the Rocket Launcher and Jumper. Better at blast jumping, worse at damage, but still able to do both competently!
-// Maybe this should have jumped out at me sooner, ha, considering it's a companion piece to the MG! And it has 5 rockets. And a higher proj. speed. For some reason? For liberty.
-//--------------------------------------------------
 		"3485"
 		{
-			"name"						"TF_WEAPON_LIBERTYLAUNCHER"
-			"prefab"					"weapon_rocketlauncher"
 			"show_in_armory"			"0"
-
-			"propername"				"1"
-			"item_name_color"			"255 240 183 255"
-			"item_name"					"Liberty Launcher"
-			"item_type_name"			"#TF_Weapon_RocketLauncher"
-			"item_description"			"
-A great balance of murder and mobility.
-Your ankles are gonna thank you for this!"
-			"item_logname"				"liberty_launcher"
-			"item_iconname"				"liberty_launcher"
-			"image_inventory"			"backpack/workshop/weapons/c_models/c_liberty_launcher/c_liberty_launcher"
-			"model_world"				"models/weapons/w_models/w_libertylauncher.mdl"
-			"model_player"				"models/weapons/v_models/v_libertylauncher_soldier.mdl"
-			"attach_to_hands"			"2"
-			"used_by_classes"
-			{
-				"soldier"				"1"
-			}
-			"static_attrs"
-			{
-				"NOWP weapon"							"1"
-				"Mannly parallel"						"1"
-			}
-			"attributes"																		// Pretty much exactly as they are from Live, not much to say
-			{
-				"clip size bonus"
-				{
-					"attribute_class"	"mult_clipsize"
-					"value"				"1.25"
-				}
-				"Projectile speed increased"
-				{
-					"attribute_class"	"mult_projectile_speed"
-					"value"				"1.4"
-				}
-				"rocket jump damage reduction"
-				{
-					"attribute_class"	"rocket_jump_dmg_reduction"								// After talking with friends, I finally figured out what the niche of this is, with some help.
-					"value"				"0.75"													// LL is a stopgap between doing damage with the RL (proj speed + it doing damage at all), and jumping with the RJ (clip size, damage reductions)
-				}
-				"damage penalty"
-				{
-					"attribute_class"	"mult_dmg"
-					"value"				"0.75"
-				}
-				"deploy time increased"
-				{
-					"attribute_class"	"mult_deploy_time"
-					"value"				"0.75"
-				}
-				"custom projectile model"														// Liberty Launcher rocket!
-				{
-					"attribute_class"	"custom_projectile_model"
-					"value"				"models/weapons/w_models/w_rocket_libertylauncher.mdl"
-				}
-			}
-			"visuals"
-			{
-				"sound_single_shot"		"Weapon_Liberty_Launcher.Single"
-				"sound_burst"			"Weapon_Liberty_Launcher.SingleCrit"
-				"sound_reload"			"Weapon_RPG.WorldReload"
-				"sound_special1"		"Weapon_Airstrike.Explosion"							// Doesn't come with its own explosion noises for some reason, so we settle for this?
-			}
-			"mouse_pressed_sound"		"#ui/item_heavy_gun_pickup.wav"
-			"drop_sound"				"#ui/item_heavy_gun_drop.wav"
 		}
 
 //-----
@@ -47969,6 +47584,14 @@ A medieval battering ram and cannon combined and repurposed into a shoulder-moun
 			"show_in_armory"			"0"
 		}
 		"5404"
+		{
+			"show_in_armory"			"0"
+		}
+		"4336"
+		{
+			"show_in_armory"			"0"
+		}
+		"3386"
 		{
 			"show_in_armory"			"0"
 		}
