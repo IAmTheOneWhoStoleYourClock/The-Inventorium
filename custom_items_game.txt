@@ -87629,27 +87629,20 @@ I'll make those wounds of yours even worse!"
 			{
 				"NOWP weapon"							"1"
 				"crit_kill_effect_gib"					"29"
-				"fire rate bonus"						"0.5"
-				"damage bonus hidden"					"0.385"
 				"min_viewmodel_offset"					"8 0 -6"
 				"weapon enemy knockback mod mult hidden" "-0.5"
 			}
 			"attributes"
 			{
-				"damage penalty"
-				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"0.4"
-				}
 				"damage penalty hidden"
 				{
 					"attribute_class"	"mult_dmg"
-					"value"				"1.85714285714285714"
+					"value"				"0.715"
 				}
 				"fire rate penalty hidden"
 				{
 					"attribute_class"	"mult_postfiredelay"
-					"value"				"1.6"
+					"value"				"0.8"
 				}
 				"tactician bonus weapon"
 				{
