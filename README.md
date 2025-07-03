@@ -2,9 +2,12 @@
 A TF2C modpack run on the server of the same name.
 
 <br>If you have any questions suggestions or whatever else, contact me on discord (@clockstealer), or make an issue here.
+<br>The assets are not included here ftm, i'll provide a download to them when one becomes accessable.
 <br>To run these privately, take the assets, put them in a new folder inside your custom folder, then take the text files ending with items_game.txt, and put them into your maps folder.
-<br>For use for the server only, just paste those files (Excluding LICENSE.txt and README.md) into your downloads folder.
-<br>Note that this modpack does not natively support 4team for the time being. (Except on medieval maps)
+<br>Sourcemods shouldn't be required for everything but engineer unfortunately needs them for some bug fixes and two of his weapon's functionalities.
+<br>(For a guide on how to install sourcemod, see https://wiki.alliedmods.net/Installing_sourcemod. Then place the plugins in the plugin folder. The scripting files aren't nessesary to run the plugins)
+<br>For use for the server only, just paste these files, excluding  into your downloads folder.
+<br>Note that this modpack does not natively support 4team for the time being. (Except on medieval maps) It will still run fine, but some cosmetics won't be the correct team colour.
 <br>The unmodified modpacks included can be found here:
 <br>New-Old Weapons Pack!: https://gamebanana.com/mods/40389
 <br>Mannly Munitions: https://gamebanana.com/mods/415275
