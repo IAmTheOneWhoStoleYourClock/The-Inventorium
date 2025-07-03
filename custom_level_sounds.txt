@@ -1264,7 +1264,7 @@
 	"channel"		"CHAN_WEAPON"
 	"soundlevel"	"SNDLVL_94dB"
 	"volume"		"0.9"
-	"pitch"			"103,107"
+	"pitch"			"103,106"
 	"wave"			"weapons/cyclops_fire.wav"
 }
 "Weapon_HealDB.SingleCrit"
@@ -1272,8 +1272,44 @@
 	"channel"		"CHAN_WEAPON"
 	"soundlevel"	"SNDLVL_94dB"
 	"volume"		"0.9"
-	"pitch"			"103,107"
+	"pitch"			"103,106"
 	"wave"			"weapons/cyclops_fire_crit.wav"
+}
+"Weapon_HealDB.Explode"
+{
+	"channel"	"CHAN_WEAPON"
+	"soundlevel"	"SNDLVL_94dB"
+	"volume"	"0.8"
+	"pitch"		"108, 111"
+	"rndwave"
+	{
+		"wave"	")weapons/explode2.wav"
+		"wave"	")weapons/explode3.wav"
+		"wave"	")weapons/explode1.wav"
+	}
+}
+
+// ------------------------------------------------------------------------------------ //
+// Huo-long heater
+// Added by Inventorium for the Huo-long, as it's an AA-Gun fire shotgun now. (roll with it)
+// ------------------------------------------------------------------------------------ //
+
+"Weapon_Huolong.Single"
+{
+	"channel"	"CHAN_WEAPON"
+	"soundlevel"	"SNDLVL_94dB"
+	"volume"	"0.95"
+	"pitch"			"89, 92"
+	"wave"		")weapons/bren_shoot.wav"
+}
+
+"Weapon_Huolong.SingleCrit"
+{
+	"channel"	"CHAN_WEAPON"
+	"soundlevel"	"SNDLVL_94dB"
+	"volume"	"0.95"
+	"pitch"			"89, 92"
+	"wave"		")weapons/bren_shoot_crit.wav"
 }
 
 // ------------------------------------------------------------------------------------ //
@@ -16538,8 +16574,8 @@
 {
 	"channel"		"CHAN_WEAPON"
 	"soundlevel"	"SNDLVL_82dB"
-	"volume"		"0.8"
-	"pitch"			"120, 125"
+	"volume"		"0.22"
+	"pitch"			"116, 121"
 	"wave"			")weapons/boltgun_shoot.wav"
 //	"wave"			")weapons/artillerycannon_shoot.wav"
 }
@@ -16547,8 +16583,8 @@
 {
 	"channel"		"CHAN_WEAPON"
 	"soundlevel"	"SNDLVL_82dB"
-	"volume"		"0.8"
-	"pitch"			"120, 125"
+	"volume"		"0.22"
+	"pitch"			"116, 121"
 	"wave"			")weapons/boltgun_shoot_crit.wav"
 //	"wave"			")weapons/artillerycannon_shoot_crit.wav"
 }
@@ -16557,9 +16593,15 @@
 {
 	"channel"		"CHAN_WEAPON"
 	"soundlevel"	"SNDLVL_94dB"
-	"volume"		"0.9"
-	"pitch"			"62, 70"
-	"wave"			")weapons\flare_detonator_launch.wav"
+	"volume"		"0.95"
+	"pitch"			"90, 95"
+//	"wave"			")weapons\flare_detonator_explode.wav"
+	"rndwave"
+	{
+		"wave"		")weapons\d-ied_explode1.wav"
+		"wave"		")weapons\d-ied_explode2.wav"
+		"wave"		")weapons\d-ied_explode3.wav"
+	}
 }
 
 // ------------------------------------------------------------------------------------ //
@@ -25785,7 +25827,22 @@
 	"channel"	"CHAN_WEAPON"
 	"volume"	"1"
 	"soundlevel"	"SNDLVL_94dB"
+//	"pitch"			"104, 107"
 	"wave"		"weapons\healing_rocket_shoot.wav"
+}
+
+"Weapon_ScrapHEAL.SingleCrit"
+{
+	"channel"		"CHAN_WEAPON"
+	"volume"		"1"
+	"soundlevel"	"SNDLVL_94dB"
+//	"pitch"			"104, 107"
+	"rndwave"
+	{
+		"wave"		"weapons\screwitan_shoot1_crit.wav"
+		"wave"		"weapons\screwitan_shoot2_crit.wav"
+		"wave"		"weapons\screwitan_shoot3_crit.wav"
+	}
 }
 
 "Weapon_ScrapHEAL.Explode"

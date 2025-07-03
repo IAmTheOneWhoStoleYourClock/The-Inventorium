@@ -2168,8 +2168,8 @@ Note: Nerfed. -Clock"
 				"bots_cant_use"			"1"
 			}
 			"name"						"TF_WEAPON_SPELLBOOK_HEALAURA"
-			"prefab"                    "weapon_syringegun"
-			"item_class"				"tf_weapon_heallauncher"
+//			"prefab"                    "weapon_syringegun"
+			"item_class"				"tf_weapon_grenade_mirv2"
 			"show_in_armory"			"1"
 			"bucket"					"1"
 			"item_slot"					"secondary"
@@ -2199,9 +2199,11 @@ Note: Nerfed. -Clock"
 			{
 				"Mannly weapon"							"1"
 				"min_viewmodel_offset"					"-3 -10 -10"
-//				"override projectile type" 				"2"
-				"medieval changes"						"1"
-				"clip size penalty hidden"				"0.15"
+				"override projectile type" 				"36"
+//				"medieval changes"						"1"
+				"mod use custom ammo type"				"2"
+				"meter_label"							"SPELL"
+				"self dmg push force hidden"			"0"
 			}
 			"attributes"
 			{
@@ -2219,26 +2221,6 @@ Note: Nerfed. -Clock"
 				{
 				    "attribute_class"   "fuse_mult"
 					"value"             "0"
-				}
-				"uses ammo meter with passive loading"
-				{
-					"attribute_class"   "use_ammo_meter"
-					"value"             "1"
-				}
-				"mod use custom ammo type"
-				{
-					"attribute_class"	"mod_use_custom_ammo_type"
-					"value"	            "3"
-				}
-				"energy weapon no ammo"
-				{
-					"attribute_class"	"energy_weapon_no_ammo"
-					"value"				"1"
-				}
-				"hide_attrib_percentage" //VERY LONG -Clock
-				{
-					"attribute_class"	"mult_reload_time"
-					"value"				"16"
 				}
 				"apply heal on explosion"
 				{
@@ -2290,11 +2272,6 @@ Note: Nerfed. -Clock"
 					"attribute_class"	"blast_dmg_to_self"
 					"value" 			"0"
 				}
-				"hidden separator"
-				{
-					"attribute_class"    "hidden_separator"
-                    "value"              "1"
-				}
 			}
 			"visuals"
 			{
@@ -2310,29 +2287,29 @@ Note: Nerfed. -Clock"
 			}
 			"visuals_red"
 			{
-				"trail_effect"			"critical_rocket_redsparks2"
-				"trail_effect_crit"		"critical_rocket_red"
+				"trail_effect"			"null"
+				"trail_effect_crit"		"null"
 				"explosion_effect"		"explosion_shrapnel_PARENT_red_crit"
 				"explosion_effect_crit"	"explosion_shrapnel_PARENT_red_crit"
 			}
 			"visuals_blu"
 			{
-				"trail_effect"			"critical_rocket_bluesparks2"
-				"trail_effect_crit"		"critical_rocket_blue"
+				"trail_effect"			"null"
+				"trail_effect_crit"		"null"
 				"explosion_effect"		"explosion_shrapnel_PARENT_blue_crit"
 				"explosion_effect_crit"	"explosion_shrapnel_PARENT_blue_crit"
 			}
 			"visuals_grn"
 			{
-				"trail_effect"			"critical_rocket_greensparks2"
-				"trail_effect_crit"		"critical_rocket_green"
+				"trail_effect"			"null"
+				"trail_effect_crit"		"null"
 				"explosion_effect"		"explosion_shrapnel_PARENT_green_crit"
 				"explosion_effect_crit"	"explosion_shrapnel_PARENT_green_crit"
 			}
 			"visuals_ylw"
 			{
-				"trail_effect"			"critical_rocket_yellowsparks2"
-				"trail_effect_crit"		"critical_rocket_yellow"
+				"trail_effect"			"null"
+				"trail_effect_crit"		"null"
 				"explosion_effect"		"explosion_shrapnel_PARENT_yellow_crit"
 				"explosion_effect_crit"	"explosion_shrapnel_PARENT_yellow_crit"
 			}
@@ -18248,7 +18225,12 @@ A medieval battering ram and cannon combined and repurposed into a shoulder-moun
 				"ReValve weapon"						"1"
 				"medieval changes"						"1"
 				"custom projectile origin offset"		"0 0 -30"
-				"linked item id"						"4427" //Neat weapon idea, but I want to go nwoooooom vrrrrrr crssssssh! -Clock
+				"linked item id"						"4428" //Neat weapon idea, but I want to go nwoooooom vrrrrrr crssssssh! -Clock
+				"custom rampup"							"1"
+				"custom falloff"						"1"
+				"no explosion falloff hidden"			"1"
+				"no damage falloff over distance"		"1"
+				"override projectile type"				"2"
 			}
 			"attributes"
 			{
@@ -18257,16 +18239,26 @@ A medieval battering ram and cannon combined and repurposed into a shoulder-moun
 					"attribute_class"	"DISPLAY_ONLY"
 					"value"				"1"
 				}
-				"mod mini-crit airborne" //To make the cool combo more consistent -Clock
+				"mod mini-crit airborne simple min height" //It needs to be this, as for some reason this isn't considered being launched by an explosive.
 				{
-					"attribute_class"	"crit_airborne_simple"
+					"attribute_class"	"mini_crit_airborne_simple_min_height"
+					"value"				"80"
+				}
+				"mod mini-crit airborne"	
+				{
+					"attribute_class"	"mini_crit_airborne"
 					"value"				"1"
 				}
-				"add condition on hit weapon"
+				"hide_attrib_percentage"
 				{
-					"attribute_class"	"add_onhit_addcond_weapon"
-					"value"				"131 1"
+					"attribute_class"	"mult_dmg"
+					"value"				"2"
 				}
+//				"add condition on hit weapon"
+//				{
+//					"attribute_class"	"add_onhit_addcond_weapon"
+//					"value"				"131 1"
+//				}
 				"allowed in medieval mode" //Made it work. -Clock
 				{
 					"attribute_class"	"allowed_in_medieval_mode"
@@ -29073,84 +29065,6 @@ On top of that, the rumors that the legendary ranger still roams continue..."
 			"mouse_pressed_sound"		"#ui/big_iron_pickup_spin.wav"
 			"drop_sound"				"#ui/big_iron_drop_unloading.wav"
 		}
-		
-//---------------------------
-//---------------------------			// -- Overview -- Description -----------------------------------------------------------------------------------------------------------------
-//--SPEED WATCH TEST - 4402--			// Using this watch makes you pay attention to your health and always stay on the edge of death, rewarding you with health when backstabbing --
-//---------------------------			// --------------------------------------------------------------------------------------------------------------------------------------------
-//---------------------------
-		"5261"
-		{
-			"name"						"TF_WEAPON_SPEEDWATCH"
-			"prefab"					"weapon_invis"
-			"show_in_armory"			"0"										// I love v_models bones (and model's UNIQUE bones) (I HATE it!)
-
-			"item_name_color"			"255 240 183 255"
-			"item_name"					"Bloodsucker"
-			"item_type_name"			"Invis Watches"
-			"item_description"			"
-The only way to survive is
-feed it with your own blood!"
-			"image_inventory"			"backpack/workshop_partner/weapons/v_models/v_hm_watch/v_hm_watch"	// Making the backpack icons for Watches is a nightmare.
-			"model_player"				"models\v_models\v_bleeding_watch_spy.mdl"
-			"attach_to_hands"			"0"														// This is unique to watches, any other value has very strange behavior...
-			"used_by_classes"
-			{
-				"spy"					"1"
-			}
-			"static_attrs"
-			{
-				"ReValve weapon"						"1"
-			}
-			"attributes"
-			{
-				"health drain"
-				{
-					"attribute_class"	"add_health_regen"
-					"value"				"-2"	
-				}
-				"hidden separator"		"1"
-				"mult cloak meter consume rate"
-				{
-					"attribute_class"	"mult_cloak_meter_consume_rate"
-					"value"				"0"
-				}
-				"mult cloak meter regen rate"
-				{
-					"attribute_class"	"mult_cloak_meter_regen_rate"
-					"value"				"0.000000000000000000000000000000000000000000000000000000001"
-				}
-				"health regen delay time when damaged"
-				{
-					"attribute_class"	"mod_health_regen_hurt_delay"
-					"value"				"0.01"
-				}	
-				
-				"lose cloak on damage"
-				{
-					"attribute_class"	"lose_cloak_on_damage"
-					"value"				"5"
-				}
-				"add cloak on kill"
-				{
-					"attribute_class"	"add_cloak_on_kill"
-					"value"				"0.5"
-				}
-				"heal on kill"
-				{
-					"attribute_class"	"heal_on_kill"
-					"value"				"20"
-				}
-			}
-			"visuals"
-			{
-				"sound_special1"		"Player.Spy_TacticalCloak"								// TF2C v2.1.0 - THESE FINALLY HAVE WORKING CLOAK SOUNDS!! This uses a sound-edit of the original speed-cloak sound, but spicier!
-				"sound_special2"		"Player.Spy_TacticalUnCloak"
-			}
-			"mouse_pressed_sound"		"#ui/item_watch_pickup.wav"
-			"drop_sound"				"#ui/item_watch_drop.wav"
-		}
-
 //--------------------------
 //--------------------------
 //-- TESLA RIFLE -----------
@@ -32700,6 +32614,18 @@ God bless America!"
 				"trail_effect_crit"		"flaregun_trail_crit_blue"
 				"explosion_effect_crit"	"explosion_shrapnel_PARENT_blue_crit"
 			}
+			"visuals_grn"
+			{
+				"trail_effect"			"flaregun_trail_green"
+				"trail_effect_crit"		"flaregun_trail_crit_green"
+				"explosion_effect_crit"	"explosion_shrapnel_PARENT_green_crit"
+			}
+			"visuals_ylw"
+			{
+				"trail_effect"			"flaregun_trail_yellow"
+				"trail_effect_crit"		"flaregun_trail_crit_yellow"
+				"explosion_effect_crit"	"explosion_shrapnel_PARENT_yellow_crit"
+			}
 			"mouse_pressed_sound"		"#items/pickup_small.wav"
 			"drop_sound"				"#ui/item_light_gun_drop.wav"
 		}
@@ -35274,59 +35200,31 @@ Note: Fixed reference pose while scoped bug. -Clock"
 //-----------------------------------
 		"5335"
 		{
-			"name"						"TF_WEAPON_FAMILY_BUSINESS"
-			"prefab"					"weapon_shotgun"
 			"show_in_armory"			"0"
-			"item_slot"					"secondary"
-
-			"propername"				"1"
-			"item_name_color"			"255 240 183 255"
-			"item_name"					"Quaker's Slipgate"
-			"item_type_name"			"#TF_Weapon_Shotgun"
-			"item_description"			"Functions identically to Family Business"
-			"item_logname"				"slipgate"
-			"item_iconname"				""
-			"image_inventory"			"backpack\weapons\w_models\w_quake_shotgun\w_quake_shotgun"
-			"model_world"				"models\w_models\w_quake_shotgun.mdl"
-			"model_player"				"models\v_models\v_quake_shotgun_soldier.mdl"
-			"attach_to_hands"			"2"
-			"used_by_classes"
-			{
-				"soldier"					"1"
-				"pyro"						"1"
-				"heavy"						"1"
-			}
-			"static_attrs"
-			{
-				"ReValve weapon"						"1"
-				"class select override vcd"				"taunt02"
-			}
-			"attributes"
-			{
-				"clip size bonus"
-				{
-					"attribute_class"	"mult_clipsize"
-					"value"				"1.33"
-				}
-				"fire rate bonus"
-				{
-					"attribute_class"	"mult_postfiredelay"
-					"value"				"0.85"
-				}
-				"damage penalty"
-				{
-					"attribute_class"	"mult_dmg"
-					"value"				"0.85"
-				}
-			}
-			"visuals"
-			{
-				"sound_single_shot"		"Weapon_QShotgun.Single"
-				"sound_burst"			"Weapon_QShotgun.SingleCrit"
-				"sound_reload"			"Weapon_QShotgun.WorldReload"
-			}
-			"mouse_pressed_sound"		"#ui/item_heavy_gun_pickup.wav"
-			"drop_sound"				"#ui/item_heavy_gun_drop.wav"
+		}
+		"7789"
+		{
+			"show_in_armory"			"0"
+		}
+		"7790"
+		{
+			"show_in_armory"			"0"
+		}
+		"7791"
+		{
+			"show_in_armory"			"0"
+		}
+		"7792"
+		{
+			"show_in_armory"			"0"
+		}
+		"7793"
+		{
+			"show_in_armory"			"0"
+		}
+		"7794"
+		{
+			"show_in_armory"			"0"
 		}
 
 //--------------------------
@@ -37778,31 +37676,7 @@ Note: By default, this weapon is quite bad. I haven't fixed that. RIDE OR DIE!"
 			}
 			"attributes"
 			{
-				"move speed bonus"
-				{
-					"attribute_class"	"mult_player_movespeed"
-					"value"				"1.80"
-				}
-				"health from packs increased"
-				{
-					"attribute_class"	"mult_health_frompacks"
-					"value"				"2.1"
-				}
-				"weapon burn dmg increased"
-				{
-					"attribute_class"	"mult_wpn_burndmg"
-					"value"				"1.35"
-				}
-				"max health additive penalty"
-				{
-					"attribute_class"	"add_maxhealth"
-					"value"				"-90"
-				}
-				"loadout item disables primary"
-				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"1"
-				}
+
 			}
 			"visuals"
 			{
@@ -44821,111 +44695,6 @@ If you are seeing this text ingame, let me know immediately!"
 //-----
 // (NOT APPLICABLE) |	VANILLA TEXT ADJUSTMENTS	|	Tags: (Clock), (Text change)
 //-----
-		"0"
-		{
-			"name"						"TF_WEAPON_BAT"
-			"prefab"					"weapon_bat"
-			"baseitem"					"1"
-			"item_description"			"#TF_Weapon_Bat_Desc"
-			"model_world"				"models/weapons/w_models/w_bat.mdl"
-			"model_player"				"models/weapons/v_models/v_bat_scout.mdl"
-			"attach_to_hands"			"2"
-		}
-		"1"
-		{
-			"name"						"TF_WEAPON_BOTTLE"
-			"prefab"					"weapon_bottle"
-			"baseitem"					"1"
-			"item_description"			"#TF_Weapon_Bottle_Desc"
-			"model_world"				"models/weapons/w_models/w_bottle.mdl"
-			"model_player"				"models/weapons/v_models/v_bottle_demoman.mdl"
-			"attach_to_hands"			"2"
-		}
-		"2"
-		{
-			"name"						"TF_WEAPON_FIREAXE"
-			"prefab"					"weapon_fireaxe"
-			"baseitem"					"1"
-			"item_description"			"#TF_Weapon_FireAxe_Desc"
-			"model_world"				"models/weapons/w_models/w_fireaxe.mdl"
-			"model_player"				"models/weapons/v_models/v_fireaxe_pyro.mdl"
-			"attach_to_hands"			"2"
-		}
-		"3"
-		{
-			"name"						"TF_WEAPON_CLUB"
-			"prefab"					"weapon_club"
-			"baseitem"					"1"
-			"item_description"			"#TF_Weapon_Club_Desc"
-			"model_world"				"models/weapons/w_models/w_machete.mdl"
-			"model_player"				"models/weapons/v_models/v_machete_sniper.mdl"
-			"attach_to_hands"			"2"
-		}
-		"4"
-		{
-			"name"						"TF_WEAPON_KNIFE"
-			"prefab"					"weapon_knife"
-			"baseitem"					"1"
-			"item_description"			"#TF_Weapon_Knife_Desc"
-			"model_world"				"models/weapons/w_models/w_knife.mdl"
-			"model_player"				"models/weapons/v_models/v_knife_spy.mdl"
-			"attach_to_hands"			"2"
-			"attributes"
-			{
-				"special taunt"
-				{
-					"attribute_class"	"special_taunt"
-					"value"				"1"
-				}
-			}
-		}
-		"5"
-		{
-			"name"						"TF_WEAPON_FISTS"
-			"prefab"					"weapon_fists"
-			"baseitem"					"1"
-			"item_description"			"#TF_Weapon_Fists_Desc"
-			"model_player"				"models/weapons/v_models/v_fist_heavy.mdl"
-			"attach_to_hands"			"2"
-			"attributes"
-			{
-				"special taunt"
-				{
-					"attribute_class"	"special_taunt"
-					"value"				"1"
-				}
-			}
-		}
-		"6"
-		{
-			"name"						"TF_WEAPON_SHOVEL"
-			"prefab"					"weapon_shovel"
-			"baseitem"					"1"
-			"item_description"			"#TF_Weapon_Shovel_Desc"
-			"model_world"				"models/weapons/w_models/w_shovel.mdl"
-			"model_player"				"models/weapons/v_models/v_shovel_soldier.mdl"
-			"attach_to_hands"			"2"
-		}
-		"7"
-		{
-			"name"						"TF_WEAPON_WRENCH"
-			"prefab"					"weapon_wrench"
-			"baseitem"					"1"
-			"item_description"			"#TF_Weapon_Wrench_Desc"
-			"model_world"				"models/weapons/w_models/w_wrench.mdl"
-			"model_player"				"models/weapons/v_models/v_wrench_engineer.mdl"
-			"attach_to_hands"			"2"
-		}
-		"8"
-		{
-			"name"						"TF_WEAPON_BONESAW"
-			"prefab"					"weapon_bonesaw"
-			"baseitem"					"1"
-			"item_description"			"#TF_Weapon_Bonesaw_Desc"
-			"model_world"				"models/weapons/w_models/w_bonesaw.mdl"
-			"model_player"				"models/weapons/v_models/v_bonesaw_medic.mdl"
-			"attach_to_hands"			"2"
-		}
 		"9"
 		{
 			"name"						"TF_WEAPON_SHOTGUN_PRIMARY"
@@ -45747,75 +45516,6 @@ List of hidden weapons may not be perfect, let me know if there are any issues!"
 			{
 				"class select override vcd"		"class_select_revrifle"
 			}
-		}
-		"42"
-		{
-			"name"						"The Fishwhacker"
-			"prefab"					"weapon_club"
-			"show_in_armory"			"1"
-			"item_logname"				"fishwhacker"
-			"item_iconname"				"fishwhacker"
-			"item_type_name"			"#TF_Weapon_Fishwhacker_Type"
-			"item_name"					"#TF_Weapon_Fishwhacker"
-			"item_description"			"#TF_Weapon_Fishwhacker_Desc"
-			"propername"				"1"
-			"image_inventory"			"backpack/weapons/w_models/w_fishwhacker"
-			"model_world"				"models/weapons/w_models/w_fishwhacker.mdl"
-			"model_player"				"models/weapons/v_models/v_fishwhacker_sniper.mdl"
-			"attach_to_hands"			"2"
-			"attributes"
-			{
-				"fishwhacker sweep"
-				{
-					"attribute_class"	"deflect_on_smack_hit_player"
-					"value"				"1"
-				}
-				"bleeding duration"
-				{
-					"attribute_class"	"bleeding_duration"
-					"value"				"2"
-				}
-				"damage penalty"
-				{
-					"attribute_class"	"VISUALONLY"
-					"value"				"0.55"
-				}
-				"particle on melee hit"
-				{
-					"attribute_class"	"particle_on_melee_hit"
-					"value"				"impact_wood"
-				}
-
-				"hidden separator"		"1"
-
-				"damage penalty"
-				{
-					"attribute_class"	"mult_dmg"
-					"value"				"0.53845"
-				}
-				"mod_melee_dont_deflect_projectiles"
-				{
-					"attribute_class"	"mod_melee_dont_deflect_projectiles"
-					"value"				"1"
-				}
-				"mod melee crit swing custom damage"
-				{
-					"attribute_class"	"mod_melee_crit_swing_custom_damage"
-					"value"				"33"
-				}
-				"mod melee swing custom damage"
-				{
-					"attribute_class"	"mod_melee_swing_custom_damage"
-					"value"				"33"
-				}
-			}
-			"visuals"
-			{
-				"sound_melee_hit"		"Weapon_Fishwhacker.HitFlesh"
-				"sound_melee_hit_world"	"Weapon_Fishwhacker.HitWorld"
-			}
-			"mouse_pressed_sound"		"#ui/item_wood_pole_pickup.wav"
-			"drop_sound"				"#ui/item_wood_weapon_drop.wav"
 		}
 		"43"
 		{
@@ -46963,64 +46663,17 @@ List of hidden weapons may not be perfect, let me know if there are any issues!"
 			"name"						"Cyclops"
 			"show_in_armory"			"0"
 		}
-		"68"
-		{
-			"name"						"Medevil"
-			"prefab"					"valve"
-			"tags"
-			{
-				"bots_cant_use"			"1"
-			}
-			"show_in_armory"			"0"
-			"item_class"				"tf_wearable"
-			"item_name"					"medieval changes"
-			"item_description"			"All weapons that are not relevant have been hidden
-Civilian has no aura
-List of hidden weapons may not be perfect, let me know if there are any issues!"
-			"item_type_name"			"NONE"
-			"item_slot"					"primary"
-			"anim_slot"					"FORCE_NOT_USED"
-			"item_quality"				"vintage"
-			"propername"				"1"
-			"image_inventory"			"backpack/workshop/weapons/c_models/c_ham/c_ham"
-			"model_player"				"models/weapons/w_models/w_drg_ball.mdl"
-			"used_by_classes"
-			{
-				"scout"					"1"
-				"soldier"				"1"
-				"pyro"					"1"
-				"demoman"				"1"
-				"heavy"					"1"
-				"engineer"				"1"
-				"medic"					"1"
-				"sniper"				"1"
-				"spy"					"1"
-				"civilian"				"1"
-			}
-			"loadondemand"				"1"
-			"act_as_wearable"			"1"
-			"static_attrs"
-			{
-				"class select override slot"		"melee"
-			}
-			"mouse_pressed_sound"		"#ui/item_metal_weapon_pickup.wav"
-			"drop_sound"				"#ui/item_metal_weapon_drop.wav"
-		}
 		"69"
 		{
 			"name"						"Medeviler"
-			"prefab"					"valve"
-			"tags"
-			{
-				"bots_cant_use"			"1"
-			}
-			"show_in_armory"			"0"
-			"item_class"				"tf_wearable"
-			"item_name"					"medieval changes"
-			"item_description"			"All weapons that are not relevant have been hidden
-Civilian has no aura
-Some weapons (pugilist's protector, battering cannon) have been rebalanced
-List of hidden weapons may not be perfect, let me know if there are any issues!"
+			"show_in_armory"			"1"
+			"item_class"				"tf_weapon_anchor"
+			"item_slot"					"primary"
+			"anim_slot"					"melee"
+			"bucket"					"99"
+			"item_name"					"Tactician Bonus"
+			"item_description"			"
+Give up your primary to enable tactician bonuses"
 			"item_type_name"			"NONE"
 			"item_slot"					"secondary"
 			"anim_slot"					"FORCE_NOT_USED"
@@ -47028,67 +46681,58 @@ List of hidden weapons may not be perfect, let me know if there are any issues!"
 			"propername"				"1"
 			"image_inventory"			"backpack/workshop/weapons/c_models/c_ham/c_ham"
 			"model_player"				"models/weapons/w_models/w_drg_ball.mdl"
+			"extra_wearable"			"models/player/items/captain_sniper_coat/captain_sniper_coat.mdl"
 			"used_by_classes"
 			{
-				"scout"					"1"
-				"soldier"				"1"
-				"pyro"					"1"
-				"demoman"				"1"
-				"heavy"					"1"
-				"engineer"				"1"
-				"medic"					"1"
 				"sniper"				"1"
-				"spy"					"1"
-				"civilian"				"1"
 			}
 			"loadondemand"				"1"
 			"act_as_wearable"			"1"
 			"static_attrs"
 			{
 				"class select override slot"		"melee"
+				"tactician bonus enable"				"1"
+				"linked item id"						"70"
+				"allowed in medieval mode"				"1"
 			}
 			"mouse_pressed_sound"		"#ui/item_metal_weapon_pickup.wav"
 			"drop_sound"				"#ui/item_metal_weapon_drop.wav"
 		}
 		"70"
 		{
-			"name"						"Medevilest"
-			"prefab"					"valve"
-			"tags"
-			{
-				"bots_cant_use"			"1"
-			}
-			"show_in_armory"			"0"
-			"item_class"				"tf_wearable"
-			"item_name"					"medieval changes"
-			"item_description"			"All weapons that are not relevant have been hidden
-Civilian has no aura
-List of hidden weapons may not be perfect, let me know if there are any issues!"
+			"name"						"Medeviler"
+			"show_in_armory"			"1"
+			"item_class"				"tf_weapon_scattergun"
+			"item_slot"					"primary"
+			"anim_slot"					"melee"
+			"bucket"					"99"
+			"item_name"					"Tactician Bonus"
+			"item_description"			"
+Give up your primary to enable tactician bonuses"
 			"item_type_name"			"NONE"
-			"item_slot"					"melee"
+			"item_slot"					"secondary"
 			"anim_slot"					"FORCE_NOT_USED"
 			"item_quality"				"vintage"
 			"propername"				"1"
 			"image_inventory"			"backpack/workshop/weapons/c_models/c_ham/c_ham"
 			"model_player"				"models/weapons/w_models/w_drg_ball.mdl"
+			"extra_wearable"			"models/player/items/captain_sniper_coat/captain_sniper_coat.mdl"
 			"used_by_classes"
 			{
-				"scout"					"1"
-				"soldier"				"1"
-				"pyro"					"1"
-				"demoman"				"1"
-				"heavy"					"1"
-				"engineer"				"1"
-				"medic"					"1"
-				"sniper"				"1"
-				"spy"					"1"
-				"civilian"				"1"
+				"mercenary"				"1"
 			}
 			"loadondemand"				"1"
 			"act_as_wearable"			"1"
 			"static_attrs"
 			{
 				"class select override slot"		"melee"
+				"tactician bonus enable"			"1"
+				"linked item id"					"12390"
+				"clip size penalty"					"0"
+				"damage penalty"					"0"
+				"maxammo primary reduced"			"0"
+				"mod use custom ammo type"			"1"
+				"allowed in medieval mode"			"1"
 			}
 			"mouse_pressed_sound"		"#ui/item_metal_weapon_pickup.wav"
 			"drop_sound"				"#ui/item_metal_weapon_drop.wav"
@@ -47114,7 +46758,7 @@ List of hidden weapons may not be perfect, let me know if there are any issues!"
 
 			"propername"				"1"
 			"item_name_color"			"255 240 183 255"
-			"item_name"					"RAM"
+			"item_name"					"RAM" //Since they won't see this anways... Maybe I should do this for all of demo's shields too?
 			"item_type_name"			"Broken Steering Wheel"
 			"item_description"			"Alt-Fire: Charge toward your enemies! (8s)
 Gain mini-crits near the end of a Charge
@@ -47134,7 +46778,6 @@ You had best start running, laddie."
 //				"custom hand viewmodel"					"models/weapons/c_models/c_demo_arms_tideturner.mdl" //Litterally turns solider INTO DEMOMAN. Funny, but shouldn't be happening. -Clock
 				"meter_label"							"RAM"							// DOESN'T WORK AARGH
 //				"class select override slot"			"melee"									// This might work sooner or later? TO-DO: Edit ALL melees if it does!
-				"linked item id"						"4428"
 			}
 			"attributes"
 			{
@@ -47146,12 +46789,12 @@ You had best start running, laddie."
 				"wearable cond on effect percent"
 				{
 					"attribute_class"	"add_wearable_cond_on_effect_percent"
-					"value"				"112 0.3" //minicrit period is stricter, but still there! -Clock // Now only triggers at below 75% charge (oh right TT has no crits at 40%) | After transfer this is Minicrit (112) instead of crit (35)
+					"value"				"112 0.1" //minicrit period is stricter, but still there! -Clock // Now only triggers at below 75% charge (oh right TT has no crits at 40%) | After transfer this is Minicrit (112) instead of crit (35)
 				}
-				"mult shield bash damage"
+				"set shield bash damage"
 				{
-					"attribute_class"	"mult_shield_bash_damage"
-					"value"				"0.75"													// TECHNICALLY this does less base damage (37 DMG), but shield bash is affected by minicrits, so that brings it back up to 50 DMG - the normal max dmg. This helps replicate the damage increasing over distance...
+					"attribute_class"	"add_set_shield_bash_damage"
+					"value"				"21"
 				}
 				"melee taken becomes minicrit on wearer" //Here just in case I have to add a while active for whatever reason. -Clock
 				{
@@ -47206,6 +46849,12 @@ A medieval battering ram and cannon combined and repurposed into a shoulder-moun
 				"ReValve weapon"						"1"
 				"medieval changes"						"1"
 				"custom projectile origin offset"		"0 0 -30"
+				"custom rampup"							"1"
+				"custom falloff"						"1"
+				"no explosion falloff hidden"			"1"
+				"no damage falloff over distance"		"1"
+				"override projectile type"				"2"
+				"linked item id"						"4427"
 			}
 			"attributes"
 			{
@@ -47254,7 +46903,7 @@ A medieval battering ram and cannon combined and repurposed into a shoulder-moun
 					"attribute_class"	"custom_projectile_model"
 					"value"				"models/weapons/w_models/w_drg_ball.mdl"
 				}
-				"max health additive penalty" //Made using it for it's intended purpose nearly impossible.
+				"max health additive penalty"
 				{
 					"attribute_class"	"add_maxhealth"
 					"value" 			"-50"
@@ -47318,189 +46967,6 @@ A medieval battering ram and cannon combined and repurposed into a shoulder-moun
 //-----
 // (4429, 4430, 4431, 4432) |	Chargin' targe + Buffalo Steak primary replacement Nerf	|	Tags: (Clock), (New), (Demoman), (Heavy) (Utility), (Dupe), (Nerf)
 //-----
-		"4429" //Chargin' Targe by shualdock
-		{
-			"name"						"TF_WEARABLE_TARGE"
-			"item_class"				"tf_wearable"
-			"show_in_armory"			"0"
-			"item_slot"					"secondary"
-			"equip_region"				"arms"
-			"anim_slot"					"FORCE_NOT_USED"
-			"image_inventory_size_w"	"128"
-			"image_inventory_size_h"	"82"
-			"item_name"					"The Chargin' Targe"
-			"item_type_name"			"Shield"
-			"item_iconname"				"demoshield"
-			"item_quality"              "unique"
-			"item_description"			"Alt-Fire: Charge toward your enemies! Gain a critical strike if timed correctly
-
-“If I were to pick up this cowering-plate, I would have to put down my second sword. Surely that is madness.” “Madness?” The Scotsman intensifies. “THIS... IS... SCOTLAND!!”"
-			"image_inventory"			"backpack/weapons/c_models/c_targe/c_targe"
-			"model_player"				"models/player/items/demo/chargin_targe.mdl"
-			"used_by_classes"
-			{
-				"mercenary"				"1"
-			}
-			"loadondemand"				"1"
-			"act_as_wearable"			"1"
-			"static_attrs"
-			{
-				"Mannly weapon"							"1"
-				"meter_label"							"CHARGE" //Unfortunately this doesn't work, the label it uses is just the item_name
-				"linked item id"						"4431"
-			}
-			"attributes"
-			{
-				"wearable add cond on right click"
-				{
-					"attribute_class"	"add_wearable_cond_on_secondary_attack"
-					"value"				"17 1.5 12.0"
-				}
-				"wearable cond on effect percent" //Crits 
-				{
-					"attribute_class"	"add_wearable_cond_on_effect_percent"
-					"value"				"33 0.5"
-				}
-				"dmg taken from fire reduced"
-				{
-					"attribute_class"	"mult_dmgtaken_from_fire"
-					"value"				"0.75"
-				}
-				"mult shield bash damage reduced custom"
-				{
-					"attribute_class"	"mult_shield_bash_damage"
-					"value"				"0.6"
-				}
-				"maxammo primary reduced"
-				{
-					"attribute_class"	"mult_maxammo_primary"
-					"value"				"0"
-				}
-				"allowed in medieval mode"
-				{
-					"attribute_class"	"allowed_in_medieval_mode"
-					"value"				"1"
-				}
-			}
-			"mouse_pressed_sound"		"#ui/item_wood_weapon_pickup.wav"
-			"drop_sound"				"#ui/item_wood_weapon_drop.wav"
-		}
-		"4430" //Festive Chargin' Targe by shualdock
-		{
-			"name"						"TF_WEARABLE_TARGE_FESTIVE"
-			"item_class"				"tf_wearable"
-			"show_in_armory"			"0" //I see it in my nightmares. -Clock
-			"item_slot"					"secondary"
-			"equip_region"				"arms"
-			"anim_slot"					"FORCE_NOT_USED"
-			"image_inventory_size_w"	"128"
-			"image_inventory_size_h"	"64"
-			"item_name"					"Festive Chargin' Targe"
-			"item_type_name"			"Jolly Shield"
-			"item_iconname"             "demoshield"
-			"item_quality"              "unique"
-			"item_description"			"Alt-Fire: Charge toward your enemies! Gain a critical strike if timed correctly
-
-“Scottish Santa don't need no reindeer.”"
-			"image_inventory"			"backpack/weapons/c_models/c_targe/c_targe_xmas"
-			"model_player"				"models/weapons/c_models/c_targe_xmas.mdl"
-			"extra_wearable"			"models/weapons/c_models/c_targe_xmas.mdl"
-			"attach_to_hands"			"2"
-			"used_by_classes"
-			{
-				"mercenary"				"1"
-			}
-			"loadondemand"				"1"
-			"act_as_wearable"			"1"
-			"static_attrs"
-			{
-				"Mannly weapon"							"1"
-				"meter_label"							"CHARGE"
-				"linked item id"						"4431"
-			}
-			"attributes"
-			{
-				"wearable add cond on right click"
-				{
-					"attribute_class"	"add_wearable_cond_on_secondary_attack"
-					"value"				"17 1.5 12.0"
-				}
-				"wearable cond on effect percent"
-				{
-					"attribute_class"	"add_wearable_cond_on_effect_percent"
-					"value"				"33 0.5"
-				}
-				"dmg taken from fire reduced"
-				{
-					"attribute_class"	"mult_dmgtaken_from_fire"
-					"value"				"0.75"
-				}
-				"mult shield bash damage reduced custom"
-				{
-					"attribute_class"	"mult_shield_bash_damage"
-					"value"				"0.6"
-				}
-				"maxammo primary reduced"
-				{
-					"attribute_class"	"mult_maxammo_primary"
-					"value"				"0"
-				}
-				"allowed in medieval mode"
-				{
-					"attribute_class"	"allowed_in_medieval_mode"
-					"value"				"1"
-				}
-			}
-			"mouse_pressed_sound"		"#ui/item_wood_weapon_pickup.wav"
-			"drop_sound"				"#ui/item_wood_weapon_drop.wav"
-		}
-		"4431" //BLANK
-		{
-			"name"						"TF_NOTHING"
-			"item_class"				"tf_weapon_grenadelauncher"
-			"show_in_armory"			"1" //I see it in my nightmares. -Clock
-			"item_slot"					"primary"
-			"anim_slot"					"FORCE_NOT_USED"
-			"bucket"					"999"
-			"image_inventory_size_w"	"128"
-			"image_inventory_size_h"	"64"
-			"item_name"					"BLANK"
-			"item_type_name"			"BLANK"
-			"item_iconname"             "BLANK"
-			"item_quality"              "unique"
-			"item_description"			"IF YOU ARE SEEING THIS IN GAME, LET ME KNOW IMMEDIATELY! -Clock"
-			"image_inventory"			"backpack/weapons/c_models/c_targe/c_targe_xmas"
-			"model_player"				"models/weapons/w_models/w_drg_ball.mdl"
-			"attach_to_hands"			"2"
-			"used_by_classes"
-			{
-				"mercenary"				"1"
-			}
-			"static_attrs"
-			{
-				"allowed in medieval mode"				"1"
-			}
-			"attributes"
-			{
-				"clip size penalty"
-				{
-					"attribute_class"	"mult_clipsize"
-					"value"				"0"
-				}
-				"maxammo primary reduced"
-				{
-					"attribute_class"	"mult_maxammo_primary"
-					"value"				"0"
-				}
-				"allowed in medieval mode"
-				{
-					"attribute_class"	"allowed_in_medieval_mode"
-					"value"				"1"
-				}
-			}
-			"mouse_pressed_sound"		"#ui/item_wood_weapon_pickup.wav"
-			"drop_sound"				"#ui/item_wood_weapon_drop.wav"
-		}
 		"4432" //Buffalo Steak Sandvich by shualdock
 		{
 			"show_in_armory"			"0"
@@ -47592,6 +47058,18 @@ A medieval battering ram and cannon combined and repurposed into a shoulder-moun
 			"show_in_armory"			"0"
 		}
 		"3386"
+		{
+			"show_in_armory"			"0"
+		}
+		"30807" // Inexplicably broken, but then again not sure why this works to begin with so what can ya do.
+		{
+			"show_in_armory"			"0"
+		}
+		"5411"
+		{
+			"show_in_armory"			"0"
+		}
+		"30403" // Overpowered
 		{
 			"show_in_armory"			"0"
 		}

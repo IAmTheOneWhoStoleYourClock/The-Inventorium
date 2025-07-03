@@ -119,4 +119,9 @@ particles_manifest
 	"file"  	"particles/healbomb.pcf"
 	"file"  	"particles/medicflames_v2.pcf"
 	"file"  	"particles/scifigrenade_v2.pcf"
+// INVENTORIUM - few additions here
+	"file"  	"!particles/firetracertest.pcf"
+	"file"  	"!particles/partypopper.pcf"
+	"file"  	"!particles/hurtheal.pcf"
+	"file"  	"!particles/tinyboom.pcf"
 }
