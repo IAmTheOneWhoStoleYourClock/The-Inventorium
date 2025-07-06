@@ -3136,12 +3136,9 @@ Who needs bread?"
 			"item_name"					"Second Banana"
 			"item_type_name"			"Banana"
 			"item_quality"              "unique"
-			"item_description"			"Can consume dropped banana
-Eat to regain up to 140 health
+			"item_description"			"Eat to regain up to 150 health
 Alt-Fire: Share a banana with a friend
-(Medium health kit)
-
-Note: Reworked. -Clock
+(Small health kit)
 
 A faint reminder of broken promises..." //Don't worry, it'll come soon, I promise. -A liar, also known as Clock.
 			"image_inventory"			"backpack/weapons/c_models/c_banana/c_banana"
@@ -3156,52 +3153,33 @@ A faint reminder of broken promises..." //Don't worry, it'll come soon, I promis
 			"static_attrs"
 			{
 				"Mannly weapon"							"1"
+//				"Heavily modified"						"1" // I don't think this is fair, considering i'm just emulating base game here....
 			}
-			"attributes" //Very iffy on this one... -Clock
+			"attributes" // Apperently they "fixed" this not working on lunchboxes in the latest patch?!? Quite odd, but it lets me make this like base game now?
 			{
-				"torso scale" //The health pack penalty is really dramatic
+				"effect bar recharge rate increased"
+				{
+					"attribute_class"	"effectbar_recharge_rate"
+					"value"				"0.75"
+				}
+				"health from lunchbox increased" // Needs to have this to justify its existence. -Clock
 				{
 					"attribute_class"	"lunchbox_healing_scale"
-					"value"				"1.167"
-				} 
-                "heal on owner health pickup instead of recharge custom" //If you throw this and pick it back up, it heals you instead of refilling the meter
-				{
-					"attribute_class"	"heal_on_owned_health_pickup_no_recharge"
-					"value"	            "1"
+					"value"				"1.25"
 				}
-				"health from packs decreased" //I think makes this weapon more interesting. -Clock
-				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value" 			"0.55" 
-				}
-				"hide_attrib_percentage" //Ugly number, hide it! -Clock
-				{
-					"attribute_class"	"mult_health_frompacks"
-					"value" 			"0.5667" 
-				}
-				"healing received penalty"
-				{
-					"attribute_class"	"mult_healing_received"
-					"value" 			"0.9" 
-				}
-				"lunchbox consumed on use"
+				"lunchbox consumed on use" // Kind of pointless if it doesn't revolve around this... -Clock
 				{
 					"attribute_class"	"lunchbox_force_cooldown"
 					"value"				"1"
 				}
-				"custom lunchbox throwable type"
-				{
-					"attribute_class"	"custom_lunchbox_throwable_type"
-					"value"				"2" //Technically an easy way to make this accurate, but smalls are hard to balance around.
-				}
-				"custom lunchbox throwable model"
-				{
-					"attribute_class"	"custom_lunchbox_throwable_model"
-					"value"				"models/items/plate_banana.mdl" //WHY DOES THIS HAVE ITS OWN PLATE TEXTURE UGGGGGHH
-				}
 				"mod lunchbox critboostable"
 				{
 					"attribute_class"	"mod_lunchbox_critboostable"
+					"value"				"1"
+				}
+				"custom lunchbox throwable type" // While I acknoledge this doesn't honestly make that much sense, being able to throw mediums with this would be op... -Clock
+				{
+					"attribute_class"	"custom_lunchbox_throwable_type"
 					"value"				"1"
 				}
 			}
@@ -10509,7 +10487,7 @@ anything that could be opened..."
 				"mod rocket gravity upward force"		"2.3"
 				"custom projectile origin offset"		"0 -2 -7"
 				"mod use custom ammo type"				"3"
-				"damage bonus hidden"					"6.667" // 6.667 for stock. Adjust with damage multipliers. (Pellet:6, Knife:40)
+				"damage bonus hidden"					"5.334" // 6.667 for stock. Adjust with damage multipliers. (Pellet:6, Knife:40)
 				"fire rate penalty hidden"				"1.536" // 1.28 for stock. Adjust with swing speed multipliers. (Shotgun:0.625s, Knife:0.8s)
 			}
 			"attributes"
@@ -10532,18 +10510,18 @@ anything that could be opened..."
 				"crit damage increased"
 				{
 					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"350"
+					"value"				"400"
 				}
-				"hide_attrib_percentage" // this will one-shot light classes, but not medics (unless they have the ubersaw or other health-reducing item)
+				"hide_attrib_percentage" // this will one-shot light classes, but not medics
 				{
 					"attribute_class"	"mult_dmg_crit_multiplier"
-					"value"				"1.1667"
+					"value"				"1.5"
 				}
-//				"damage penalty"
-//				{
-//					"attribute_class"	"DISPLAY_ONLY"
-//					"value"				"0.9"
-//				}
+				"damage penalty"
+				{
+					"attribute_class"	"DISPLAY_ONLY"
+					"value"				"0.8"
+				}
 				"fire rate penalty"
 				{
 					"attribute_class"	"DISPLAY_ONLY"
@@ -21775,10 +21753,10 @@ enough bullet for entire coward team!"
 					"attribute_class"	"mult_maxammo_grenades2"
 					"value"				"4"
 				}
-				"hide_attrib_percentage" //I don't think this works, sadly. Shame. -Clock
+				"hide_attrib_additive" // I don't think this works, sadly. Shame. -Clock
 				{
 					"attribute_class"	"effectbar_recharge_rate"
-					"value"				"0.1"
+					"value"				"-60"
 				}
 				"add ammo on kill wearer"
 				{
@@ -30018,7 +29996,7 @@ and then finish them off with a Critical hit!
 			{
 				"NOWP weapon"							"1"
 				"special taunt"							"1"
-				"explode on death"	"1" //Does nothing? -Clock
+//				"explode on death"	"1" //Ok nope this works now.
 				"custom hand viewmodel"					"models/weapons/c_models/c_heavy_arms_punchomatic.mdl"	// NOWP v2.7.5 - THIS FINALLY WORKS!! It's a bit scuffed with critglows, but it works, dammit!
 			}
 			"attributes"																		// This took a REALLY long time to figure out where to go with this! I wanted to make it a Chekhov's Punch slant, but there's not actually much you can do with those...
@@ -39314,7 +39292,7 @@ Alt-fire: Share Chocolate Bar
 with an associate!
 (Medium health pack, short Haste buff)
 
-“Lookie here, i'm the boss for a reason you know! It's time to lay out some rules!”" //TO DO: Think of an even fancier sounding but still awful chocolate type.
+“It's time to lay out some rules!”" //TO DO: Think of an even fancier sounding but still awful chocolate type.
 			"item_logname"				"tommymag"
 			"item_iconname"				""
 			"image_inventory"			"backpack\weapons\w_models\w_tommymag\w_tommymag"
@@ -39354,11 +39332,11 @@ with an associate!
 					"attribute_class"	"DISPLAY_ONLY"
 					"value"				"-25"
 				}
-				"umbrella recharge rate decreased" //Can't change sandviches recharge rate... -Clock
-				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"2"
-				}
+//				"umbrella recharge rate decreased" // Can change lunchbox recharge rate now! No more weird 2 lunchboxes! -Clock
+//				{
+//					"attribute_class"	"DISPLAY_ONLY"
+//					"value"				"2"
+//				}
 				"spread penalty"
 				{
 					"attribute_class"	"mult_spread_scale"
@@ -39367,12 +39345,22 @@ with an associate!
 				"rampup penalty"
 				{
 					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"0.8"
+					"value"				"0.7"
+				}
+				"Reload time increased"
+				{
+					"attribute_class"	"mult_reload_time"
+					"value"				"1.15"
+				}
+				"lunchbox consumed on use"														// THIS IS A CUSTOM ATTRIBUTE - THIS DOESN'T NORMALLY HAVE AN ENTRY! Make sure to copy it or splice it if you want to use it!
+				{
+					"attribute_class"	"lunchbox_force_cooldown"
+					"value"				"1"
 				}
 				"hide_attrib_percentage"
 				{
 					"attribute_class"	"mod_custom_rampup"
-					"value"				"1.30"
+					"value"				"1.20"
 				}
 //				"fire rate penalty"
 //				{
@@ -41158,9 +41146,9 @@ They say the best defense is a good offense, but they never said you couldn't ha
 			"item_name_color"			"255 240 183 255"
 			"item_name"					"Vladislavia"
 			"item_type_name"			"#TF_Weapon_Minigun"
-			"item_description"			"
-With a four-speed on the floor, they'll be waitin' at the door!
-Note: Lowered base speed buff to 5%, because this otherwise pretty much entirely outclasses the bandolier for no good reason."
+			"item_description"			"You are pulled forwards while firing
+
+With a four-speed on the floor, they'll be waitin' at the door!"
 			"item_logname"				"motogun"
 			"item_iconname"				""
 			"image_inventory"			"backpack\weapons\w_models\w_motogun\w_motogun"
@@ -41174,23 +41162,19 @@ Note: Lowered base speed buff to 5%, because this otherwise pretty much entirely
 			"static_attrs"
 			{
 				"ReValve weapon"						"1"
+				"apply weapon damage boost on kill custom"		"4"
 			}
 			"attributes"
 			{
-				"fire rate bonus"
-				{
-					"attribute_class"	"mult_postfiredelay"
-					"value"				"0.65"
-				}
-				"move speed bonus"
-				{
-					"attribute_class"	"mult_player_movespeed"
-					"value"				"1.05"
-				}
+//				"move speed bonus"
+//				{
+//					"attribute_class"	"mult_player_movespeed"
+//					"value"				"1.05"
+//				}
 				"aiming movespeed increased"
 				{
 					"attribute_class"	"mult_player_aiming_movespeed"
-					"value"				"1.6"
+					"value"				"1.4"
 				}
 				"spread penalty"		
 				{
@@ -41200,12 +41184,17 @@ Note: Lowered base speed buff to 5%, because this otherwise pretty much entirely
 				"bullets per shot penalty"		
 				{
 					"attribute_class"	"mult_bullets_per_shot"
-					"value"				"0.5"
+					"value"				"0.75"
 				}
 				"maxammo primary reduced"		
 				{
 					"attribute_class"	"mult_maxammo_primary"
 					"value"				"0.4"
+				}
+				"hide_attrib_additive" //To be clear, this isn't supposed to be helpful. It's just to make your life harder.
+				{
+					"attribute_class"	"apply_self_knockback"
+					"value"				"-90"
 				}
 			}
 			"visuals"
@@ -42130,9 +42119,11 @@ Note: Reminded the bullets that they're supposed to make sense at close range. -
 //-----------------------------------
 		"5154"
 		{
+			"tags"
+			{
+				"bots_cant_use"			"1" //Technically works, but lobotomises them. -Clock
+			}
 			"name"						"TF_WEAPON_PPSh"
-			// Chosen because grenade launchers actually shoot the projectile right while also letting you blast jump (which tf_weapon_heallauncher is hardcoded to disallow)
-			// Unfortunately this requires some small model changes to rotate the muzzle.
 			"item_class"				"tf_weapon_heallauncher"
 			"show_in_armory"			"1"	//Eh. -Clock				// I'll fix it later
 			"item_slot"					"secondary"
@@ -42155,7 +42146,7 @@ Primary-Fire: Rip through those pesky foes!
 //			"model_world"				"models\w_models\w_microgun.mdl"
 //			"model_player"				"models\v_models\v_microgun_heavy.mdl" // TO DO: remove unmodified models for file space? (all changes to models are listed in comments in decompiled weapons folder)
 			"model_world"				"models\w_models\w_microgun_alt.mdl"
-			"model_player"				"models\v_models\v_microgun_alt.mdl" // muzzle has been adjusted to fit the grenade launcher base
+			"model_player"				"models\v_models\v_microgun_alt.mdl" // muzzle has been adjusted to fit the heal launcher base
 //			"model_world"				"models\w_models\c_minigun.mdl" // DEBUG
 			"attach_to_hands"			"2"
 			"used_by_classes"
@@ -42170,7 +42161,7 @@ Primary-Fire: Rip through those pesky foes!
 
 				"punch angle mod mult hidden"			"0.5"
 				"punch angle is constant"				"1"
-				"custom projectile origin offset"		"21 5 -10"
+				"custom projectile origin offset"		"21 5 -12"
 
 //				"bullets per shot bonus"				"3"
 //				"explosive bullets"						"1" // rework idea: explosive bullet paintball rifle? It seems like explosive bullets don't hit teammates, but that dould be designed around.
@@ -42179,7 +42170,7 @@ Primary-Fire: Rip through those pesky foes!
 //				"single wep deploy time hidden"			"1.25"
 				"override mult deploy weapon time animation"	"0.6667"
 				"Projectile speed increased hidden"		"1.5" // base rejuv has 1.2x
-				"grenade no spin"						"1"
+//				"grenade no spin"						"1"
 //				"mod max primary clip override"			"-1"
 //				"no explosion falloff hidden"			"1" // make damage consistent (IF HEAL GRENADES CARED)
 				"custom rampup"							"1.5"
@@ -42188,7 +42179,7 @@ Primary-Fire: Rip through those pesky foes!
 //				"add condition on hit self weapon"		"32 1"
 				// Note for future development: tf_weapon_heallauncher only does the heal sounds on hit if you're capable of building uber.
 			}
-			"attributes"
+			"attributes" // This rework was fully The assistant's, just for future reference. This weapon really struggled to find its place anywhere. Medic chainsaw was honestly a goated idea for this. -Clock
 			{
 				"hide_attrib_percentage"
 				{
@@ -42272,13 +42263,23 @@ Primary-Fire: Rip through those pesky foes!
 				}
 				"mod no uber"
 				{
-					"attribute_class"	"DISPLAY_ONLY" // sadly, it seems as if uber on this is an issue. Explosion radius effects the area of the uber generator for some reason. Callouc callus also has this issue, but it's a tad less noticable there.
+					"attribute_class"	"DISPLAY_ONLY" // sadly, it seems as if uber on this is an issue. Explosion radius effects the area of the uber generator for some reason. Callous callus also has this issue, but it's a tad less noticable there.
 					"value"				"1"
 				}
 				"hide_attrib_percentage"
 				{
 					"attribute_class"	"mult_medigun_uberchargerate"
 					"value"				"0"
+				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mult_dmg_crit_multiplier" // silent buff for crits from 300% to 350% damage, because rampup accounts for a lot of the damage here.
+					"value"				"1.25"
+				}
+				"hide_attrib_percentage" 
+				{
+					"attribute_class"	"mult_dmg_vs_buildings" // similar to the above
+					"value"				"1.25"
 				}
 //				"hide_attrib_percentage"
 //				{
@@ -42324,14 +42325,14 @@ Primary-Fire: Rip through those pesky foes!
 				"residual heal rate"
 				{
 					"attribute_class"	"residual_heal_rate"
-					"value"				"4"
+					"value"				"2" // base rejuv is 4
 				}
 				"residual heal duration"
 				{
 					"attribute_class"	"residual_heal_duration"
 					"value"				"2"
 				}
-				"reduce healing on indirect hit" "1" // base rejuv is 0.75
+//				"reduce healing on indirect hit" "1" // base rejuv is 0.75
 				"adjust burst healing when stacking"
 				{
 					"attribute_class"	"apply_heal_explosion_stacking_adjust"
@@ -42370,15 +42371,29 @@ Primary-Fire: Rip through those pesky foes!
 			{
 				"trail_effect"			"stunballtrail_red_crit"
 				"trail_effect_crit"		"critical_rocket_red"
-				"explosion_effect"		"tinyboom_explosion_simple_PARENT_red_crit"
-				"explosion_effect_crit"	"tinyboom_explosion_simple_PARENT_red_crit"
+				"explosion_effect"		"hurtheal_explosion_PARENT_red_tiny"
+				"explosion_effect_crit"	"hurtheal_explosion_PARENT_red_tiny_crit" // not sure if crit explosions actually work on heal grenades...
 			}
 			"visuals_blu"
 			{
 				"trail_effect"			"stunballtrail_blue_crit"
 				"trail_effect_crit"		"critical_rocket_blue"
-				"explosion_effect"		"tinyboom_explosion_simple_PARENT_blue_crit"
-				"explosion_effect_crit"	"tinyboom_explosion_simple_PARENT_blue_crit"
+				"explosion_effect"		"hurtheal_explosion_PARENT_blue_tiny"
+				"explosion_effect_crit"	"hurtheal_explosion_PARENT_blue_tiny_crit"
+			}
+			"visuals_grn"
+			{
+				"trail_effect"			"stunballtrail_green_crit"
+				"trail_effect_crit"		"critical_rocket_green"
+				"explosion_effect"		"hurtheal_explosion_PARENT_green_tiny"
+				"explosion_effect_crit"	"hurtheal_explosion_PARENT_green_tiny_crit"
+			}
+			"visuals_ylw"
+			{
+				"trail_effect"			"stunballtrail_yellow_crit"
+				"trail_effect_crit"		"critical_rocket_yellow"
+				"explosion_effect"		"hurtheal_explosion_PARENT_yellow_tiny"
+				"explosion_effect_crit"	"hurtheal_explosion_PARENT_yellow_tiny_crit"
 			}
 			"mouse_pressed_sound"		"#ui/item_heavy_gun_pickup.wav"
 			"drop_sound"				"#ui/item_heavy_gun_drop.wav"
@@ -54599,7 +54614,9 @@ Doesn't work with primaries that heal (technical reasons)"
 				// "hurtheal_explosion_PARENT_[team]_crit" - small heal explosion with crit particles (more wisps and electric sparks)
 				// "hurtheal_explosion_PARENT_[team]_large" - larger heal explosion, the rim and heal cross area increase in size while other particles stay the same.
 				// "hurtheal_explosion_PARENT_[team]_large_crit" - same added crit effects, but the electricity covers a larger area.
-				// "hurtheal_tracer_PARENT" healing bullet tracer. Contains team colors and crit effects.
+				// "hurtheal_explosion_PARENT_[team]_tiny" - a tiny variant of the heal explosion, similar to the normal tiny explosions used by many guns with a super low blast radius.
+				// "hurtheal_explosion_PARENT_[team]_tiny_crit" - same as above, but with crit effects.
+				// "hurtheal_tracer_PARENT" healing bullet tracer. Contains team colors and crit effects with suffixes "_[team]" then "_crit".
 			}
 			"visuals_red"
 			{
@@ -57043,6 +57060,7 @@ Note: Was a straight downgrade from stock. Reworked. -Clock"
 				"always draw tracer"				"1"
 				"punch angle mod mult hidden"		"0.5"
 				"punch angle is constant"			"1"
+				"custom falloff"					"0.3"
 			}
 			"attributes"
 			{
@@ -57063,13 +57081,8 @@ Note: Was a straight downgrade from stock. Reworked. -Clock"
 				}
 				"fire rate bonus"
 				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"0.25"
-				}
-				"hide_attrib_percentage"
-				{
 					"attribute_class"	"mult_postfiredelay"
-					"value"				"0.28"
+					"value"				"0.3"
 				}
 				"maxammo primary increased"		
 				{
@@ -61478,7 +61491,6 @@ I held the whole nation in awe with this comrade!"
 				"Revolutionary unique stat"				"1"
 				"Revolutionary unique stat 2"			"5"
 				"linked item id"						"4442"
-				"max health additive bonus"				"200"
 			}
 			"attributes" // You might ask, "Clock, what's the idea here?" A valid question. There's none. -Clock
 			{
@@ -63030,7 +63042,7 @@ use it to destroy your enemies!"
 			}
 			"name"						"TF_WEAPON_NADER_QUICKFIX"
 			"item_class"				"tf_weapon_heallauncher"
-			"show_in_armory"			"1"
+			"show_in_armory"			"0"
 			"item_slot"					"secondary"
 			"anim_slot"					"item1"
 
@@ -63043,10 +63055,10 @@ A 3-in-1 fireworks show, heal
 launcher, and legal advisor!"
 			"item_logname"				"Deginator"
 			"item_iconname"				"what"
-			"image_inventory"			"backpack\weapons\w_models\w_protonader_medic\w_protonader_medic"
-			"model_world"				"models\w_models\w_protonader.mdl"
-			"model_player"				"models\v_models\v_protonader_medic.mdl"
-			"extra_wearable" 			"models/player/items/nader_backpack.mdl"
+//			"image_inventory"			"backpack\weapons\w_models\w_protonader_medic\w_protonader_medic" // The model owner, Ms. Azi asked to be removed from KCOW. So i'm just going to assume that they wouldn't be pleased with the weapon's inclusion here.
+//			"model_world"				"models\w_models\w_protonader.mdl" // I'd normally just replace it... but I really don't have anything conveient and am honestly much too tired of all of this to do a model hack rn.
+//			"model_player"				"models\v_models\v_protonader_medic.mdl" // Normally I'd just assume ReValve asked or has some sort of go ahead, but honestly I have enough doubts about that to make me want to pull this from the pack.
+			"extra_wearable" 			"models/player/items/nader_backpack.mdl" // Maybe i'll ask Azi about it later. Always a possibility they just don't like Regay or somethin. https://gamebanana.com/mods/573309.
 			"attach_to_hands"			"2"
 			"used_by_classes"
 			{
@@ -84783,7 +84795,6 @@ Alt-Fire: Share Chocolate Bar with a friend!
 				"Mannly parallel"						"1"
 //				"item_meter_charge_type"				"1"
 				"min_viewmodel_offset"					"10 0 -10"
-//				"item_meter_charge_rate"				"10"									// This -should- reduce the cooldown time, but ends up doing nothing...
 				"meter_label"							"#TF_Sandwich"
 				"mod lunchbox critboostable"			"1"
 
@@ -84794,15 +84805,10 @@ Alt-Fire: Share Chocolate Bar with a friend!
 			}
 			"attributes"
 			{
-				"hide_attrib_percentage" //For some bizzaro reason, both of these need to be here?
+				"effect bar recharge rate increased" // This works now! -Clock
 				{
-					"attribute_class"	"mult_maxammo_grenades1"
-					"value"				"2"
-				}
-				"hide_attrib_percentage" //TO DO: Replace this with a faster recharge speed in the SDK update! (If this modpack can even survive that...) -Clock
-				{
-					"attribute_class"	"mult_maxammo_grenades2"
-					"value"				"2"
+					"attribute_class"	"effectbar_recharge_rate"
+					"value"				"0.5"
 				}
 				"lunchbox is supercharge"														// Essentially, with TF2C v2.1.3's critboostable sandvich, this is a new option to make Dalokohs actually work. Let's try thisss...
 				{
@@ -84939,15 +84945,20 @@ with an associate!
 					"attribute_class"	"mult_spread_scale"
 					"value"				"2"
 				}
+				"Reload time increased"
+				{
+					"attribute_class"	"mult_reload_time"
+					"value"				"1.15"
+				}
 				"rampup penalty"
 				{
 					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"0.75"
+					"value"				"0.7"
 				}
 				"hide_attrib_percentage"
 				{
 					"attribute_class"	"mod_custom_rampup"
-					"value"				"1.25"
+					"value"				"1.2"
 				}
 				"fire rate penalty"
 				{
@@ -86059,7 +86070,7 @@ Note: funni. -Clock" //But in all seriousness, I always thought the idea of the 
 //-----
 // (ID 4458) 	|	Celebration / Party Popper			|	Tags: (Secondary), (Fun), (Pyro)
 //-----
-// A rather unserious weapon, mainly because I found a cool particle effect :P -Clock's assistant
+// A rather unserious weapon, mainly because I made a cool particle effect while messing around :P -Clock's assistant
 //--------------------------------------------------
 		"4458"
 		{
@@ -86083,7 +86094,7 @@ Model by: usernamecipher on Gamebanana"
 			"item_logname"				"firework"
 			"item_quality"              "unique"
 			"image_inventory"			"backpack/weapons/c_models/c_firework_flare/c_firework_flare"
-			"model_world"				"models/weapons/c_models/c_firework_flare/c_firework_flare.mdl" // 	TO DO: resolve annoying missing texture error
+			"model_world"				"models/weapons/c_models/c_firework_flare/c_firework_flare.mdl"
 			"model_player"				"models/weapons/c_models/c_firework_flare/c_firework_flare.mdl"
 			"attach_to_hands"			"1"
 			"used_by_classes"
