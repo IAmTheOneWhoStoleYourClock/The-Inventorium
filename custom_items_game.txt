@@ -4638,7 +4638,6 @@ Must be scoped in for 1 sec before it can crit
 			{
 				"Mannly weapon"							"1"
 				"Heavily modified"						"1"
-				"custom falloff"						"0.85"
 			}
 			"attributes" //Taken from anti-mann, because its textures are broken. -Clock
 			{
@@ -4666,11 +4665,6 @@ Must be scoped in for 1 sec before it can crit
 				{
 					"attribute_class"	"mult_maxammo_primary"
 					"value"				"0.4"
-				}
-				"hide_attrib_percentage"
-				{
-					"attribute_class"	"mult_falloff_distance"
-					"value"				"2"
 				}
 				"scoped firerate penalty"
 				{
@@ -5659,7 +5653,9 @@ Winner: Most Backs Stabbed 1968"
 				"health regen"							"3"
 				"health from packs increased"			"1.3"
 				"fire rate penalty"						"1.35"
-				"cloak regen rate decreased"			"0.5"
+				"medigun healing received penalty"		"0.5"
+				"dispenser healing received penalty"	"0.5"
+//				"mult cloak meter regen rate"			"0.5" // sadly doesn't seem to work on knives...
 //				"healing received bonus"				"1.35"
 //				"deploy time increased"					"1.4"
 			}
@@ -8219,15 +8215,13 @@ Note: A bad idea made manifest. -Clock"
 			"propername"				"1"
 			"item_slot"					"primary"
 			"anim_slot"					"secondary"
-			"item_name"					"Perun" //Based on the old Kievan Rus deity of the same name, not the Argentine dictator. -Clock
+			"item_name"					"Perun" // Based on the old Kievan Rus deity of the same name, not the Argentine dictator. -Clock
 			"item_name_color"			"218 165 32 255"
 			"item_type_name"			"#TF_Weapon_Shotgun"
 			"item_description"			"
 Press 4 to switch to your grenades!
 
-“You will go out with bang.”
-
-Note: Nerfed and made less generic."
+“Either way, they're going out with a bang.”"
 			"item_logname" 				"kick_ass_and_chew_sandvich"
 			"item_iconname" 			"Perun"
 			"item_quality"              "unique"
@@ -8247,11 +8241,12 @@ Note: Nerfed and made less generic."
 			"static_attrs"
 			{
 				"Mannly weapon"							"1"
+				"Heavily modified"						"1"
 				"nade bonus"							"1"
 				"class select override vcd"				"taunt02"
 				"linked item id"						"12733"
 			}
-			"attributes" //This weapon has gotten so many nerfs... Deserved nerfs, but this is way weaker than its original incarnation
+			"attributes" // This weapon has gotten so many nerfs... Deserved nerfs, and definately not a CV-47 level of nerf, but this is way weaker than its original incarnation
 			{
 //				"damage bonus" //About 120 dmg point blank
 //				{
@@ -8318,7 +8313,7 @@ Note: Nerfed and made less generic."
 			"item_name"					"Spell: Rocket Punch"
 			"item_name_color"			"218 165 32 255"
 			"item_type_name"			"Spellbook Magazine"
-			"item_description"			"Summons a flying boxing glove for a long range high knockbak punch
+			"item_description"			"Summons a flying boxing glove for a long range high knockback punch
 
 “I do not need bullet
 to hit you from far away!”
@@ -8401,7 +8396,7 @@ Note: Damage nerfed, but given a knockback gimmick. -Clock"
 				"blast dmg to self increased" //Allowed
 				{
 					"attribute_class"	"blast_dmg_to_self"
-					"value"	            "100"
+					"value"	            "10"
 				}
 				"blast splash damage decreased"
 				{
@@ -8422,6 +8417,11 @@ Note: Damage nerfed, but given a knockback gimmick. -Clock"
 				{
 					"attribute_class"	"add_ammo_on_kill"
 					"value"				"0.35"
+				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mult_spread_scale"
+					"value"				"0"
 				}
 			}
 			"visuals"
@@ -19102,23 +19102,23 @@ And you won't be screaming much longer!"
 				"sound_burst"			"Weapon_RPG_DirectHit.SingleCrit"
 				"sound_reload"			"Weapon_RPG.WorldReload"
 				"sound_special1"		"Weapon_RPG_DirectHit.Explode"
-				"explosion_effect"		"tinyboom_explosion_PARENT" // change to a medium explosion?
+				"explosion_effect"		"tinyboom_explosion_medium_PARENT"
 			}
 			"visuals_red"
 			{
-				"explosion_effect_crit"	"tinyboom_explosion_PARENT_red_crit"
+				"explosion_effect_crit"	"tinyboom_explosion_medium_PARENT_red_crit"
 			}
 			"visuals_blu"
 			{
-				"explosion_effect_crit"	"tinyboom_explosion_PARENT_blue_crit"
+				"explosion_effect_crit"	"tinyboom_explosion_medium_PARENT_blue_crit"
 			}
 			"visuals_grn"
 			{
-				"explosion_effect_crit"	"tinyboom_explosion_PARENT_green_crit"
+				"explosion_effect_crit"	"tinyboom_explosion_medium_PARENT_green_crit"
 			}
 			"visuals_ylw"
 			{
-				"explosion_effect_crit"	"tinyboom_explosion_PARENT_yellow_crit"
+				"explosion_effect_crit"	"tinyboom_explosion_medium_PARENT_yellow_crit"
 			}
 			"mouse_pressed_sound"		"#ui/item_heavy_gun_pickup.wav"
 			"drop_sound"				"#ui/item_heavy_gun_drop.wav"
@@ -21736,24 +21736,24 @@ enough bullet for entire coward team!"
 				"NOWP weapon"							"1"
 				"class select override slot"			"secondary"								// TF2C v2.2.0 - Like with other similar items, if you have this equipped, use another animation slot for class select instead!!
 			}
-			"attributes" //TO DO: If an effect bar recharge rate on wearer ever gets added, give it to this! -Clock
+			"attributes" // TO DO: If an effect bar recharge rate on wearer ever gets added, give it to this! -Clock
 			{
 				"maxammo secondary increased"
 				{
 					"attribute_class"	"mult_maxammo_secondary"
 					"value"				"2"
 				}
-				"hide_attrib_percentage" //After some thought, i've decided to overrule this. 2 Sandviches all the way. -Clock
+				"hide_attrib_percentage" // After some thought, i've decided to overrule this. 2 Sandviches all the way. -Clock
 				{
 					"attribute_class"	"mult_maxammo_grenades1"
 					"value"				"2"
 				}
-				"hide_attrib_percentage" //Silent brick buff, brick heavy is real! -Clock
+				"hide_attrib_percentage" // No more breavy ;( (Although tbf the ammo on kill benifits the brick more than most.)
 				{
 					"attribute_class"	"mult_maxammo_grenades2"
-					"value"				"4"
+					"value"				"2"
 				}
-				"hide_attrib_additive" // I don't think this works, sadly. Shame. -Clock
+				"hide_attrib_additive" // I don't think this works, even with the changes. Shame. -Clock
 				{
 					"attribute_class"	"effectbar_recharge_rate"
 					"value"				"-60"
@@ -34239,6 +34239,23 @@ Let this be the hair o' the dog that bit ye."
 			{
 				"sound_single_shot"		"Weapon_CyclopsBouncer.Shoot"
 				"sound_burst"			"Weapon_CyclopsBouncer.ShootCrit"
+				"explosion_effect"		"tinyboom_explosion_medium_PARENT"
+			}
+			"visuals_red"
+			{
+				"explosion_effect_crit"	"tinyboom_explosion_medium_PARENT_red_crit"
+			}
+			"visuals_blu"
+			{
+				"explosion_effect_crit"	"tinyboom_explosion_medium_PARENT_blue_crit"
+			}
+			"visuals_grn"
+			{
+				"explosion_effect_crit"	"tinyboom_explosion_medium_PARENT_green_crit"
+			}
+			"visuals_ylw"
+			{
+				"explosion_effect_crit"	"tinyboom_explosion_medium_PARENT_yellow_crit"
 			}
 			"mouse_pressed_sound"		"#ui/item_heavy_gun_pickup.wav"
 			"drop_sound"				"#ui/item_heavy_gun_drop.wav"
@@ -37494,7 +37511,7 @@ The mind's the limit."
 			"item_name"					"Hornet's Nest"
 			"item_type_name"			"#TF_Weapon_RocketLauncher"
 			"item_description"			"
-Stings like a bee!
+“How many bees does it take to make a swarm?”
 
 Note: Actually let you use this as a real weapon. -Clock"
 			"item_logname"				"hornet"
@@ -42172,7 +42189,7 @@ Primary-Fire: Rip through those pesky foes!
 				"Projectile speed increased hidden"		"1.5" // base rejuv has 1.2x
 //				"grenade no spin"						"1"
 //				"mod max primary clip override"			"-1"
-//				"no explosion falloff hidden"			"1" // make damage consistent (IF HEAL GRENADES CARED)
+//				"no explosion falloff hidden"			"1" // make damage consistent (IF HEAL GRENADES CARED). Also maybe not the best idea for this?
 				"custom rampup"							"1.5"
 				"no damage falloff over distance"		"1"
 //				"add condition on hit weapon"			"128 1"
@@ -42194,7 +42211,7 @@ Primary-Fire: Rip through those pesky foes!
 				"rampup bonus"
 				{
 					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"2"
+					"value"				"1.5"
 				}
 				"hide_attrib_percentage"
 				{
@@ -42234,7 +42251,7 @@ Primary-Fire: Rip through those pesky foes!
 				"heal rate penalty"
 				{
 					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"0.15"
+					"value"				"0.2"
 				}
 				"fuse reduction healgrenade"
 				{
@@ -42249,18 +42266,18 @@ Primary-Fire: Rip through those pesky foes!
 				"hide_attrib_percentage"
 				{
 					"attribute_class"	"mult_reload_time"
-					"value"				"2"
+					"value"				"2.1"
 				}
 				"hide_attrib_percentage"
 				{
 					"attribute_class"	"mult_explosion_splash_damage"
 					"value"				"2"
 				}
-				"hide_attrib_additive"													
-				{
-					"attribute_class"	"mult_spread_scale"									
-					"value"				"0.0725"									
-				}
+//				"hide_attrib_additive"													
+//				{
+//					"attribute_class"	"mult_spread_scale"									
+//					"value"				"0.0725"									
+//				}
 				"mod no uber"
 				{
 					"attribute_class"	"DISPLAY_ONLY" // sadly, it seems as if uber on this is an issue. Explosion radius effects the area of the uber generator for some reason. Callous callus also has this issue, but it's a tad less noticable there.
@@ -42332,7 +42349,7 @@ Primary-Fire: Rip through those pesky foes!
 					"attribute_class"	"residual_heal_duration"
 					"value"				"2"
 				}
-//				"reduce healing on indirect hit" "1" // base rejuv is 0.75
+				"reduce healing on indirect hit" "0.75" // base rejuv is 0.75
 				"adjust burst healing when stacking"
 				{
 					"attribute_class"	"apply_heal_explosion_stacking_adjust"
@@ -42369,29 +42386,29 @@ Primary-Fire: Rip through those pesky foes!
 			}
 			"visuals_red"
 			{
-				"trail_effect"			"stunballtrail_red_crit"
-				"trail_effect_crit"		"critical_rocket_red"
+				"trail_effect"			"hurtheal_trail_PARENT_red"
+				"trail_effect_crit"		"stunballtrail_red_crit"
 				"explosion_effect"		"hurtheal_explosion_PARENT_red_tiny"
 				"explosion_effect_crit"	"hurtheal_explosion_PARENT_red_tiny_crit" // not sure if crit explosions actually work on heal grenades...
 			}
 			"visuals_blu"
 			{
-				"trail_effect"			"stunballtrail_blue_crit"
-				"trail_effect_crit"		"critical_rocket_blue"
+				"trail_effect"			"hurtheal_trail_PARENT_blue"
+				"trail_effect_crit"		"stunballtrail_blue_crit" // "critical_rocket_blue"
 				"explosion_effect"		"hurtheal_explosion_PARENT_blue_tiny"
 				"explosion_effect_crit"	"hurtheal_explosion_PARENT_blue_tiny_crit"
 			}
 			"visuals_grn"
 			{
-				"trail_effect"			"stunballtrail_green_crit"
-				"trail_effect_crit"		"critical_rocket_green"
+				"trail_effect"			"hurtheal_trail_PARENT_green"
+				"trail_effect_crit"		"stunballtrail_green_crit"
 				"explosion_effect"		"hurtheal_explosion_PARENT_green_tiny"
 				"explosion_effect_crit"	"hurtheal_explosion_PARENT_green_tiny_crit"
 			}
 			"visuals_ylw"
 			{
-				"trail_effect"			"stunballtrail_yellow_crit"
-				"trail_effect_crit"		"critical_rocket_yellow"
+				"trail_effect"			"hurtheal_trail_PARENT_yellow"
+				"trail_effect_crit"		"stunballtrail_yellow_crit"
 				"explosion_effect"		"hurtheal_explosion_PARENT_yellow_tiny"
 				"explosion_effect_crit"	"hurtheal_explosion_PARENT_yellow_tiny_crit"
 			}
@@ -42990,7 +43007,9 @@ Rumor has it Santa has a special blade for those who are especially Naughty."
 			"item_description"			"Alt-Fire: Rush toward your enemies! (5s)
 (Haste + Marked for Death)
 
-A steady hand and good aim is all you need. However sometimes, a bit of tactical lunacy does the trick just as well."
+A steady hand and good aim is all you need. However sometimes, a bit of tactical lunacy does the trick just as well.
+
+Note: For some reason the UI element won't show up... -Clock"
 			"item_logname"				"rusher_vest"
 			"item_iconname"				""
 			"image_inventory"			"backpack\player\w_sniper_vest\w_sniper_vest"
@@ -43005,6 +43024,8 @@ A steady hand and good aim is all you need. However sometimes, a bit of tactical
 			{
 				"ReValve weapon"						"1"
 				"max health additive bonus"				"25"
+				"meter_label"							"SPRINT"
+				"linked item id"						"12399"
 			}
 			"attributes"
 			{
@@ -44666,12 +44687,12 @@ Model by Ertz™ and Captain Kibbleknight on Steam" //https://steamcommunity.com
 				"damage penalty"
 				{
 					"attribute_class"	"mult_dmg"
-					"value"				"0.7"
+					"value"				"0.5"
 				}
 				"fire rate penalty"
 				{
 					"attribute_class"	"mult_postfiredelay"
-					"value"				"1.25"
+					"value"				"1.2"
 				}
 				"Blast radius decreased" //Slightly lower than the cyclops because this is extremely spammy. -Clock
 				{
@@ -44820,23 +44841,23 @@ I tired of having a weapon with a measly single barrel!"
 				"sound_special3"		"Weapon_LochnLoad.SingleCrit"
 				"sound_special1"		"Weapon_AirBurster.Explode"
 				"sound_reload"			"Weapon_GrenadeLauncher.WorldReload"
-				"explosion_effect"		"explosion_shrapnel_PARENT"
+				"explosion_effect"		"tinyboom_explosion_medium_PARENT" // "explosion_shrapnel_PARENT"
 			}
 			"visuals_red"
 			{
-				"explosion_effect_crit"	"explosion_shrapnel_PARENT_red_crit"
+				"explosion_effect_crit"	"tinyboom_explosion_medium_PARENT_red_crit" // "explosion_shrapnel_PARENT_red_crit"
 			}
 			"visuals_blu"
 			{
-				"explosion_effect_crit"	"explosion_shrapnel_PARENT_blue_crit"
+				"explosion_effect_crit"	"tinyboom_explosion_medium_PARENT_blue_crit" // "explosion_shrapnel_PARENT_blue_crit"
 			}
 			"visuals_grn"
 			{
-				"explosion_effect_crit"	"explosion_shrapnel_PARENT_green_crit"
+				"explosion_effect_crit"	"tinyboom_explosion_medium_PARENT_green_crit" // "explosion_shrapnel_PARENT_green_crit"
 			}
 			"visuals_ylw"
 			{
-				"explosion_effect_crit"	"explosion_shrapnel_PARENT_yellow_crit"
+				"explosion_effect_crit"	"tinyboom_explosion_medium_PARENT_yellow_crit" // "explosion_shrapnel_PARENT_yellow_crit"
 			}
 			"mouse_pressed_sound"		"#ui/grenade_launcher_alt_pickup.wav"
 			"drop_sound"				"#ui/item_heavy_gun_drop.wav"
@@ -45077,7 +45098,7 @@ Box mags are for wimps!" // Mag Monopoly: Shares ammo with primary
 				"Reload time increased"
 				{
 					"attribute_class"	"mult_reload_time"
-					"value"				"1.75"
+					"value"				"1.5"
 				}
 //				"fire rate penalty"
 //				{
@@ -45225,18 +45246,33 @@ Who ripped this off an artillery gun!?"
 				"sound_burst"			"Weapon_Artillery_Cannon.SingleCrit"
 //				"sound_special1"		"Weapon_AirBurster.Explode"
 				"sound_reload"			"Weapon_GrenadeLauncher.WorldReload"
-				"explosion_effect"		"explosion_shrapnel_PARENT"
+				"explosion_effect"		"tinyboom_explosion_medium_PARENT" // "explosion_shrapnel_PARENT"
 			}
 			"visuals_red"
 			{
+				"explosion_effect_crit"	"tinyboom_explosion_medium_PARENT_red_crit"
 				"trail_effect"			"stunballtrail_red"
 				"trail_effect_crit"		"stunballtrail_red_crit"
 			}
 			"visuals_blu"
 			{
+				"explosion_effect_crit"	"tinyboom_explosion_medium_PARENT_blue_crit"
 				"trail_effect"			"stunballtrail_blue"
-				"trail_effect_crit"		"stunballtrail_red_crit"
+				"trail_effect_crit"		"stunballtrail_blue_crit"
 			}
+			"visuals_grn"
+			{
+				"explosion_effect_crit"	"tinyboom_explosion_medium_PARENT_green_crit"
+				"trail_effect"			"stunballtrail_green"
+				"trail_effect_crit"		"stunballtrail_green_crit"
+			}
+			"visuals_ylw"
+			{
+				"explosion_effect_crit"	"tinyboom_explosion_medium_PARENT_yellow_crit"
+				"trail_effect"			"stunballtrail_yellow"
+				"trail_effect_crit"		"stunballtrail_yellow_crit"
+			}
+			
 			"mouse_pressed_sound"		"#ui/grenade_launcher_alt_pickup.wav"
 			"drop_sound"				"#ui/item_heavy_gun_drop.wav"
 		}
@@ -45668,9 +45704,7 @@ MORE BULLETS BABE!"
 			"item_name"					"CV-47"
 			"item_type_name"			"Assault rifle"
 			"item_description"			"
-This weapon is dedicated to the efforts of the Counter Strike: Classic Offensive team.
-
-Note: Dragged this thing down from atmosphere. -Clock"
+This weapon is dedicated to the efforts of the Counter Strike: Classic Offensive team."
 			"item_logname"				"ak-47"
 			"item_iconname"				"SMG"
 			"image_inventory"			"backpack\weapons\w_models\w_cv47\w_cv47"
@@ -45695,7 +45729,7 @@ Note: Dragged this thing down from atmosphere. -Clock"
 				"class select override vcd"				"taunt02"
 				"scattergun no reload single"			"1"
 			}
-			"attributes" // After all of this time, I can safely say this was absolutely the MOST overpowered weapon in any of these packs, and I don't think it was even close. I've QUARTERED its damage and made headshot minicrits and I STILL think it might be too good!
+			"attributes" // After all of this time, I can safely say this was absolutely the MOST overpowered weapon in any of these packs, and I don't think it was even close. I've QUARTERED its damage and made headshots minicrit and I STILL think it might be too good!
 			{
 				"can headshot"							// Why not lmao :)
 				{
@@ -45873,9 +45907,13 @@ Note: Buffed significantly. -Clock"
 				"trail_effect"			"rockettrail_firey"
 				// Noticed a bit of an issue in the pack where a lot of explosions with super small hitboxes still used large explosion effects or resorted to coilgun explosions, so here's some generic ones.
 				// Effects are present in tinyboom.pcf
-				// "tinyboom_explosion_PARENT" - small shrapnel explosion, like a smaller version of the AA gun explosion.
+				// "tinyboom_explosion_PARENT" - small shrapnel explosion, like a smaller version of the AA gun explosion. Most accurate with -85% explosion radius.
 				// "tinyboom_explosion_simple_PARENT" - small flash, like a tiny version of the base TF2c beta explosion flash.
-				// both have team-colored crit variants with the suffix "_[team]_crit"
+				// "tinyboom_explosion_medium_PARENT" - a medium sized explosion, about twice the radius of the other effect. Most accurate with -70% explosion radius.
+				// "tinyboom_explosion_medium_simple_PARENT" - version with smoke and sparks removed to look more similar to base explosion effects. Very circular-looking.
+				// all have team-colored crit variants with the suffix "_[team]_crit"
+				// Note: medium simple explosion is currently unused because all weapons with medium explosions are impactful enough to warrant the full effect...
+				// keep an eye out for any the simple one would work for. -Clock's assistant
 			}
 			"visuals_red"
 			{
@@ -46661,8 +46699,28 @@ Ride the wind that brings the rain"
 				"sound_single_shot"		"Weapon_Tempest.Single"
 				"sound_burst"			"Weapon_Tempest.SingleCrit"
 				"sound_reload"			"Weapon_DoubleBarrel.WorldReload"
-				"trail_effect"			"sentry_rocket_firey"
-				"explosion_effect"		"coilgun_boom_red"
+				"trail_effect"			"tinyboom_trail_PARENT" // "sentry_rocket_firey"
+				"explosion_effect"		"tinyboom_explosion_PARENT" // "coilgun_boom_red"
+			}
+			"visuals_red"
+			{
+				"trail_effect_crit"		"tinyboom_trail_PARENT_red_crit"
+				"explosion_effect_crit"	"tinyboom_explosion_PARENT_red_crit"
+			}
+			"visuals_blu"
+			{
+				"trail_effect_crit"		"tinyboom_trail_PARENT_blue_crit"
+				"explosion_effect_crit"	"tinyboom_explosion_PARENT_blue_crit"
+			}
+			"visuals_grn"
+			{
+				"trail_effect_crit"		"tinyboom_trail_PARENT_green_crit"
+				"explosion_effect_crit"	"tinyboom_explosion_PARENT_green_crit"
+			}
+			"visuals_ylw"
+			{
+				"trail_effect_crit"		"tinyboom_trail_PARENT_yellow_crit"
+				"explosion_effect_crit"	"tinyboom_explosion_PARENT_yellow_crit"
 			}
 			"mouse_pressed_sound"		"#ui/doublebarrel_alt_pickup.wav"
 			"drop_sound"				"#ui/doublebarrel_alt_drop.wav"
@@ -47306,7 +47364,7 @@ Note: Changed to be more like NOWP's loose cannon. -Clock"
 				"blast radius decreased" // extra nerf added by Inventorium for being a bit too spammy
 				{
 					"attribute_class"	"mult_explosion_radius"
-					"value"				"0.75"
+					"value"				"0.8"
 				}
 			}
 			"static_attrs"
@@ -49290,7 +49348,7 @@ arrrogance was released.
 				// choose whichever effect works better. Cow Mangler explosions look nicer and make more sense hitting enemies, but they need to hit a wall to look right and have no midair explosion variant.
 //				"explosion_effect"		"medic_explosion_PARENT_red"
 				"explosion_effect"		"hurtheal_explosion_PARENT_red"
-				"explosion_effect"		"hurtheal_explosion_PARENT_red_crit"
+				"explosion_effect_crit"	"hurtheal_explosion_PARENT_red_crit"
 //				"explosion_effect"		"drg_cow_explosioncore_normal"
 //				"explosion_effect_crit"	"coilgun_boom_red"
 			}
@@ -49299,21 +49357,21 @@ arrrogance was released.
 				"trail_effect"			"stunballtrail_blue_timer"
 				"trail_effect_crit"		"stunballtrail_blue_crit"
 				"explosion_effect"		"hurtheal_explosion_PARENT_blue"
-				"explosion_effect"		"hurtheal_explosion_PARENT_blue_crit"
+				"explosion_effect_crit"	"hurtheal_explosion_PARENT_blue_crit"
 			}
 			"visuals_grn"
 			{
 				"trail_effect"			"stunballtrail_green_timer"
 				"trail_effect_crit"		"stunballtrail_green_crit"
 				"explosion_effect"		"hurtheal_explosion_PARENT_green"
-				"explosion_effect"		"hurtheal_explosion_PARENT_green_crit"
+				"explosion_effect_crit"	"hurtheal_explosion_PARENT_green_crit"
 			}
 			"visuals_ylw"
 			{
 				"trail_effect"			"stunballtrail_yellow_timer"
 				"trail_effect_crit"		"stunballtrail_yellow_crit"
 				"explosion_effect"		"hurtheal_explosion_PARENT_yellow"
-				"explosion_effect"		"hurtheal_explosion_PARENT_yellow_crit"
+				"explosion_effect_crit"	"hurtheal_explosion_PARENT_yellow_crit"
 			}
 			"mouse_pressed_sound"		"#ui/doublebarrel_alt_pickup.wav"
 			"drop_sound"				"#ui/doublebarrel_alt_drop.wav"
@@ -49939,15 +49997,23 @@ Surprise lad!"
 				"sound_special3"		"Weapon_LochnLoad.SingleCrit"
 				"sound_special1"		"Weapon_AirBurster.Explode"
 				"sound_reload"			"Weapon_GrenadeLauncher.WorldReload"
-				"explosion_effect"		"explosion_shrapnel_PARENT"
+				"explosion_effect"		"tinyboom_explosion_medium_PARENT" // "explosion_shrapnel_PARENT"
 			}
 			"visuals_red"
 			{
-				"explosion_effect_crit"	"explosion_shrapnel_PARENT_red_crit"
+				"explosion_effect_crit"	"tinyboom_explosion_medium_PARENT_red_crit"
 			}
 			"visuals_blu"
 			{
-				"explosion_effect_crit"	"explosion_shrapnel_PARENT_blue_crit"
+				"explosion_effect_crit"	"tinyboom_explosion_medium_PARENT_blue_crit"
+			}
+			"visuals_grn"
+			{
+				"explosion_effect_crit"	"tinyboom_explosion_medium_PARENT_green_crit"
+			}
+			"visuals_ylw"
+			{
+				"explosion_effect_crit"	"tinyboom_explosion_medium_PARENT_yellow_crit"
 			}
 			"mouse_pressed_sound"		"#ui/grenade_launcher_alt_pickup.wav"
 			"drop_sound"				"#ui/item_heavy_gun_drop.wav"
@@ -53043,7 +53109,23 @@ Note: Buffed overall. -Clock"
 				"sound_burst"			"Weapon_FlechetteGun.SingleCrit"
 				"sound_reload"			"Weapon_StickyBombLauncher.WorldReload"
 				"tracer_effect"			"aagun_tracer_PARENT"
-				"explosion_effect"		"explosion_shrapnel_PARENT"
+				"explosion_effect"		"explosion_shrapnel_PARENT" // "tinyboom_explosion_medium_PARENT" new effect theoreticallyfits better with the radius, but it also just looks worse on tihs :/
+			}
+			"visuals_red"
+			{
+				"explosion_effect_crit"	"explosion_shrapnel_PARENT_red_crit"
+			}
+			"visuals_blu"
+			{
+				"explosion_effect_crit"	"explosion_shrapnel_PARENT_blue_crit"
+			}
+			"visuals_grn"
+			{
+				"explosion_effect_crit"	"explosion_shrapnel_PARENT_green_crit"
+			}
+			"visuals_ylw"
+			{
+				"explosion_effect_crit"	"explosion_shrapnel_PARENT_yellow_crit"
 			}
 			"mouse_pressed_sound"		"#ui/stickybomb_alt_pickup.wav"
 			"drop_sound"				"#ui/stickybomb_alt_drop.wav"
@@ -54620,7 +54702,7 @@ Doesn't work with primaries that heal (technical reasons)"
 			}
 			"visuals_red"
 			{
-				"trail_effect"			"healshot_trail_red"
+				"trail_effect"			"hurtheal_trail_PARENT_red"
 				"trail_effect_crit"		"coilgun_trail_crit_red"
 //				"explosion_effect"		"drg_cow_explosioncore_normal"
 				"explosion_effect"		"hurtheal_explosion_PARENT_red_large" // a custom explosion effect, made specifically for explosions which heal teammates AND deal damage. This is the large version.
@@ -54628,21 +54710,21 @@ Doesn't work with primaries that heal (technical reasons)"
 			}
 			"visuals_blu"
 			{
-				"trail_effect"			"healshot_trail_blue"
+				"trail_effect"			"hurtheal_trail_PARENT_blue" // "healshot_trail_blue"
 				"trail_effect_crit"		"coilgun_trail_crit_blue"
 				"explosion_effect"		"hurtheal_explosion_PARENT_blue_large"
 				"explosion_effect_crit"	"hurtheal_explosion_PARENT_blue_large_crit"
 			}
 			"visuals_grn"
 			{
-				"trail_effect"			"healshot_trail_green"
+				"trail_effect"			"hurtheal_trail_PARENT_green"
 				"trail_effect_crit"		"coilgun_trail_crit_green"
 				"explosion_effect"		"hurtheal_explosion_PARENT_green_large"
 				"explosion_effect_crit"	"hurtheal_explosion_PARENT_green_large_crit"
 			}
 			"visuals_ylw"
 			{
-				"trail_effect"			"healshot_trail_yellow"
+				"trail_effect"			"hurtheal_trail_PARENT_yellow"
 				"trail_effect_crit"		"coilgun_trail_crit_yellow"
 				"explosion_effect"		"hurtheal_explosion_PARENT_yellow_large"
 				"explosion_effect_crit"	"hurtheal_explosion_PARENT_yellow_large_crit"
@@ -59333,7 +59415,23 @@ Model by Tree and Segab on Steam" //Yes, i'm well aware how generic and cheesy t
 				"sound_single_shot"		"Weapon_Magnum_GL.Single"
 				"sound_burst"			"Weapon_Magnum_GL.SingleCrit"
 				"tracer_effect"			"aagun_tracer_PARENT"
-				"explosion_effect"		"explosion_shrapnel_PARENT"
+				"explosion_effect"		"tinyboom_explosion_medium_PARENT" // "explosion_shrapnel_PARENT"
+			}
+			"visuals_red"
+			{
+				"explosion_effect_crit"	"tinyboom_explosion_medium_PARENT_red_crit"
+			}
+			"visuals_blu"
+			{
+				"explosion_effect_crit"	"tinyboom_explosion_medium_PARENT_blue_crit"
+			}
+			"visuals_grn"
+			{
+				"explosion_effect_crit"	"tinyboom_explosion_medium_PARENT_green_crit"
+			}
+			"visuals_ylw"
+			{
+				"explosion_effect_crit"	"tinyboom_explosion_medium_PARENT_yellow_crit"
 			}
 			"mouse_pressed_sound"		"#ui/grenade_launcher_alt_pickup.wav"
 			"drop_sound"				"#ui/item_heavy_gun_drop.wav"
@@ -67735,7 +67833,7 @@ Ride the wind that brings the rain"
 			"item_name"					"Hornet's Nest"
 			"item_type_name"			"#TF_Weapon_RocketLauncher"
 			"item_description"			"
-Stings like a bee!"
+“How many bees does it take to make a swarm?”"
 			"item_logname"				"hornetsnest"
 			"item_iconname"				"hornetsnest"
 			"image_inventory"			"backpack/hornetsnest/w_hornetsnest"
@@ -67919,11 +68017,11 @@ Stings like a bee!"
 					"attribute_class"	"mult_dmg_vs_buildings"
 					"value"	            "1.25"
 				}
-//				"Reload time decreased"
-//				{
-//					"attribute_class"	"mult_reload_time"
-//					"value"	            "0.85"
-//				}
+				"Reload time decreased"
+				{
+					"attribute_class"	"mult_reload_time"
+					"value"	            "0.9"
+				}
 				"clip size penalty"
 				{
 					"attribute_class"	"mult_clipsize"
@@ -67956,7 +68054,23 @@ Stings like a bee!"
 				"sound_reload"			"Weapon_LawLauncher.WorldReload"
 				"sound_special1"		"Weapon_SteelSlayer.Explode"
 
-				"trail_effect"			"sentry_rocket" // different trail effect to make it more noticable, as this rocket is a bit different to fight.
+				"trail_effect"			"sentry_rocket" // different trail effect to make it more noticable, as this rocket is a bit different to fight. The extra dark smoke also just looks cool.
+			}
+			"visuals_red"
+			{
+				"trail_effect_crit"		"critical_rocket_red" // somehow these were missing?
+			}
+			"visuals_blu"
+			{
+				"trail_effect_crit"		"critical_rocket_blue"
+			}
+			"visuals_grn"
+			{
+				"trail_effect_crit"		"critical_rocket_green"
+			}
+			"visuals_ylw"
+			{
+				"trail_effect_crit"		"critical_rocket_yellow"
 			}
 			"mouse_pressed_sound"		"#ui/item_heavy_gun_pickup.wav"
 			"drop_sound"				"#ui/item_heavy_gun_drop.wav"
@@ -69112,7 +69226,7 @@ Go on and bury the hatchet; with the upcoming weather and enemies running about,
 			"visuals"
 			{
 				"sound_reload"			"Weapon_GrenadeLauncher.WorldReload"
-				"explosion_effect"		"tinyboom_explosion_PARENT" // given a smal lexplosion effect to match the explosion size
+				"explosion_effect"		"tinyboom_explosion_medium_PARENT"
 				"animation_replacement"
 				{
 					"ACT_RELOAD_START"		"ACT_PRIMARY_RELOAD_START_2"
@@ -69122,19 +69236,19 @@ Go on and bury the hatchet; with the upcoming weather and enemies running about,
 			}
 			"visuals_red"
 			{
-				"explosion_effect_crit"	"tinyboom_explosion_PARENT_red_crit"
+				"explosion_effect_crit"	"tinyboom_explosion_medium_PARENT_red_crit"
 			}
 			"visuals_blu"
 			{
-				"explosion_effect_crit"	"tinyboom_explosion_PARENT_blue_crit"
+				"explosion_effect_crit"	"tinyboom_explosion_medium_PARENT_blue_crit"
 			}
 			"visuals_grn"
 			{
-				"explosion_effect_crit"	"tinyboom_explosion_PARENT_green_crit"
+				"explosion_effect_crit"	"tinyboom_explosion_medium_PARENT_green_crit"
 			}
 			"visuals_ylw"
 			{
-				"explosion_effect_crit"	"tinyboom_explosion_PARENT_yellow_crit"
+				"explosion_effect_crit"	"tinyboom_explosion_medium_PARENT_yellow_crit"
 			}
 			"mouse_pressed_sound"		"#ui/item_heavy_gun_pickup.wav"
 			"drop_sound"				"#ui/item_heavy_gun_drop.wav"
@@ -71335,6 +71449,7 @@ Note: Probably doesn't need to exist but why not ig. -Clock"
 			"item_name"					"Grizzly Grabbers"
 			"item_type_name"			"Bear Traps"
 			"item_description"			"Hyper-MfD faces ranged mini-crits and melee crits!
+Debuff is cleared early on successful hit
 
 Any Trapper worth their salt knows how to use their traps as make-shift gloves." // all weapons using Hyper-MfD should say what it does. It's a really niche stat.
 			"item_logname"				"beartrap"
@@ -71353,7 +71468,7 @@ Any Trapper worth their salt knows how to use their traps as make-shift gloves."
 				"Heavily modified"						"1"
 //				"outline target text"					"5"
 				"fire rate burst"						"0.035"
-				"melee range multiplier"				"1.25"
+				"melee range multiplier"				"1.35"
 				"melee bounds multiplier"				"1.25"
 			}
 			"attributes"
@@ -71361,27 +71476,42 @@ Any Trapper worth their salt knows how to use their traps as make-shift gloves."
 				"damage bonus"
 				{
 					"attribute_class"	"mult_dmg"
-					"value"				"1.35"
+					"value"				"1.4"
 				}
 				"bleeding duration"
 				{
 					"attribute_class"	"bleeding_duration"
 					"value" 			"4"
 				}
+//				"speed on hit with time"
+//				{
+//					"attribute_class"	"DISPLAY_ONLY"
+//					"value" 			"2"
+//				}
+//				"hide_attrib_percentage"
+//				{
+//					"attribute_class"	"add_onhit_addcond_self_weapon"
+//					"value" 			"32 20"
+//				}
 				"delayed melee hit"
 				{
 					"attribute_class"	"set_burstfire"
-					"value" 			"11"
+					"value" 			"10"
 				}
-				"super mfd during use DISPLAY"
+//				"super mfd during use DISPLAY" // supposed to encourage sneaking up on people and letting the players you attack parry you with their melee, but it's far too punishing. -Clock's assistant
+//				{
+//					"attribute_class"	"DISPLAY_ONLY"
+//					"value" 			"1"
+//				}
+//				"add condition on swing"
+//				{
+//					"attribute_class"	"add_onswing_addcond"
+//					"value" 			"116 0.8"
+//				}
+				"increased damage taken while active" //Replaced with this for now, even though it's less exciting.
 				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value" 			"1"
-				}
-				"add condition on swing"
-				{
-					"attribute_class"	"add_onswing_addcond"
-					"value" 			"116 0.75"
+					"attribute_class"	"mult_dmgtaken_active"
+					"value" 			"1.2"
 				}
 				"fire rate penalty"
 				{
@@ -71519,7 +71649,7 @@ Note: Nerfed. -Clock"
 
 			"propername"				"1"
 			"item_name"					"Road Buster"
-			"item_type_name"				"Shotgun"
+			"item_type_name"			"Shotgun"
 			"item_description"			"
 Nothing like the fresh feel of scratched steel and burnt tyres.."
 			"item_logname"				"road_buster"
@@ -71589,13 +71719,37 @@ Nothing like the fresh feel of scratched steel and burnt tyres.."
 					"attribute_class"	"mult_projectile_speed"
 					"value"				"2" //Less than the french resolution. -Clock
 				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"weapon_enemy_knockback_mod" // does a tad too much with crits
+					"value"				"0.5"
+				}
 			}
 			"visuals"
 			{
 				"sound_single_shot"		"Weapon_RoadBuster.Single"
 				"sound_burst"			"Weapon_RoadBuster.SingleCrit"
-				"trail_effect"			"sentry_rocket_firey"
+				"trail_effect"			"tinyboom_trail_PARENT" // "sentry_rocket_firey"
 				"explosion_effect"		"coilgun_boom_red"
+				// some documentation of the effects here: (from tinyboom.pcf)
+				// "tinyboom_trail_PARENT" // rocket trail to look sorta like a bullet, for simpler single-hit rockets.
+				// "tinyboom_trail_PARENT_[team]_crit" // crit version for each team.
+			}
+			"visuals_red"
+			{
+				"trail_effect_crit"		"tinyboom_trail_PARENT_red_crit"
+			}
+			"visuals_blu"
+			{
+				"trail_effect_crit"		"tinyboom_trail_PARENT_blue_crit"
+			}
+			"visuals_grn"
+			{
+				"trail_effect_crit"		"tinyboom_trail_PARENT_green_crit"
+			}
+			"visuals_ylw"
+			{
+				"trail_effect_crit"		"tinyboom_trail_PARENT_yellow_crit"
 			}
 		}		
 //----------------------------
@@ -75076,13 +75230,34 @@ Keep it clean."
 					"attribute_class"	"mult_projectile_speed"
 					"value"				"2.5"
 				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"weapon_enemy_knockback_mod" // does a tad too much with crits
+					"value"				"0.5"
+				}
 			}
 			"visuals"
 			{
 				"sound_single_shot"		"Weapon_Flintlock.Single"
 				"sound_burst"    		"Weapon_Flintlock.SingleCrit"
-				"trail_effect"			"sentry_rocket_firey"
+				"trail_effect"			"tinyboom_trail_PARENT" // "sentry_rocket_firey"
 				"explosion_effect"		"coilgun_boom_red"
+			}
+			"visuals_red"
+			{
+				"trail_effect_crit"		"tinyboom_trail_PARENT_red_crit"
+			}
+			"visuals_blu"
+			{
+				"trail_effect_crit"		"tinyboom_trail_PARENT_blue_crit"
+			}
+			"visuals_grn"
+			{
+				"trail_effect_crit"		"tinyboom_trail_PARENT_green_crit"
+			}
+			"visuals_ylw"
+			{
+				"trail_effect_crit"		"tinyboom_trail_PARENT_yellow_crit"
 			}
 			"mouse_pressed_sound"		"#ui/item_light_gun_pickup.wav"
 			"drop_sound"				"#ui/item_light_gun_drop.wav"
@@ -79382,7 +79557,7 @@ That's gotta hurt in the morning
 				"brick explodes text"					"1"
 //				"bleeding duration"						"2"
 				"dmg bonus vs buildings"				"2"
-				"mod use custom ammo type"				"5" //So that heavy's weapons (aka. Pugilist's) can modify the brick independently of his sandviches. Also used this for a small little easter egg with the arms-dealer. -Clock
+				"mod use custom ammo type"				"4" // Needed to change this back, nade conflicted with sandviches
 			}
 			"attributes"
 			{
@@ -79425,7 +79600,7 @@ That's gotta hurt in the morning
 				"hide_attrib_percentage"
 				{
 					"attribute_class"	"add_ammo_on_kill"
-					"value"				"0.66666666"
+					"value"				"0.33333333333"
 				}
 			}
 			"static_attrs"
@@ -83552,25 +83727,30 @@ Note: EXPERIMENTAL WEAPON! This is somewhat unfinished! (But also pretty neat) -
 			{
 				"trail_effect"			"pipebombtrail_red"
 				"trail_effect_crit"		"critical_grenade_red"
-				"explosion_effect"		"medic_explosion_success_PARENT_red"
+				"explosion_effect"		"hurtheal_explosion_PARENT_red_tiny" // "medic_explosion_success_PARENT_red" was the old one. While the new one is quite a bit smaller than the actual radius, it just works way better.
+				// Besides, you fire a ton, it's best not to clutter the area with particles.
+				"explosion_effect_crit"	"hurtheal_explosion_PARENT_red_tiny_crit"
 			}
 			"visuals_blu"
 			{
 				"trail_effect"			"pipebombtrail_blue"
 				"trail_effect_crit"		"critical_grenade_blue"
-				"explosion_effect"		"medic_explosion_success_PARENT_blue"
+				"explosion_effect"		"hurtheal_explosion_PARENT_blue_tiny"
+				"explosion_effect_crit"	"hurtheal_explosion_PARENT_blue_tiny_crit"
 			}
 			"visuals_grn"
 			{
 				"trail_effect"			"pipebombtrail_green"
 				"trail_effect_crit"		"critical_grenade_green"
-				"explosion_effect"		"medic_explosion_success_PARENT_green"
+				"explosion_effect"		"hurtheal_explosion_PARENT_green_tiny"
+				"explosion_effect_crit"	"hurtheal_explosion_PARENT_green_tiny_crit"
 			}
 			"visuals_ylw"
 			{
 				"trail_effect"			"pipebombtrail_yellow"
 				"trail_effect_crit"		"critical_grenade_yellow"
-				"explosion_effect"		"medic_explosion_success_PARENT_yellow"
+				"explosion_effect"		"hurtheal_explosion_PARENT_yellow_tiny"
+				"explosion_effect_crit"	"hurtheal_explosion_PARENT_yellow_tiny_crit"
 			}
 			"mouse_pressed_sound"		"#ui/item_heavy_gun_pickup.wav"
 			"drop_sound"				"#ui/item_heavy_gun_drop.wav"
@@ -86077,7 +86257,7 @@ Note: funni. -Clock" //But in all seriousness, I always thought the idea of the 
 			"name"						"TF_WEAPON_PARTY_POPPER"
 //			"prefab"				    "weapon_flaregun"
 			"item_class"				"tf_weapon_flaregun" // for some reason, using a flaregun prefab adds unavoidble crit vs burning text.
-			"show_in_armory"			"1"
+			"show_in_armory"			"0"
 			"item_slot"					"secondary"
 			"anim_slot"					"item1"
 			"bucket"					"1"
@@ -86299,7 +86479,7 @@ Model by: usernamecipher on Gamebanana"
 		"12390"
 		{
 			"name"						"TF_TACTITIAN_SUPPRESSION"
-			"item_class"				"tf_weapon_grenadelauncher" // I really hope I never used this for anything else...
+			"item_class"				"tf_weapon_grenadelauncher" // This won't conflict with anything, the weapon type is useless...
 			"show_in_armory"			"1"
 			"item_slot"					"pda"
 			"bucket"					"7"
@@ -86322,6 +86502,8 @@ Model by: usernamecipher on Gamebanana"
 			{
 				"clip size penalty"						"0"
 				"damage penalty"						"0"
+				"mod use custom ammo type"				"3"
+				"maxammo metal reduced"					"0"
 				"allowed in medieval mode"				"1"
 				"mult taser heal scale"					"0"
 			}
@@ -86530,6 +86712,8 @@ do all of the dirty work for ya."
 			{
 				"clip size penalty"						"0"
 				"damage penalty"						"0"
+				"mod use custom ammo type"				"3"
+				"maxammo metal reduced"					"0"
 				"linked item id"						"6790"
 				"allowed in medieval mode"				"1"
 			}
@@ -86539,7 +86723,7 @@ do all of the dirty work for ya."
 		"6790"
 		{
 			"name"						"TF_TACTITIAN_SUPPRESSION"
-			"item_class"				"tf_weapon_bonesaw"
+			"item_class"				"tf_weapon_grenadelauncher"
 			"show_in_armory"			"1"
 			"item_slot"					"pda2"
 			"anim_slot"					"item1"
@@ -86563,6 +86747,10 @@ do all of the dirty work for ya."
 			}
 			"static_attrs"
 			{
+				"clip size penalty"						"0"
+				"damage penalty"						"0"
+				"mod use custom ammo type"				"3"
+				"maxammo metal reduced"					"-1"
 				"umbrella recharge rate increased" "4444444444444444444"
 				"allowed in medieval mode"				"1"
 			}
@@ -86605,6 +86793,8 @@ do all of the dirty work for ya."
 			{
 				"clip size penalty"						"0"
 				"damage penalty"						"0"
+				"mod use custom ammo type"				"3"
+				"maxammo metal reduced"					"0"
 				"linked item id"						"6793"
 				"allowed in medieval mode"				"1"
 			}
@@ -86639,6 +86829,8 @@ do all of the dirty work for ya."
 			{
 				"clip size penalty"						"0"
 				"damage penalty"						"0"
+				"mod use custom ammo type"				"3"
+				"maxammo metal reduced"					"0"
 				"umbrella recharge rate increased" "4444444444444444444"
 				"max health additive bonus"		   "15"
 				"allowed in medieval mode"				"1"
@@ -86744,15 +86936,69 @@ do all of the dirty work for ya."
 				"linked item id"
 				{
 					"attribute_class"	"linked_item_id"
-					"value"				"6789"
+					"value"				"9976"
 				}
+			}
+		}
+		"9976"
+		{
+			"name"						"TF_TACTITIAN_SUPPRESSION"
+			"item_class"				"tf_weapon_grenadelauncher"
+			"show_in_armory"			"1"
+			"item_slot"					"pda2"
+			"anim_slot"					"item1"
+			"baseitem"					"1"
+			"bucket"					"999"
+			"bucket_position"			"999"
+			"show_in_armory"			"1"
+			"propername"				"1"
+			"item_name"					"SUPPRESSED"
+			"item_type_name"			"SUPPRESSED"
+			"item_description"			"DISABLES TACTICIAN BUFF WHILE PRESENT"
+			"item_logname"				"firework"
+			"item_quality"              "unique"
+			"image_inventory"			"backpack/weapons/c_models/c_firework_flare/c_firework_flare"
+			"model_world"				"models/weapons/c_models/c_firework_flare/c_firework_flare.mdl" // 	TO DO: resolve annoying missing texture error
+			"model_player"				"models/weapons/c_models/c_firework_flare/c_firework_flare.mdl"
+			"attach_to_hands"			"1"
+			"used_by_classes"
+			{
+				"mercenary"					"1"
+			}
+			"static_attrs"
+			{
+				"clip size penalty"						"0"
+				"damage penalty"						"0"
+				"mod use custom ammo type"				"3"
+				"maxammo metal reduced"					"0"
+				"linked item id"						"12111"
+			}
+			"mouse_pressed_sound"		"#ui/item_light_gun_pickup.wav"
+			"drop_sound"				"#ui/item_light_gun_drop.wav"
+		}
+		"12111"
+		{
+			"name"						"TF_WEAPON_CLUB"
+			"item_class"				"tf_weapon_club"
+			"item_slot"					"melee"
+			"anim_slot"					"melee"
+			"baseitem"					"1"
+			"item_quality"				"normal"
+			"item_description"			"#TF_Weapon_Club_Desc"
+			"image_inventory"			"backpack/weapons/w_models/w_machete"
+			"model_world"				"models/weapons/w_models/w_machete.mdl"
+			"model_player"				"models/weapons/v_models/v_machete_sniper.mdl"
+			"attach_to_hands"			"2"
+			"used_by_classes"
+			{
+				"mercenary"					"1"
 			}
 		}
 		"3307"
 		{
 			"name"						"TF_WEAPON_CROWBAR"
 			"prefab"					"weapon_club"
-			"item_class"				"tf_weapon_umbrella"
+			"item_class"				"tf_weapon_wrench"
 			"item_slot"					"melee"
 			"anim_slot"					"melee"
 			"show_in_armory"			"1"
@@ -86782,38 +87028,48 @@ and then defend, the very best snipin' spots."
 			{
 				"fire rate bonus" // Thought it'd be nice for these all class melees to get some really simple stats, i'll remove it if it ends up being an issue. -Clock
 				{
-					"attribute_class"	"DISPLAY_ONLY" //Should be the exact same swing speed of the crowbar in hl2. (if the wiki page is read is correct about it, at least.) -Clock
+					"attribute_class"	"mult_postfiredelay" //Should be the exact same swing speed of the crowbar in hl2. (if the wiki page is read is correct about it, at least.) -Clock
 					"value"				"0.75"
 				}
 				"damage penalty"
 				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"0.85"
-				}
-				"damage penalty hidden"
-				{
 					"attribute_class"	"mult_dmg"
-					"value"				"1.571428571428571428571428"
-				}
-				"fire rate penalty hidden"
-				{
-					"attribute_class"	"mult_postfiredelay"
-					"value"				"1.2"
+					"value"				"0.85"
 				}
 				"tactician bonus weapon"
 				{
 					"attribute_class"	"DISPLAY_ONLY"
 					"value"				"1"
 				}
-				"tactician bonus boost generic"
+				"can be a bro"
 				{
 					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"8"
+					"value"				"1"
 				}
-				"civ boost cond override"
+				"mod crit engie short" //For some stupid reason non-explosive classes only get this effect while jumppad jumping. ):< -Clock
 				{
-					"attribute_class"	"add_civ_boost_override"
-					"value"				"120 1"
+					"attribute_class"	"crit_while_airborne"
+					"value"				"1"
+				}
+				"building support decrease"														// NOWP v3.2.1 - Finally got around to adding a unique single-stat to summarize if an Engineer weapon sorta just does worse at all 3 metrics. The input number is the average of the 3 modifiers rounded to the nearest 5!
+				{
+					"attribute_class"	"DISPLAY_ONLY"
+					"value"				"0.8"													// Just like the Knux, this is a bit worse at everything an Engineer does. But it's still possible...
+				}
+				"hide_attrib_percentage"	
+				{
+					"attribute_class"	"mult_repair_value"
+					"value"				"0.8"
+				}
+				"hide_attrib_percentage"	
+				{
+					"attribute_class"	"upgrade_rate_mod"
+					"value"				"0.8"
+				}
+				"hide_attrib_percentage"														// Unlisted nerf so it's not literally the best wrench in the game for sapper removal
+				{
+					"attribute_class"	"mult_dmg_vs_buildings"
+					"value"				"0.8"
 				}
 				"linked item id"
 				{
@@ -86839,7 +87095,7 @@ and then defend, the very best snipin' spots."
 		"12015"
 		{
 			"name"						"TF_WEAPON_CROWBAR"
-			"item_class"				"tf_weapon_umbrella"
+			"item_class"				"tf_weapon_wrench"
 			"item_slot"					"melee"
 			"anim_slot"					"melee"
 			"show_in_armory"			"1"
@@ -86869,43 +87125,146 @@ and then defend, the very best snipin' spots."
 			{
 				"fire rate bonus" // Thought it'd be nice for these all class melees to get some really simple stats, i'll remove it if it ends up being an issue. -Clock
 				{
-					"attribute_class"	"DISPLAY_ONLY" //Should be the exact same swing speed of the crowbar in hl2. (if the wiki page is read is correct about it, at least.) -Clock
+					"attribute_class"	"mult_postfiredelay" //Should be the exact same swing speed of the crowbar in hl2. (if the wiki page is read is correct about it, at least.) -Clock
 					"value"				"0.75"
 				}
 				"damage penalty"
 				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"0.85"
-				}
-				"damage penalty hidden"
-				{
 					"attribute_class"	"mult_dmg"
-					"value"				"1.571428571428571428571428"
-				}
-				"fire rate penalty hidden"
-				{
-					"attribute_class"	"mult_postfiredelay"
-					"value"				"1.2"
+					"value"				"0.85"
 				}
 				"tactician bonus weapon"
 				{
 					"attribute_class"	"DISPLAY_ONLY"
 					"value"				"1"
 				}
-				"tactician bonus boost generic"
+				"can be a bro"
 				{
 					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"8"
+					"value"				"1"
 				}
-				"civ boost cond override"
+				"mod crit engie short" //For some stupid reason non-explosive classes only get this effect while jumppad jumping. ):< -Clock
 				{
-					"attribute_class"	"add_civ_boost_override"
-					"value"				"120 1"
+					"attribute_class"	"crit_while_airborne"
+					"value"				"1"
+				}
+				"building support decrease"														// NOWP v3.2.1 - Finally got around to adding a unique single-stat to summarize if an Engineer weapon sorta just does worse at all 3 metrics. The input number is the average of the 3 modifiers rounded to the nearest 5!
+				{
+					"attribute_class"	"DISPLAY_ONLY"
+					"value"				"0.8"													// Just like the Knux, this is a bit worse at everything an Engineer does. But it's still possible...
+				}
+				"hide_attrib_percentage"	
+				{
+					"attribute_class"	"mult_repair_value"
+					"value"				"0.8"
+				}
+				"hide_attrib_percentage"	
+				{
+					"attribute_class"	"upgrade_rate_mod"
+					"value"				"0.8"
+				}
+				"hide_attrib_percentage"														// Unlisted nerf so it's not literally the best wrench in the game for sapper removal
+				{
+					"attribute_class"	"mult_dmg_vs_buildings"
+					"value"				"0.8"
 				}
 				"linked item id"
 				{
 					"attribute_class"	"linked_item_id"
-					"value"				"6789"
+					"value"				"9977"
+				}
+				"hide_attrib_additive"
+				{
+					"attribute_class"	"mult_decloak_rate"										// For the balisong/vanish, the lowest possible number i've found it can be before the game just goes "no, screw you" and rejects it. -Clock
+					"value"				"0.02"
+				}
+			}
+			"visuals"
+			{
+				"sound_melee_miss"		"Weapon_Crowbar.Miss"
+				"sound_melee_hit"		"Weapon_Crowbar.HitFlesh"
+				"sound_melee_hit_world"	"Weapon_Crowbar_HL1.HitWorld"
+				"sound_burst"			"Weapon_Crowbar.MissCrit"
+			}
+			"mouse_pressed_sound"		"#ui/item_metal_weapon_pickup.wav"
+			"drop_sound"				"#ui/item_metal_weapon_drop.wav"
+		}
+		"9977"
+		{
+			"name"						"TF_TACTITIAN_SUPPRESSION"
+			"item_class"				"tf_weapon_grenadelauncher"
+			"show_in_armory"			"1"
+			"item_slot"					"pda2"
+			"anim_slot"					"item1"
+			"baseitem"					"1"
+			"bucket"					"999"
+			"bucket_position"			"999"
+			"show_in_armory"			"1"
+			"propername"				"1"
+			"item_name"					"SUPPRESSED"
+			"item_type_name"			"SUPPRESSED"
+			"item_description"			"DISABLES TACTICIAN BUFF WHILE PRESENT"
+			"item_logname"				"firework"
+			"item_quality"              "unique"
+			"image_inventory"			"backpack/weapons/c_models/c_firework_flare/c_firework_flare"
+			"model_world"				"models/weapons/c_models/c_firework_flare/c_firework_flare.mdl" // 	TO DO: resolve annoying missing texture error
+			"model_player"				"models/weapons/c_models/c_firework_flare/c_firework_flare.mdl"
+			"attach_to_hands"			"1"
+			"used_by_classes"
+			{
+				"mercenary"					"1"
+			}
+			"static_attrs"
+			{
+				"clip size penalty"						"0"
+				"damage penalty"						"0"
+				"mod use custom ammo type"				"3"
+				"maxammo metal reduced"					"0"
+				"linked item id"						"12112"
+			}
+			"mouse_pressed_sound"		"#ui/item_light_gun_pickup.wav"
+			"drop_sound"				"#ui/item_light_gun_drop.wav"
+		}
+		"12112"
+		{
+			"name"						"TF_WEAPON_CROWBAR"
+			"item_class"				"tf_weapon_club"
+			"item_slot"					"melee"
+			"anim_slot"					"melee"
+			"show_in_armory"			"1"
+
+			"item_name_color"			"204 204 250 255"
+			"item_name"					"#TF_Weapon_Crowbar"
+			"item_type_name"			"#TF_Weapon_Crowbar"
+			"item_description"			"
+You'll need tools like these to break into,
+and then defend, the very best snipin' spots."
+			"item_logname"				"crowbar"
+			"item_iconname"				"crowbar"
+			"image_inventory"			"backpack/weapons/w_models/w_crowbar"
+			"model_world"				"models/weapons/w_models/w_crowbar_sniper.mdl"
+			"model_player"				"models/weapons/v_models/v_crowbar_sniper.mdl"
+			"attach_to_hands"			"2"
+			"used_by_classes"
+			{
+				"mercenary"				"1"
+			}
+			"static_attrs"
+			{
+				"NOWP weapon"							"1"
+				"min_viewmodel_offset"					"5 0 -10"
+			}
+			"attributes"
+			{
+				"fire rate bonus" // Thought it'd be nice for these all class melees to get some really simple stats, i'll remove it if it ends up being an issue. -Clock
+				{
+					"attribute_class"	"mult_postfiredelay" //Should be the exact same swing speed of the crowbar in hl2. (if the wiki page is read is correct about it, at least.) -Clock
+					"value"				"0.75"
+				}
+				"damage penalty"
+				{
+					"attribute_class"	"mult_dmg"
+					"value"				"0.85"
 				}
 				"hide_attrib_additive"
 				{
@@ -86926,7 +87285,7 @@ and then defend, the very best snipin' spots."
 		"3317"
 		{
 			"name"						"TF_WEAPON_FRYING_PAN"
-			"item_class"				"tf_weapon_umbrella"
+			"item_class"				"tf_weapon_club"
 			"item_slot"					"melee"
 			"anim_slot"					"melee"
 			"show_in_armory"			"1"
@@ -86969,11 +87328,11 @@ Tuck in, mate, we'll be out here for a while..."
 				"hide_attrib_percentage"
 				{
 					"attribute_class"	"mult_dmg"
-					"value"				"2.4285714285"
+					"value"				"1.30769"
 				}
 				"fire rate penalty"
 				{
-					"attribute_class"	"DISPLAY_ONLY"
+					"attribute_class"	"mult_postfiredelay"
 					"value"				"1.5"
 				}
 				"fire rate penalty hidden"
@@ -86986,20 +87345,10 @@ Tuck in, mate, we'll be out here for a while..."
 					"attribute_class"	"DISPLAY_ONLY"
 					"value"				"1"
 				}
-				"tactician bonus boost generic"
+				"tranq on hit"
 				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"8"
-				}
-				"civ boost cond override"
-				{
-					"attribute_class"	"add_civ_boost_override"
-					"value"				"120 1"
-				}
-				"linked item id"
-				{
-					"attribute_class"	"linked_item_id"
-					"value"				"12026"
+					"attribute_class"	"mod_tranq_onhit"
+					"value"				"3"
 				}
 				"hide_attrib_additive"
 				{
@@ -87024,7 +87373,7 @@ Tuck in, mate, we'll be out here for a while..."
 		"12026"
 		{
 			"name"						"TF_WEAPON_FRYING_PAN"
-			"item_class"				"tf_weapon_umbrella"
+			"item_class"				"tf_weapon_club"
 			"item_slot"					"melee"
 			"anim_slot"					"melee"
 			"show_in_armory"			"1"
@@ -87067,37 +87416,136 @@ Tuck in, mate, we'll be out here for a while..."
 				"hide_attrib_percentage"
 				{
 					"attribute_class"	"mult_dmg"
-					"value"				"2.4285714285"
+					"value"				"1.30769"
 				}
 				"fire rate penalty"
 				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"1.5"
-				}
-				"fire rate penalty hidden"
-				{
 					"attribute_class"	"mult_postfiredelay"
-					"value"				"2.4"
+					"value"				"1.5"
 				}
 				"tactician bonus weapon"
 				{
 					"attribute_class"	"DISPLAY_ONLY"
 					"value"				"1"
 				}
-				"tactician bonus boost generic"
+				"tranq on hit"
 				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"8"
-				}
-				"civ boost cond override"
-				{
-					"attribute_class"	"add_civ_boost_override"
-					"value"				"120 1"
+					"attribute_class"	"mod_tranq_onhit"
+					"value"				"3"
 				}
 				"linked item id"
 				{
 					"attribute_class"	"linked_item_id"
-					"value"				"6789"
+					"value"				"9978"
+				}
+				"hide_attrib_additive"
+				{
+					"attribute_class"	"mult_decloak_rate"										// For the balisong/vanish, the lowest possible number i've found it can be before the game just goes "no, screw you" and rejects it. -Clock
+					"value"				"0.02"
+				}
+			}
+			"visuals"
+			{
+				"sound_melee_miss"		"Weapon_Crowbar.Miss"
+				"sound_melee_hit"		"FryingPan.HitFlesh"
+				"sound_melee_hit_world"	"FryingPan.HitWorld"
+				"sound_burst"			"Weapon_Crowbar.MissCrit"
+				"animation_replacement"
+				{
+					"ACT_MP_GESTURE_VC_FISTPUMP_MELEE"			"ACT_MP_GESTURE_VC_FINGERPOINT_MELEE"
+				}
+			}
+			"mouse_pressed_sound"		"#ui/item_metal_pot_pickup.wav"
+			"drop_sound"				"#ui/item_metal_pot_drop.wav"
+		}
+		"9978"
+		{
+			"name"						"TF_TACTITIAN_SUPPRESSION"
+			"item_class"				"tf_weapon_grenadelauncher"
+			"show_in_armory"			"1"
+			"item_slot"					"pda2"
+			"anim_slot"					"item1"
+			"baseitem"					"1"
+			"bucket"					"999"
+			"bucket_position"			"999"
+			"show_in_armory"			"1"
+			"propername"				"1"
+			"item_name"					"SUPPRESSED"
+			"item_type_name"			"SUPPRESSED"
+			"item_description"			"DISABLES TACTICIAN BUFF WHILE PRESENT"
+			"item_logname"				"firework"
+			"item_quality"              "unique"
+			"image_inventory"			"backpack/weapons/c_models/c_firework_flare/c_firework_flare"
+			"model_world"				"models/weapons/c_models/c_firework_flare/c_firework_flare.mdl" // 	TO DO: resolve annoying missing texture error
+			"model_player"				"models/weapons/c_models/c_firework_flare/c_firework_flare.mdl"
+			"attach_to_hands"			"1"
+			"used_by_classes"
+			{
+				"mercenary"					"1"
+			}
+			"static_attrs"
+			{
+				"clip size penalty"						"0"
+				"damage penalty"						"0"
+				"mod use custom ammo type"				"3"
+				"maxammo metal reduced"					"0"
+				"linked item id"						"12113"
+			}
+			"mouse_pressed_sound"		"#ui/item_light_gun_pickup.wav"
+			"drop_sound"				"#ui/item_light_gun_drop.wav"
+		}
+		"12113"
+		{
+			"name"						"TF_WEAPON_FRYING_PAN"
+			"item_class"				"tf_weapon_club"
+			"item_slot"					"melee"
+			"anim_slot"					"melee"
+			"show_in_armory"			"1"
+
+			"item_name_color"			"255 240 183 255"
+			"item_name"					"Frying Pan"
+			"item_type_name"			"Frying Pan"
+			"item_description"			"
+Tuck in, mate, we'll be out here for a while..."
+			"item_logname"				"fryingpan"
+			"item_iconname"				"fryingpan"
+			"image_inventory"			"backpack/player/items/all_class/all_pan"
+			"model_world"				"models/weapons/w_models/w_frying_pan_sniper.mdl"
+			"model_player"				"models/weapons/v_models/v_frying_pan_sniper.mdl"
+			"attach_to_hands"			"2"
+			"used_by_classes"
+			{
+				"mercenary"				"1"
+			}
+			"static_attrs"
+			{
+				"NOWP weapon"							"1"
+				"Mannly parallel"						"1"
+				"min_viewmodel_offset"					"5 0 -10"
+				"particle on melee hit"					"lowV_blood_headshot_oildroplets"
+				"special taunt"							"1"
+			}
+			"attributes"
+			{
+				"noise damage"
+				{
+					"attribute_class"	"DISPLAY_ONLY"
+					"value"				"25"
+				}
+				"damage bonus"
+				{
+					"attribute_class"	"DISPLAY_ONLY"
+					"value"				"1.3"
+				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mult_dmg"
+					"value"				"1.30769"
+				}
+				"fire rate penalty"
+				{
+					"attribute_class"	"mult_postfiredelay"
+					"value"				"1.5"
 				}
 				"hide_attrib_additive"
 				{
@@ -87259,7 +87707,7 @@ I'll make those wounds of yours even worse!"
 				}
 				"fire rate penalty"																// Slight nerf, since Sniper has a lot more means of getting Minicrits either from himself or others
 				{
-					"attribute_class"	"mult_postfiredelay"
+					"attribute_class"	"DISPLAY_ONLY"
 					"value"				"1.15"
 				}
 				"increased damage taken while active"
@@ -87300,7 +87748,104 @@ I'll make those wounds of yours even worse!"
 				"linked item id"
 				{
 					"attribute_class"	"linked_item_id"
-					"value"				"6791"
+					"value"				"9979"
+				}
+				"crit mod disabled"
+				{
+					"attribute_class"	"mult_crit_chance"
+					"value"				"0"
+				}
+			}
+			"mouse_pressed_sound"		"#ui/item_knife_small_pickup.wav"
+			"drop_sound"				"#ui/item_metal_weapon_drop.wav"
+		}
+		"9979"
+		{
+			"name"						"TF_TACTITIAN_SUPPRESSION"
+			"item_class"				"tf_weapon_grenadelauncher"
+			"show_in_armory"			"1"
+			"item_slot"					"pda2"
+			"anim_slot"					"item1"
+			"baseitem"					"1"
+			"bucket"					"999"
+			"bucket_position"			"999"
+			"show_in_armory"			"1"
+			"propername"				"1"
+			"item_name"					"SUPPRESSED"
+			"item_type_name"			"SUPPRESSED"
+			"item_description"			"DISABLES TACTICIAN BUFF WHILE PRESENT"
+			"item_logname"				"firework"
+			"item_quality"              "unique"
+			"image_inventory"			"backpack/weapons/c_models/c_firework_flare/c_firework_flare"
+			"model_world"				"models/weapons/c_models/c_firework_flare/c_firework_flare.mdl" // 	TO DO: resolve annoying missing texture error
+			"model_player"				"models/weapons/c_models/c_firework_flare/c_firework_flare.mdl"
+			"attach_to_hands"			"1"
+			"used_by_classes"
+			{
+				"mercenary"					"1"
+			}
+			"static_attrs"
+			{
+				"clip size penalty"						"0"
+				"damage penalty"						"0"
+				"mod use custom ammo type"				"3"
+				"maxammo metal reduced"					"0"
+				"linked item id"						"12114"
+			}
+			"mouse_pressed_sound"		"#ui/item_light_gun_pickup.wav"
+			"drop_sound"				"#ui/item_light_gun_drop.wav"
+		}
+		"12114"
+		{
+			"name"						"TF_WEAPON_CROC_KNIFE"
+			"item_class"				"tf_weapon_club"
+			"item_slot"					"melee"
+			"anim_slot"					"melee"
+			"show_in_armory"			"1"
+
+			"propername"				"1"
+			"item_name_color"			"255 240 183 255"
+			"item_name"					"Bushwacka"
+			"item_type_name"			"#TF_Weapon_Club"
+			"item_description"			"
+Nah, don't bother runnin' far.
+I'll make those wounds of yours even worse!"
+			"item_logname"				"bushwacka"
+			"item_iconname"				"bushwacka"
+			"image_inventory"			"backpack/workshop/weapons/c_models/c_croc_knife/c_croc_knife"
+			"model_world"				"models/weapons/w_models/w_croc_knife.mdl"
+			"model_player"				"models/weapons/v_models/v_croc_knife_sniper.mdl"
+			"attach_to_hands"			"2"
+			"used_by_classes"
+			{
+				"mercenary"				"1"
+			}
+			"static_attrs"
+			{
+				"NOWP weapon"							"1"
+				"Mannly parallel"						"1"
+			}
+			"attributes" //TO DO: Too strong? Too annoying? If there's a problem here, is it actually with this, or is the problem how easily sniper can apply MfD in the first place?
+			{
+				"minicrits become crits"
+				{
+					"attribute_class"	"minicrits_become_crits"
+					"value"				"1"
+				}
+				"hide_attrib_additive"
+				{
+					"attribute_class"	"or_minicrit_vs_playercond"
+					"value"				"524288"												// NOWP v3.0.0 - If an enemy for some reason has the actual Jarate condition, always (mini)crit against them anyway!
+				}
+				"fire rate penalty"																// Slight nerf, since Sniper has a lot more means of getting Minicrits either from himself or others
+				{
+					"attribute_class"	"mult_postfiredelay"
+					"value"				"1.15"
+				}
+				"increased damage taken while active"
+				{
+					"attribute_class"	"mult_dmgtaken_active"
+					"value"				"1.2"
 				}
 				"crit mod disabled"
 				{
@@ -87493,7 +88038,103 @@ I'll make those wounds of yours even worse!"
 				"linked item id"
 				{
 					"attribute_class"	"linked_item_id"
-					"value"				"6789"
+					"value"				"9980"
+				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mult_dmg_crit_multiplier"
+					"value"				"1.02"													// TF2C v2.1.3 - Fix for annoying discrepency with damage numbers...
+				}
+			}
+			"visuals"
+			{
+//				"sound_melee_hit"		"Weapon_Fishwhacker.HitFlesh"							// Commented out since the Tribalman's is sharp, unlike the Fishwhacker. It's made of wood though so it still gets the blunt worldhit sounds
+				"sound_melee_hit_world"	"Weapon_Fishwhacker.HitWorld"
+			}
+			"mouse_pressed_sound"		"#ui/item_wood_weapon_pickup.wav"
+			"drop_sound"				"#ui/item_wood_weapon_drop.wav"
+		}
+		"9980"
+		{
+			"name"						"TF_TACTITIAN_SUPPRESSION"
+			"item_class"				"tf_weapon_grenadelauncher"
+			"show_in_armory"			"1"
+			"item_slot"					"pda2"
+			"anim_slot"					"item1"
+			"baseitem"					"1"
+			"bucket"					"999"
+			"bucket_position"			"999"
+			"show_in_armory"			"1"
+			"propername"				"1"
+			"item_name"					"SUPPRESSED"
+			"item_type_name"			"SUPPRESSED"
+			"item_description"			"DISABLES TACTICIAN BUFF WHILE PRESENT"
+			"item_logname"				"firework"
+			"item_quality"              "unique"
+			"image_inventory"			"backpack/weapons/c_models/c_firework_flare/c_firework_flare"
+			"model_world"				"models/weapons/c_models/c_firework_flare/c_firework_flare.mdl" // 	TO DO: resolve annoying missing texture error
+			"model_player"				"models/weapons/c_models/c_firework_flare/c_firework_flare.mdl"
+			"attach_to_hands"			"1"
+			"used_by_classes"
+			{
+				"mercenary"					"1"
+			}
+			"static_attrs"
+			{
+				"clip size penalty"						"0"
+				"damage penalty"						"0"
+				"mod use custom ammo type"				"3"
+				"maxammo metal reduced"					"0"
+				"linked item id"						"12115"
+			}
+			"mouse_pressed_sound"		"#ui/item_light_gun_pickup.wav"
+			"drop_sound"				"#ui/item_light_gun_drop.wav"
+		}
+		"12115"
+		{
+			"name"						"TF_WEAPON_TRIBALMANS"
+			"item_class"				"tf_weapon_club"
+			"item_slot"					"melee"
+			"anim_slot"					"melee"
+			"show_in_armory"			"1"
+
+			"propername"				"1"
+			"item_name_color"			"255 240 183 255"
+			"item_name"					"Tribalman's Shiv"
+			"item_type_name"			"#TF_Weapon_Club"
+			"item_description"			"
+“Let's see how much blood's in ya.”"
+			"item_logname"				"tribalkukri"
+			"item_iconname"				"tribalkukri"
+			"image_inventory"			"backpack/workshop/weapons/c_models/c_wood_machete/c_wood_machete"
+			"model_world"				"models/weapons/w_models/w_wood_machete.mdl"
+			"model_player"				"models/weapons/v_models/v_wood_machete_sniper.mdl"
+			"attach_to_hands"			"2"
+			"used_by_classes"
+			{
+				"mercenary"				"1"
+			}
+			"static_attrs"
+			{
+				"NOWP weapon"							"1"
+				"Mannly parallel"						"1"
+			}
+			"attributes"
+			{
+				"bleeding duration"
+				{
+					"attribute_class"	"bleeding_duration"
+					"value"				"6"
+				}
+				"fire rate bonus"																// It's not much but I think it makes the weapon feel way better. On-top of being a bleed option it gets to be Sniper's fastest "get away from me" option beside the Knux
+				{
+					"attribute_class"	"mult_postfiredelay"
+					"value"				"0.8"
+				}
+				"damage penalty"
+				{
+					"attribute_class"	"mult_dmg"
+					"value"				"0.5"
 				}
 				"hide_attrib_percentage"
 				{
@@ -87552,16 +88193,6 @@ I'll make those wounds of yours even worse!"
 				{
 					"attribute_class"	"DISPLAY_ONLY"
 					"value"				"0.4"
-				}
-				"damage penalty hidden"
-				{
-					"attribute_class"	"mult_dmg"
-					"value"				"1.85714285714285714"
-				}
-				"fire rate penalty hidden"
-				{
-					"attribute_class"	"mult_postfiredelay"
-					"value"				"1.6"
 				}
 				"tactician bonus weapon"
 				{
@@ -87655,6 +88286,126 @@ I'll make those wounds of yours even worse!"
 					"attribute_class"	"mult_postfiredelay"
 					"value"				"0.8"
 				}
+				"tactician bonus weapon"
+				{
+					"attribute_class"	"DISPLAY_ONLY"
+					"value"				"1"
+				}
+				"tactician bonus boost generic"
+				{
+					"attribute_class"	"DISPLAY_ONLY"
+					"value"				"6"
+				}
+				"civ boost cond override"
+				{
+					"attribute_class"	"add_civ_boost_override"
+					"value"				"120 0.75"
+				}
+				"umbrella recharge rate increased"
+				{
+					"attribute_class"	"umbrella_recharge_rate"
+					"value"				"0.8"
+				}
+				"linked item id"
+				{
+					"attribute_class"	"linked_item_id"
+					"value"				"9981"
+				}
+			}
+			"visuals"
+			{
+				"sound_melee_miss"		"Weapon_Fist.Miss"
+				"sound_melee_hit"		"Weapon_Fist.HitFlesh"
+				"sound_melee_hit_world"	"Weapon_Fist.HitWorld"
+				"sound_burst"			"Weapon_Fist.MissCrit"
+//				"sound_melee_miss"		"Sniper.Cheers01"										// Too noisy at this fire-rate
+//				"sound_burst"			"Sniper.BattleCry03"
+				"animation_replacement"
+				{
+					"ACT_MP_ATTACK_STAND_MELEE_SECONDARY"		"ACT_MP_ATTACK_STAND_MELEE"
+					"ACT_MP_ATTACK_CROUCH_MELEE_SECONDARY"		"ACT_MP_ATTACK_CROUCH_MELEE"
+					"ACT_MP_ATTACK_SWIM_MELEE_SECONDARY"		"ACT_MP_ATTACK_SWIM_MELEE"
+				}
+			}
+			"mouse_pressed_sound"		"#ui/item_fists_pickup.wav"
+			"drop_sound"				"#ui/item_fists_drop.wav"
+		}
+		"9981"
+		{
+			"name"						"TF_TACTITIAN_SUPPRESSION"
+			"item_class"				"tf_weapon_grenadelauncher"
+			"show_in_armory"			"1"
+			"item_slot"					"pda2"
+			"anim_slot"					"item1"
+			"baseitem"					"1"
+			"bucket"					"999"
+			"bucket_position"			"999"
+			"show_in_armory"			"1"
+			"propername"				"1"
+			"item_name"					"SUPPRESSED"
+			"item_type_name"			"SUPPRESSED"
+			"item_description"			"DISABLES TACTICIAN BUFF WHILE PRESENT"
+			"item_logname"				"firework"
+			"item_quality"              "unique"
+			"image_inventory"			"backpack/weapons/c_models/c_firework_flare/c_firework_flare"
+			"model_world"				"models/weapons/c_models/c_firework_flare/c_firework_flare.mdl" // 	TO DO: resolve annoying missing texture error
+			"model_player"				"models/weapons/c_models/c_firework_flare/c_firework_flare.mdl"
+			"attach_to_hands"			"1"
+			"used_by_classes"
+			{
+				"mercenary"					"1"
+			}
+			"static_attrs"
+			{
+				"clip size penalty"						"0"
+				"damage penalty"						"0"
+				"mod use custom ammo type"				"3"
+				"maxammo metal reduced"					"0"
+				"linked item id"						"12116"
+			}
+			"mouse_pressed_sound"		"#ui/item_light_gun_pickup.wav"
+			"drop_sound"				"#ui/item_light_gun_drop.wav"
+		}
+		"12116"
+		{
+			"name"						"TF_WEAPON_DM_FISTS"
+			"item_class"				"tf_weapon_club"
+			"item_slot"					"melee"
+			"anim_slot"					"melee"
+			"show_in_armory"			"1"
+			
+			"image_inventory_size_w"	"128"
+			"image_inventory_size_h"	"82"
+
+			"propername"				"1"
+			"item_name_color"			"204 204 250 255"
+			"item_name"					"Knuckle Sandvich"
+			"item_type_name"			"#TF_Weapon_Fists"
+			"item_description"			"Deals slight reverse knockback
+
+“Let's have a go, ya mug!”"
+			"item_logname"				"dm_fists"
+			"item_iconname"				"dm_fists"
+			"image_inventory"			"backpack/weapons/v_models/v_berserk"
+			"model_world"				"models/weapons/w_models/w_fist_critfix.mdl"
+//			"model_player"				"models/weapons/v_models/v_berserk.mdl"
+			"model_player"				"models/weapons/v_models/v_karate_sniper_alt.mdl"		// NOWP v2.5.0 - Changed it back to Karate Sniper for funnies! It's a bit fast, but I'll see how it pans out.
+			"attach_to_hands"			"2"
+			"used_by_classes"
+			{
+				"mercenary"				"1"
+			}
+			"static_attrs"
+			{
+				"NOWP weapon"							"1"
+				"fire rate bonus"						"0.5"
+				"damage bonus hidden"					"0.385"
+				"crit_kill_effect_gib"					"29"
+				"min_viewmodel_offset"					"8 0 -6"
+				"weapon enemy knockback mod mult hidden" "-0.5"
+			}
+			"attributes"
+			{
 				"tactician bonus weapon"
 				{
 					"attribute_class"	"DISPLAY_ONLY"
@@ -87832,7 +88583,6 @@ Healpack on kill is on wearer
 				"drop health pack on kill"				"1" //This is heavily inspired by Roblox TF2 of all things. In TC2, these two stats are bonuses on his stock bonesaw. Which, (as far as I know) make it generally considered his best option there! -Clock
 				"health from packs increased"			"1.2"
 				"heal on hit for rapidfire"				"10"
-				"fire rate bonus"						"0.9"
 				"mult dmg crit multiplier"				"0.995"		
 			}
 			"attributes"
@@ -87875,7 +88625,7 @@ Healpack on kill is on wearer
 				"linked item id"
 				{
 					"attribute_class"	"linked_item_id"
-					"value"				"6789"
+					"value"				"9982"
 				}
 			}
 			"visuals"
@@ -87891,7 +88641,108 @@ Healpack on kill is on wearer
 			"mouse_pressed_sound"		"ui/item_knife_small_pickup.wav"
 			"drop_sound"		        "ui/item_metal_weapon_drop.wav"
 		}
-		
+		"9982"
+		{
+			"name"						"TF_TACTITIAN_SUPPRESSION"
+			"item_class"				"tf_weapon_grenadelauncher"
+			"show_in_armory"			"1"
+			"item_slot"					"pda2"
+			"anim_slot"					"item1"
+			"baseitem"					"1"
+			"bucket"					"999"
+			"bucket_position"			"999"
+			"show_in_armory"			"1"
+			"propername"				"1"
+			"item_name"					"SUPPRESSED"
+			"item_type_name"			"SUPPRESSED"
+			"item_description"			"DISABLES TACTICIAN BUFF WHILE PRESENT"
+			"item_logname"				"firework"
+			"item_quality"              "unique"
+			"image_inventory"			"backpack/weapons/c_models/c_firework_flare/c_firework_flare"
+			"model_world"				"models/weapons/c_models/c_firework_flare/c_firework_flare.mdl" // 	TO DO: resolve annoying missing texture error
+			"model_player"				"models/weapons/c_models/c_firework_flare/c_firework_flare.mdl"
+			"attach_to_hands"			"1"
+			"used_by_classes"
+			{
+				"mercenary"					"1"
+			}
+			"static_attrs"
+			{
+				"clip size penalty"						"0"
+				"damage penalty"						"0"
+				"mod use custom ammo type"				"3"
+				"maxammo metal reduced"					"0"
+				"linked item id"						"12117"
+			}
+			"mouse_pressed_sound"		"#ui/item_light_gun_pickup.wav"
+			"drop_sound"				"#ui/item_light_gun_drop.wav"
+		}
+		"12117"
+		{
+//			"tags"
+//			{
+//				"bots_cant_use"			"1" //They'd spoil it. -Clock
+//			}
+			"name"						"TF_WEAPON_PRINNY_MACHETE" //No joke attribute needed here. This weapon... speaks for itself //Wrong. More meme. -Clock
+//			"prefab"					"weapon_club"
+			"item_class"				"tf_weapon_club"
+			"item_slot"					"melee"
+			"anim_slot"                 "melee"
+			"show_in_armory"			"1"
+			"item_name"					"The Prinny Machete"
+			"item_type_name"			"Machete, DOOD!"
+			"item_description"			"Healpack on kill is on wearer
+
+“A little of the ol' chop-chop, DOOD!”"
+			"item_logname"				"childish_penguino"
+			"item_iconname"				"prinny_machete"
+			"item_quality"              "unique"
+			"image_inventory"			"backpack/workshop_partner/weapons/c_models/c_prinny_knife/c_prinny_knife"
+			"model_world"				"models/weapons/c_models/c_prinny_knife/c_prinny_knife.mdl"
+			"model_player"				"models/weapons/c_models/c_prinny_knife/c_prinny_knife.mdl"
+			"attach_to_hands"			"1"
+			"used_by_classes"
+			{
+				"mercenary"				"1"
+			}
+			"static_attrs" //Thought a vita-saw for sniper might be fun. That's it. Just thought it'd be neat. -Clock
+			{
+				"Mannly weapon"							"1"
+				"Heavily modified"						"1"
+				"min_viewmodel_offset"					"0 -5 -5"
+//				"linked item id"						"5110"	//Originally intended to give you the tenbassador, didn't work for technical reasons. -Clock	
+				"drop health pack on kill"				"1" //This is heavily inspired by Roblox TF2 of all things. In TC2, these two stats are bonuses on his stock bonesaw. Which, (as far as I know) make it generally considered his best option there! -Clock
+				"health from packs increased"			"1.2"
+				"heal on hit for rapidfire"				"10"
+				"fire rate bonus"						"0.9"
+				"mult dmg crit multiplier"				"0.995"		
+			}
+			"attributes"
+			{
+				"damage penalty"
+				{
+					"attribute_class"	"mult_dmg"
+					"value"				"0.75"
+				}
+				"max health additive penalty"
+				{
+					"attribute_class"	"add_maxhealth"
+					"value"				"-15"
+				}
+			}
+			"visuals"
+			{
+			    "animation_replacement"
+				{
+					"ACT_VM_IDLE"		"ACT_MELEE_ALLCLASS_VM_IDLE"
+					"ACT_VM_HITCENTER"	"ACT_MELEE_ALLCLASS_VM_HITCENTER"
+					"ACT_VM_SWINGHARD"	"ACT_MELEE_ALLCLASS_VM_SWINGHARD"
+					"ACT_VM_DRAW"		"ACT_MELEE_ALLCLASS_VM_DRAW"
+				}
+			}
+			"mouse_pressed_sound"		"ui/item_knife_small_pickup.wav"
+			"drop_sound"		        "ui/item_metal_weapon_drop.wav"
+		}
 		"1176" //Shahanshah by shualdock //Moved
 		{
 			"name"						"TF_WEAPON_SHAHANSHAH"
@@ -88031,7 +88882,7 @@ and the mightiest war criminals."
 				"damage penalty hidden"
 				{
 					"attribute_class"	"mult_dmg"
-					"value"				"1.85714285714285714"
+					"value"				"1.392857142857142855"
 				}
 				"fire rate penalty hidden"
 				{
@@ -88056,13 +88907,97 @@ and the mightiest war criminals."
 				"linked item id"
 				{
 					"attribute_class"	"linked_item_id"
-					"value"				"6791"
+					"value"				"9983"
 				}
 			}
 			"mouse_pressed_sound"		"#ui/item_knife_small_pickup.wav"
 			"drop_sound"				"#ui/item_metal_weapon_drop.wav"
 		}
-
+		"9983"
+		{
+			"name"						"TF_TACTITIAN_SUPPRESSION"
+			"item_class"				"tf_weapon_grenadelauncher"
+			"show_in_armory"			"1"
+			"item_slot"					"pda2"
+			"anim_slot"					"item1"
+			"baseitem"					"1"
+			"bucket"					"999"
+			"bucket_position"			"999"
+			"show_in_armory"			"1"
+			"propername"				"1"
+			"item_name"					"SUPPRESSED"
+			"item_type_name"			"SUPPRESSED"
+			"item_description"			"DISABLES TACTICIAN BUFF WHILE PRESENT"
+			"item_logname"				"firework"
+			"item_quality"              "unique"
+			"image_inventory"			"backpack/weapons/c_models/c_firework_flare/c_firework_flare"
+			"model_world"				"models/weapons/c_models/c_firework_flare/c_firework_flare.mdl" // 	TO DO: resolve annoying missing texture error
+			"model_player"				"models/weapons/c_models/c_firework_flare/c_firework_flare.mdl"
+			"attach_to_hands"			"1"
+			"used_by_classes"
+			{
+				"mercenary"					"1"
+			}
+			"static_attrs"
+			{
+				"clip size penalty"						"0"
+				"damage penalty"						"0"
+				"mod use custom ammo type"				"3"
+				"maxammo metal reduced"					"0"
+				"linked item id"						"12118"
+			}
+			"mouse_pressed_sound"		"#ui/item_light_gun_pickup.wav"
+			"drop_sound"				"#ui/item_light_gun_drop.wav"
+		}
+		"12118"
+		{
+			"name"						"TF_WEAPON_SHAHANSHAH"
+			"item_class"				"tf_weapon_club"
+			"item_slot"					"melee"
+			"anim_slot"					"melee"
+			"show_in_armory"			"1"
+			"item_name"					"The Shahanshah"
+			"item_type_name"			"Scimitar"
+			"item_quality"              "unique"
+			"item_description"			"
+For over a thousand years, it has 
+been held by the greatest sultans 
+and the mightiest war criminals."
+			"item_logname"				"shah_of_australia"
+			"item_iconname"				"shahanshah"
+			"image_inventory"			"backpack/workshop/weapons/c_models/c_scimitar/c_scimitar"
+			"model_world"				"models/weapons/c_models/c_scimitar/c_scimitar.mdl"
+			"model_player"				"models/weapons/c_models/c_scimitar/c_scimitar.mdl"
+			"attach_to_hands"			"1"
+			"used_by_classes"
+			{
+				"mercenary"				"1"
+			}
+			"static_attrs"
+			{
+				"Mannly weapon"							"1"
+			}
+			"attributes"
+			{
+				"increased fire rate at low health" 
+				{
+					"attribute_class"	"DISPLAY_ONLY"
+					"value"				"35"
+				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mult_postfiredelay_with_reduced_health"
+					"value"				"0.65"
+				}
+				"damage penalty"
+				{
+					"attribute_class"	"mult_dmg"
+					"value"				".75"
+				}
+			}
+			"mouse_pressed_sound"		"#ui/item_knife_small_pickup.wav"
+			"drop_sound"				"#ui/item_metal_weapon_drop.wav"
+		}
 		"3327"
 		{
 			"name"						"TF_WEAPON_PICKET"
@@ -88221,6 +89156,97 @@ like a taste a' their own rubbish!"
 				{
 					"attribute_class"	"linked_item_id"
 					"value"				"6789"
+				}
+			}
+			"visuals"
+			{
+				"sound_melee_miss"		"Weapon_Crowbar.Miss"
+				"sound_melee_hit"		"Weapon_BaseballBat.HitFlesh"
+				"sound_melee_hit_world"	"Weapon_Fishwhacker.HitWorld"
+				"sound_burst"			"Weapon_Crowbar.MissCrit"
+			}
+			"mouse_pressed_sound"		"#ui/item_wood_weapon_pickup.wav"
+			"drop_sound"				"#ui/item_wood_weapon_drop.wav"
+		}
+		"9984"
+		{
+			"name"						"TF_TACTITIAN_SUPPRESSION"
+			"item_class"				"tf_weapon_grenadelauncher"
+			"show_in_armory"			"1"
+			"item_slot"					"pda2"
+			"anim_slot"					"item1"
+			"baseitem"					"1"
+			"bucket"					"999"
+			"bucket_position"			"999"
+			"show_in_armory"			"1"
+			"propername"				"1"
+			"item_name"					"SUPPRESSED"
+			"item_type_name"			"SUPPRESSED"
+			"item_description"			"DISABLES TACTICIAN BUFF WHILE PRESENT"
+			"item_logname"				"firework"
+			"item_quality"              "unique"
+			"image_inventory"			"backpack/weapons/c_models/c_firework_flare/c_firework_flare"
+			"model_world"				"models/weapons/c_models/c_firework_flare/c_firework_flare.mdl" // 	TO DO: resolve annoying missing texture error
+			"model_player"				"models/weapons/c_models/c_firework_flare/c_firework_flare.mdl"
+			"attach_to_hands"			"1"
+			"used_by_classes"
+			{
+				"mercenary"					"1"
+			}
+			"static_attrs"
+			{
+				"clip size penalty"						"0"
+				"damage penalty"						"0"
+				"mod use custom ammo type"				"3"
+				"maxammo metal reduced"					"0"
+				"linked item id"						"12119"
+			}
+			"mouse_pressed_sound"		"#ui/item_light_gun_pickup.wav"
+			"drop_sound"				"#ui/item_light_gun_drop.wav"
+		}
+		"12119"
+		{
+			"name"						"TF_WEAPON_PICKET"
+			"item_class"				"tf_weapon_club"
+			"item_slot"					"melee"
+			"anim_slot"					"melee"
+			"show_in_armory"			"1"
+
+			"propername"				"1"
+			"item_name_color"			"255 240 183 255"
+			"item_name"					"Conscientious Objector"
+			"item_type_name"			"Broken Sign"
+			"item_description"			"(To change Decals, mod in your own!)
+
+Let's see how those fruit-shop owners
+like a taste a' their own rubbish!"
+			"item_logname"				"nonnonviolent_protest"
+			"item_iconname"				"nonnonviolent_protest"
+			"image_inventory"			"backpack/workshop/weapons/c_models/c_picket/c_picket"
+			"model_world"				"models/weapons/w_models/w_picket_sniper.mdl"
+			"model_player"				"models/weapons/v_models/v_picket_sniper.mdl"
+			"attach_to_hands"			"2"
+			"used_by_classes"
+			{
+				"mercenary"				"1"
+			}
+			"static_attrs"
+			{
+				"NOWP weapon"							"1"
+				"Mannly parallel"						"1"
+				"mod custom decal"						"1"
+				"particle on melee hit"					"impact_wood"
+				"min_viewmodel_offset"					"5 0 -10"
+				"melee range multiplier increased"		"1.25"
+				"melee bounds multiplier"				"1.55"
+				"slower weapon draw speed"		"1.15"
+			}
+			"attributes"
+			{
+				"hide_attrib_additive"
+				{
+					"attribute_class"	"mult_decloak_rate"										// For the balisong/vanish, the lowest possible number i've found it can be before the game just goes "no, screw you" and rejects it. -Clock
+					"value"				"0.02"
 				}
 			}
 			"visuals"
@@ -88442,6 +89468,8 @@ like a taste a' their own rubbish!"
 			{
 				"clip size penalty"						"0"
 				"damage penalty"						"0"
+				"mod use custom ammo type"				"3"
+				"maxammo metal reduced"					"0"
 				"linked item id"						"12001"
 			}
 			"mouse_pressed_sound"		"#ui/item_light_gun_pickup.wav"
@@ -88763,6 +89791,8 @@ Note: Some small buffs. -Clock"
 			{
 				"clip size penalty"						"0"
 				"damage penalty"						"0"
+				"mod use custom ammo type"				"3"
+				"maxammo metal reduced"					"0"
 				"linked item id"						"12003"
 			}
 			"mouse_pressed_sound"		"#ui/item_light_gun_pickup.wav"
@@ -88947,7 +89977,7 @@ Note: Reworked. -Clock"
 				"slower weapon draw speed"
 				{
 					"attribute_class"	"mult_single_wep_deploy_time"
-					"value" 			"1.5"
+					"value" 			"1.35"
 				}
 				"maxammo primary reduced" // so people don't just equip this for free +secondary ammo.
 				{
@@ -89176,7 +90206,7 @@ Note: Reworked. -Clock"
 				"slower weapon draw speed"
 				{
 					"attribute_class"	"mult_single_wep_deploy_time"
-					"value" 			"1.5"
+					"value" 			"1.35"
 				}
 				"maxammo primary reduced" // so people don't just equip this for free +secondary ammo.
 				{
@@ -89323,6 +90353,8 @@ Note: Reworked. -Clock"
 			{
 				"clip size penalty"						"0"
 				"damage penalty"						"0"
+				"mod use custom ammo type"				"3"
+				"maxammo metal reduced"					"0"
 				"linked item id"						"12005" // Tactician suppression
 			}
 			"mouse_pressed_sound"		"#ui/item_light_gun_pickup.wav"
@@ -89430,7 +90462,7 @@ Note: Reworked. -Clock"
 				"slower weapon draw speed"
 				{
 					"attribute_class"	"mult_single_wep_deploy_time"
-					"value" 			"1.5"
+					"value" 			"1.35"
 				}
 				"maxammo primary reduced" // so people don't just equip this for free +secondary ammo.
 				{
@@ -89832,6 +90864,8 @@ Note: Gave this to sniper because his melee selection is lacking."
 			{
 				"clip size penalty"						"0"
 				"damage penalty"						"0"
+				"mod use custom ammo type"				"3"
+				"maxammo metal reduced"					"0"
 				"linked item id"						"12007" // Tactician suppression
 			}
 			"mouse_pressed_sound"		"#ui/item_light_gun_pickup.wav"
@@ -90289,6 +91323,8 @@ anything that could be opened..."
 			{
 				"clip size penalty"						"0"
 				"damage penalty"						"0"
+				"mod use custom ammo type"				"3"
+				"maxammo metal reduced"					"0"
 				"linked item id"						"12009" // Tactician suppression
 			}
 			"mouse_pressed_sound"		"#ui/item_light_gun_pickup.wav"
@@ -90636,7 +91672,7 @@ anything that could be opened..."
 		"6797"
 		{
 			"name"						"TF_TACTITIAN_SUPPRESSION"
-			"item_class"				"tf_weapon_grenadelauncher"
+			"item_class"				"tf_weapon_bottle"
 			"show_in_armory"			"1"
 			"item_slot"					"pda2"
 			"bucket"					"8"
@@ -90781,7 +91817,7 @@ anything that could be opened..."
 				"meter_label"						"NADE"
 				"self dmg push force hidden"		"0.65"
 				"effect bar recharge rate increased""1.4"
-				"mod use custom ammo type"			"4" //Don't use brick ammo!
+				"mod use custom ammo type"			"5" //Don't use brick ammo!
 			}
 			"attributes"
 			{
@@ -94305,7 +95341,7 @@ by an enemy, gain %s1s of Revenge Haste!"
 		{
 			"name"					"fires projectile"
 			"attribute_class"		"override_projectile_type"
-			"description_string"	"Weapon fire projectiles"
+			"description_string"	"Weapon fires projectiles"
 			"description_format"	"value_is_additive"
 			"effect_type"			"negative"
 		}
