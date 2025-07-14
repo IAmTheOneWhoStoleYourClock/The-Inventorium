@@ -2,7 +2,7 @@
 A TF2C modpack run on the server of the same name.
 
 <br>If you have any questions suggestions or whatever else, contact me on discord (@clockstealer), or make an issue here.
-<br>The assets are not included here ftm, i'll provide a download to them when one becomes accessable.
+<br>The assets are not included here ftm. Download them here: https://drive.google.com/drive/folders/1OwE9R6uPenz-gcnowzYDsQueI8v_7uzQ
 <br>To run these privately, take the assets, put them in a new folder inside your custom folder, then take the text files ending with items_game.txt, and put them into your maps folder.
 <br>Sourcemods shouldn't be required for everything but engineer unfortunately needs them for some bug fixes and two of his weapon's functionalities.
 <br>(For a guide on how to install sourcemod, see https://wiki.alliedmods.net/Installing_sourcemod. Then place the plugins in the plugin folder. The scripting files aren't nessesary to run the plugins)
