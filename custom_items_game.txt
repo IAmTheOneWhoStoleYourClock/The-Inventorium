@@ -43110,7 +43110,7 @@ I'm not afraid of explosives!"
 			"item_logname"				"blast_blocker"
 			"item_iconname"				""											// Kill icon for blast-proof suit?
 			"image_inventory"			"backpack\player\w_blast_blocker\w_blast_blocker"
-			"model_player"				"models\player\items\demo\w_demosuit.mdl"
+			"model_player"				"models\player\items\demo\dec17_blast_blocker.mdl" // This isn't compatable with four team, but neither was the OG. Thanks ReValve.
 //			"extra_wearable"			"models\player\items\demo\spr18_frag_proof_fragger.mdl"					// For wearables you not able to add extra wearable :(
 			"used_by_classes"
 			{
@@ -43138,12 +43138,12 @@ I'm not afraid of explosives!"
 				"wearable add cond on right click" // At one point gave a defense boost similar to scottish riot, but I wanted something more interesting. -Clock
 				{
 					"attribute_class"	"add_wearable_cond_on_secondary_attack"
-					"value"				"111 0.6 12" //TO DO: Fine-tune recharge time.
+					"value"				"120 0.6 12" //TO DO: Fine-tune recharge time.
 				}
 				"wearable cond on effect percent" // Shockingly, these stack! Attributes doc indicates that this gets removed while being healed, but that doesn't seem to be the case here. -Clock
 				{
 					"attribute_class"	"add_wearable_cond_on_effect_percent"
-					"value"				"120 1"
+					"value"				"111 1"
 				}
 				"dmg taken from blast splash reduced" // This counters the begeebers out of the battering cannon -Clock
 				{
@@ -43191,7 +43191,6 @@ I'm not afraid of explosives!"
 				"player_bodygroups"
 				{
 					"vest"				"1"
-					"hat"				"1"
 					"grenades"			"1"
 					"collar"			"1"
 				}
@@ -46376,8 +46375,11 @@ It's an old experience, but better!"
 		{
 			"name"						"TF_WEAPON_HEAVY_NAILGUN"
 			"prefab"					"weapon_shotgun"
+			"item_class"				"tf_weapon_pistol"
 			"show_in_armory"			"1"
 			"item_slot"					"primary"
+			"anim_slot"					"primary"
+			"bucket"					"0"
 
 			"propername"				"1"
 			"item_name_color"			"255 240 183 255"
@@ -46388,7 +46390,7 @@ I guess it's a nail gun of sorts
 
 Note: Made less Widowmakery. -Clock"
 			"item_logname"				"boom_cylinder"
-			"item_iconname"				""
+			"item_iconname"				"nailgun_metal" //TO DO: Replace!
 			"image_inventory"			"backpack\weapons\w_models\w_boom_cylinder\w_boom_cylinder"
 			"model_world"				"models\w_models\w_boom_cylinder.mdl"
 			"model_player"				"models\v_models\v_boom_cylinder_engineer.mdl"
@@ -46404,7 +46406,7 @@ Note: Made less Widowmakery. -Clock"
 				"mod max primary clip override"			"-1"
 				"punch angle mod mult hidden"			"0.25"									// Without this, it is just impossible to shoot.
 				"punch angle is constant"				"1"										// Fixes punch gaps during shooting
-				"damage bonus hidden"					"2.35"
+				"damage bonus hidden"					"0.933333"
 			}
 			"attributes"
 			{
@@ -46415,8 +46417,13 @@ Note: Made less Widowmakery. -Clock"
 				}
 				"fire rate bonus"
 				{
-					"attribute_class"	"mult_postfiredelay"
+					"attribute_class"	"DISPLAY_ONLY"
 					"value"				"0.2"
+				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mult_postfiredelay"
+					"value"				"0.833333333333333333"
 				}
 				"move speed penalty"
 				{
@@ -46437,11 +46444,6 @@ Note: Made less Widowmakery. -Clock"
 				{
 					"attribute_class"	"no_metal_from_dispensers_while_active"
 					"value"				"1"
-				}
-				"hide_attrib_percentage"										
-				{
-					"attribute_class"	"mult_maxammo_metal"
-					"value"				"6.25"
 				}
 				"Projectile speed decreased"
 				{
@@ -53626,6 +53628,7 @@ Model by boomsta on Gamebanana" //https://gamebanana.com/mods/198596 Thank goodn
 			"static_attrs"
 			{
 				"ReValve weapon"						"1"
+				"Heavily modified"						"1"
 				"always draw tracer"					"1"	
 				"mod use custom ammo type"				"1"
 //				"hide ammo hud"							"1"				// No infinite symbol ingame	
@@ -53741,9 +53744,12 @@ Model by boomsta on Gamebanana" //https://gamebanana.com/mods/198596 Thank goodn
 				"animation_replacement"
 				{
 				    "ACT_ITEM2_VM_CHARGE"					"ACT_PRIMARY_ATTACK_STAND_PREFIRE"
+					"ACT_ITEM2_VM_CHARGE_IDLE_2"			"ACT_PRIMARY_ATTACK_STAND_PREFIRE"
 					"ACT_ITEM2_VM_CHARGE_IDLE_3"			"ACT_PRIMARY_VM_SECONDARYATTACK"
 					"ACT_VM_PRIMARYATTACK"					"ACT_PRIMARY_ATTACK_STAND_POSTFIRE"
 					"ACT_ITEM2_VM_DRYFIRE"					"ACT_PRIMARY_ATTACK_STAND_POSTFIRE"
+
+					"ACT_MP_CROUCHWALK_DEPLOYED"				"ACT_MP_CROUCHWALK_PRIMARY"
 				}
 			}
 			"mouse_pressed_sound"		"#ui/minigun_alt_pickup_stock.wav"
@@ -58920,7 +58926,7 @@ ported by littlefirz On Gamebanana"
 			"item_class"				"tf_weapon_shotgun_hwg"
 			"show_in_armory"			"1"
 			"item_slot"					"primary"
-			"anim_slot"					"secondary"
+			"anim_slot"					"primary"
 			"bucket"					"0"
 
 			"propername"				"1"
@@ -79563,7 +79569,7 @@ That's gotta hurt in the morning
 			{
 				"maxammo grenades1 increased"
 				{
-					"attribute_class"	"DISPLAY_ONLY"
+					"attribute_class"	"mult_maxammo_grenades1"
 					"value"				"3"
 				}
 				// Backend stuff.
@@ -79571,11 +79577,6 @@ That's gotta hurt in the morning
 				{
 					"attribute_class"	"stickybomb_charge_rate"
 					"value"				"0.5"
-				}
-				"hide_attrib_percentage" //So that the ammo change works correctly
-				{
-					"attribute_class"	"mult_maxammo_grenades2"
-					"value"				"3"
 				}
 				"hide_attrib_percentage"	
 				{
@@ -91019,7 +91020,7 @@ anything that could be opened..."
 //				rocket gravity shows up and has to be hidden (see full attributes below)
 				"mod rocket gravity upward force"		"2.3"
 				"custom projectile origin offset"		"0 0 -7"
-				"mod use custom ammo type"				"3"
+				"mod use custom ammo type"				"5"
 //				"damage bonus hidden"					"1" // Doesn't need to be adjusted here. (Brick:65, Stock:65)
 				"fire rate penalty hidden"				"1.6" // 1.0667 for stock. Adjust with swing speed multipliers. (Brick:0.75s, Stock:0.8s)
 				"linked item id"						"12008" // Tactician suppression
@@ -91178,7 +91179,7 @@ anything that could be opened..."
 //				rocket gravity shows up and has to be hidden (see full attributes below)
 				"mod rocket gravity upward force"		"2.3"
 				"custom projectile origin offset"		"0 0 -7"
-				"mod use custom ammo type"				"3"
+				"mod use custom ammo type"				"5"
 //				"damage bonus hidden"					"1" // Doesn't need to be adjusted here. (Brick:65, Stock:65)
 				"fire rate penalty hidden"				"1.6" // 1.0667 for stock. Adjust with swing speed multipliers. (Brick:0.75s, Stock:0.8s)
 				"linked item id"						"6796" // Tactician suppression
@@ -91370,7 +91371,7 @@ anything that could be opened..."
 //				rocket gravity shows up and has to be hidden (see full attributes below)
 				"mod rocket gravity upward force"		"2.3"
 				"custom projectile origin offset"		"0 0 -7"
-				"mod use custom ammo type"				"3"
+				"mod use custom ammo type"				"5"
 //				"damage bonus hidden"					"1" // Doesn't need to be adjusted here. (Brick:65, Stock:65)
 				"fire rate penalty hidden"				"1.6" // 1.0667 for stock. Adjust with swing speed multipliers. (Brick:0.75s, Stock:0.8s)
 			}
