@@ -11,7 +11,7 @@
 // If you're one of the developers that made these packs, double check you're strapped in cause it's going to likely be even worse for you to see how i've butchered your babies. (I jest. Mostly.)
 // These packs are up to date as of 31/03/2025, with the exception of ReValve, because I already implented most of the updates changes anyways.
 // If you are a weapon maker or modeler featured in this pack and would like to have your models/weapons removed, contact me on discord (@clockstealer) or make an issue on the github page.
-// This is the client version. See Ham Shank.
+// Client version, see ham shank.
 // Also, apologies for the poor grammar in advance. -Clock
 "Clocks_NOWP_plus_pack"
 {
@@ -5997,7 +5997,7 @@ Be the invisible envy of the next gaming convention or assassination expo with T
 			"show_in_armory"			"1"
 			"item_name"					"The Golden Frying Pan"
 			"item_type_name"			"Frying Pan"
-			"item_description"			"Alt-fire on enemy: Marked for death
+			"item_description"			"Alt-fire: Give mini-crit boost to a teammate
 
 “No, it's not misspending 
 if you're already a millionaire.”"
@@ -6020,6 +6020,7 @@ if you're already a millionaire.”"
 				"particle on melee hit"					"nutsnbolts_build"
 				"banned in medieval mode"				"1" //Causes civ to t-pose, which is odd but okay. If it turns out to be an issue I can make map specific item files and remove the invalid weapons. -Clock
 				"decrease player capture value civ universal" "-2"
+				"umbrella recharge rate increased"		"0.65"
 			}
 			"attributes" //This was on the machete up until just before release. They ended up swapping stats. -Clock
 			{
@@ -6031,13 +6032,13 @@ if you're already a millionaire.”"
 				"civ boost cond override"
                 {
                     "attribute_class"    "add_civ_boost_override"
-                    "value"     		 "30 1" 
+                    "value"     		 "112 1" 
                 }
-				"civ aura minicrits"
-				{
-					"attribute_class"    "add_civ_aura_override"
-                    "value"     		 "112 0.15" 
-				}
+//				"civ aura minicrits"
+//				{
+//					"attribute_class"    "add_civ_aura_override"
+//                  "value"     		 "112 0.15" 
+//				}
 				"always minicrits" //You're so frail that if your opponent dies to this, it's on them. -Clock
 				{
 					"attribute_class"    "DISPLAY_ONLY"
@@ -6061,7 +6062,7 @@ if you're already a millionaire.”"
 				"max health additive penalty"
 				{
                     "attribute_class"    "add_maxhealth"
-                    "value"     		 "-65" 
+                    "value"     		 "-25" 
                 }
 				"self mfd short civ"
 				{
@@ -6078,11 +6079,6 @@ if you're already a millionaire.”"
                     "attribute_class"    "mult_medigun_healing_received"
                     "value"     		 "0.75" 
                 }
-				"boost targets enemies text"
-				{
-					"attribute_class"	"add_civ_boost_enemies"
-					"value"				"1"
-				}
 				"hide_attrib_percentage"
 				{
 					"attribute_class"	"mult_dmgtaken_from_crit"
@@ -11644,6 +11640,11 @@ Even better than getting coal!"
 				{
 					"attribute_class"	"crit_from_behind"
 					"value" 			"1"
+				}
+				"dmg taken from burning target increased"
+				{
+					"attribute_class"	"mult_dmgtaken_from_burning_target_active"
+					"value"				"1.10"
 				}
 				"airblast cost increased"
 				{
@@ -25400,19 +25401,19 @@ screamin' with the ol' battleaxe!”"
 			}
 			"attributes"																		// I honestly can't think of anything to tweak, it's just the Skullcutter and it does the thing it does
 			{
-				"provide on active"
-				{
-					"attribute_class"	"provide_on_active"
-					"value"				"1"
-				}
+//				"provide on active" // smoghuds -Death
+//				{
+//					"attribute_class"	"provide_on_active"
+//					"value"				"1"
+//				}
 				"damage bonus"
 				{
 					"attribute_class"	"mult_dmg"												// I'm not gonna sugarcoat it
 					"value"				"1.2"													// -234									
 				}
-				"move speed penalty"
+				"movespeed mult active penalty"
 				{
-					"attribute_class"	"mult_player_movespeed"
+					"attribute_class"	"mult_player_movespeed_active"
 					"value"				"0.85"
 				}
 				// Backend stuff
@@ -30121,12 +30122,12 @@ greatest expedition of our lives, gentlemen!”"												// "Hey, no touchies
 			{
 				"NOWP weapon"							"1"
 //				"class select override vcd"				"taunt01"								// This actually looks okay with the Umbrella loadout pose!
-				"civ boost cond override"				"37 0.75"								// As of TF2C v2.1.0, Civ's default boost time seems to be 8s. I keep debating about this, but settled this should be 5s so it doesn't overshadow Medic's kritzkrieg
+				"civ boost cond override"				"37 0.625"								// As of TF2C v2.1.0, Civ's default boost time seems to be 8s. I keep debating about this, but settled this should be 5s so it doesn't overshadow Medic's kritzkrieg
 //				"civ boost aura override"				"6"										// This is the teleporter dust, technically
 				"civ boost aura override"				"89"
 				"move speed bonus"						"1.15"									// Medic speed!!!
-				"umbrella recharge rate increased"		"0.85"									// About 14s recharge... but does it NEED this?
-				"cane duration penalty"					"6"
+//				"umbrella recharge rate increased"		"0.85"									// About 14s recharge... but does it NEED this?
+				"cane duration penalty"					"5"
 				"max health additive penalty"			"-75"									// ...but light class health
 				"cannot provide civ radius"				"1"										// Dummy attribute for text, doesn't do anything
 				"decrease player capture value civ universal" "-2"
@@ -37922,7 +37923,7 @@ This has around 11 siblings. Need I say more?"
 				"dmg taken from burning target increased"
 				{
 					"attribute_class"	"mult_dmgtaken_from_burning_target_active"
-					"value"				"1.50"
+					"value"				"1.10"
 				}
 				"airblast cost increased"
 				{
@@ -43543,9 +43544,7 @@ You will scream in tandem with my eagle partner!"
 			"item_type_name"			"#TF_Weapon_Revolver"
 			"item_description"			"
 In a desprate bid for attention, the Squall has also decided to be a secondary.
-Next thing you know it's going to go full tsundere. Good grief.
-
-Note: Lowered clip size from 6 to 5. -Clock"
+Next thing you know it's going to go full tsundere. Good grief."
 			"item_logname"				"scoutrevolver"
 			"item_iconname"				""
 			"image_inventory"			"backpack\weapons\w_models\w_scoutrevolver\w_scoutrevolver"
@@ -44429,6 +44428,7 @@ Note: Buffed(?) because I don't get the point of this. -Clock"
 			"static_attrs"
 			{
 				"ReValve weapon"						"1"
+				"override projectile type"				"31"
 			}
 			"attributes"
 			{
@@ -47303,11 +47303,6 @@ Note: Changed to be more like NOWP's loose cannon. -Clock"
 					"attribute_class"	"set_reload_single"
 					"value"				"1"
 				}
-				"comm weapon colrot"														
-				{
-					"attribute_class"	"set_dmgtype_ignite"
-					"value" 			"1"
-				}
 				"weapon cook projectile mode"
 				{
 					"attribute_class"	"grenade_cook"											// We're going to be running VERY low on space, so gotta get things compressed ASAP
@@ -47317,6 +47312,11 @@ Note: Changed to be more like NOWP's loose cannon. -Clock"
 				{
 					"attribute_class"	"stickybomb_charge_rate"
 					"value"				"0.5"													// Charge rate modifier - charges for about 1s
+				}
+				"Set DamageType Ignite"														
+				{
+					"attribute_class"	"set_dmgtype_ignite"
+					"value" 			"1"
 				}
 				"Projectile speed increased"
 				{
@@ -47337,6 +47337,11 @@ Note: Changed to be more like NOWP's loose cannon. -Clock"
 				{
 					"attribute_class"	"mirv_impact"
 					"value"				"1"
+				}
+				"weapon burn dmg reduced"
+				{
+					"attribute_class"	"mult_wpn_burndmg"
+					"value"				"0.333333"
 				}
 				"weapon explodes"
 				{
@@ -48002,7 +48007,7 @@ This gun's got a kick hard enough to send even the largest man into low-earth or
 				"damage penalty"
 				{
 					"attribute_class"	"mult_dmg"
-					"value"				"0.50"
+					"value"				"0.4"
 				}
 				"clip size penalty"
 				{
@@ -48046,14 +48051,13 @@ This gun's got a kick hard enough to send even the largest man into low-earth or
 
 			"propername"				"0"
 			"item_name_color"			"204 204 250 255"
-			"item_name"					"Hale-fire"
+			"item_name"					"Hale-fire™"
 			"item_type_name"			"Bottle of Spicy Sauce"
 			"item_description"			"Item recharge: (10s)
 Burning targets are soaked in hot sauce
 
-Saxton Hale's favorite water substitute!
-
-Note: Increased damage. -Clock"
+In an odd addition to the mann co. brand, Saxton branded hot sauces.
+Shockingly, it's good both in war and on food."
 			"item_logname"				"halefire"
 			"item_iconname"				""
 			"image_inventory"			"backpack\weapons\w_models\w_spicy_sauce\w_spicy_sauce"
@@ -48117,7 +48121,7 @@ Note: Increased damage. -Clock"
 				"hide_attrib_percentage"				// No charge	
 				{
 					"attribute_class"	"stickybomb_charge_rate"
-					"value"				"0.01"
+					"value"				"0"
 				}
 				"hide_attrib_percentage"														// So you don't instagib yourself.
 				{
@@ -53369,7 +53373,9 @@ Note: Buffed overall. -Clock"
 			"item_name_color"			"255 240 183 255"
 			"item_name"					"Leidwerfer"
 			"item_type_name"			"Toxic Needle Gun"
-			"item_description"			"Shoots bullets"
+			"item_description"			"Shoots bullets
+
+''Radiation poisioning? Oh trust me, we passed safe levels YEARS ago. Zhis won't make a difference.''"
 			"item_logname"				"leidwerfer"
 			"item_iconname"				""
 			"image_inventory"			"backpack\weapons\w_models\w_bio_syringe\w_bio_syringe"
@@ -53384,7 +53390,6 @@ Note: Buffed overall. -Clock"
 			{
 				"ReValve weapon"					"1"
 				"override projectile type"			"1"
-				"add uber charge on hit charge rate modifier" "1"
 			}
 			"attributes"
 			{
@@ -53418,6 +53423,11 @@ Note: Buffed overall. -Clock"
 				{
 					"attribute_class"	"mult_projectile_range"
 					"value"				"0.18"
+				}
+				"add uber charge on hit charge rate modifier" // Is listing this even nessesary? It's 1%....
+				{
+					"attribute_class"	"add_onhit_ubercharge_charge_rate_modifier"
+					"value"				"1"
 				}
 			}
 			"visuals"
@@ -53974,7 +53984,7 @@ Note: The boost alone is enough upside, no need for max health on top. -Clock"
 				"maxammo primary reduced" //No design prinicples or feeling balance considerations i'm so sick of rebalancing at this point I just want to get the server up -Clock
 				{
 					"attribute_class"	"mult_maxammo_primary" // It's been another month since I made that comment. pain. -Clock
-					"value"				"0.7"
+					"value"				"0.7" // Guess what? it took TWO MORE. THIS TOOK 5 MONTHS.
 				}
 			}
 			"visuals"
@@ -54148,7 +54158,7 @@ Diagnosis: Vitamin D deficiency!"
 					"attribute_class"	"custom_projectile_model"
 					"value"				"models/weapons/w_models/w_drg_ball.mdl"				// NOWP v2.7.5 - Since I use this so often for placeholder stuff, I've added dummy sequences for most viewmodel animations it'd need, if it's used as a viewmodel!
 				}
-				"apply heal on explosion"
+				"apply heal on explosion" // From old version. Would be nice if this started working...
 				{
 					"attribute_class"	"apply_heal_explosion"
 					"value"				"40"
@@ -54817,7 +54827,7 @@ Doesn't work with primaries that heal (technical reasons)"
 				"weapon burn dmg reduced"						// Now you should use mini-crit combo for real damage
 				{
 					"attribute_class"	"mult_wpn_burndmg"
-					"value"				"0.75"
+					"value"				"0.55"
 				}
 				"airblast disabled"
 				{
@@ -55570,7 +55580,7 @@ God bless America!"
 				"custom projectile model"				"models/weapons/w_models/w_concept_flaregun_shell_new.mdl"
 
 				"blast dmg to self increased hidden"	"2.5"
-				"single wep deploy time hidden"			"0.85" // This took me an amberasingly long amount of time to notice that this is a base flaregun thing.... To be fair, most of the flare guns didn't need changing! -Clock
+				"single wep deploy time hidden"			"0.85" // This took me an emberasingly long amount of time to notice that this is a base flaregun thing.... To be fair, most of the flare guns didn't need changing! -Clock
 				"cannot use stored crits NO DISPLAY"				"1"
 			}
 			"attributes"
@@ -55710,7 +55720,7 @@ A once retired seige weapon, left waiting. It waits no longer.
 
 Note: Shotgun. -Clock"
 			"item_logname"				"dragon_gun"
-			"item_iconname"				""
+			"item_iconname"				"long_heatmaker"
 			"image_inventory"			"backpack\weapons\w_models\w_canton\w_canton"
 			"model_world"				"models\weapons\c_models\c_canton\c_canton.mdl"
 			"model_player"				"models\weapons\c_models\c_canton\c_canton.mdl"
@@ -56696,6 +56706,11 @@ Scoping charges the weapon, which increases damage"
 					"attribute_class"	"DISPLAY_ONLY"
 					"value"				"1"
 				}
+				"dmg penalty vs buildings"
+				{
+					"attribute_class"	"mult_dmg_vs_buildings"
+					"value"				"0.6"
+				}
 				"no scope shots disabled"
 				{
 					"attribute_class"	"DISPLAY_ONLY"
@@ -57186,7 +57201,7 @@ Note: Was a straight downgrade from stock. Reworked. -Clock"
 				"bullet is a hull"
 				{
 					"attribute_class"	"bullet_is_a_hull"
-					"value"				"4"
+					"value"				"3"
 				}
 				"hide_attrib_percentage"
 				{
@@ -58846,7 +58861,7 @@ going to let you outrun me!”"
 		"7792" //Spy frontend ver.
 		{
 			"name"						"TF_WEAPON_FAMILY_BUSINESS"
-			"item_class"				"tf_weapon_shotgun_hwg"
+			"item_class"				"tf_weapon_shotgun_pyro"
 			"show_in_armory"			"1"
 			"item_slot"					"primary"
 			"anim_slot"					"secondary"
@@ -59325,11 +59340,6 @@ Model by Tree and Segab on Steam" //Yes, i'm well aware how generic and cheesy t
 //					"value"				"1.25"
 //				}
 				"dmg taken from bullets increased"   // Stock grenade launcher will no longer one shot you because I am not out for your blood
-				{
-					"attribute_class"	"mult_dmgtaken_from_bullets"
-					"value"				"1.15"
-				}
-				"hide_attrib_percentage"             // Stock grenade launcher will no longer one shot you because I am not out for your blood
 				{
 					"attribute_class"	"mult_dmgtaken_from_bullets"
 					"value"				"1.15"
@@ -69761,6 +69771,11 @@ Teach them how to fly!"
 //					"attribute_class"	"mombae1"
 //					"value"				"2.5"
 //				}
+				"grenade detonation no damage penalty"
+				{
+					"attribute_class"	"grenade_detonation_damage_penalty"
+					"value"				"1.6667"
+				}
 				"weapon enemy knockback mod mult increased"
 				{
 					"attribute_class"	"DISPLAY_ONLY"
@@ -69776,15 +69791,15 @@ Teach them how to fly!"
 					"attribute_class"	"scattergun_knockback_mult"
 					"value"				"0.8"
 				}
-				"blast radius increased"					
-				{
-					"attribute_class"	"mult_explosion_radius"
-					"value"				"1.2"
-				}
+//				"blast radius increased"					
+//				{
+//					"attribute_class"	"mult_explosion_radius"
+//					"value"				"1.1"
+//				}
 				"fuse time bonus"
 				{
 					"attribute_class"	"fuse_mult"
-					"value"				"0.65"
+					"value"				"0.75"
 				}
 //				"deploy time decreased"
 //				{
@@ -69794,23 +69809,28 @@ Teach them how to fly!"
 				"damage penalty"
 				{
 					"attribute_class"	"mult_dmg"
-					"value"				"0.8"
+					"value"				"0.7"
 				}
-				"fire rate penalty"
+//				"fire rate penalty"
+//				{
+//					"attribute_class"	"mult_postfiredelay"
+//					"value"				"1.1"
+//				}
+				"Reload time increased"
 				{
-					"attribute_class"	"mult_postfiredelay"
+					"attribute_class"	"mult_reload_time"
 					"value"				"1.15"
 				}
-				"clip size penalty"
-				{
-					"attribute_class"	"mult_clipsize"
-					"value"				"0.75"
-				}
-				"hidden primary max ammo bonus"
-				{
-					"attribute_class"	"mult_maxammo_primary"
-					"value"				"0.9375"
-				}
+//				"clip size penalty"
+//				{
+//					"attribute_class"	"mult_clipsize"
+//					"value"				"0.75"
+//				}
+//				"hidden primary max ammo bonus"
+//				{
+//					"attribute_class"	"mult_maxammo_primary"
+//					"value"				"0.9375"
+//				}
 				"strange restriction type 1"
 				{
 					"attribute_class"	"apply_z_velocity_on_damage"				
@@ -70181,7 +70201,8 @@ Notes: Reworked into two hit combo weapon. -Clock"
 			"propername"				"1"
 			"item_name"					"Hardhitting Hardware"
 			"item_type_name"			"Stickybomb launcher"
-			"item_description"			"
+			"item_description"			"Fires instantly with no charge
+
 Who needs nails when you have stickybombs?
 
 Note: Reworked. -Clock"
@@ -70214,16 +70235,21 @@ Note: Reworked. -Clock"
 //				{
 //					"attribute_class"	"gain_stored_crits_on_kill"
 //					"value" 			"1"
-//				}
+//				}		
+				"faster weapon draw speed"
+				{
+					"attribute_class"	"mult_single_wep_deploy_time"
+					"value"				"0.5"
+				}
 				"fire rate bonus"
 				{
 					"attribute_class"	"mult_postfiredelay"
-					"value"				"0.8"
+					"value"				"0.9"
 				}
-				"deploy time decreased"
+				"Projectile speed increased"
 				{
-					"attribute_class"	"mult_deploy_time"
-					"value"				"0.75"
+					"attribute_class"	"mult_projectile_speed"
+					"value"				"1.2"
 				}
 //				"instant reload on kill"
 //				{
@@ -70240,16 +70266,26 @@ Note: Reworked. -Clock"
 					"attribute_class"	"clipsize_increase_on_kill_cap"
 					"value" 			"3"
 				}
-//				"stickybomb charge rate"
-//				{
-//					"attribute_class"	"stickybomb_charge_rate"
-//					"value" 			"0.5"
-//				}
-//				"mod mini-crit airborne simple" // remnant of an older design -Clock's assistant
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"stickybomb_charge_rate"
+					"value" 			"0.0"
+				}
+				"hide_attrib_additive" // mine layer has this to not mess with projectile speed.
+				{
+					"attribute_class"	"chargeweapon_no_extra_speed"
+					"value"				"1"
+				}
+//				"mod mini-crit airborne"
 //				{
 //					"attribute_class"	"mini_crit_airborne"
 //					"value"				"1"
 //				}
+				"Blast radius decreased"
+				{
+					"attribute_class"	"mult_explosion_radius"
+					"value"				"0.85"
+				}
 				"clip size penalty"
 				{
 					"attribute_class"	"DISPLAY_ONLY" // just a nicer display number
@@ -70259,11 +70295,6 @@ Note: Reworked. -Clock"
 				{
 					"attribute_class"	"mult_clipsize"
 					"value" 			"0.375"
-				}
-				"Blast radius decreased"
-				{
-					"attribute_class"	"mult_explosion_radius"
-					"value"				"0.8"
 				}
 				"max pipebombs decreased"
 				{
@@ -70967,7 +70998,7 @@ Ain't that Heavy as it seems."
 A modified Huo-long once repurposed for celebrations. Now it returns to the battle field.
 'The burning you feel? It is shame.'" 													
 			"item_logname"				"aagun"
-			"item_iconname"				"aa_cannon"
+			"item_iconname"				"long_heatmaker"
 			"image_inventory"			"backpack/canton/c_canton"
 			"model_player"				"models/weapons/c_models/c_canton/c_canton.mdl"				
 			"attach_to_hands"			"1"
@@ -72825,9 +72856,9 @@ For when you just need that little boost on the go."
 			{
 				"Mombae weapon"							"1" //That bug ONLY applies to wearables. I don't even know why. Thank fully all other model replacements are already on regular weapons. -Clock
 				"hide ammo hud"							"1" //Ultimately minor, but there is a small pause before switiching off this weapon. It's unfixable doesn't have any other valid item slots. Barely noticable ultimately. -Clock
-				"clip size penalty hidden"				"1"
-				"hidden primary max ammo bonus"			"1"
-				"damage penalty hidden"					"1"
+				"clip size penalty hidden"				"0"
+				"hidden primary max ammo bonus"			"0"
+				"damage penalty hidden"					"0"
 //				"linked item id"						"4442" //An attempted fix. Didn't work cause engie doesn't have another open valid item slot (excluding utility, which is a buggy mess)
 			}
 			"attributes" //Note: Causes other classes to scream in engineer's voice in the loadout screen, which will remain for now because I think it's funny, but definately worth noting.
@@ -72934,7 +72965,7 @@ Note: Does nothing by default, but tbh there's a lot of interesting random stats
 				"sentry knockback increased"
 				{
 					"attribute_class"	"mult_sentry_knockback"
-					"value" 			"4"
+					"value" 			"2.5"
 				}
 				"sentry turn rate increased"
 				{
@@ -73987,15 +74018,25 @@ Assault and Battery."
 			}
 			"attributes"
 			{
-				"fire rate bonus"
+//				"fire rate bonus"
+//				{
+//					"attribute_class"	"mult_postfiredelay"
+//					"value"				"0.90"
+//				}
+				"no scope headshot"
 				{
-					"attribute_class"	"mult_postfiredelay"
-					"value"				"0.90"
+					"attribute_class"	"can_headshot"
+					"value"				"1"
 				}
 				"deploy time decreased"
 				{
 					"attribute_class"	"mult_deploy_time"
-					"value"				"0.7"
+					"value"				"0.75"
+				}
+				"fire rate penalty"
+				{
+					"attribute_class"	"mult_postfiredelay"
+					"value"				"1.2"
 				}
 				"damage penalty"
 				{
@@ -80684,6 +80725,7 @@ Model by: Ertz™ on Steam" //https://gamebanana.com/mods/573360
 				"Heavily modified"						"1"
                 "min_viewmodel_offset"                    "10 0 -11"
 				"class select override vcd"				  "taunt01"
+				"decrease player capture value civ universal" "-2"
 //				"linked item id"						"3309"
             }
 			"attributes" //According to John Eminoma, Civ's first target practice session with the gang was so embarrassing, a personally offended Sniper walked out on everybody
@@ -81061,7 +81103,7 @@ If you are seeing this text ingame, let me know immediately!"
 				"Mannly weapon"							"1"
                 "min_viewmodel_offset"                  "10 0 -11"
 				"particle on melee hit"					"impact_metal"
-				"decrease player capture value civ universal" "-2"
+				"decrease player capture value civ universal" "-3"
 				"linked item id"						"4423" //Just so it stays on resupply
             }
             "attributes"
@@ -81141,7 +81183,6 @@ Stabbity stab stab."
 //				"min_viewmodel_offset"					"5 0 -10"
 				"linked item id"						"4426"
 				"umbrella recharge rate increased"		"1.5"
-				"decrease player capture value civ universal" "-3"
 			}
 			"attributes"
             {
@@ -82066,7 +82107,7 @@ Stabbity stab stab."
 					"attribute_class"	"add_onhit_addcond_self" //Note that this is ON WEARER. ALL damage will activate this effect.										
 					"value"				"19 999999999"
 				}
-				"add condition on swing" // Just for the chekovs, because people using only the checkovs and encounting them with on of these before they hit somebody is a real, if neiche, possibilty. -Clock
+				"add condition on swing" // Just for the chekovs, because people using only the checkovs and hitting them first before they hit somebody else is a real, if neiche, possibilty. -Clock
 				{
 					"attribute_class"	"add_onswing_addcond"									
 					"value"				"19 999999999"
@@ -83344,11 +83385,11 @@ Note: EXPERIMENTAL WEAPON! This is somewhat unfinished! (But also pretty neat) -
 			}
 			"attributes"
 			{
-				"nader direct hit explain proto"
-				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"1"
-				}
+//				"nader direct hit explain proto"
+//				{
+//					"attribute_class"	"DISPLAY_ONLY"
+//					"value"				"1"
+//				}
 				"ubercharge rate bonus"
 				{
 					"attribute_class"	"mult_medigun_uberchargerate"
@@ -83364,10 +83405,20 @@ Note: EXPERIMENTAL WEAPON! This is somewhat unfinished! (But also pretty neat) -
 					"attribute_class"	"DISPLAY_ONLY"
 					"value"				"1"
 				}
+				"fire rate bonus"
+				{
+					"attribute_class"	"mult_postfiredelay"
+					"value"				"0.2" // the numbers are weird, so how about just 'pretty fast.' Not as fast as the Microbial, but still fast.
+				}
 				"uber only heals" // No effect, just healing
 				{
 					"attribute_class"	"set_charge_type"
 					"value"				"3"
+				}
+				"ubercharge overheal rate penalty"
+				{
+					"attribute_class"	"DISPLAY_ONLY"
+					"value"				"0.2" // Not accurate at all (it actually kinda undersells it) but this NEEDS to be displayed because it's genuinely really bad. You build NOTHING from direct hits on overhealed players. -Clock's assistant
 				}
 				"must spinup"
 				{
@@ -83377,7 +83428,12 @@ Note: EXPERIMENTAL WEAPON! This is somewhat unfinished! (But also pretty neat) -
 				"aiming movespeed decreased"
 				{
 					"attribute_class"	"mult_player_aiming_movespeed"
-					"value" 			"0.85"
+					"value" 			"0.8"
+				}
+				"heal rate penalty"
+				{
+					"attribute_class"	"DISPLAY_ONLY"
+					"value"				"0.2"
 				}
 				"cus overheal reduction tom"
 				{
@@ -83387,14 +83443,19 @@ Note: EXPERIMENTAL WEAPON! This is somewhat unfinished! (But also pretty neat) -
 				"Blast radius decreased"
 				{
 					"attribute_class"	"mult_explosion_radius"
-					"value"				"0.6"
+					"value"				"0.5"
 				}
+//				"fuse reduction healgrenade"
+//				{
+//					"attribute_class"	"fuse_mult"
+//					"value"				"0.6"
+//				}
 
-				"dont explode on world display"
-				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"1"
-				}
+//				"dont explode on world display"
+//				{
+//					"attribute_class"	"DISPLAY_ONLY"
+//					"value"				"1"
+//				}
 			}
 			"visuals"
 			{
@@ -83462,7 +83523,7 @@ Note: EXPERIMENTAL WEAPON! This is somewhat unfinished! (But also pretty neat) -
 			"item_description"			"If you're seeing this, something's gone horribly wrong."
 			"image_inventory"			"backpack\weapons\w_models\w_bio_medigun\w_bio_medigun"
 
-			// uses altered veriosn of the model. Viewmodel has changed animation speeds, both models have the muzzle banished to 100 million HU's in the void.
+			// uses altered version of the model. Viewmodel has changed animation speeds, both models have the muzzle banished to 100 million HU's in the void.
 			// TO DO: Once muzzle flashes can be properly altered, un-banish them and make them nicer.
 			"model_world"				"models\weapons\c_models\c_proto_medigun\c_proto_medigun.mdl" // "models\w_models\w_bio_medigun.mdl"
 			"model_player"				"models\v_models\v_biomedigun_medigun_alt.mdl" // "models\v_models\v_biomedigun_medigun.mdl"
@@ -83479,7 +83540,7 @@ Note: EXPERIMENTAL WEAPON! This is somewhat unfinished! (But also pretty neat) -
 				"Heavily modified"						"1"
 //				"class select override vcd"				"class_select_nader"
 				"punch angle mod mult hidden"			"0.0"
-				"fire rate penalty hidden"				"0.48"
+				"fire rate penalty hidden"				"0.3"
 //				"hide ammo hud"							"1" // This is a bit weird. Due to being a minigun (or some other source jank), ubercharge is never shown while held, even with this. This is just shown to make it seem at least a *bit* more reasonable that you can't see it.
 				"energy weapon no ammo"					"1"
 				"override projectile type" 				"36"
@@ -83494,9 +83555,9 @@ Note: EXPERIMENTAL WEAPON! This is somewhat unfinished! (But also pretty neat) -
 //				"class select override slot"			"primary"
 				"hidden secondary max ammo penalty"		"100" // failsafe for infinite ammo
 				"custom projectile origin offset"		"-2 8 7"
-				"Projectile speed increased hidden"		"1.2" // The rejuv actually has this stat baseline? (seems to not work on this anyways)
-				"weapon spread bonus"					"0" // yeah, forgot the AA gun has spread. This is the backend of the weapon so it won't appear. There still seems to be some randomness though.
-				"minigun deployed crouchwalk"			"1" // since you still move somewhat fast while revved, allow this.
+//				"Projectile speed increased hidden"		"1.2" // The rejuv actually has this stat baseline? (seems to not work on this anyways)
+				"weapon spread bonus"					"4" // yeah, forgot the AA gun has spread. This is the backend of the weapon so it won't appear. There still seems to be some randomness though.
+				"minigun deployed crouchwalk"			"1" // since you still move pretty fast while revved, allow this.
 				"linked item id"						"4436"
 			}
 			"attributes"
@@ -83509,7 +83570,7 @@ Note: EXPERIMENTAL WEAPON! This is somewhat unfinished! (But also pretty neat) -
 				"aiming movespeed increased"
 				{
 					"attribute_class"	"mult_player_aiming_movespeed"
-					"value" 			"2.4735" // 2.0909 for revved heavy movespeed, 2.91 for base medic speed. Multiply as seen fit.
+					"value" 			"2.328" // 2.0909 for revved heavy movespeed, 2.91 for base medic speed. Multiply as seen fit.
 				}
 				"hide_attrib_percentage"
 				{
@@ -83546,11 +83607,11 @@ Note: EXPERIMENTAL WEAPON! This is somewhat unfinished! (But also pretty neat) -
 					"attribute_class"	"mult_medigun_uberchargerate"
 					"value"				"1" // ubercharge rate here actually means nothing. It has to go on the weapon handling uber (the generator cannon)
 				}
-//				"explode on world"
-//				{
-//					"attribute_class"	"set_detonate_mode"
-//					"value"				"3"
-//				}
+				"explode on world"
+				{
+					"attribute_class"	"set_detonate_mode"
+					"value"				"3"
+				}
 				"uber only heals" // no effect, just healing
 				{
 					"attribute_class"	"set_charge_type"
@@ -83569,19 +83630,19 @@ Note: EXPERIMENTAL WEAPON! This is somewhat unfinished! (But also pretty neat) -
 				"Blast radius decreased"
 				{
 					"attribute_class"	"mult_explosion_radius"
-					"value"				"0.6"
+					"value"				"0.5"
 				}
 
 				// hidden stats
 				"hide_attrib_percentage"
 				{
 					"attribute_class"	"fuse_mult"
-					"value"				"0.75"
+					"value"				"0.33" // base rejuv also has this as a hidden stat?
 				}
 				"hide_attrib_additive"
 				{
 					"attribute_class"	"apply_heal_explosion"
-					"value"				"10"
+					"value"				"8"
 				}
 
 				"residual heal rate"
@@ -83592,12 +83653,12 @@ Note: EXPERIMENTAL WEAPON! This is somewhat unfinished! (But also pretty neat) -
 				"residual heal duration"
 				{
 					"attribute_class"	"residual_heal_duration"
-					"value"				"1"
+					"value"				"2"
 				}
 				"reduce healing on indirect hit"
 				{
 					"attribute_class"	"apply_heal_explosion_reduced_indirect"
-					"value"				"0.75"
+					"value"				"0.75" // base rejuv is 0.75
 				}
 				"adjust burst healing when stacking"
 				{
@@ -83808,7 +83869,7 @@ Note: EXPERIMENTAL WEAPON! This is somewhat unfinished! (But also pretty neat) -
 				"custom projectile origin offset"		"6 20 -18"
 				"mod use custom ammo type"				"2"
 				"Projectile speed increased hidden"		"0.7"
-				"faster weapon draw speed"				"0.6"
+				"faster weapon draw speed"				"0.5"
 //				"uber time bonus"						"10000000" // infinite uber? poggers?
 				"punch angle is constant"				"1"
 //				"max pipebombs decreased"				"-8"
@@ -83825,12 +83886,12 @@ Note: EXPERIMENTAL WEAPON! This is somewhat unfinished! (But also pretty neat) -
 				"uber duration increased"
 				{
 					"attribute_class"	"add_uber_time_active"
-					"value"				"1.16667" // from 6 to 7 seconds
+					"value"				"1.667" // 1.667 is from 6 to 7 seconds
 				}
 				"ubercharge rate bonus" // Adjusted to account for higher fire rate also building uber faster as you have an initial uber gain on hit.
 				{
 					"attribute_class"	"mult_medigun_uberchargerate"
-					"value"				"0.85" // this is really just guesswork honestly. This could be adjusted for what feels best with the weapon.
+					"value"				"0.65" // this is really just guesswork honestly. This could be adjusted for what feels best with the weapon.
 				}
 //				"damage flat bonus" // sadly does nothing on uber generators. It would've been funny :/ -Clock's assistant
 //				{
@@ -85099,6 +85160,7 @@ with an associate!
 				"ReValve weapon"						"1"
 				"Heavily modified"						"1"
 //				"linked item id"						"4446"
+				"decrease player capture value civ universal" "-2"
 			}
 			"attributes"
 			{
@@ -96354,6 +96416,22 @@ as health decreases"
 			"name"	"nade bonus"
 			"description_string"	"Equipping also grants grenades"
 			"attribute_class"	"jarate_backstabber"
+			"description_format"	"value_is_additive"
+			"effect_type"	"positive"
+		}
+		"17564"
+		{
+			"name"	"grenade detonation no damage penalty"
+			"description_string"	"Grenades deal full damage when detonating over time"
+			"attribute_class"	"grenade_detonation_damage_penalty"
+			"description_format"	"value_is_percentage"
+			"effect_type"	"positive"
+		}
+		"17565"
+		{
+			"name"	"no scope headshot"
+			"description_string"	"Scope is not required to headshot"
+			"attribute_class"	"can_headshot"
 			"description_format"	"value_is_additive"
 			"effect_type"	"positive"
 		}
