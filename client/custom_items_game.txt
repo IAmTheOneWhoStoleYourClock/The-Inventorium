@@ -10,8 +10,8 @@
 // If you're here to see how your favourite weapon operates under the hood, buckle up cause you're in for a ride.
 // If you're one of the developers that made these packs, double check you're strapped in cause it's going to likely be even worse for you to see how i've butchered your babies. (I jest. Mostly.)
 // These packs are up to date as of 31/03/2025, with the exception of ReValve, because I already implented most of the updates changes anyways.
-// If you are a weapon maker or modeler featured in this pack and would like to have your models/weapons removed, contact me on discord (@clockstealer) or make an issue on the github page.
-// Client version, see ham shank.
+// If you are a weapon maker or modeler featured in this pack and would like to have your models/weapons removed, contact me on discord (@clockstealer) or make an issue on the github page.\
+// This is the client version, see ham shank.
 // Also, apologies for the poor grammar in advance. -Clock
 "Clocks_NOWP_plus_pack"
 {
@@ -1950,7 +1950,7 @@ Experience the sights and sounds of Hong Kong being lodged directly into your sk
 				"melee range multiplier"				"1.35"
 				"melee bounds multiplier"				"1.55"
 				"particle on melee hit"					"explosioncore_sapperdestroyed"
-//				"mod use custom ammo type"				"5"
+				"mod use custom ammo type"				"3"
 //				"special taunt"							"1" //Taunt is broken. dang it. -Clock
 			}
 			"attributes" //Removed "ragdolls become ash" and damage vs buildings bonus
@@ -6751,7 +6751,7 @@ Note: This one might be a problem.... -Clock"
 			"anim_slot"                 "secondary"
             "item_type_name"            "#TF_Weapon_Club"
             "show_in_armory"            "1"
-            "item_description"          "Alt-Fire on enemy: Highlight
+            "item_description"          "Alt-Fire on enemy: Highlight + Speed to self
 
 “I've much too right a mind to try and survive out in the wilds, but those priceless fur coats are practically begging to be sold.”"
             "item_iconname"             "club"
@@ -6786,7 +6786,7 @@ Note: This one might be a problem.... -Clock"
 				"mfd short time"
 				{
 					"attribute_class"	"mark_for_death"
-					"value"				"8"
+					"value"				"6"
 				}
 				"add condition on hit weapon"
 				{
@@ -6803,15 +6803,15 @@ Note: This one might be a problem.... -Clock"
 					"attribute_class"	"apply_look_velocity_on_damage"
 					"value"				"50"
 				}
-				"move speed bonus"
-				{
-					"attribute_class"	"mult_player_movespeed"
-					"value"				"1.10"
-				}
+//				"move speed bonus"
+//				{
+//					"attribute_class"	"mult_player_movespeed"
+//					"value"				"1.10"
+//				}
 				"umbrella recharge rate increased"
 				{
 					"attribute_class"   "umbrella_recharge_rate"
-                    "value"     		"0.6" 
+                    "value"     		"0.75" 
 				}
 				"cane duration penalty"
 				{
@@ -6820,13 +6820,18 @@ Note: This one might be a problem.... -Clock"
 				}
 				"damage penalty"
 				{
+					"attribute_class"	"DISPLAY_ONLY"
+					"value"				"0.6"
+				}
+				"hide_attrib_percentage"
+				{
 					"attribute_class"	"mult_dmg"
-					"value"				"0.4"
+					"value"				"0.572"
 				}
 				"fire rate penalty"
 				{
 					"attribute_class"	"mult_postfiredelay"
-					"value"				"1.75"
+					"value"				"1.5"
 				}
 //				"weapon burn time reduced"
 //				{
@@ -6837,14 +6842,19 @@ Note: This one might be a problem.... -Clock"
 				// boost
 				"civ boost cond override"
                 {
-                    "attribute_class"    "add_civ_boost_override"
-                    "value"     "122 0.625" 
+                    "attribute_class"   "add_civ_boost_override"
+                    "value"     		"122 0.625" 
                 }
                 "civ boost targets enemies"
                 {
-                    "attribute_class"    "add_civ_boost_enemies"
-                    "value"     "1" 
+                    "attribute_class"   "add_civ_boost_enemies"
+                    "value"     		"1" 
                 }
+				"civ boost cond override"
+				{
+					"attribute_class"	"add_civ_boost_to_self"
+					"value"				"32 5"
+				}
 
 				// decapitate on crit
 				"mod melee crit swing custom damage"
@@ -41737,27 +41747,32 @@ Note: This is a weird one. Feedback is appreciated. -Clock's assistant"
 				"pull in on damage"
 				{
 					"attribute_class"	"apply_look_velocity_on_damage"
-					"value"				"-585"
+					"value"				"-630"
 				}
 				"apply z velocity on damage"
 				{
 					"attribute_class"	"apply_z_velocity_on_damage"
 					"value"				"285"
 				}
-				"minigun spin time decreased"
-				{
-					"attribute_class"	"mult_minigun_spinup_time"
-					"value"				"0.65"
-				}
-				"hide_attrib_percentage"
+//				"minigun spin time decreased"
+//				{
+//					"attribute_class"	"mult_minigun_spinup_time"
+//					"value"				"0.65"
+//				}
+				"minigun spindown time decreased"
 				{
 					"attribute_class"	"mult_minigun_spindown_time"
-					"value"				"0.65"
+					"value"				"0.5"
 				}
 				"Projectile range increased"
 				{
 					"attribute_class"	"mult_projectile_range"
-					"value"				"1.4"
+					"value"				"1.3"
+				}
+				"dmg bonus vs buildings"
+				{
+					"attribute_class"	"mult_dmg_vs_buildings"
+					"value"				"1.5"
 				}
 				"deploy time decreased"
 				{
@@ -41772,12 +41787,12 @@ Note: This is a weird one. Feedback is appreciated. -Clock's assistant"
 				"fire rate penalty"
 				{
 					"attribute_class"	"mult_postfiredelay"
-					"value"				"1.5"
+					"value"				"1.6"
 				}
 				"damage penalty"
 				{
 					"attribute_class"	"mult_dmg"
-					"value"				"0.6"
+					"value"				"0.5"
 				}
 				"no rampup"
 				{
@@ -68602,79 +68617,43 @@ Why breathe fire, when you can shoot fire?"
 			{
 				"Mombae weapon"							"1"
 				"cannot use stored crits NO DISPLAY"				"1"
-				"custom rampup"							"2.5"
+				"custom rampup"							"3"
 // 				"custom falloff"						"0.5" // Strange, only seems to happen with rampup
 //				"provide on active"						"1"
 //				"add condition on hit"					"22 0.5"
 			}
 			"attributes"																
 			{
-				"hide_attrib_additive" // probably doesn't need to be shown
-				{
-					"attribute_class"	"provide_on_active"
-					"value" 			"1"
-				}
 				"Set DamageType Ignite"														
 				{
 					"attribute_class"	"set_dmgtype_ignite"
 					"value" 			"1"
 				}
-				"fire rate bonus"
+				"bullets per shot bonus"
 				{
-					"attribute_class"	"mult_postfiredelay"
-					"value" 			"0.85"
-				}
-				"damage penalty"
-				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"0.8"
-				}
-				"hide_attrib_percentage"
-				{
-					"attribute_class"	"mult_dmg"
-					"value"				"0.48"
-				}
-				"falloff penalty"
-				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"0.70"
+					"attribute_class"	"mult_bullets_per_shot"
+					"value" 			"2"
 				}
 				"weapon burn dmg reduced"
 				{
 					"attribute_class"	"mult_wpn_burndmg"
-					"value"				"0.35"
+					"value"				"0.25"
 				}
 				"spread penalty"
 				{
 					"attribute_class"	"mult_spread_scale"
-					"value"				"1.25"
+					"value"				"2.25"
 				}
-				"weapon burn time reduced"
+				"damage penalty"
 				{
 					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"0.35"
+					"value"				"0.45"
 				}
 				"hide_attrib_percentage"
 				{
-					"attribute_class"	"mult_wpn_burntime" // This leaks, actually. Provide on active has to be here, so ammo can't be messed with. Substituted with lower damage and higher fire rate.
-					"value"				"0.35"
+					"attribute_class"	"mult_dmg"
+					"value"				"0.225"
 				}
-//				"hit self on miss" // Doesn't seem to work on non-melee weapons. Fair enough.
-//				{
-//					"attribute_class"	"hit_self_on_miss"
-//					"value"				"0.5"
-//				}
-				
-//				"clip size penalty"
-//				{
-//					"attribute_class"	"mult_clipsize"
-//					"value"				"0.85"
-//				}
-//				"hide_attrib_percentage"
-//				{
-//					"attribute_class"	"mult_maxammo_secondary"
-//					"value" 			"0.48"
-//				}
 				"limited range DISPLAY ONLY"		
 				{
 					"attribute_class"	"DISPLAY_ONLY"
@@ -68683,7 +68662,7 @@ Why breathe fire, when you can shoot fire?"
 				"hide_attrib_percentage"				// You can deal flame damage more far than with stock flamethrower, but not too far
 				{
 					"attribute_class"	"mult_projectile_range"
-					"value"				"0.150"	
+					"value"				"0.08"	
 				}
 			}
 			"visuals"
@@ -80554,7 +80533,7 @@ T'is like music to the ears."
 		"4416"
 		{
 			"name"						"TF_SHARK"
-			"item_class"				"tf_weapon_grenadelauncher" // necessary to fix a very annoying issue where grenades fired from a non-grenade launcher weapon fail to hit a lot
+			"item_class"				"tf_weapon_throwable"
 //			"prefab"                    "weapon_umbrella"
 			"show_in_armory"			"1"
 			"bucket_position"			"1"
@@ -80589,7 +80568,7 @@ Throw sharks at your enemies!
 				"class select override vcd"				"taunt01"
 				
 				"override projectile type"				"3"
-				"damage bonus hidden"					"0.35"
+				"damage bonus hidden"					"0.5385"
 				"allowed in medieval mode"				"1"
 				"min_viewmodel_offset"					"10 0 -10"
 				"special taunt"							"1"
@@ -80601,7 +80580,6 @@ Throw sharks at your enemies!
 				"launch upwards on damage"				"340"
 				"Projectile speed increased"			"1.1" // slight increase to account for no projectile charging
 				"punch angle mod mult hidden"			"0" // better matches the Brickhouse Beatdown
-				"fire rate penalty hidden"				"1.5625" // the base used for this, a grenade launcher, is slightly faster than the base used for the Brickhouse Beatdown (0.6s vs. 0.75s)
 				"custom rampup"							"1.2" // matches the Brickhouse Beatdown which has the same rampup
 				"meter_label"							"SHARK" // honestly don't know if this matters anymore
 				"hide ammo hud"							"1" // hide the (hopefully irrevalent) ammo display
@@ -80621,7 +80599,7 @@ Throw sharks at your enemies!
 				}
 				"fire rate penalty"
 				{
-					"attribute_class"	"DISPLAY_ONLY"
+					"attribute_class"	"mult_postfiredelay"
 					"value"				"1.25"
 				}
 				"damage penalty"
@@ -80634,10 +80612,10 @@ Throw sharks at your enemies!
 					"attribute_class"	"mod_ammo_per_shot"
 					"value"				"-1"
 				}
-				"hide_attrib_percentage"	
+				"hide_attrib_additive"	
 				{
 					"attribute_class"	"mult_explosion_radius"
-					"value"				"0.5" // increased from the brick's base
+					"value"				"150"
 				}
 				"hide_attrib_percentage"	
 				{

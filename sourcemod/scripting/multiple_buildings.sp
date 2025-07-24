@@ -35,7 +35,7 @@ public void OnPluginStart(){
 
 	HookEvent("player_builtobject",Evt_BuiltObject,EventHookMode_Pre);
 	HookEvent("post_inventory_application",EventInventory,EventHookMode_Post);
-	HookEvent("player_upgradedobject",UpgradeCheck,EventHookMode_Pre);
+//	HookEvent("player_upgradedobject",UpgradeCheck,EventHookMode_Pre); // Doesn't do anything
 
 	RegConsoleCmd("sm_destroy_dispensers", Command_destroy_dispensers);
 	RegConsoleCmd("sm_destroy_sentries", Command_destroy_sentries);
@@ -61,8 +61,6 @@ public void OnPluginStart(){
 		if(!IsClientConnected(client)){
 			continue;
 		}
-
-		SDKUnhook(client, SDKHook_WeaponSwitch, WeaponSwitch);
 		SDKHookEx(client, SDKHook_WeaponSwitch, WeaponSwitch);
 	}
 }
@@ -84,124 +82,6 @@ public Action Evt_BuiltObject(Event event, const char[] name, bool dontBroadcast
 	return Plugin_Continue;
 }
 
-public Action UpgradeCheck(Event event, const char[] name, bool dontBroadcast){
-	new client = GetClientOfUserId(GetEventInt(event, "userid"))
-
-	new TFClassType:class = TF2_GetPlayerClass(client);
-	if(class != TFClass_Engineer) // If this isn't engineer (somehow), we don't care. Skip.
-	{
-		return Plugin_Continue;
-	}
-
-	int DispenserLevelLimit = 3;
-	int SentryLevelLimit = 3;
-	int SentryLevel = 1;
-	int DispenserLevel = 1;
-
-	// Find all sentries, prevent them from being upgraded if the owner's wrench forbids it.
-    for(int i=1;i<2048;i++){
-
-		if(!IsValidEntity(i)){
-			continue;
-		}
-
-		decl String:netclass[32];
-		GetEntityNetClass(i, netclass, sizeof(netclass));
-
-		if ( !(strcmp(netclass, "CObjectSentrygun") == 0) ){
-			continue;
-		}
-
-		//Since this is a sentry gun, figure out the owner's wrench's max level
-		SentryLevelLimit = 3;
-		bool Golden = GetWeaponIndex(GetPlayerWeaponSlot(GetEntDataEnt2(i, OwnerOffset),2)) == 4336;
-
-		if (Golden){
-			SentryLevelLimit--;
-		}
-		//Gunslinger
-		if (GetWeaponIndex(GetPlayerWeaponSlot(GetEntDataEnt2(i, OwnerOffset),2)) == 1143){
-			SentryLevelLimit--;
-		}
-		//PDQ
-		if (GetWeaponIndex(GetPlayerWeaponSlot(GetEntDataEnt2(i, OwnerOffset),2)) == 3519){
-			SentryLevelLimit--;
-		}
-		//Rush order
-		if (GetWeaponIndex(GetPlayerWeaponSlot(GetEntDataEnt2(i, OwnerOffset),3)) == 3456){
-			SentryLevelLimit = 1; //No negative numbers!
-		}
-
-		SentryLevel = GetEntData(i, LevelOffset)
-
-		// If the level of the sentry is equal to the max level allowed on the owner's wrench, make it not upgradeable.
-		if(SentryLevel == SentryLevelLimit){
-			SetEntData(i, StopThatOffset, 1);
-			SetEntData(i, StopThatOffset2, 1);
-			continue;
-		}
-
-		// If the max level of the wrench is greater than what's allowed on the owner's wrench, set it to its max level, and make it not upgradable.
-		if(SentryLevel > SentryLevelLimit){
-			SetEntData(i, LevelOffset, SentryLevelLimit)
-			SetEntData(i, StopThatOffset, 1);
-			SetEntData(i, StopThatOffset2, 1);
-			continue;
-		}
-	}
-
-	for(int i=1;i<2048;i++){
-
-		if(!IsValidEntity(i)){
-			continue;
-		}
-
-		decl String:netclass[32];
-		GetEntityNetClass(i, netclass, sizeof(netclass));
-
-		if ( !strcmp(netclass, "CObjectDispenser") == false){
-			continue;
-		}
-
-		DispenserLevelLimit = 3;
-		bool Golden = GetWeaponIndex(GetPlayerWeaponSlot(GetEntDataEnt2(i, OwnerOffset),2)) == 4336;
-
-		if (Golden){
-			DispenserLevelLimit--;
-		}
-
-		if (GetWeaponIndex(GetPlayerWeaponSlot(GetEntDataEnt2(i, OwnerOffset),2)) == 1143){
-			DispenserLevelLimit--;
-		}
-
-		if (GetWeaponIndex(GetPlayerWeaponSlot(GetEntDataEnt2(i, OwnerOffset),2)) == 3519){
-			DispenserLevelLimit--;
-		}
-
-		if (GetWeaponIndex(GetPlayerWeaponSlot(GetEntDataEnt2(i, OwnerOffset),3)) == 3456){
-			DispenserLevelLimit = 1; //No negative numbers!
-		}
-
-		DispenserLevel == GetEntData(i, LevelOffset)
-		// If the level of the dispenser is equal the owner's wrench's maximum, make it not upgradable.
-		if(DispenserLevel == DispenserLevelLimit){
-			SetEntData(i, StopThatOffset2, 1);
-			continue;
-		}
-
-		// If the max level of the wrench is greater than what's allowed on the owner's wrench, set it to its max level, and make it not upgradable.
-		if(DispenserLevel > DispenserLevelLimit){
-			SetEntData(i, LevelOffset, DispenserLevelLimit)
-			SetEntData(i, StopThatOffset2, 1);
-			continue;
-		}
-	}
-	// No tele check, Might be making it so that teles ignore level decreases entirely, but for now we don't need to destroy them for being upgraded.
-    // Also no jumppad check for obvious reasons.
-
-    return Plugin_Continue;
-}
-
 public Action WeaponSwitch(client, weapon){
 	//Safety Checks
 	if(!IsClientInGame(client)){
@@ -210,19 +90,9 @@ public Action WeaponSwitch(client, weapon){
 	if(TF2_GetPlayerClass(client)!=TFClass_Engineer){
 		return Plugin_Continue;
 	}
-	if(!IsValidEntity(GetPlayerWeaponSlot(client,1))){
-		return Plugin_Continue;
-	}
-	if(!IsValidEntity(GetPlayerWeaponSlot(client,3))){
-		return Plugin_Continue;
-	}
-	if(!IsValidEntity(GetPlayerWeaponSlot(client,4))){
-		return Plugin_Continue;
-	}
 	if(!IsValidEntity(weapon)){
 		return Plugin_Continue;
 	}
-
 	//if the building pda is opened
 	//Switches some buildings to sappers so the game doesn't count them as engie buildings
 	if(GetPlayerWeaponSlot(client,3)==weapon){
@@ -345,7 +215,6 @@ public void function_AllowBuilding(int client){
 		
 		decl String:netclass[32];
 		GetEntityNetClass(i, netclass, sizeof(netclass));
-
 		if ( !((strcmp(netclass, "CObjectSentrygun") == 0 || strcmp(netclass, "CObjectDispenser") == 0) || strcmp(netclass, "CObjectJumppad") == 0)) {
 			continue;
 		}
@@ -374,7 +243,7 @@ public void function_AllowBuilding(int client){
 				SetEntProp(i, Prop_Send, "m_iObjectType", type);
 			}
 		//Then it's a jumppad. (Good, cause we can't check for that here for some reason!)
-		}else{
+		}else if(JumppadLimit > 2){
 			JumppadCount++;
 //			if(singlejump){
 //				//apply correct for first one found
@@ -427,6 +296,7 @@ public void function_AllowBuilding(int client){
 		}
 	}
 }
+int bongle = 0;
 public void function_AllowDestroying(int client){
 	int jumpnum = 0;
 	int jumpref1 = 0;
@@ -466,35 +336,39 @@ public void function_AllowDestroying(int client){
 //		}
 		// Hacky seperation to prevent jumppads from setting themselves to be dispensers.... somehow.
 		// TO DO: UNHARDCODE THIS DISASTER!
-		if((GetWeaponIndex(GetPlayerWeaponSlot(GetEntDataEnt2(i, OwnerOffset), 2)) == 3386)){
-//			PrintToServer("jumppad ticked")
-			if(jumpnum == 0){
-				jumpnum = 1;
-				jumpref1id = i;
-				jumpref1 = GetEntData(i, TypeTestOffset)
-			}
-			else if(jumpnum == 1){
-				jumpnum = 2;
-				jumpref2id = i;
-				jumpref2 = GetEntData(i, TypeTestOffset)
-			}
-			else{
-				jumpnum = 3;
-				jumpref3id = i
-			}
-			continue;
-		}
-		else if (!(strcmp(netclass, "CObjectJumppad") == 0)){
-			// Yet another hack fix. It's almost like I shouldn't be doing this.
-			// Dispsenser values for this are always several millions, while sentries are always 3 or below. Easy thing to check.
-			// (sadly I don't know if I could include jumppads with these two, I don't know of any unique values to them, and I can't exactly dig around in their code.)
-			// (Teleporters.... maybe. If I could find way to make two entrances, that could potentially be useful. Don't count on it though.)
-			if (GetEntData(i, IsCheck) < 4){
+		if (!(strcmp(netclass, "CObjectJumppad") == 0)){
+//			// Yet another hack fix. It's almost like I shouldn't be doing this.
+//			// Dispsenser values for this are always several millions (positive or negative), while sentries range from 3 to 0. Easy thing to check.
+//			// (sadly I don't know if I could include jumppads with these two, I don't know of any unique values to them, and I can't exactly dig around in their code.)
+//			// (Teleporters.... maybe. If I could find way to make two entrances, that could potentially be useful. Don't count on it though.)
+//			char Buffer[] = "a";
+//			IntToString(GetEntData(i, IsCheck), Buffer[1], 9999);
+//			PrintToServer(Buffer[1]);
+			bongle = GetEntData(i, IsCheck);
+			if ((bongle < 3) && (bongle > -1)){
 				SetEntProp(i, Prop_Send, "m_iObjectType", TFObject_Sentry);
 			}
 			else{
 				SetEntProp(i, Prop_Send, "m_iObjectType", TFObject_Dispenser);
 			}
+		}
+		else if((GetWeaponIndex(GetPlayerWeaponSlot(GetEntDataEnt2(i, OwnerOffset), 2)) == 3386)){
+//			PrintToServer("jumppad ticked")
+			if(jumpnum == 0){
+				jumpnum = 1;
+				jumpref1id = i;
+				jumpref1 = GetEntData(i, TypeTestOffset);
+			}
+			else if(jumpnum == 1){
+				jumpnum = 2;
+				jumpref2id = i;
+				jumpref2 = GetEntData(i, TypeTestOffset);
+			}
+			else{
+				jumpnum = 3;
+				jumpref3id = i;
+			}
+			continue;
 		}
 	}
 	// Stops buildings from forgetting they are jumppads... I guess. If I remove this code it doesn't work. Also, no, for some reason I CAN'T just sub in 4... (As far as I can tell anyways)
@@ -578,11 +452,6 @@ public Action:EventInventory(Event:event, const String:name[], bool dontBroadcas
 	}
 
 	if (GetWeaponIndex(GetPlayerWeaponSlot(client,2)) == 1143){
-		DispenserLevelLimit--;
-		SentryLevelLimit--;
-	}
-
-	if (GetWeaponIndex(GetPlayerWeaponSlot(client,2)) == 3519){
 		DispenserLevelLimit--;
 		SentryLevelLimit--;
 	}
