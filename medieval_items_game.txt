@@ -47073,6 +47073,47 @@ A medieval battering ram and cannon combined and repurposed into a shoulder-moun
 		{
 			"show_in_armory"			"0"
 		}
+		"3562"
+		{
+			"show_in_armory"			"0" // No
+		}
+		"3563"
+		{
+			"show_in_armory"			"0"
+		}
+		"3565"
+		{
+			"show_in_armory"			"0" // I'm actually pretty sure this would be mostly medievally feasable, depending on when exactly we define medieval. Still, no. That'd be bonkers OP.
+		}
+		"3569"
+		{
+			"show_in_armory"			"0"
+		}
+		"3571"
+		{
+			"show_in_armory"			"0"
+		}
+		"3576"
+		{
+			"show_in_armory"			"0"
+		}
+		"3580"
+		{
+			"show_in_armory"			"0"
+		}
+		"3581"
+		{
+			"show_in_armory"			"0" // Honestly, I'm considering it, especially considering its lack of medieval primaries.... but i'll hold off for now
+		}
+		"3580"
+		{
+			"show_in_armory"			"0"
+		}
+		// Miku change?
+		"4204"
+		{
+			"show_in_armory"			"0"
+		}
 	}
 	"attributes"
 	{
