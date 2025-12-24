@@ -66,69 +66,6 @@
 		}
 //		"1018" //Sandman by SilentFox3, edited by shualdock
 //		"1019" //Candy Cane by shualdock
-		"1022" //Three-Rune Blade by shualdock
-		{
-			"name"						"TF_WEAPON_BLADE"
-			"prefab"					"weapon_bat"
-			"show_in_armory"			"1"
-			"item_name"					"The Three-Rune Blade"
-			"item_type_name"			"Sword"
-			"item_description"			"
-Somehow 'Scout of Bostonia'
-just doesn't sound as cool."
-			"item_logname"				"gayralt_of_ridgia"
-			"item_iconname"				"scout_sword"
-			"item_quality"              "unique"
-			"image_inventory"			"backpack/workshop/weapons/c_models/c_scout_sword/c_scout_sword"
-			"model_world"				"models/weapons/c_models/c_scout_sword/c_scout_sword.mdl" //Reskins of unique weapons aren't common. But they are cool
-			"model_player"				"models/weapons/c_models/c_scout_sword/c_scout_sword.mdl"
-			"attach_to_hands"			"1"
-			"used_by_classes"
-			{
-				"scout"					"1"
-			}
-			"static_attrs"
-			{
-				"Mannly weapon"							"1"
-			}
-			"attributes" // They unexpectedly added this in the latest update... strange. Still don't like this weapon designwise, but that's for another time. I'll just have this accurate to base game ftm. -Clock
-			{
-				"bleeding duration"
-				{
-					"attribute_class"	"bleeding_duration"
-					"value" 			"5"
-				}
-				"hit self on miss"
-				{
-					"attribute_class"	"hit_self_on_miss"
-					"value"				"0.5"
-				}
-				"hide_attrib_additive" // Presumably associated with the above? Doesn't have an entry, but was added with it and this is the only thing I would think it could do. (expect self afterburn or maybe even mfd, which would admitedly be funny and useful.) -Clock
-				{
-					"attribute_class"	"mod_allow_self_dmg_dot_weapon"
-					"value"				"1"
-				}
-				"hide_attrib_additive"
-				{
-					"attribute_class"	"mult_decloak_rate"										// For the balisong/vanish, the lowest possible number i've found it can be before the game just goes "no, screw you" and rejects it. -Clock
-					"value"				"0.02"
-				}
-			}
-			"visuals"
-			{
-				"sound_melee_miss"		"Weapon_Sword.Swing"
-				"sound_melee_hit"		"Weapon_Sword.HitFlesh"
-				"sound_melee_hit_world"	"Weapon_Sword.HitWorld"
-				"sound_burst"			"Weapon_Sword.SwingCrit"
-				"sound_special1"		"Weapon_Sword.HitHeads"
-				"sound_single_shot"		"Weapon_Sword.HitFlesh"
-				"sound_single_shot_npc"	"Weapon_Sword.HitWorld"
-				"sound_double_shot"		"Weapon_Sword.HitFlesh"
-				"sound_double_shot_npc"	"Weapon_Sword.HitWorld"
-			}
-			"mouse_pressed_sound"		"#ui/item_knife_small_pickup.wav"
-			"drop_sound"				"#ui/item_metal_weapon_drop.wav"
-		}
 //		"1022" //Sun-on-a-Stick by SilentFox3, edited by shualdock
 //		"1023" //Fan O'War by SilentFox3, edited by shualdock
 //		"1025" //Wrap Assassin by shualdock
@@ -593,6 +530,176 @@ You can almost hear the bell this came from when you bash someone stupid."
 //		"1140" //Southern Hospitality by SilentFox3, edited by shualdock
 //		"1141" //Jag by SilentFox3
 //		"1142" //Eureka Effect by SilentFox3, edited by shualdock
+		"1143" //Gunslinger by shualdock
+		{
+			"name"						"TF_WEAPON_GUNSLINGER"
+			"prefab"					"weapon_wrench"
+			"show_in_armory"			"1" //  Uh.... I guess this is it's base version again....?
+			"anim_slot"					"melee"
+			"item_name"					"The Gunslinger" //THE MOMENT YOU'VE ALL BEEN WAITING FOR
+			"item_type_name"			"Robot Arm"
+			"item_description"			"
+“Ain't nothin' that can't be done
+with a little elbow grease.”
+
+Model: TF2"
+			"item_logname"				"hand_job"
+			"item_iconname"				"robot_arm_kill"
+			"item_quality"              "unique"
+			"image_inventory"			"backpack/weapons/c_models/gunslinger"
+			"model_world"				"models/weapons/w_models/w_gunslinger.mdl"
+			"model_player"				"models/weapons/v_models/v_gunslinger_engineer.mdl"
+			"extra_wearable"			"models/weapons/w_models/w_gunslinger.mdl"
+			"attach_to_hands"			"2"
+			"used_by_classes"
+			{
+				"engineer"				"1"
+			}
+			"static_attrs" //Lots of shifting around here to re-add dell dozer. 
+			{
+				"Mannly weapon"							"1"
+				"medieval changes"						"1"
+				"apply self knockback"					"-325" //MORE. MORE KB! -CLOCK
+				"melee range multiplier increased"		"1.35"
+				"melee bounds multiplier"				"1.55"
+//				"explode on death"	"1" // What does this do??? //Bad things. -Clock
+				"custom hand viewmodel"		"models/weapons/c_models/c_engineer_arms_delldozer.mdl"
+				"allowed in medieval mode"				"1" // Because why not!
+			}
+			"attributes" //I only realise this now as I finish my rework here, isn't this just less memey buffgineer? -Clock							
+			{
+				"max health additive bonus"
+				{
+					"attribute_class"	"add_maxhealth"
+					"value"				"25"
+				}
+//				"damage bonus"
+//				{
+//					"attribute_class"	"mult_dmg"
+//					"value"				"1.15"
+//				}
+				"minicritboost on hit melee"
+				{
+					"attribute_class"	"DISPLAY_ONLY"
+					"value"				"1"
+				}
+				"add condition on hit weapon"
+				{
+					"attribute_class"	"add_onhit_addcond_weapon"
+					"value"				"98 1.3"
+				}
+				"minicrit vs cond no dot"
+				{
+					"attribute_class"	"single_minicrit_vs_playercond_no_dot"
+					"value"				"99"
+				}
+				"Construction rate increased"
+				{
+					"attribute_class"	"mult_construction_value"
+					"value"				"1.65"
+				}
+//				"mod wrench builds minisentry"
+//				{
+//					"attribute_class"	"wrench_builds_minisentry"
+//					"value"				"1"
+//				}
+		// Yeah, idk how I feel about calling this sentry a "mini sentry"..
+				"weak buildings"
+				{
+					"attribute_class"	"DISPLAY_ONLY"
+					"value"				"1"
+				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mult_engy_building_health"
+					"value"				"0.5"
+				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mult_repair_value"
+					"value"				"0.8"
+				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"upgrade_rate_mod"
+					"value"				"0.80"
+				}
+				"dmg taken from bullets increased"
+				{
+					"attribute_class"	"mult_dmgtaken_from_bullets"
+					"value"				"1.25"
+				}
+				"crit mod disabled hidden"
+				{
+					"attribute_class"	"mult_crit_chance"
+					"value"				"0"
+				}
+				// Backend stuff, quite a heavy use of backend attributes huh?
+//				"hide_attrib_percentage" //Doesn't do afterburn anymore, so these are unnessesary. -Clock								
+//				{
+//					"attribute_class"	"mult_wpn_burntime"
+//					"value"				"0.12"
+//				}
+//				"hide_attrib_percentage"	
+//				{
+//					"attribute_class"	"mult_wpn_burndmg"
+//					"value"				"0"
+//				}
+				"hide_attrib_additive"											
+				{
+					"attribute_class"	"apply_self_knockback"						
+					"value"				"-265"								
+				}
+				"hide_attrib_additive"											
+				{
+					"attribute_class"	"self_knockback_damage_boost_modifier"
+					"value"				"1"
+				}
+				"hide extra wearable on active"
+				{
+					"attribute_class"	"hide_extra_wearable_active"
+					"value"				"0"
+				}
+				"hide_attrib_additive"
+				{
+					"attribute_class"	"mult_decloak_rate"										// For the balisong/vanish, the lowest possible number i've found it can be before the game just goes "no, screw you" and rejects it. -Clock
+					"value"				"0.02"
+				}
+				"hidden separator"
+				{
+					"attribute_class"	"hidden_separator"										// For the balisong/vanish, the lowest possible number i've found it can be before the game just goes "no, screw you" and rejects it. -Clock
+					"value"				"1"
+				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mult_player_movespeed"
+					"value"				"1"
+				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mult_maxammo_metal"
+					"value"				"1"
+				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mult_dmg"
+					"value"				"1"
+				}
+			}
+			"visuals"
+			{
+				"player_bodygroups"
+				{
+					"rightarm"				"1"
+				}
+				"sound_burst"	        "Weapon_Fist.MissCrit"
+				"sound_melee_hit"		"Weapon_Fist.HitFlesh"
+				"sound_melee_hit_world"	"Weapon_Fist.HitWorld"
+				"sound_melee_miss"		"Weapon_Fist.Miss"
+			}
+			"mouse_pressed_sound"		"#ui/item_robot_arm_pickup.wav"
+			"drop_sound"				"#ui/item_robot_arm_drop.wav"
+		}
 //-----------------------------
 //-----------------------------
 //--MEDIC PRIMARIES--
@@ -1690,105 +1797,7 @@ Port by: Softineon on Gamebanana"
 			"drop_sound"				"#ui/item_metal_weapon_pickup.wav"
 		}
 //		"2007" //Burst Fire Grenade Launcher by shualdock
-		"2008" //Spell: Pumpkin Bomb by shualdock
-		{
-			"name"						"TF_WEAPON_SPELLBOOK_PUMPKINBOMB"
-			"prefab"                    "weapon_stickybomb_launcher"
-			"item_class"                "tf_weapon_grenade_mirv"
-			"show_in_armory"			"1"
-			"item_slot"					"secondary"
-			"anim_slot"					"melee"
-			"item_name"					"Spell: Pumpkin Bomb"
-			"item_name_color"			"218 165 32 255"
-			"item_type_name"			"Spellbook Magazine"
-			"item_description"			"Summon an explosive pumpkin that detonates into 2 smaller bombs
-
-“This ol' trick'll be my treat.”"
-			"item_logname" 				"black_goblin"
-			"item_iconname" 			"spellbook_mirv"
-			"item_quality"              "unique"
-			"image_inventory_size_w"	"128"
-			"image_inventory_size_h"	"128"
-			"image_inventory"			"backpack/player/items/all_class/hwn_spellbook_complete"
-			"model_world"				"models/weapons/c_models/c_demo_animations.mdl"
-			"model_player"				"models/weapons/c_models/c_demo_arms.mdl"
-			"extra_wearable"			"models/player/items/all_class/hwn_spellbook_complete.mdl"
-			"attach_to_hands"			"1"
-			"used_by_classes"
-			{
-				"demoman"					"1"
-			}
-			"static_attrs"
-			{
-				"Mannly weapon"							"1"
-				"medieval changes"						"1"
-				"meter_label"							"PUMPKIN"
-				"min_viewmodel_offset"					"0 -10 -8"
-			}
-			"attributes" //This is an alternative to the Dynamite Pack that has 8 bomblets instead of 4, but it throws far shorter and guarantees an instagib if you hit yourself
-			{
-				"allowed in medieval mode"
-				{
-					"attribute_class"	"allowed_in_medieval_mode"
-					"value"				"1"
-				}
-				"maxammo primary increased"
-				{
-					"attribute_class"	"mult_maxammo_primary"
-					"value"				"1.5"
-				}
-				"hidden separator"
-				{
-				    "attribute_class"   "hidden_separator"
-					"value"             "1"
-				}
-				"centerfire projectile"
-				{
-					"attribute_class"	"centerfire_projectile"
-					"value"				"1"
-				}
-				"damage penalty"
-				{
-					"attribute_class"	"mult_dmg"
-					"value"				"0.5"
-				}
-				"bomblets count mod mult hidden" //This attribute increases or decreases the amount of bomblets a MIRV can deploy. It scales strangely; 1.5 gives it 6 bomblets, while 10 would give it THIRTY.
-				{
-					"attribute_class"	"bomblets_count_mod"
-					"value"				"0.5" 
-				}
-				"blast dmg to self increased"
-				{
-					"attribute_class"	"blast_dmg_to_self"
-					"value"	            "5"
-				}
-				"custom projectile model"
-				{
-					"attribute_class"	"custom_projectile_model"
-					"value"				"models/props_halloween/pumpkin_explode.mdl"
-				}
-				"hidden separator"
-				{
-					"attribute_class"    "hidden_separator"
-                    "value"              "1"
-				}
-			}
-			"visuals"
-			{
-				"sound_single_shot"		"Weapon_SpellPumpkin.Single"
-				"sound_burst"			"Weapon_SpellPumpkin.Single"
-				"sound_special1"		"Weapon_SpellPumpkin.Explode"
-				"sound_deploy"		    "Weapon_FireAxe.Draw"
-				"animation_replacement"
-				{
-					"ACT_VM_IDLE"		"ACT_THROWABLE_VM_IDLE"
-					"ACT_VM_DRAW"		"ACT_THROWABLE_VM_DRAW"
-					"ACT_VM_PRIMARYATTACK"			"ACT_THROWABLE_VM_FIRE"
-				}
-			}
-			"mouse_pressed_sound"		"#weapons/spell_pickup_rare.wav"
-			"drop_sound"				"#ui/item_bag_drop.wav"
-		}
+//		"2008" //Spell: Pumpkin Bomb by shualdock
 		"2010" //Deflector by shualdock
 		{
 			"name"						"TF_WEAPON_DEFLECTOR" //This one is a recreation of a minigun the even more aptly named Deflector Heavies use
@@ -2271,6 +2280,16 @@ Note: Nerfed. -Clock"
 				{
 					"attribute_class"	"blast_dmg_to_self"
 					"value" 			"0"
+				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"stickybomb_charge_rate"
+					"value"         	"0"
+				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mult_maxammo_secondary"
+					"value" 			"0.007"
 				}
 			}
 			"visuals"
@@ -2942,129 +2961,6 @@ An apology present from the Pyro after a haphazardous accident involving the Fla
 					"ACT_VM_DRAW"	"ACT_ITEM1_VM_DRAW"
 					"ACT_VM_PRIMARYATTACK"	"ACT_ITEM1_RELOAD_FINISH"
 				}
-			}
-			"mouse_pressed_sound"		"#ui/item_light_gun_pickup.wav"
-			"drop_sound"				"#ui/item_light_gun_drop.wav"
-		}
-		"4971" //Festive Crusader's Crossbow by shualdock
-		{
-			"name"						"TF_WEAPON_CROSSBOW_FESTIVE"
-			"prefab"					"weapon_syringegun"
-			"anim_slot"                 "primary"
-			"show_in_armory"			"1"
-			"item_name"					"Festive Crusader's Crossbow"
-			"item_type_name"			"Jolly Crossbow"
-			"item_description"			"
-“Appointments are free on holidays!”"
-			"item_logname"				"medical_acupuncture_xmas"
-			"item_iconname"				"crusaders_crossbow"
-			"item_quality"              "unique"
-			"bucket"                    "0"
-			"bucket_position"           "1"
-			"image_inventory_size_w"	"128"
-			"image_inventory_size_h"	"90"
-			"image_inventory"			"backpack/weapons/c_models/c_crusaders_crossbow/c_crusaders_crossbow_xmas"
-			"model_world"				"models/weapons/c_models/c_crusaders_crossbow_xmas.mdl"
-			"model_player"				"models/weapons/c_models/c_crusaders_crossbow_xmas.mdl"
-			"attach_to_hands"			"1"
-			"used_by_classes"
-			{
-				"medic"					"1"
-			}
-			"static_attrs"
-			{
-				"Mannly weapon"							"1"
-				"clip size penalty hidden" 				"0.02"
-				"no damage falloff over distance"		"1"
-				"allowed in medieval mode"				"1"
-			}
-			"attributes"
-			{
-				"torso scale"
-				{
-					"attribute_class"	"mult_projectile_speed"
-					"value"				"2.5"
-				}
-				"hand scale"
-				{
-					"attribute_class"	"mult_spread_scale"
-					"value"				"0"
-				}
-				"hand scale"
-				{
-					"attribute_class"	"mult_postfiredelay"
-					"value"				"2.5"
-				}
-				"Reload time no anim speed mod"
-				{
-					"attribute_class"	"mult_reload_time_noanimmod"
-					"value"				"1.2"
-				}
-				"damage bonus hidden"
-				{
-					"attribute_class"	"mult_dmg"
-					"value"				"7.5"
-				}
-				"damage bonus" //Display
-				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value" 			"1.85"
-				}
-				"reverse falloff"
-				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"1"
-				}
-				"maxammo primary reduced"
-				{
-					"attribute_class"	"mult_maxammo_primary"
-					"value"				".254"
-				}
-				"hand scale"
-				{
-					"attribute_class"	"mult_postfiredelay"
-					"value"				".2"
-				}
-				"sniper no headshots"
-				{
-					"attribute_class" 	"set_weapon_mode"
-					"value" 			"1"
-				}
-				"custom rampup"
-				{
-					"attribute_class"	"mod_custom_rampup"
-					"value"				".5"
-				}
-//				"allowed in medieval mode custom" //Why does it feel the need to explictly mention it? -Clock
-//				{
-//					"attribute_class"	"allowed_in_medieval_mode"
-//					"value"				"1"
-//				}
-			}
-			"visuals"
-			{
-				"sound_single_shot"		"Weapon_CrusadersCrossbow.SingleFix"
-				"sound_burst"			"Weapon_CrusadersCrossbow.SingleCritFix"
-			}
-			"visuals_red"
-			{
-				"trail_effect"			"healshot_trail_red"
-				"trail_effect_crit"		"healshot_trail_red"
-			}
-			"visuals_blu"
-			{
-				"trail_effect"			"healshot_trail_blue"
-				"trail_effect_crit"		"healshot_trail_blue"
-			}
-			"visuals_grn"
-			{
-				"trail_effect"			"healshot_trail_green"
-				"trail_effect_crit"		"healshot_trail_green"
-			}
-			"visuals_ylw"
-			{
-				"trail_effect"			"healshot_trail_yellow"
-				"trail_effect_crit"		"healshot_trail_yellow"
 			}
 			"mouse_pressed_sound"		"#ui/item_light_gun_pickup.wav"
 			"drop_sound"				"#ui/item_light_gun_drop.wav"
@@ -4583,6 +4479,7 @@ me back in time to kick it!”"
 			"mouse_pressed_sound"		"#weapons/cow_mangler_reload_final.wav"
 			"drop_sound"				"#ui/item_heavier_gun_drop.wav"
 		}
+
 
 //-----
 // (ID 3360) |	Eyelander						|	Tags: (v1.0.0), (Old), (Demoman), (Melee), (Offense), (Weapon)
@@ -7250,75 +7147,7 @@ Note: Reduced stats all around, this was REALLY painful to actually use. -Clock"
 //--------------------------------------------------
 		"3426"
 		{
-			"name"						"TF_WEAPON_NAILGUN_METAL"
-			"item_class"				"tf_weapon_nailgun"										// Defined manually so Scout doesn't have it!
 			"show_in_armory"			"0"
-			"item_slot"					"primary"
-			"anim_slot"					"secondary"
-
-			"image_inventory_size_w"	"128"
-			"image_inventory_size_h"	"82"
-
-			"propername"				"1"
-			"item_name_color"			"204 204 250 255"
-			"item_name"					"Pneumatic Pulverizer"
-			"item_type_name"			"#TF_Weapon_NailGun"
-			"item_description"			"Holds a 25-shot clip and
-reloads its entire clip at once
-
-Convenience and lethality, at its finest!"														// Have to put it here, since no clip is rendered if your ammo is metal. Copied from the Shortstop
-			"item_logname"				"nailgun_metal"
-			"item_iconname"				"nailgun_metal"
-			"image_inventory"			"backpack/weapons/w_models/w_necrotic_nailgun"
-			"model_world"				"models/weapons/w_models/w_necrotic_nailgun.mdl"
-			"model_player"				"models/weapons/v_models/v_necrotic_nailgun_engineer.mdl"	// This uses an OLDER version of Open Fortress' Nailgun anims, since I honestly like them better...
-			"attach_to_hands"			"2"
-			"used_by_classes"
-			{
-				"engineer"				"1"
-			}
-			"static_attrs"
-			{
-				"NOWP weapon"							"1"
-				"return metal on sentry kill"			"25"									// NOWP v2.7.5 - It gives metal back on Sentry kill! Modest amount, enough to be noticeable but not enough to totally supplant your metal consumption unless you're getting a LOT of kills!
-				"fire rate bonus"						"0.9"									// TF2C v2.1.4 - THEY MADE IT EVEN FASTER!? Okay, this just gets a 10% as opposed to the 25% boost I had before, good god!
-				"spread penalty"						"3.25"									// NOWP v3.0.0 - Ack, I always have trouble with this - let's try this. VERY High fire rate, but also high spread. Pretty potent burst-fire on Engi
-				
-				"custom projectile origin offset"		"0 4 2"
-				"min_viewmodel_offset"					"10 0 -11"
-				"custom magazine model"					"models/weapons/mags/mag_pneumatic.mdl"
-//				"hide ammo hud"							"0"										// Doesn't work to enable the HUD element...
-			}
-			"attributes"
-			{
-				"mod use metal ammo type"														// This attribute is a little weird.
-				{
-					"attribute_class"	"mod_use_custom_ammo_type"								// TF2C v2.1.0 - This gets switched over to a more general-purpose ammo-type modifier!
-					"value"				"3"														// Var controls what ammo type it uses. For metal, it still has the exact same problems as before with weird Metal maxammo, but I have more hope this will get updated in the future!
-				}
-//				"clip size penalty hidden"
-//				{
-//					"attribute_class"	"mult_clipsize"
-//					"value"				"2"
-//				}
-//				"hide_attrib_additive"															// Hidden cuz this number means absolutely nothing to the viewer. It's here so Engi reloads with 50 metal (instead of 25, the clip size)
-//				{
-//					"attribute_class"	"mod_ammo_per_shot"
-//					"value"				"2"
-//				}
-				"hide_attrib_percentage"														// Helper since Engi's metal count is a little scuffed with this equipped
-				{
-					"attribute_class"	"mult_maxammo_metal"
-					"value"				"1.6" 
-				}
-			}
-			"visuals"
-			{
-				"sound_single_shot"		"Weapon_NailgunMetal.Single"
-				"sound_burst"			"Weapon_NailgunMetal.SingleCrit"
-			}
-			"mouse_pressed_sound"		"#weapons/nail_gun_draw.wav"
-			"drop_sound"				"#ui/item_metal_scrap_drop.wav"
 		}
 
 //-----
@@ -7371,7 +7200,7 @@ enough bullet for entire coward team!"
 				"hide_attrib_percentage"
 				{
 					"attribute_class"	"mult_maxammo_grenades1"
-					"value"				"1.999"													// NOWP v3.0.0 - This fixes an unintentional side-effect also giving Heavy additional lunchbox items... which I don't actually want for these purposes.
+					"value"				"2"													// NOWP v3.0.0 - This fixes an unintentional side-effect also giving Heavy additional lunchbox items... which I don't actually want for these purposes.
 				}
 				"health regen short"
 				{
@@ -7403,10 +7232,10 @@ enough bullet for entire coward team!"
 					"attribute_class"	"hidden_separator"
 					"value"				"1"
 				}
-				"add ammo on kill wearer"
+				"hide_attrib_additive"
 				{
 					"attribute_class"	"add_ammo_on_kill"
-					"value"				"1"
+					"value"				"0"
 				}
 			}
 			"mouse_pressed_sound"		"#ui/item_bag_pickup.wav"
@@ -8986,114 +8815,7 @@ Weapon reloads its entire clip at once
 //--------------------------------------------------
 		"3450"
 		{
-			"name"						"TF_WEAPON_SYRINGE_SHOT"								// NOWP v2.7.5 - IT FINALLY FIRES SYRINGES!!! WE ARE SO BACK
-			"prefab"					"weapon_shotgun"
 			"show_in_armory"			"0"
-			"item_slot"					"primary"
-
-			"propername"				"1"
-			"item_name_color"			"204 204 250 255"
-			"item_name"					"Hippocratic Suggestion"
-			"item_type_name"			"Syringe Shotgun"
-			"item_description"			"Holds 6 shells at once, with 18 reserve ammo 
-
-Vhat, have you never heard of
-a Medical Shotgun before!?
-
-Note: Felt weird, hopefully helped fix that? -Clock"
-			"item_logname"				"syringe_shot"
-			"item_iconname"				"syringe_shot"
-			"image_inventory"			"backpack/weapons/w_models/w_syringe_shot"
-			"model_world"				"models/weapons/w_models/w_syringe_shot.mdl"
-			"model_player"				"models/weapons/v_models/v_syringe_shot_snd.mdl"
-//			"brass_model"				"models/weapons/shells/shell_shotgun_tc.mdl"			// "Unique" shotguns get to use cool alternate shells instead of the others! Projectile shotties get a TC shell! TO-DO: Apply v and w models when it DOES work!
-			"brass_model"				"models/weapons/shells/shell_shotgun_syringe.mdl"
-			"attach_to_hands"			"2"
-			"used_by_classes"
-			{
-				"medic"					"1"
-			}
-			"static_attrs"
-			{
-				"NOWP weapon"							"1"
-				"fire rate burst"						"0.0000000000001"						// Essentially instant, feel free to remove a few zeroes if it starts causing problems
-				"override projectile type"				"5"										// Syringes! This is MANDATORY!!
-				"custom projectile origin offset"		"0 -2 8"								// Emits from slightly higher up on the weapon!
-				"custom rampup"							"1.35"
-				"shorter damage falloff distance"		"0.5"
-
-				"fire rate penalty hidden"				"0.825"									// slight hack to remedy the slower ending fire-time
-				"clip size penalty hidden"				"10"
-				"damage bonus hidden"					"0.9"									// Each pellet does 6, does about 60 DMG all said
-				"mod ammo per reload"					"9"
-				"punch angle mod mult hidden"			"0.0001"
-				"hidden primary max ammo bonus"			"5.65"									// 18 reserve (10.0 for 32, 5.65 for 18, 3.75 for 12)
-			}
-			"attributes"
-			{
-				"medic syringe shotgun"
-				{
-					"attribute_class"	"set_burstfire"
-					"value"				"10"													// Shoots 10 syringes in a burst
-				}
-				"damage penalty"
-				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"0.7"
-				}
-				"maxammo primary reduced"														// Less disposable ammo to use
-				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"0.55"
-				}
-				"crit mod disabled"
-				{
-					"attribute_class"	"mult_crit_chance"
-					"value"				"0"														// It doesn't feel great to get random crits right now, so disabled...
-				}
-				// Backend stuff
-//				"hide_attrib_percentage"														// Hidden since it doesn't really help imply much about weapon functions
-//				{
-//					"attribute_class"	"mult_projectile_speed"
-//					"value"				"1.5"
-//				}
-				"hide_attrib_percentage"	
-				{
-					"attribute_class"	"mult_spread_scale"
-					"value"				"1.65"
-				}
-				"hide_attrib_percentage"
-				{
-					"attribute_class"	"mult_rapidfire_crit_duration"
-					"value"				"2"														// ????? Does it work?? I don't know!!
-				}
-			}
-			"visuals"
-			{
-				"sound_single_shot"		"Weapon_SyringeGun.SingleSofter"						// Temp measure since it's otherwise totally mute for enemy players
-				"sound_burst"			"Weapon_SyringeGun.SingleCritSofter"					// ANOTHER Temp thing since viewmodel anims can't distinguish crits on guns (only Melees can)
-//				"sound_single_shot"		"Weapon_SyringeShot.Single"
-//				"sound_burst"			"Weapon_SyringeShot.SingleCrit"
-				"sound_reload"			"Weapon_Shotgun.WorldReload"
-				"sound_empty"			"Weapon_Null"
-				"muzzle_flash"			"muzzle_tranq"
-				"animation_replacement"
-				{
-					"ACT_MP_ATTACK_STAND_PRIMARY"				"ACT_MP_ATTACK_STAND_ITEM1"
-					"ACT_MP_ATTACK_CROUCH_PRIMARY"				"ACT_MP_ATTACK_CROUCH_ITEM1"
-					"ACT_MP_ATTACK_SWIM_PRIMARY"				"ACT_MP_ATTACK_SWIM_ITEM1"
-
-					"ACT_MP_RELOAD_STAND_PRIMARY_LOOP"			"ACT_MP_RELOAD_STAND_PRIMARY"
-					"ACT_MP_RELOAD_CROUCH_PRIMARY_LOOP"			"ACT_MP_RELOAD_CROUCH_PRIMARY"
-					"ACT_MP_RELOAD_SWIM_PRIMARY_LOOP"			"ACT_MP_RELOAD_SWIM_PRIMARY"
-
-					"ACT_MP_RELOAD_STAND_PRIMARY_END"			"ACT_MP_ATTACK_STAND_PRIMARY"
-					"ACT_MP_RELOAD_CROUCH_PRIMARY_END"			"ACT_MP_ATTACK_CROUCH_PRIMARY"
-					"ACT_MP_RELOAD_SWIM_PRIMARY_END"			"ACT_MP_ATTACK_SWIM_PRIMARY"
-				}
-			}
-			"mouse_pressed_sound"		"#items/pickup_large.wav"
-			"drop_sound"				"#ui/item_heavy_gun_drop.wav"
 		}
 
 //-----
@@ -9118,93 +8840,7 @@ Note: Felt weird, hopefully helped fix that? -Clock"
 //--------------------------------------------------
 		"3452"
 		{
-			"name"						"TF_WEAPON_COMBATSMG"
-			"prefab"					"weapon_pistol"
-			"item_class"				"tf_weapon_smg"
 			"show_in_armory"			"0"
-			"anim_slot"					"ITEM2"
-
-			"propername"				"1"
-			"item_name_color"			"204 204 250 255"
-			"item_name"					"Miami Heat"											// This is actually a returning weapon! When I was making the OF Map Ports - I was toying with the idea of having each map filled with all of the OF weapons, remade.
-			"item_type_name"			"#TF_Weapon_SuperSMG"									// As you can imagine, that didn't pan out, so I ended up binning that save for a few returning ones - this one just being the most recent.
-			"item_description"			"
-“Happiness is a warm gun.”"
-			"item_logname"				"combat_smg"
-			"item_iconname"				"combat_smg"
-			"image_inventory"			"backpack/weapons/w_models/w_smg_dm"
-			"model_world"				"models/weapons/w_models/w_smg_dm.mdl"
-			"model_player"				"models/weapons/v_models/v_smg_dm_new.mdl"				// NOWP v3.0.0 - As much as I liked the old anims, they visibly break Scout's poor hands...!! I've kept the old version around, in-case I get back to it OR wanna add it to another class (???)
-			"attach_to_hands"			"2"
-			"used_by_classes"
-			{
-				"scout"					"1"
-//				"sniper"				"0"														// Sorry, Paint.
-				"mercenary"				"1"
-			}
-			"static_attrs"																		// Sorta resembles OF's stats for this weapon - before its removal, anyway!
-			{
-				"NOWP weapon"							"1"
-				"clip size penalty hidden"				"1.4"
-				"fire rate penalty hidden"				"0.8"
-				"reload time increased hidden"			"1.46"
-				"hidden secondary max ammo penalty"		"0.94"									// 0.93 for 2 clips reserve, 1.4 for 3 clips reserve (3 & 4 total respectively)
-				"damage bonus hidden"					"1.25"									// 2 for 24
-//				"apply look velocity on damage"			"50"									// TO-DO: REMOVE THIS IT'S FOR DEBUG ONLY WITH NO-DAMAGE BULLETS!!
-			}
-			"attributes"																		// This barely gets a pass since Pistol and SMG are at least semi-similar
-			{
-				"clip size bonus"																// This is all displayed relative to a Pistol
-				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"3.0"
-				}
-				"fire rate bonus"
-				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"0.55"
-				}
-				"reload time increased"
-				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"1.5"
-				}
-				"damage penalty"
-				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"0.67"
-				}
-				"spread penalty"
-//				"hide_attrib_percentage"	
-				{
-					"attribute_class"	"mult_spread_scale"
-					"value"				"4.5"
-				}
-				"custom magazine model"
-				{
-					"attribute_class"	"custom_magazine_model"
-					"value"				"models/weapons/mags/mag_csmg.mdl"
-				}
-			}
-			"visuals"
-			{
-				"sound_single_shot"		"Weapon_SMG_DM.Single"
-				"sound_burst"			"Weapon_SMG_DM.SingleCrit"
-				"sound_reload"			"Weapon_SMG.WorldReload"
-				"muzzle_flash"			"muzzle_assault_rifle"									// Minor but makes the muzzleflash slightly beefier
-				"animation_replacement"															// Nailgun anims look cool for this!
-				{
-					"ACT_MP_ATTACK_STAND_ITEM2"					"ACT_MP_ATTACK_CROUCH_SECONDARY"
-					"ACT_MP_ATTACK_CROUCH_ITEM2"				"ACT_MP_ATTACK_CROUCH_SECONDARY"
-					"ACT_MP_ATTACK_SWIM_ITEM2"					"ACT_MP_ATTACK_CROUCH_SECONDARY"
-
-					"ACT_MP_RELOAD_STAND_ITEM2"					"ACT_MP_RELOAD_STAND_SECONDARY"
-					"ACT_MP_RELOAD_CROUCH_ITEM2"				"ACT_MP_RELOAD_CROUCH_SECONDARY"
-					"ACT_MP_RELOAD_SWIM_ITEM2"					"ACT_MP_RELOAD_SWIM_SECONDARY"
-				}
-			}
-			"mouse_pressed_sound"		"#items/pickup_medium.wav"
-			"drop_sound"				"#ui/item_light_gun_drop.wav"
 		}
 
 //-----
@@ -9229,94 +8865,7 @@ Note: Felt weird, hopefully helped fix that? -Clock"
 //--------------------------------------------------
 		"3454"
 		{
-			"name"						"TF_WEAPON_SUPERNAILGUN"
-			"prefab"					"weapon_minigun"
 			"show_in_armory"			"0"
-
-			"item_name_color"			"204 204 250 255"
-			"item_name"					"Super Nailgun"											// Alexis, probably, fits the vibe? I may or may not change the name later, since I partially associate the name with the old model... hm.
-			"item_type_name"			"#TF_Weapon_Nailgun"
-			"item_description"			"
-One nail is builder's tool, but hundreds...?
-Now, that is more of Heavy's style!"
-			"item_logname"				"supernailgun"
-			"item_iconname"				"newsupernailgun"
-			"image_inventory"			"backpack/weapons/w_models/w_newsupernailgun"
-			"model_world"				"models/weapons/w_models/w_newsupernailgun.mdl"			// This was initially using the Ekaterina, since I was planning on using another model, the Riveting Russian: https://steamcommunity.com/sharedfiles/filedetails/?id=125624434
-			"model_player"				"models/weapons/v_models/v_newsupernailgun_heavy.mdl"	// NOWP v3.0.0 - ...but, between then and now, there was a fantastic nail-minigun model by Haau, so I decided to switch to that! I also fixed the barrel spinning on it, since it was a bit scuffed originally...
-			"attach_to_hands"			"2"
-			"used_by_classes"
-			{
-				"heavy"					"1"
-			}
-			"static_attrs"																		// For ref: "stock" super nailgun does 20 per, fires at 0.5, and has 1.2 spread by default
-			{
-				"NOWP weapon"							"1"
-				"override projectile type"				"29"
-				"custom projectile origin offset"		"0 -4 -2"
-				"custom projectile model"				"models/weapons/w_models/w_supernailgun_nail.mdl"
-
-				"apply look velocity on damage"			"50"									// NOWP v2.8.0 - Hack fix so nails apply some push force toward enemies...
-
-				"damage bonus hidden"					"1.5"									// 20 per nail - but nail falloff is way better than normal bullets. Effect on balance unclear...
-			}
-			"attributes"
-			{
-				"weapon fires nails"
-				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"1"
-				}
-				"maxammo primary increased"
-				{
-					"attribute_class"	"mult_maxammo_primary"									// To offset the ammo it chews through faster
-					"value"				"1.25"
-				}
-				"hide_attrib_percentage"														// NOWP v3.0.0 - Hidden since these don't actually say much about what this does...
-				{
-					"attribute_class"	"mult_postfiredelay"
-					"value"				"0.5"
-				}
-				"hide_attrib_percentage"
-				{
-					"attribute_class"	"mult_spread_scale"
-					"value"				"1.2"
-				}
-				"minigun spin time increased"
-				{
-					"attribute_class"	"mult_minigun_spinup_time"
-					"value"				"1.33"
-				}
-				"hide_attrib_percentage"
-				{
-					"attribute_class"	"mult_minigun_spindown_time"
-					"value"				"1.33"
-				}
-				// Backend stuff
-				"hide_attrib_percentage"	
-				{
-					"attribute_class"	"mult_bullets_per_shot"									// Doesn't work but might eventually - will rebalance once it does
-					"value"				"3"														// 4 nails per shot - this WOULD return it to similar to base Minigun behavior if it worked
-				}
-				"hide_attrib_additive"		
-				{
-					"attribute_class"	"minigun_deployed_crouchwalk"
-					"value"				"1"
-				}
-			}
-			"visuals"																			// This is where the fun begins.
-			{
-				"sound_empty"			"Weapon_SuperNailGun.ClipEmpty"
-				"sound_double_shot"		"Weapon_SuperNailGun.Fire"
-				"sound_burst"			"Weapon_SuperNailGun.FireCrit"
-//				"sound_special1"		"Weapon_SuperNailGun.WindUp"							// Don't use this, this is an explosion sound as of TF2C v2.1.0
-				"sound_single_shot"		"Weapon_SuperNailGun.WindUp"							// TF2C v2.1.0 - Minigun now uses a hacky fix to deal with explosives fired by it spamming windup sounds
-				"sound_special2"		"Weapon_SuperNailGun.WindDown"
-				"sound_special3"		"Weapon_SuperNailGun.Spin"
-				"muzzle_flash"			"muzzle_supernailgun_constant"
-			}
-			"mouse_pressed_sound"		"#weapons/draw_nailgunheavy.wav"
-			"drop_sound"				"#ui/item_heavier_gun_drop.wav"
 		}
 
 //-----
@@ -9329,185 +8878,6 @@ Now, that is more of Heavy's style!"
 // Later on, it got more prototypes to actually make it... yknow, explode. On hit. No such luck, sadly, but I got it to explode!! Don't look behind the curtain, it's kinda a mess, haa... But, all said, this (newer) iteration has promise!
 // Honestly, Caber has a half-decent chance of one day actually having its mechanics added, but for now, this gimmicky facsimile will have to suffice...
 //--------------------------------------------------
-		"3455"
-		{
-			"name"						"TF_WEAPON_CABER"
-			"prefab"					"weapon_bottle"
-			"item_class"				"tf_weapon_tranq"
-			"show_in_armory"			"1"
-			"bucket"					"2"														// Visually appears in melee
-			"bucket_position"			"1"
-			"item_slot"					"melee"
-			"anim_slot"					"melee"
-
-			"propername"				"1"
-			"item_name_color"			"255 240 183 255"
-			"item_name"					"Ullapool Caber"
-			"item_type_name"			"...Hand Grenade?"
-			"item_description"			"
-A sober person would throw it.
-Luckily, I haven't been sober in years!
-
-Note: PSA: Do not use the detonator item class! Lots of inexplicable bugs! -Clock"
-			"item_logname"				"ullapool_caber"
-			"item_iconname"				"ullapool_caber_explosion"
-			"image_inventory"			"backpack/workshop/weapons/c_models/c_caber/c_caber"
-			"model_world"				"models/weapons/w_models/w_caber.mdl"
-			"model_player"				"models/weapons/v_models/v_caber_demoman.mdl"			// TO-DO: I'd like to attach a "smoking" particle effect on the broken model only, but no way to toggle that only using bodygroups afaik...
-			"attach_to_hands"			"2"
-			"used_by_classes"
-			{
-				"demoman"				"1"
-			}
-			"static_attrs"	//Copy pasted from Boston Blaster -Clock
-			{
-				"NOWP weapon"							"1"
-				"Heavily modified"						"1"
-				"override projectile type"				"2"										// This fires a rocket! Not much to say.
-				"damage bonus hidden"					"5" //Does just enough to one shot a light class, no source spaggeti magic required! (Solarlight can cry about it, make a actual caber video next time instead of a rant) -Clock
-				"reload time increased hidden"			"5.33"	//Removed a zero, 8 seconds! -Clock	// Since this uses Tranq reload as a fire-rate, this has a refire time of 0.8s (the old was 1.5s - about 4.3x as slow)
-				"mod use custom ammo type"				"5"										// Uses Grenades2 as ammo, so as to not interfere with other items like Bonk or etc...
-
-				"allowed in medieval mode"				"1"
-				"special taunt"							"1"
-				"custom falloff"						"0.2"
-			}
-			"attributes"																		// TO-DO: Move this over to new Sandman internals? But... explosive hitscan doesn't provide knockback correctly...
-			{
-				"explode on smack DISPLAY ONLY"													// This has great flavor text application honestly
-				{
-					"attribute_class"	"centerfire_projectile"
-					"value"				"1"
-				}
-//				"no blast damage kill" //It's the caber. -Clock
-//				{
-//					"attribute_class"	"add_onkill_addcond_self"								// Hacky recreation of the old kill damage resist. When you get a kill, you don't take damage from that blast!
-//					"value"				"68 0.1"												// Only lasts for 0.1s, so you won't be able to use it for anything else unless your timing is excellent
-//				}
-//				"heal on kill nonspecific"
-//				{
-//					"attribute_class"	"heal_on_kill"
-//					"value"				"15"													// Heals about 15 on a successful kill. Modest.
-//				}
-				"damage bonus"
-				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"1.85"
-				}
-				"hide_attrib_percentage"	
-				{
-					"attribute_class"	"mult_dmg_vs_buildings"
-					"value"				"1.05"													// Makes it do in the ballpark of 50 dmg to buildings
-				}
-//				"fire rate penalty"
-//				{
-//					"attribute_class"	"DISPLAY_ONLY"
-//					"value"				"2.25"													// Based on base melee swing rate... for no particular reason. It just looks nicer.
-//				}
-				"crit damage reduced"
-				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"250"
-				}
-				"hide_attrib_percentage"
-				{
-					"attribute_class"	"mult_dmg_crit_multiplier"
-					"value"				"0.834"
-				}
-				"hide_attrib_percentage"
-				{
-					"attribute_class"	"mult_explosion_radius"
-					"value"				"0.75"
-				}
-				"hit self on miss"
-				{
-					"attribute_class"	"apply_z_velocity_on_damage"
-					"value"				"200"													// Enough lift-off force on taking damage to get you off the ground, even if you use it from a standstill
-				}
-				"slower weapon draw speed"
-				{
-					"attribute_class"	"mult_single_wep_deploy_time"
-					"value"				"2"
-				}
-				"dmg taken from blast increased" //The comprimise for the buffs this has received. A passive downside. -Clock
-				{
-					"attribute_class"	"mult_dmgtaken_from_explosions"
-					"value"				"1.25"
-				}
-				"crit mod disabled"
-				{
-					"attribute_class"	"mult_crit_chance"
-					"value"				"0"
-				}
-//				"melee taken becomes minicrit on active"										// Holdover from old version
-//				{
-//					"attribute_class"	"melee_taken_becomes_minicrit_active"
-//					"value"				"2.0"
-//				}
-				// Backend stuff; most of this is copied from the jetpack
-				"rocket limited lifetime"
-				{
-					"attribute_class"	"rocket_lifetime" //Increased it by a mostly insignificant amount, because I found that made it a bit more consistent.
-					"value"				"0.02"												// Rockets explode INSTANTLY - which is somewhere in front of your torso!
-				}
-				"hide_attrib_percentage"	
-				{
-					"attribute_class"	"blast_dmg_to_self" //Does ~40 here, less than in vanilla! (I think) -Clock
-					"value"				"3"													// Takes a small bit of Scout's health away - 10 HP each! (Test: Does 25 or 30 feel more fair? Avg 4 vs 3 jumps)
-				}
-				"self dmg push force hidden"
-				{
-					"attribute_class"	"mult_dmgself_push_force" //This pushing forwards is a bit weird... but a nessecary change. Otherwise demo flies away mid combat. -Clock
-					"value"				"-1.525"												// A weak-ish blast, but it'll help make further jumps than usual, especially with other items
-				}
-				"hide_attrib_additive"															// Copied from Satchel
-				{
-					"attribute_class"	"use_ammo_meter"
-					"value"				"1"
-				}
-				"hide_attrib_additive"		
-				{
-					"attribute_class"	"energy_weapon_no_ammo"
-					"value"				"1"
-				}
-//				"mod melee crit swing custom damage"
-//				{
-//					"attribute_class"	"mod_melee_crit_swing_custom_damage"
-//					"value"				"29"
-//				}
-			}
-			"visuals"
-			{
-				"sound_single_shot"		"Weapon_Crowbar.Miss"
-				"sound_melee_miss"		"Weapon_Crowbar.Miss"
-				"sound_burst"			"Weapon_Crowbar.MissCrit"
-				"sound_burst"			"Weapon_Crowbar.MissCrit"
-				"sound_melee_hit"		"Weapon_Fishwhacker.HitFlesh"
-				"sound_melee_hit_world"	"Weapon_Crowbar.HitWorld"
-				"sound_empty"			"Weapon_Null"
-				"sound_reload"			"Weapon_Null"
-				"sound_special1"		"Weapon_LooseCannon.Explode"							// This doesn't work the the normal explosion but IS used for something special... but I'm not telling you what~
-				"explosion_effect"		"explosion_shrapnel_PARENT"
-			}
-			"visuals_red"
-			{
-				"explosion_effect_crit"	"explosion_shrapnel_PARENT_red_crit"
-			}
-			"visuals_blu"
-			{
-				"explosion_effect_crit"	"explosion_shrapnel_PARENT_blue_crit"
-			}
-			"visuals_grn"
-			{
-				"explosion_effect_crit"	"explosion_shrapnel_PARENT_green_crit"
-			}
-			"visuals_ylw"
-			{
-				"explosion_effect_crit"	"explosion_shrapnel_PARENT_yellow_crit"
-			}
-			"mouse_pressed_sound"		"#ui/item_wood_weapon_pickup.wav"
-			"drop_sound"				"#ui/item_wood_weapon_drop.wav"
-		}
 
 //-----
 // (ID 3456) |	PDA: Rush Order					|	Tags: (v2.2.5), (New), (Engineer), (PDA), (Offense), (Item)
@@ -10592,155 +9962,8 @@ and you will make every bullet count."
 // To be entirely honest, I really want a better idea for this weapon, but I sincerely don't know where to start, ahaa...
 //--------------------------------------------------
 		"3488"
-		{
-			"name"						"TF_WEAPON_BATTLERIFLE_FL"
-			"prefab"					"weapon_shotgun"								
+		{							
 			"show_in_armory"			"1"
-			"item_slot"					"secondary"
-
-			"propername"				"1"
-			"item_name_color"			"204 204 250 255"
-			"item_name"					"Second Amendment"
-			"item_type_name"			"Musket"												// The gameplay came first, the rifle came after, please stop hassling me about it being a fucking musket GOD
-			"item_description"			"
-A gun from America's great history, when
-Passenger Pigeons were first invented!"
-			"item_logname"				"battlerifle_fl"
-			"item_iconname"				"battlerifle_fl"
-			"image_inventory"			"backpack/weapons/w_models/w_battlerifle_fl"
-			"model_world"				"models/weapons/w_models/w_battlerifle_fl.mdl"
-			"model_player"				"models/weapons/v_models/v_battlerifle_fl_soldier.mdl"	// It's a little baffling this many years in, nobody has made a halfway decent -public- battle rifle anim set for TF2
-			"attach_to_hands"			"2"
-			"used_by_classes"
-			{
-				"soldier"				"1"
-			}
-			"static_attrs"																		// Temp: (Range is 0.1. Reduced blast dmg / jump force, increased self-dmg)
-			{
-				"NOWP weapon"							"1"
-				"mod max primary clip override"			"-1"
-				"allowed in medieval mode"				"1"
-				"always draw tracer"					"1"
-				"shorter damage falloff distance"		"0.5"									// Special reduced falloff distance to compensate for the high damage of the single pellet. As of writing SSG and DM Crossbow don't need this since they're primaries with their own conditionals...
-			}
-			"attributes"																		// A buuuunch of stuff commented out here, this went through a few revisions before I settled simpler is probably better!
-			{
-//				"explosive bullets"
-//				{
-//					"attribute_class"	"explosive_bullets"
-//					"value"				"1"
-//				}
-				"revolver use hit locations"													// NOWP v3.0.0 - Okay. Explosive damage thing isn't working out. Fine, let's try thiiiisss...
-				{
-					"attribute_class"	"can_headshot"
-					"value"				"1"
-				}
-				"mod no reload DISPLAY ONLY"													// This is merging the hide-weapon trick with a display-only attribute!
-				{
-					"attribute_class"	"mod max primary clip override"
-					"value"				"-1"
-				}
-				"damage bonus hidden"
-				{
-					"attribute_class"	"mult_dmg"
-					"value"				"3.4"
-				}
-				"hide_attrib_percentage"	
-				{
-					"attribute_class"	"mult_spread_scale"
-					"value"				"1.66" 
-				}
-				"bullets per shot penalty"
-				{
-					"attribute_class"	"mult_bullets_per_shot"
-					"value"				"0.34"
-				}
-				"fire rate penalty hidden"
-				{
-					"attribute_class"	"mult_postfiredelay"
-					"value"				"1.8"
-				}
-//				"blast splash damage decreased"
-//				{
-//					"attribute_class"	"mult_explosion_splash_damage"
-//					"value"				"0.67"
-//				}
-				"headshot is minicrit"
-				{
-					"attribute_class"	"headshot_is_minicrit"
-					"value"				"1"
-				}
-				"limited range DISPLAY ONLY"
-				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"1"
-				}
-				"maxammo secondary reduced"														// I go back and forth between 12 and 16 reserve a lot
-				{
-					"attribute_class"	"mult_maxammo_secondary"
-					"value"				"0.5"
-				}
-//				"hide_attrib_additive"															// Sends people downward when shot. No effect on already grounded folks, but it'll quickly ground airborne enemies
-//				{
-//					"attribute_class"	"apply_z_velocity_on_damage"
-//					"value"				"-225"
-//				}
-				// Backend stuff
-				"hide_attrib_percentage"
-				{
-					"attribute_class"	"mult_projectile_range"
-					"value"				"0.1"
-				}
-				"reflected_flame_dmg_reduction"
-				{
-					"attribute_class"	"blast_dmg_to_self"
-					"value"				"0.34"
-				}
-				"hide_attrib_percentage"	
-				{
-					"attribute_class"	"mult_dmgself_push_force"
-					"value"				"0.8"
-				}
-				"hide_attrib_percentage"
-				{
-					"attribute_class"	"mult_dmg_crit_multiplier"
-					"value"				"0.733"													// Default to 135 (about 3x of 45 - half the base damage of 90)
-				}
-			}
-			"visuals"
-			{
-				"sound_single_shot"		"Weapon_BattleRifleFL.Single"							// These sounds are from DoD:S! This goes for the "chambering" sound too when firing (again, I'm not gun person, STOP hassling me about it for christ's sake)
-				"sound_burst"			"Weapon_BattleRifleFL.SingleCrit"
-				"sound_special1"		"Weapon_Airstrike.Explosion"
-				"muzzle_flash"			"muzzle_scattergun"
-				"tracer_effect"			"aagun_tracer_PARENT"
-//				"explosion_effect"		"explosion_shrapnel_PARENT"
-				"explosion_effect"		"coilgun_boom_red"
-				"animation_replacement"
-				{
-					"ACT_MP_ATTACK_STAND_SECONDARY"				"ACT_MP_ATTACK_STAND_PRIMARY"	// BEEFY fire animations!
-					"ACT_MP_ATTACK_CROUCH_SECONDARY"			"ACT_MP_ATTACK_CROUCH_PRIMARY"
-					"ACT_MP_ATTACK_SWIM_SECONDARY"				"ACT_MP_ATTACK_SWIM_PRIMARY"
-				}
-			}
-			"visuals_red"
-			{
-				"explosion_effect_crit"	"coilgun_boom_red"
-			}
-			"visuals_blu"
-			{
-				"explosion_effect_crit"	"coilgun_boom_blue"
-			}
-			"visuals_grn"
-			{
-				"explosion_effect_crit"	"coilgun_boom_green"
-			}
-			"visuals_ylw"
-			{
-				"explosion_effect_crit"	"coilgun_boom_yellow"
-			}
-			"mouse_pressed_sound"		"#weapons/draw_rifle.wav"
-			"drop_sound"				"#ui/item_heavy_gun_drop.wav"
 		}
 
 //-----
@@ -10755,133 +9978,7 @@ Passenger Pigeons were first invented!"
 //--------------------------------------------------
 		"3489"
 		{
-			"name"						"TF_WEAPON_ACID_LAUNCHER"								// I settled if I wanted to make a new Pyro primary, I wanted a new projectile launcher... so here it is.
-			"prefab"					"weapon_flamethrower"
-			"item_class"				"tf_weapon_grenadelauncher"								// Based on a GL, this time!
-			"anim_slot"					"primary"
 			"show_in_armory"			"0"
-
-			"propername"				"1"
-			"item_name_color"			"204 204 250 255"
-			"item_name"					"Problem Dissolver"										// While I still consider this the Molotov Launcher at heart, it's got a new everything to suit its new functions. Another alternate name I had kicking around was the Chemical Aria!
-			"item_type_name"			"Chemical Launcher"
-			"item_description"			"
-For solving all your problems
-and hiding the evidence."
-			"item_logname"				"acidlauncher"
-			"item_iconname"				"acidlauncher"											// There's no real "acid" color yet, so I just used the turquoise color from a few electric things in Live TF2!
-			"image_inventory"			"backpack/weapons/w_models/w_acidlauncher"
-			"model_world"				"models/weapons/w_models/w_acidlauncher.mdl"			// NOWP v3.0.0 - I wanted to choose a more generic-looking model this time, just in-case I need to rework Molotov Launcher again. At least this time I'm not shackled to it ONLY possibly being one thing!!
-			"model_player"				"models/weapons/v_models/v_acidlauncher_pyro.mdl"
-			"attach_to_hands"			"2"
-			"used_by_classes"
-			{
-				"pyro"					"1"
-			}
-			"static_attrs"																		// NOWP v3.0.0 - Old Molotov Launcher SUCKS. Let's try this... this is SUPPOSED to be a less conditional kinda alternative to the DF with more crowd-afterburning potential, so let's see...
-			{
-				"NOWP weapon"							"1"
-				"mod max primary clip override"			"-1"									// Unlike before, this ML variant can't reload, so no weird bullshit!!			
-				"hidden primary max ammo bonus"			"5.66"									// 60 ammo - enough for about 20 salvos. That should be fine!
-				"fire rate burst"						"0.175"
-				"fire rate penalty hidden"				"0.9"									// I don't actually know how this stacks up numbers-wise to DF since this ALSO has burst-fire, but just go with it
-				"damage bonus hidden"					"0.235"									// Does around 25-30 per shot, totaling to somewhere between 75-90?? Not exact, sorry...
-				"Projectile speed increased hidden"		"0.5"									// Lowered proj. speed to approx. land at 2x Pyro's range a-la DF
-				"custom rampup"							"1.2"
-				"ragdolls become ash"					"1"
-				"custom projectile origin offset"		"16 8 -6"
-				"custom projectile model"				"models/weapons/w_models/w_acidball.mdl"
-
-				"acidball burstfire"					"3"
-				"Set DamageType Ignite"					"1"		
-			}
-			"attributes"
-			{
-				"maxammo primary increased"
-				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"2.25"
-				}
-				"weapon burn time reduced"
-				{
-					"attribute_class"	"mult_wpn_burntime"
-					"value"				"0.5"
-				}
-				"airblast disabled"
-				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"1"
-				}
-				// Backend stuff
-				"hide_attrib_percentage"
-				{
-					"attribute_class"	"fuse_mult"
-					"value"				"0.4"													// Projectiles linger for long enough to explode at about 2x Pyro's usual range... same as the DF!
-				}
-				"hide_attrib_percentage"
-				{
-					"attribute_class"	"mult_explosion_radius"
-					"value"				"0.75"
-				}
-				"hide_attrib_percentage"
-				{
-					"attribute_class"	"blast_dmg_to_self"
-					"value"				"0"
-				}
-				"self dmg push force hidden"
-				{
-					"attribute_class"	"mult_dmgself_push_force"
-					"value"				"0"
-				}
-			}
-			"visuals"
-			{
-				"sound_single_shot"		"Weapon_AcidLauncher.Single"
-				"sound_burst"			"Weapon_AcidLauncher.SingleCrit"
-				"sound_special1"		"Weapon_AcidBall.Explode"
-				"sound_special2"		"Weapon_AcidLauncher.Single"
-				"sound_special3"		"Weapon_AcidLauncher.SingleCrit"
-				"animation_replacement"															// These would be the Airblast animations, for visual consistency!
-				{
-					"ACT_MP_ATTACK_STAND_PRIMARY"				"ACT_MP_ATTACK_STAND_SECONDARYFIRE"
-					"ACT_MP_ATTACK_CROUCH_PRIMARY"				"ACT_MP_ATTACK_CROUCH_SECONDARYFIRE"
-					"ACT_MP_ATTACK_SWIM_PRIMARY"				"ACT_MP_ATTACK_SWIM_SECONDARYFIRE"
-
-					"ACT_MP_RELOAD_STAND_PRIMARY"				"ACT_MP_ATTACK_STAND_SECONDARYFIRE"
-					"ACT_MP_RELOAD_CROUCH_PRIMARY"				"ACT_MP_ATTACK_CROUCH_SECONDARYFIRE"
-					"ACT_MP_RELOAD_SWIM_PRIMARY"				"ACT_MP_ATTACK_SWIM_SECONDARYFIRE"
-				}
-			}
-			"visuals_red"
-			{
-				"trail_effect"			"acidball_drops_red"
-				"trail_effect_crit"		"critical_grenade_red"
-				"explosion_effect"		"peejar_impact_acid_orange"								// I'm too lazy to rename these so these just re-use the new ones...
-				"explosion_effect_crit"	"explosion_shrapnel_PARENT_red_crit"
-			}
-			"visuals_blu"
-			{
-				"trail_effect"			"acidball_drops_blue"
-				"trail_effect_crit"		"critical_grenade_blue"
-				"explosion_effect"		"peejar_impact_water"
-				"explosion_effect_crit"	"explosion_shrapnel_PARENT_blue_crit"
-			}
-			"visuals_grn"
-			{
-				"trail_effect"			"acidball_drops_green"
-				"trail_effect_crit"		"critical_grenade_green"
-				"explosion_effect"		"peejar_impact_acid"
-				"explosion_effect_crit"	"explosion_shrapnel_PARENT_green_crit"
-			}
-			"visuals_ylw"
-			{
-				"trail_effect"			"acidball_drops_yellow"
-				"trail_effect_crit"		"critical_grenade_yellow"
-				"explosion_effect"		"peejar_impact"
-				"explosion_effect_crit"	"explosion_shrapnel_PARENT_yellow_crit"
-			}
-			"mouse_pressed_sound"		"#ui/item_heavier_gun_pickup.wav"						// Since it's not a "flame" thrower, just default to regular weapon noises...
-			"drop_sound"				"#ui/item_heavier_gun_drop.wav"
 		}
 
 //-----
@@ -10949,123 +10046,7 @@ and hiding the evidence."
 //--------------------------------------------------
 		"3495"
 		{
-			"name"						"TF_WEAPON_INCENDIARYCANNON"
-			"prefab"					"weapon_flamethrower"
-			"item_class"				"tf_weapon_syringegun_medic"
 			"show_in_armory"			"0"
-
-			"item_name_color"			"204 204 250 255"
-			"item_name"					"Incendiary Cannon"
-			"item_type_name"			"Flame Launcher"										// Really it's semantics, it technically does throw fire like a regular Flamethrower, so it could be called that too. Could also write in Incendiary Cannon as a literal item type but whateveerrrr
-			"item_description"			"
-Throw some flames, the old-fashioned way."
-			"item_logname"				"incendiarycannon"
-			"item_iconname"				"incendiarycannon"
-			"image_inventory"			"backpack/weapons/w_models/w_incendiarycannon"
-			"model_world"				"models/weapons/w_models/w_incendiarycannon.mdl"		// I gotta admit, the hose attach trick is REALLY clever but also incredibly scuffed in both w and v models.
-			"model_player"				"models/weapons/v_models/v_incendiarycannon_pyro.mdl"	// Had to do some funky conditional stuff for both... and even then it's very messy
-			"attach_to_hands"			"2"
-			"used_by_classes"
-			{
-				"pyro"					"1"
-			}
-			"static_attrs"																		// NOWP v3.0.0 - Okay, I think it being an AA Gun is doing more harm than it is good. Let's try this, a SG-base variant...
-			{
-				"NOWP weapon"							"1"
-				"mod max primary clip override"			"-1"
-				"override projectile type"				"2"
-				"custom projectile origin offset"		"23.5 0 -3"								// TF2C v2.1.0 - Manual Projectile Offset! This really helps makes certain guns look / feel less janky to use
-				"custom projectile model"				"models/weapons/w_models/w_drg_ball.mdl"
-
-//				"fire rate bonus hidden"				"1.15"
-				"damage bonus hidden"					"1.33"									// Does like 13-16 DMG? Very weak, but the fire rate is amped WAY up (thanks to it being a heavily modified Syringe Gun!)
-				"Projectile speed increased hidden"		"0.825"									// Vaguely matches a flame particle's speed, takes a little under a second to reach a foe at max range.
-				"custom rampup"							"1.2"
-				"weapon enemy knockback mod mult decreased"	"0.25"
-				"hidden primary max ammo bonus"			"1.334"
-				"rocket limited lifetime"				"0.33"									// Just about similar to Pyro's FT range, but still very limited
-				"add condition on hit self weapon"		"68 0.0000005"							// JANKY HACK - You gain a microsecond of blast immunity when hitting a foe, but it's so short that enemy Soldiers / Demomen can still attack you!
-			}
-			"attributes"
-			{
-				"set weapon flamerocket"
-				{
-					"attribute_class"	"set_dmgtype_ignite"
-					"value"				"1"
-				}
-				"projectile spread angle penalty"
-				{
-					"attribute_class"	"projectile_spread_angle"
-					"value"				"5"
-				}
-				"hide_attrib_percentage"
-				{
-					"attribute_class"	"mult_spread_scale"
-					"value"				"3.3"													// from beggars for projectile spread. amped up for really unreliable spread
-				}
-				"hide_attrib_percentage"
-				{
-					"attribute_class"	"mult_explosion_radius"
-					"value"				"0.67"
-				}
-				"airblast disabled"
-				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"1"
-				}
-				// Backup stuff
-				"hide_attrib_additive"		
-				{
-					"attribute_class"	"mod_rocket_gravity"
-					"value"				"-0.075"												// Rockets go UPWARD, to mimic the behavior of flame particles...
-				}
-				"blast dmg to self increased hidden"
-				{
-					"attribute_class"	"blast_dmg_to_self"
-					"value"				"0.75"													// NOWP v3.0.0 - Re-enabled the blast damage aND force, for funnies. It's great for minor mobility, if you can stomach having your health be halved...
-				}
-				"self dmg push force hidden"
-				{
-					"attribute_class"	"mult_dmgself_push_force"
-					"value"				"0.975"													// JUST enough to hover above the ground if you jump right. Old was 1.175
-				}
-			}
-			"visuals"
-			{
-				"sound_single_shot"		"Weapon_IncendiaryCannon.Fire"
-				"sound_burst"			"Weapon_IncendiaryCannon.FireCrit"
-				"sound_special1"		"Weapon_Airstrike.Explosion"
-				"explosion_effect"		"coilgun_boom_red"
-				"muzzle_flash"			"muzzle_tranq"
-				"trail_effect"			"sentry_rocket_firey"									// Fire-only, smaller profile overall!
-				"animation_replacement"
-				{
-					"ACT_MP_SWIM_DEPLOYED"						"ACT_MP_SWIM_PRIMARY"			// Swimming Deployed
-					"ACT_MP_SWIM_DEPLOYED_PRIMARY"				"ACT_MP_SWIM_PRIMARY"
-				}
-			}
-			"visuals_red"
-			{
-				"trail_effect_crit"		"critical_rocket_redsparks3"
-				"explosion_effect_crit"	"coilgun_boom_red"
-			}
-			"visuals_blu"
-			{
-				"trail_effect_crit"		"critical_rocket_bluesparks3"
-				"explosion_effect_crit"	"coilgun_boom_blue"
-			}
-			"visuals_grn"
-			{
-				"trail_effect_crit"		"critical_rocket_greensparks3"
-				"explosion_effect_crit"	"coilgun_boom_green"
-			}
-			"visuals_ylw"
-			{
-				"trail_effect_crit"		"critical_rocket_yellowsparks3"
-				"explosion_effect_crit"	"coilgun_boom_yellow"
-			}
-			"mouse_pressed_sound"		"#ui/item_flamethrower_pickup.wav"
-			"drop_sound"				"#ui/item_heavy_gun_drop.wav"
 		}
 
 //-----
@@ -11563,6 +10544,7 @@ Fire when you see the whites of their eyes!"
 				"medieval changes"						"1"
 				"min_viewmodel_offset"					"10 0 -10"
 				"allowed in medieval mode"				"1"
+				"mod use custom ammo type"				"1"
 			}
 			"attributes"
 			{
@@ -11601,14 +10583,14 @@ Fire when you see the whites of their eyes!"
 					"attribute_class"	"mult_postfiredelay"
 					"value"				"1.75"
 				}
-				"secondary ammo from dropped weapons penalty"
+				"primary ammo from dropped weapons penalty"
 				{
-					"attribute_class"	"mult_secondary_ammo_from_dropped_weapons"
+					"attribute_class"	"mult_primary_ammo_from_dropped_weapons"
 					"value"				"0.25"
 				}
 				"hide_attrib_percentage"	
 				{
-					"attribute_class"	"mult_maxammo_secondary"
+					"attribute_class"	"mult_maxammo_primary"
 					"value"				"0.67"
 				}
 				// Backend stuff
@@ -11676,6 +10658,7 @@ the end of this ol' iron, son."
 				"medieval changes"						"1"
 				"min_viewmodel_offset"					"10 0 -10"
 				"allowed in medieval mode"				"1"										// Will see how it goes?? I allow the Musket in medieval and, at least I don't think anybody complains about it yet
+				"mod use custom ammo type"				"1"
 			}
 			"attributes"
 			{
@@ -11714,14 +10697,14 @@ the end of this ol' iron, son."
 					"attribute_class"	"mult_postfiredelay"
 					"value"				"1.75"
 				}
-				"secondary ammo from dropped weapons penalty"									// You're REALLY hurtin for ammo when you use this - discourages people from just running in and deathmatching people with this.
+				"primary ammo from dropped weapons penalty"
 				{
-					"attribute_class"	"mult_secondary_ammo_from_dropped_weapons"
-					"value"				"0.25"													// You only get 1 ammo from dropped weapons, enough to recoup the shot you just fired to kill but that's IT
+					"attribute_class"	"mult_primary_ammo_from_dropped_weapons"
+					"value"				"0.25"
 				}
-				"hide_attrib_percentage"														// Only 6 shots to work with, but they're beefy ones!
+				"hide_attrib_percentage"	
 				{
-					"attribute_class"	"mult_maxammo_secondary"
+					"attribute_class"	"mult_maxammo_primary"
 					"value"				"0.5"
 				}
 				// Backend stuff
@@ -13833,78 +12816,6 @@ Zhis chase will be over soon, I promise."
 		}
 
 //-----
-// (ID 3548) |	Spy Brick Internals				|	Tags: (Dupe)
-//-----
-// [Overview: Refer to main weapon entry.]
-//--------------------------------------------------
-		"3548"
-		{
-			"tags"
-			{
-				"bots_cant_use"			"1"														// TO-DO: Spy bots don't even pull out a secondary if this is equipped, disable if I can figure out a workaround?
-			}
-			"name"						"TF_WEAPON_BRICK"										// NOTE: THIS IS DISPLAY-ONLY FRONTEND! The actual weapon is handled elsewhere; this is just minimal stuff copied over so the game can load it properly.
-			"prefab"					"weapon_sapper"
-			"show_in_armory"			"1"
-
-			"item_class"				"tf_wearable"											// Replaces your Sapper item with a wearable, pretty much the only thing it won't complain about. Said wearable does almost nothing by itself and just equips another weapon!
-//			"act_as_wearable"			"1"														// Toggling this does a few things; if it's enabled, then it doesn't cause issues with the 3d playermodel display, but also doesn't render as a weapon you're holding out. Mmn...
-
-			"item_quality"				"vintage"
-			"item_name"					"Vintage Brickhouse Beatdown"
-			"item_type_name"			"Retired Brick"
-			"item_description"			"Throw at enemies to bludgeon them! (6s)
-That's gotta hurt in the morning
-
-“Did I throw a 'wrench' into your plans?”"
-			"image_inventory"			"backpack/weapons/w_models/w_nowpbrick"
-			"model_world"				"models/weapons/w_models/w_brick_spy.mdl"
-			"model_player"				"models/weapons/w_models/w_drg_ball.mdl"				// IMPORTANT!! This is technically always loaded in, so it must be an invisible model! DRGBall is just the most convenient one I could find.
-			"attach_to_hands"			"2"
-			"used_by_classes"
-			{
-				"spy"					"1"
-			}
-			"static_attrs"
-			{
-				"NOWP weapon"							"1"
-				"allowed in medieval mode"				"1"
-				"linked item id"						"4412"									// Item ID of the actual weapon instead of this thing.
-				"sapper cant sap"						"1"										// Prevents building your sapper with commands...
-			}
-			"attributes"																		// ONLY HAVE WHAT YOU ABSOLUTELY NEED VISIBLE HERE!! This is frontend text from the real weapon, but all these stats are dummied out.
-			{
-				"brick explodes text"
-				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"1"
-				}
-//				"bleeding duration"
-//				{
-//					"attribute_class"	"DISPLAY_ONLY"
-//					"value"				"2"
-//				}
-				"dmg bonus vs buildings"
-				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"2"
-				}
-				"maxammo grenades1 increased"
-				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"3"
-				}
-				"fire rate penalty"
-				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"1.5"
-				}
-			}
-			"mouse_pressed_sound"		"#physics/concrete/concrete_block_impact_hard3.wav"
-			"drop_sound"				"#ui/item_wood_weapon_drop.wav"
-		}
-
-//-----
 // (ID 3549~3550) |	Cassette Tracker 			|	Tags: (v3.0.0), (New), (Spy), (Secondary), (Support), (Building)
 //-----
 // [Authors: Neodos, Harribo, & co. (Models, "Track Record" https://gamebanana.com/mods/197459)]
@@ -14833,7 +13744,7 @@ am shooting at you are for acupuncture!"
 
 				// Backend stuff
 				"hidden separator"						"1"
-				"maxammo grenades1 increased"			"50" //Needed to fix an annoying medieval mode exclusive bug... -Clock // TECHNICALLY this is the wrong display, but shhhhh
+				"maxammo primary increased"				"0.1" //Needed to fix an annoying medieval mode exclusive bug... -Clock // TECHNICALLY this is the wrong display, but shhhhh
 				"override projectile type"				"35"									// Paintball... This technically doesn't need to be included, but it's helpful to know that Paintball is the sole projectile that heals on hit without exploding, too.
 				"custom projectile model"				"models/weapons/w_models/w_dm_crossbow_arrow.mdl"	// This just looks sleeker
 				"custom magazine model"					"models/weapons/mags/vial_mp40.mdl"
@@ -14844,7 +13755,7 @@ am shooting at you are for acupuncture!"
 				"clip size penalty hidden"				"0.2"
 				"fire rate bonus hidden"				"0.24"									// 0.1 for regular SG fire rate
 				"reload time increased hidden"			"0.84"									// 1.05 for Live
-				"mod use custom ammo type"				"4"										// SWITCHES BACK TO PRIMARY TO AVOID ISSUES WITH 'NADER
+				"mod use custom ammo type"				"1"										// SWITCHES BACK TO PRIMARY TO AVOID ISSUES WITH 'NADER
 
 				"custom rampup"							"0.5"
 				"longer damage falloff distance"		"3"										// Rampup takes effect from further away...
@@ -17971,221 +16882,13 @@ Weaponized-Ass-Slappage-Propeller?"
 			"mouse_pressed_sound"		"#ui/rocketlauncher_alt_pickup.wav"
 			"drop_sound"				"#ui/item_heavy_gun_drop.wav"
 		}
-	
-//----------------------
-//----------------------				// -- Overview -- Model -----------------------------------------------------------------
-//-- O.o.W -------------				// A rocket launcher that has no reload, but the rockets are weaker than the stock one --
-//----------------------				// --------------------------------------------------------------------------------------
-//----------------------
 		"5218"
 		{
-			"name"						"TF_WEAPON_INDIRECTHIT"
-			"prefab"					"weapon_rocketlauncher"
 			"show_in_armory"			"0"
-
-			"propername"				"1"
-			"item_name_color"			"255 240 183 255"
-			"item_name"					"Origin of War"
-			"item_type_name"			"#TF_Weapon_RocketLauncher"
-			"item_description"			""
-			"item_logname"				"origin_of_war"
-			"item_iconname"				""
-			"image_inventory"			"backpack\weapons\w_models\w_rapidfire\w_rrapidfire"
-			"model_world"				"models\w_models\w_rapidfire.mdl"
-			"model_player"				"models\v_models\v_rapidfire_soldier.mdl"
-			"attach_to_hands"			"2"
-			"used_by_classes"
-			{
-				"soldier"				"1"
-			}
-			"static_attrs"
-			{
-				"ReValve weapon"						"1"
-				"min_viewmodel_offset"					"7 -6 -7"								// IS THAT A QUAKE CHAMPION REFERENCE???!?!?!?!??
-				"punch angle mod add hidden"			"5"
-				"punch angle is constant"				"1"
-				"custom projectile origin offset"		"0 -10.5 3"
-				"class select override vcd"				"taunt07"
-			}
-			"attributes"
-			{
-//				"centerfire projectile"
-//				{
-//					"attribute_class"	"centerfire_projectile"
-//					"value"				"1"
-//				}
-				"mod no reload DISPLAY ONLY"
-				{
-					"attribute_class"	"mod_max_primary_clip_override"
-					"value"				"-1"
-				}
-				"rocket jump damage reduction"
-				{
-					"attribute_class"	"DISPLAY_ONLY"	
-					"value"				"0.75"
-				}
-				"hide_attrib_percentage"  //Adjusted for your rocket's damage. -Clock
-				{
-					"attribute_class"	"rocket_jump_dmg_reduction"	
-					"value"				"0.4875"
-				}
-				"self dmg push force hidden" //Would be a bit weird to have a full rocket jump on this. -Clock
-				{
-					"attribute_class"	"mult_dmgself_push_force"	
-					"value"				"0.69"
-				}
-				"damage penalty"
-				{
-					"attribute_class"	"mult_dmg"
-					"value"				"0.65"
-				}
-				"blast splash damage decreased"				// No reload equals 1 million penalties for this feature because previously spam was diluted by reloading, but now there is none
-				{
-					"attribute_class"	"mult_explosion_splash_damage"
-					"value"				"0.5"
-				}
-				"Blast radius decreased"
-				{
-					"attribute_class"	"mult_explosion_radius"
-					"value"				"0.75"
-				}
-				"custom projectile model"
-				{
-					"attribute_class"	"custom_projectile_model"
-					"value"				"models\w_models\w_rapidfire_rocket.mdl"
-				}
-			}
-			"visuals"
-			{
-				"sound_single_shot"		"Weapon_RPG_DM.Single"
-				"sound_burst"			"Weapon_RPG_DM.SingleCrit"
-//				"sound_reload"			"Weapon_RPG.WorldReload"			// Not essential (the weapon has no reload)
-//				"sound_special1"		"Weapon_RPG_DirectHit.Explode"
-			}
-			"mouse_pressed_sound"		"#ui/rocketlauncher_alt_pickup.wav"
-			"drop_sound"				"#ui/item_heavy_gun_drop.wav"
 		}
-		
-//----------------------
-//----------------------				// -- Overview -- Model --------------------------
-//-- Hornet ------------				// Launch a hail of 7 missiles at your enemies! --
-//----------------------				// -----------------------------------------------
-//----------------------
 		"5193"
 		{
-			"name"						"TF_WEAPON_HORNET"
-			"prefab"					"weapon_rocketlauncher"
 			"show_in_armory"			"0"
-
-			"propername"				"1"
-			"item_name_color"			"255 240 183 255"
-			"item_name"					"Hornet's Nest"
-			"item_type_name"			"#TF_Weapon_RocketLauncher"
-			"item_description"			"Weapon has a bottomless clip
-
-Stings like a bee!
-
-Note: Actually let you use this as a real weapon. -Clock"
-			"item_logname"				"hornet"
-			"item_iconname"				""
-			"image_inventory"			"backpack\weapons\w_models\w_hornet_launcher\w_hornet_launcher"
-			"model_world"				"models\weapons\c_models\c_hornet_launcher\c_hornet_launcher.mdl"
-			"model_player"				"models\weapons\c_models\c_hornet_launcher\c_hornet_launcher.mdl"
-			"attach_to_hands"			"1"
-			"used_by_classes"
-			{
-				"soldier"				"1"
-			}
-			"static_attrs"
-			{
-				"ReValve weapon"						"1"
-				"Mombaes parallel"						"1"
-				"Heavily modified"						"1"
-			}
-			"attributes"
-			{
-				"hide_attrib_additive"
-				{
-					"attribute_class"	"add_ammo_on_direct_hit_kill"
-					"value"				"3"
-				}
-				"mod max primary clip override" //For some reason still shows as still having ammo (that's always 0) sometimes. -Clock
-				{
-					"attribute_class"	"mod_max_primary_clip_override"
-					"value"				"-1"
-				}
-				"instant reload on direct hit kill"
-				{
-					"attribute_class"	"instant_reload_on_direct_hit_kill"
-					"value"				"3"
-				}
-				"fire rate bonus"
-				{
-					"attribute_class"	"mult_postfiredelay"
-					"value"				"0.25"
-				}
-				"hide_attrib_percentage"
-				{
-					"attribute_class"	"mult_maxammo_primary"
-					"value"				"0.75"
-				}
-				"damage penalty"
-				{
-					"attribute_class"	"mult_dmg"
-					"value"				"0.45"
-				}
-				"projectile spread angle penalty"
-				{
-					"attribute_class"	"projectile_spread_angle"
-					"value"				"9"
-				}
-				"hide_attrib_additive"
-				{
-					"attribute_class"	"mult_spread_scale"
-					"value"				"0.125"
-				}
-				"self dmg push force hidden"
-				{
-					"attribute_class"	"mult_dmgself_push_force"
-					"value"				"0.35"
-				}
-				"Blast radius decreased"
-				{
-					"attribute_class"	"mult_explosion_radius"
-					"value"				"0.15"
-				}
-				"rocket gravity"
-				{
-					"attribute_class"	"mod_rocket_gravity"
-					"value"				"0.8"
-				}
-				"custom projectile model"
-				{
-					"attribute_class"	"custom_projectile_model"
-					"value"				"models\weapons\c_models\c_hornet_launcher\w_rocket_hornet.mdl"
-				}
-			}
-			"visuals"
-			{
-				"sound_single_shot"		"Weapon_RPG_BlackBox.Single"
-				"sound_burst"			"Weapon_RPG_BlackBox.SingleCrit"
-				"sound_reload"			"Weapon_RPG.WorldReload"
-				"sound_special1"		"Weapon_AirBurster.Explode"
-				"explosion_effect"		"coilgun_boom_red"
-				"trail_effect"			"sentry_rocket_firey"
-			}
-			"visuals_red"
-			{
-				"trail_effect_crit"		"critical_rocket_red"
-				"explosion_effect_crit"	"coilgun_boom_red"
-			}
-			"visuals_blu"
-			{
-				"trail_effect_crit"		"critical_rocket_blue"
-				"explosion_effect_crit"	"coilgun_boom_blue"
-			}
-			"mouse_pressed_sound"		"#ui/rocketlauncher_alt_pickup.wav"
-			"drop_sound"				"#ui/item_heavy_gun_drop.wav"
 		}
 
 //----------------------
@@ -18307,7 +17010,7 @@ A medieval battering ram and cannon combined and repurposed into a shoulder-moun
 				"Blast radius decreased"
 				{
 					"attribute_class"	"mult_explosion_radius"
-					"value"				"0.5"
+					"value"				"0.7"
 				}
 				"clip size penalty"
 				{
@@ -23056,9 +21759,9 @@ I'm not afraid of explosives!"
 			"item_name_color"			"255 240 183 255"
 			"item_name"					"Shogun Set"
 			"item_type_name"			"Armor"
-			"item_description"			"Alt-Fire: Forces melee with haste (8s)
+			"item_description"			"Alt-Fire: Forces you to melee with haste for 8s (16s)
 
-Notes: Made medieval exclusive lol. -Clock"
+Model: AyesDyef, TF2"
 			"item_logname"				"shoulder_guard"
 			"item_iconname"				""											// Kill icon for wearables?
 			"image_inventory"			"backpack\player\w_shogun_set\w_shogun_set"
@@ -23072,20 +21775,17 @@ Notes: Made medieval exclusive lol. -Clock"
 			"static_attrs"
 			{
 				"ReValve weapon"						"1"
+				"medieval changes"						"1"
 				"custom hand viewmodel"					"models\player\items\soldier\c_samurai_soldier_arms.mdl"
 				"allowed in medieval mode"				"1"
+				"hidden separator"						"1"
 			}
 			"attributes"
 			{
 				"health regen"
 				{
 					"attribute_class"	"add_health_regen"
-					"value"				"4"
-				}
-				"health regen delay time when damaged"
-				{
-					"attribute_class"	"mod_health_regen_hurt_delay"
-					"value"				"3"
+					"value"				"0"
 				}
 				"wearable add cond on right click"
 				{
@@ -23121,7 +21821,7 @@ Notes: Made medieval exclusive lol. -Clock"
 		{
 			"tags"
 			{
-//				"bots_cant_use"			"1"
+				"bots_cant_use"			"1"
 			}
 			"name"						"TF_WEARABLE_SHIELD_TIDETURNER"
 			"item_class"				"tf_wearable"
@@ -24203,15 +22903,19 @@ Four barrels, four grenades! Fast math lad!"
 		"5213"
 		{
 			"name"						"TF_WEAPON_DEMOBARRAGE"
-			"prefab"					"weapon_grenade_launcher"
+			"prefab"					"weapon_grenade_launcher" //TO DO: When the caber can finally be changed to something else, make this a tranq gun so it can reload while inactive. -Clock
+			"item_class"				"tf_weapon_grenadelauncher"
 			"show_in_armory"			"1"
 
 			"propername"				"1"
 			"item_name_color"			"204 204 250 255"
 			"item_name"					"Coehorn Cannon"
 			"item_type_name"			"#TF_Weapon_GrenadeLauncher"
-			"item_description"			"
-From a time when a tactical reload took 2-3 business days, these proto-grenade launchers were revolutionary in the lucrative bomb-lobbing market"
+			"item_description"			"Weapon has falloff
+
+From a time when a tactical reload took 2-3 business days, these proto-grenade launchers were revolutionary in the lucrative bomb-lobbing market
+
+Model: Hauu"
 			"item_logname"				"coehorn_cannon"
 			"item_iconname"				""
 			"image_inventory"			"backpack\weapons\w_models\w_handmortar\w_handmortar"
@@ -24226,46 +22930,57 @@ From a time when a tactical reload took 2-3 business days, these proto-grenade l
 			{
 				"ReValve weapon"						"1"
 				"medieval changes"						"1"
-				"allowed in medieval mode"				"1"
-				"hidden primary max ammo bonus"			"1"
+				"override projectile type"				"31"
+				"set reload single"						"1"
+				"Reload time start additive"			"0.6"
+				"Reload time no anim speed mod"			"0.5"
+				"mod use custom ammo type"				"1"
+				"mirv drag mod mult hidden"				"0.001"
+				"custom rampup"							"2"
+				"longer damage falloff distance"		"1.5"
 			}
 			"attributes"
 			{
-				"damage bonus"
+				"allowed in medieval mode"														// TF2C v2.1.4 - Allows Engi to build stuff in Medieval mode, granted that stuff is only the Jump Pad.
 				{
-					"attribute_class"	"mult_dmg"
-					"value"				"1.1"
+					"attribute_class"	"allowed_in_medieval_mode"
+					"value"				"1"
+				}
+				"mirv impact damage inceased display" // figured this should be shown. -Clock's assistant
+				{
+					"attribute_class"	"DISPLAY_ONLY"
+					"value"				"1.5"
 				}
 				"hide_attrib_percentage" //Isn't included in the base damage multiplier for whatever reason. -Clock
 				{
 					"attribute_class"	"mult_mirv_impact_damage"
-					"value"				"1.5"
+					"value"				"0.75"
 				}
 				"Blast radius bonus"
 				{
-					"attribute_class"	"mult_explosion_radius"
+					"attribute_class"	"DISPLAY_ONLY"
 					"value"				"1.1"
 				}
-				"Projectile speed increased"
-				{
-					"attribute_class"	"mult_projectile_speed"
-					"value"				"1.20"
-				}
+//				"max health additive bonus"
+//				{
+//					"attribute_class"	"add_maxhealth"
+//					"value"				"25"
+//				}
 				"grenade not explode on impact"
 				{
 					"attribute_class"	"mirv_impact"
 					"value"				"1"
 				}
-				"max health additive penalty"
-				{
-					"attribute_class"	"add_maxhealth"
-					"value"				"-25"
-				}
 				"niko"
 				{
-					"attribute_class"	"mult_clipsize"
+					"attribute_class"	"DISPLAY_ONLY"
 					"value"				"0.25"
 				}
+//				"dmg taken from blast increased" //The comprimise for the buffs this has received. A passive downside. -Clock
+//				{
+//					"attribute_class"	"mult_dmgtaken_from_explosions"
+//					"value"				"1.2"
+//				}
 				"maxammo primary reduced"
 				{
 					"attribute_class"	"DISPLAY_ONLY"
@@ -24274,7 +22989,12 @@ From a time when a tactical reload took 2-3 business days, these proto-grenade l
 				"hide_attrib_percentage" //Hidden because ugly number. -Clock
 				{
 					"attribute_class"	"mult_maxammo_primary"
-					"value"				"0.3125"
+					"value"				"0.275"
+				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mult_clipsize"
+					"value"				"0.25"
 				}
 				"Reload time increased"
 				{
@@ -24291,30 +23011,25 @@ From a time when a tactical reload took 2-3 business days, these proto-grenade l
 					"attribute_class"	"bomblets_count_mod"
 					"value"				"0"
 				}
-				"hide_attrib_additive"
-				{
-					"attribute_class"	"mod_rocket_gravity"
-					"value"				"0.85"
-				}
-				"override projectile type"												// Mirv not explodes, but deals impact damage
-				{
-					"attribute_class"	"override_projectile_type"
-					"value"				"31"
-				}
-				"override projectile type"												// Mirv not explodes, but deals impact damage
-				{
-					"attribute_class"	"override_projectile_type"
-					"value"				"31"
-				}
-				"hide_attrib_percentage"
-				{
-					"attribute_class"	"mult_dmgtaken_from_explosions"
-					"value"				"1"
-				}
 				"hidden separator"
 				{
 					"attribute_class"	"hidden_separator"
 					"value"				"1"
+				}
+				"hide_attrib_additive"
+				{
+					"attribute_class"	"mult_explosion_radius"
+					"value"				"0"
+				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mult_postfiredelay"
+					"value"				"2.5"
+				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mult_dmg"
+					"value"				"0.5"
 				}
 			}
 			"visuals"
@@ -25946,7 +24661,7 @@ Forget stabbing through the heart, this thing will pin it to the nearest wall."
 				"damage bonus hidden"
 				{
 					"attribute_class"	"mult_dmg"
-					"value"				"3.35"
+					"value"				"3.5"
 				}
 				"hide_attrib_additive"	//Unessesary to display, it basically already does. -Clock
 				{
@@ -26340,71 +25055,7 @@ Backpack image from shot by APaintbucketNamedHuey on gamebanana"
 //------------------------------
 		"5107"
 		{
-			"name"						"TF_WEAPON_PEP_PISTOL"
-			"prefab"					"weapon_pistol"
 			"show_in_armory"			"0"
-
-			"propername"				"1"
-			"item_name_color"			"255 240 183 255"
-			"item_name"					"Technical Screwdriver"
-			"item_type_name"			"#TF_Weapon_NailGun"
-			"item_description"			"
-“If you done it, it ain't braggin'!”"
-			"item_logname"				"screwdriver"
-			"item_iconname"				""
-			"image_inventory"			"backpack\weapons\c_models\c_engi_screwdriver\c_engi_screwdriver"
-			"model_world"				"models\w_models\w_engi_screwdriver.mdl"
-			"model_player"				"models\v_models\v_engi_screwdriver.mdl"
-			"attach_to_hands"			"2"
-			"used_by_classes"
-			{
-				"engineer"				"1"
-			}
-			"static_attrs"
-			{
-				"ReValve weapon"						"1"
-			}
-			"attributes"
-			{
-				"bleeding duration"
-				{
-					"attribute_class"	"bleeding_duration"
-					"value"				"3"
-				}
-				"fire rate penalty"
-				{
-					"attribute_class"	"mult_postfiredelay"
-					"value"				"1.66"
-				}
-				"clip size penalty"
-				{
-					"attribute_class"	"mult_clipsize"									// Who remembers old alpha versions? (15/200)
-					"value"				"0.4"
-				}
-				"hidden secondary max ammo penalty"
-				{
-					"attribute_class"	"mult_maxammo_secondary"
-					"value"				"0.1"
-				}
-				"custom projectile model"
-				{
-					"attribute_class"	"custom_projectile_model"
-					"value"				"models\weapons\w_models\w_nail.mdl"			// Tranq dart looks awful for this!
-				}
-				"override projectile type"
-				{
-					"attribute_class"	"override_projectile_type"
-					"value"				"30"
-				}
-			}
-			"visuals"
-			{
-				"sound_single_shot"		"Weapon_AIRGUN.Single"
-				"sound_burst"			"Weapon_AIRGUN.SingleCrit"
-				"sound_reload"			"Weapon_Pistol.WorldReload"
-			}
-			"mouse_pressed_sound"		"#weapons/nail_gun_draw.wav"
-			"drop_sound"				"#ui/item_light_gun_drop.wav"
 		}
 		
 //------------------------------
@@ -26423,7 +25074,9 @@ Backpack image from shot by APaintbucketNamedHuey on gamebanana"
 			"item_name"					"Conventional Pistol"
 			"item_type_name"			"#TF_Weapon_Pistol"
 			"item_description"			"
-A couple seconds and you've got a clip in you!"
+A couple seconds and you've got a clip in you!
+
+Model: Svdl"
 			"item_logname"				"beretta"
 			"item_iconname"				""
 			"image_inventory"			"backpack\weapons\w_models\w_berrett_pistol\w_berrett_pistol"
@@ -26816,89 +25469,6 @@ This will be the last time you see me"
 			}
 			"mouse_pressed_sound"		"#ui/item_watch_pickup.wav"
 			"drop_sound"				"#ui/item_watch_drop.wav"
-		}
-		
-//-----------------------------
-//-----------------------------
-//-- Chocolade? ---------------
-//-----------------------------
-//-----------------------------
-		"5231"
-		{
-			"name"						"TF_WEAPON_DAKOLOHS"
-			"prefab"					"weapon_sandvich"
-			"show_in_armory"			"0"
-
-			"propername"				"1"
-			"item_name_color"			"255 240 183 255"
-			"item_name"					"Buffalo Steak Sandvich"
-			"item_type_name"			"#TF_Weapon_Lunchbox"
-			"item_description"			"The player may only use melees. Lasts 8 seconds.
-Alt-fire: Share with a friend (Medium Health Kit)
-
-
-“Who needs bread?”"
-			"image_inventory"			"backpack\weapons\w_models\w_buffalo_steak\w_buffalo_steak"
-			"model_world"				"models\w_models\w_buffalo_steak.mdl"
-			"model_player"				"models\v_models\v_buffalo_steak_heavy.mdl"
-			"attach_to_hands"			"1"
-//			"extra_wearable"			"models/player/items/heavy_sandvichsafe.mdl"
-			"used_by_classes"
-			{
-				"heavy"					"1"
-			}
-			"static_attrs"
-			{
-				"ReValve weapon"						"1"
-				"meter_label"							"#TF_Sandwich"
-				"class select override vcd"				"taunt04"
-			}
-			"attributes"
-			{
-//				"lunchbox minicrits"
-//				{
-//					"attribute_class"	"set_weapon_mode"
-//					"value"				"1"												// Well, i can't give 2 conds to heavy (sadly)
-//				}
-				"everything can overheal on active"
-				{
-					"attribute_class"	"everything_can_overheal_active"
-					"value"				"1"
-				}
-				"lunchbox add condition on eat"
-				{
-					"attribute_class"	"lunchbox_addcond"
-					"value"				"41 8"											// Not works
-				}
-				"lunchbox consumed on use"
-				{
-					"attribute_class"	"lunchbox_force_cooldown"
-					"value"				"1"
-				}
-				// Backend stuff
-				"custom lunchbox throwable model"
-				{
-					"attribute_class"	"custom_lunchbox_throwable_model"
-					"value"				"models\w_models\plate_buffalo_steak.mdl"
-				}
-				"hide_attrib_percentage"
-				{
-					"attribute_class"	"lunchbox_healing_scale"
-					"value"				"0.5" //Why was this 450?
-				}
-			}
-			"visuals"
-			{
-				"animation_replacement"
-				{
-					"ACT_MP_GESTURE_VC_FINGERPOINT"				"ACT_MP_GESTURE_VC_THUMBSUP_PRIMARY"	// This is more than a little scuffed, but the fingerpoint anims just don't cut it yet
-					"ACT_MP_GESTURE_VC_THUMBSUP"				"ACT_MP_GESTURE_VC_THUMBSUP_SECONDARY"
-					"ACT_MP_GESTURE_VC_HANDMOUTH"				"ACT_MP_GESTURE_VC_HANDMOUTH_SECONDARY"
-					"ACT_MP_GESTURE_VC_FISTPUMP"				"ACT_MP_GESTURE_VC_FISTPUMP_SECONDARY"
-				}
-			}
-			"mouse_pressed_sound"		"#ui/item_sandwich_drop.wav"
-			"drop_sound"				"#ui/item_sandwich_pickup.wav"
 		}
 		
 //-----------------------------
@@ -33190,7 +31760,7 @@ It's as easy as taking candy from a kid!"
 		{
 			"name"						"TF_WEAPON_POWERJACK"
 			"prefab"					"weapon_fireaxe"
-			"show_in_armory"			"0"
+			"show_in_armory"			"1"
 
 			"propername"				"1"
 			"item_quality"				"collectors"
@@ -43821,6 +42391,14 @@ No Spinning, no winning."
 		}
 		"30810"
 		{
+			"show_in_armory"			"0"
+		}
+		"31232"
+		{
+			"tags"
+			{
+				"bots_cant_use"			"1"						// They just scope in.... and then never fire.
+			}
 			"name"						"TF_WEAPON_JAPANESERIFLE"
 			"prefab"					"weapon_sniperrifle"
 			"item_class"				"tf_weapon_sniperrifle"
@@ -43851,8 +42429,8 @@ Who ever said you can't teach an old gun new calibres!"
 				"medieval changes"						"1"
 				"class select override vcd"		"class_select_revrifle"	
 				"allowed in medieval mode"				"1"
-				"custom rampup"							"1.5"
-				"longer damage falloff distance"		"1.85"
+				"custom rampup"							"2"
+				"longer damage falloff distance"		"2"
 			}
 			"attributes"
 			{
@@ -43866,19 +42444,14 @@ Who ever said you can't teach an old gun new calibres!"
 					"attribute_class"	"mod_jump_height"
 					"value"				"1.20"
 				}
-				"damage bonus"
-				{
-					"attribute_class"	"DISPLAY_ONLY"
-					"value"				"1.2"
-				}
 				"damage penalty hidden"
 				{
 					"attribute_class"	"mult_dmg"
-					"value"				"0.8"
+					"value"				"0.5"
 				}
-				"sniper no charge"
+				"sniper no dmg charge"
 				{
-					"attribute_class"	"unimplemented_mod_sniper_no_charge"
+					"attribute_class"	"mod_sniper_no_dmg_charge"
 					"value"				"1"
 				}
 				"no headshot"
@@ -43890,6 +42463,11 @@ Who ever said you can't teach an old gun new calibres!"
 				{
 					"attribute_class"    "hidden_separator"
                     "value"              "1"
+				}
+				"hide_attrib_percentage" //Is this really nessesary? Probably not...
+				{
+					"attribute_class" 	"mult_maxammo_primary"
+					"value" 			"0.4"
 				}
 			}
 			"visuals"
@@ -43977,228 +42555,13 @@ Who ever said you can't teach an old gun new calibres!"
 		{
 			"show_in_armory"			"0"														// Note that this weapon is basically 1-1 to PSO2's version of it, so I'll keep it a secret wep, even if it works semi-well in normal TF2 combat!
 		}
-//-------------------------------------------------------------------//
-//-------------------------------------------------------------------// This is an unfortunate section, but sadly necessary. This is for weapons that, for some reason or another, I deem unfit to work in any form.
-//-------------------------------------------------------------------// That is RARE, considering I can generally just rework a weapon entirely if it's not making me happy! 
-//--RETIRED / OBSOLETE ITEMS AREA (4400 - 4500)----------------------// This would be for stuff that -fundamentally- doesn't or can't be reworked. At all.
-//-------------------------------------------------------------------// It's also where weapons that are rendered obsolete - by official inclusion into TF2C - go. 
-//-------------------------------------------------------------------// In both cases, I'll strip the weapon of its old stats and give it a new rarity...! Silver lining, y'know?
-//-------------------------------------------------------------------//
-
-//-----
-// (ID 4400) |	Übersaw							|	Tags: (v2.3.5), (Old), (Medic), (Melee), (Utility), (Weapon), (Retired)
-//-----
-// [Authors: Valve (Assets, "Team Fortress 2" https://store.steampowered.com/app/440)]
-// [Overview: Medic - A Bonesaw that adds Übercharge on hit, but is much slower than Stock! See: Überspritze]
-//
-// Are you happy with the Überspritze, but just wish it could "cut" it a bit more? Maybe if it "saw" a bit of a different future, it might be a more dangerous-looking weapon? Or, do you just really, really want to inject people while still using a Bonesaw?
-// Well, you're in luck! A mixup at the Bonesaw Factory and the Syringe Factory created a somehow-familiar looking weapon... a fearsome looking saw with a blade and syringe to match, we'll call it... "The Übersaw". And it could be yours, for a low, low payment of $4.99!
-// (Okay, for a serious summary - I just like the old Übersaw, and wanted to have it back. It has the old stats, if you want those! But, it makes little difference, an übersaw's an überspritze's an über-weapon! Saw through their bones like it's 2008!)
-//--------------------------------------------------
-//-----
-// (ID 4401) |	AA Gun / Aerial Assault			|	Tags: (v1.0.0), (New), (Heavy), (Primary), (Utility), (Weapon), (Retired)
-//-----
-// [Authors: Petachepas, Amouro, & co. (Models, "Olga: The Perfect Killing Machine" https://gamebanana.com/mods/195609) | Magmacow (Sounds, "Dumpster Fire: Vol. 2" https://gamebanana.com/sounds/43486)]
-// [Overview: Heavy - An AAGun that quickly fires lower-damage rockets across an area, for limited area control and splash damage! Also gives mobility! See: AA Cannon, Minigun]
-//
-// When TF2C team pushed TF2C's first official release, Death & Taxes, it also included were a few very, very interesting remnants of scrapped content and weapons. The AA Gun was one of them... and I've attempted to re-create it! With some creative liberties, of course~
-// Originally, it was some sort of "Minigun" with a much more limited clipsize that shot explosives of... some, kind. Heavy can also blast jump with it by default! So, that's cool! I decided to fold all of these into my new iteration of it, so hopefully it's fun to mess with!
-// To my surprise... they decided to finally, actually re-visit the AAGun idea, and officially released it the next update! So, not wanting to totally remove this, I gave this an honorary Vintage quality, and reworked it to be a might faster-firing variant! Complete with blast jump... it's important to the LORE.
-//--------------------------------------------------
 		"4401"
 		{
-			"name"						"TF_WEAPON_AA_GUN_NOWP"
-			"prefab"					"weapon_aagun"											// This prefab was left in with TF2C v2.0.0 Release. Simpler times...
 			"show_in_armory"			"0"
-
-			"item_quality"				"vintage"												// Vintage: This item is superseded by an official inclusion, but I'll try to make it a sidegrade!
-			"item_name"					"Vintage Aerial Assault"								// Also since this is vintage, no propername tag (obviously)
-			"item_type_name"			"Retired Anti-Aircraft Cannon"							// ...before I forget. Her name is Nina.
-			"item_description"			"
-Ha! Maybe you can outsmart bullet,
-but rocket will be different story for you."													// NOWP v2.5.0 - Retired weapons that have actual stats don't have the whole nostalgia bit, takes up a lot of space!
-			"item_logname"				"nowpaagun"
-			"item_iconname"				"nowpaagun"
-			"image_inventory"			"backpack/weapons/w_models/w_nowpaagun"
-			"model_world"				"models/weapons/w_models/w_nowpaagun.mdl"
-			"model_player"				"models/weapons/v_models/v_nowpaagun_heavy.mdl"			// As of TF2C v2.1.0, this has a brand new fire animation in both world and view!!
-			"attach_to_hands"			"2"
-			"used_by_classes"
-			{
-				"heavy"					"1"
-			}
-			"static_attrs"																		// NOWP v2.7.5 - Okay. Last verson wasn't great, let's try this - a very fast-firing AA Gun that still shoots rockets and does much less damage, based on the stock Minigun, AA Gun, ICannon, Heli Gun, and the weapon that shares a name with a Final Fight character. Phew, what a mouthful!
-			{
-				"NOWP weapon"							"1"
-				// Positive Text
-				"explosive bullets"						"1"										// TO-DO: Compress this since it's a useless text attrib rn...
-				"fire rate bonus"						"0.4"									// VERY FAST FIRE RATE!!
-				"maxammo primary increased"				"2.5"									// Bumps ammo up to about 100 rockets. A WHOLE DAMN LOT, but you chew through ammo really fast now, so it's a decent stopgap
-				
-				// Negative Text (cont'd)
-				"damage penalty"						"0.6"									// Does about 38 base damage per rocket (58 with max rampup)
-
-				// Projectile Properties
-				"override projectile type"				"2"
-				"rocket limited lifetime"				"0.325"
-				"custom projectile origin offset"		"23.5 -6 19"							// Assists with consistency + blast jumping
-				"custom projectile model"				"models/weapons/w_models/w_rocket_blackbox.mdl"	// Black Box rocket!
-
-				// Backend Stuff
-//				"no damage falloff over distance"		"1"										// For some reason this doesn't feel like it works...
-				"punch angle is constant"				"1"										// At higher fire-rates, AA Gun kinda acts scuffed with viewpunch, so this levels it out.
-			}
-			"attributes"	// Based on: The Anti-Aircraft Cannon (a weapon added in TF2C v2.1.0) | WEAPON IS STILL DIFFERENT FROM RETAIL!!
-			{
-				"hide_attrib_additive"															// A new attrib with TF2C v2.1.0! This should only be used SPARINGLY, probably with miniguns that are already slow (like this one), otherwise Heavy can mitigate his weaknesses...
-				{
-					"attribute_class"	"minigun_jump_while_revved"
-					"value"				"1"
-				}
-				"crit mod disabled"																// It just feels weird. ICannon has them enabled, but ICannon also has completely full attribute space so I can't exactly add anything to fix it...
-				{
-					"attribute_class"	"mult_crit_chance"
-					"value"				"0"
-				}
-				"limited range DISPLAY ONLY"		
-				{
-					"attribute_class"	"minigun_deployed_crouchwalk"
-					"value"				"1"
-				}
-				// Backend stuff
-				"hide_attrib_additive"
-				{
-					"attribute_class"	"mod_rocket_gravity"
-					"value"				"0.75"
-				}
-				"hide_attrib_additive"
-				{
-					"attribute_class"	"mult_spread_scale"
-					"value"				"0.0725"												// Gives it spread, since AA Gun usually has perfect accuracy!
-				}
-				"hide_attrib_percentage"
-				{
-					"attribute_class"	"mult_projectile_speed"
-					"value"				"2.25"
-				}
-				// Blast Modifiers
-				"hide_attrib_percentage"
-				{
-					"attribute_class"	"mult_explosion_radius"
-					"value"				"0.4"													// VERY low blast radius! Not as low as Direct Hit, but enough that you need to aim at least in their general area
-				}
-				"hide_attrib_percentage"
-				{
-					"attribute_class"	"blast_dmg_to_self"
-					"value"				"0.45"
-				}
-				"self dmg push force hidden"
-				{
-					"attribute_class"	"mult_dmgself_push_force"								// Shooting directly downward while walking off a ledge lets you "hover" - at the rapid cost of your health...
-					"value"				"0.5"	
-				}
-			}
-			"visuals"																			// Unlike other entries where it was optional, we had to manually define sounds for the AA Gun!
-			{
-				"sound_single_shot"		"Weapon_NOWPAAGun.FireShort"
-				"sound_burst"			"Weapon_NOWPAAGun.FireShortCrit"
-				"sound_special1"		"Weapon_RPG_BlackBox.Explode"
-				"sound_empty"			"Weapon_AAGun.ClipEmpty"								// NOTE: AA GUN USES SINGLE-FIRE DRYFIRE SOUNDS DO NOT USE MINIGUN DRYFIRES OR ELSE
-				"sound_reload"			"Weapon_AAGun_Old.Spin"									// NOWP v3.2.1 - Okay, enough of that, since these old AAGun sounds aren't seeing use I'll just use them in lieu of fitting sounds that I can't find!!
-				"sound_special2"		"Weapon_AAGun_Old.WindUp"
-				"sound_special3"		"Weapon_AAGun_Old.WindDown"
-				"explosion_effect"		"coilgun_boom_red"
-				"trail_effect"			"sentry_rocket"											// Smaller profile but darker smoke
-				"animation_replacement"
-				{
-					"ACT_MP_ATTACK_STAND_PRIMARY"				"ACT_MP_ATTACK_STAND_PRIMARY_ALT"
-					"ACT_MP_ATTACK_CROUCH_PRIMARY"				"ACT_MP_ATTACK_CROUCH_PRIMARY_ALT"
-					"ACT_MP_ATTACK_SWIM_PRIMARY"				"ACT_MP_ATTACK_SWIM_PRIMARY_ALT"
-				}
-			}
-			"visuals_red"
-			{
-				"trail_effect_crit"		"critical_rocket_red"
-				"explosion_effect_crit"	"coilgun_boom_red"
-			}
-			"visuals_blu"
-			{
-				"trail_effect_crit"		"critical_rocket_blue"
-				"explosion_effect_crit"	"coilgun_boom_blue"
-			}
-			"visuals_grn"
-			{
-				"trail_effect_crit"		"critical_rocket_green"
-				"explosion_effect_crit"	"coilgun_boom_green"
-			}
-			"visuals_ylw"
-			{
-				"trail_effect_crit"		"critical_rocket_yellow"
-				"explosion_effect_crit"	"coilgun_boom_yellow"
-			}
-			"mouse_pressed_sound"		"#ui/item_heavy_gun_pickup.wav"
-			"drop_sound"				"#ui/item_heavy_gun_drop.wav"
 		}
-
-//-----
-// (ID 4402) |	Tactical Retreat				|	Tags: (v1.0.0), (New), (Spy), (PDA), (Offense), (Item), (Retired)
-//-----
-// [Authors: Valve (Assets, "Team Fortress 2" https://store.steampowered.com/app/440) | IyaJebseht (Sounds, "Xbox OG Cloak" https://gamebanana.com/sounds/38821)]
-// [Overview: Spy - A Watch that greatly speeds up your cloaking abilities, but has less sustainability! See: L'Escampette]
-//
-// Rush in and out of cover in a blink of an eye - it's a new iteration of the Speed Watch! I wanted to tackle making a new watch with some of the new stats, so here one is! Again, I mean.
-// This weapon has evolved a lot, it began as a watch that made you move faster while cloaked but with lower uptime and more risk... until they ACTUALLY added that! So, back to the drawing board!
-// I think I want to keep the theme of a very fast in-and-out cut and run, so maybe having the cloak speed itself do it would work nicely~
-//--------------------------------------------------
 		"4402"																					// Round III of cut weapons! This is just a watch that makes you go fast.
 		{
-			"name"						"TF_WEAPON_SPEEDWATCH"
-			"prefab"					"weapon_invis"
 			"show_in_armory"			"0"
-
-			"item_quality"				"vintage"												// Vintage: This item is superseded by an official inclusion, but I'll try to make it a sidegrade!
-			"item_name"					"Vintage Tactical Retreat"
-			"item_type_name"			"Retired Invis Watch"									// Do I change this back to Speed Watch?
-			"item_description"			"
-Let's cut to the chase."
-			"image_inventory"			"backpack/workshop_partner/weapons/v_models/v_hm_watch/v_hm_watch"	// Making the backpack icons for Watches is a nightmare.
-			"model_player"				"models/weapons/v_models/v_hm_watch_spy.mdl"
-			"attach_to_hands"			"0"														// This is unique to watches, any other value has very strange behavior...
-			"used_by_classes"
-			{
-				"spy"					"1"
-			}
-			"static_attrs"																		// NOWP v3.0.0 - FINALLY, STATS TIME! I wanted to give this a niche completely separate from any of my existing watch's stats, so how about one focused only on cloaking speed!
-			{
-				"NOWP weapon"							"1"
-				"set watch panel"						"1"										// Aligning the circular invis meter was a huge pain in the ass, this watch is very slightly offset to the right
-				"mult cloak rate shared text"			"-0.4"									// You cloak and decloak incredibly fast, so you can pop in and out to get kills with blistering speed. Cloaking itself is 0.6s, from 1s
-				"mult cloak meter regen rate"			"1.75"
-				"cloak consume rate increased"			"1.75"
-				"lose cloak on decloak"					"20"
-				"lose cloak on damage"					"25"
-				"mod min cloak to activate HIDDEN"		"21.0"
-			}
-			"attributes"
-			{
-//				"retired weapon"																// As of NOWP v2.5.0, the retired text only applies to identical weapons. If not identical, no change.
-//				{
-//					"attribute_class"	"DISPLAY_ONLY"
-//					"value"				"1"														// Additionally, unlike before, these are now labelled as positive!
-//				}
-				"hide_attrib_additive"
-				{
-					"attribute_class"	"mult_decloak_rate"
-					"value"				"0.6"													// Decloaking is 1.2s, from 2s
-				}
-			}
-			"visuals"
-			{
-				"sound_special1"		"Player.Spy_TacticalCloak"								// TF2C v2.1.0 - THESE FINALLY HAVE WORKING CLOAK SOUNDS!! This uses a sound-edit of the original speed-cloak sound, but spicier!
-				"sound_special2"		"Player.Spy_TacticalUnCloak"
-			}
-			"mouse_pressed_sound"		"#ui/item_watch_pickup.wav"
-			"drop_sound"				"#ui/item_watch_drop.wav"
 		}
 
 //-----
@@ -44263,240 +42626,39 @@ blazin' hot summer's day 'round these parts..."
 					"attribute_class"	"allowed_in_medieval_mode"
 					"value"				"1"
 				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mod_dispenser_cost"
+					"value"				"2"
+				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mult_dispenser_rate"
+					"value"				"0.1"
+				}
+				"hide_attrib_additive"
+				{
+					"attribute_class"	"add_buildings_max_level"
+					"value"				"-2"
+				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mod_sentrygun_cost"
+					"value"				"999"
+				}
 			}
 			"mouse_pressed_sound"		"#ui/item_metal_weapon_pickup.wav"
 			"drop_sound"				"#ui/item_metal_weapon_drop.wav"
 		}
 
-//-----
-// (ID 4404~4413,3548) |	Brickhouse Beatdown	|	Tags: (v2.2.5), (New), (AllClass), (MultiSlot), (Utility), (Weapon), (Retired)			|	Extra: (Scout), (Soldier), (Pyro), (Demoman), (Heavy), (Engineer), (Medic), (Sniper), (Spy), (Civilian)
-//-----
-// [Authors: Strange Sentinel & Sims_doc (Models, "Bloody Brick" https://steamcommunity.com/sharedfiles/filedetails/?id=1238959606)]
-// [Overview: A Throwable for all classes. Can be spammed, also does extra damage to buildings! Emits intense comforting aura.]
-//
-// TF_Weapon_Brick my beloved. It's here... a year or two before Eminoma invented the humble concrete Brick in the far-flung year of 2023! But, why let Scout have all the fun - everyone can use it!!
-// This weapon was 100% a joke weapon, but the scale of it really did escalate over time. Originally, I was planning to give it to just Soldier! But, I also gave it to Sniper, since he has animations for it.
-// Then, I gave it to Demoman, since he was sharing Soldier's animations. You can see where this is going. Cut to now, and everyone has a satchel of bricks, and everyone wants a piece a' you! Literally! You're bricked, pal...
-//--------------------------------------------------
-
-//-----
-// (ID 4414) |	Original						|	Tags: (v1.0.0), (Old), (Soldier), (Primary), (Utility), (Weapon), (Retired)
-//-----
-// [Authors: Valve (Assets, "Team Fortress 2" https://store.steampowered.com/app/440)]
-// [Overview: Soldier - A RL for consistency, with centered projectiles. Also has retro noises!]
-//
-// Old-school deathmatchers rejoice! The Original returns, with exactly 1 stat to its name and years of heated debate following in its wake! Now in TF2C!
-// This I remember was one of my very first - the centerfire attribute existed, and I wanted to recreate it anyway, so one way or another it arose from its 5-year grave into the light once more!
-// Eventually, though, they did add centerfire as a client setting. For the sweats. So, sadly, our old boy is retired... one day it'll get its time in the limelight again.
-//--------------------------------------------------
 		"4414"																					// Yep. As threatened, here it is. The Original!
 		{
-			"name"						"TF_WEAPON_ORIGINAL_RL"
-			"prefab"					"weapon_rocketlauncher"
 			"show_in_armory"			"0"
-
-			"item_quality"				"vintage"												// Vintage: This item is superseded by an official inclusion, and it's not in the spirit to make it work differently.
-			"item_name"					"Vintage Original"
-			"item_type_name"			"Retired Rocket Launcher"
-			"item_description"			"Projectile always fires from the center
-Functions identically to the Rocket Launcher
-
-You had better start quaking in your boots."													// This wording might be succinct enough to explain it. I kinda started feeling specifying "center of the screen" was too meta and not so intuitive to understand
-			"item_logname"				"quake_rl"
-			"item_iconname"				"quake_rl"
-			"image_inventory"			"backpack/workshop_partner/weapons/c_models/c_bet_rocketlauncher/c_bet_rocketlauncher"
-			"model_world"				"models/weapons/w_models/w_bet_rocketlauncher.mdl"			
-			"model_player"				"models/weapons/v_models/v_bet_rocketlauncher_soldier.mdl"
-			"attach_to_hands"			"2"														// This used to be on "3", that value makes it so the c_arms don't load in... at the cost of no critglows. Ouch??
-			"used_by_classes"
-			{
-				"soldier"				"1"
-			}
-			"static_attrs"
-			{
-				"NOWP weapon"							"1"
-				"Mannly parallel"						"1"
-				"class select override vcd"				"taunt01_v2"							// Same deal as before. Unfortunately, this one has a voice line, I believe. But, it's delayed, at least.
-				"min_viewmodel_offset"					"-5 0 -10"								// TF2C v2.0.2 patch - to fix a bug with positioning!
-			}
-			"attributes"
-			{
-//				"mod weapon autoreload"															// TF2C v2.1.2 - Since they added "tf2c_centerfire_preference", I figured it might be a good chance to test a more quake-like variant. Maybe? Maybe. If nothing else, to give it an identity again...
-//				{
-//					"attribute_class"	"use_ammo_meter"										// TO-DO: Test this variant more!!!
-//					"value"				"1"
-//				}
-//				"Reload time increased"
-//				{
-//					"attribute_class"	"DISPLAY_ONLY"
-//					"value"				"1.33"
-//				}
-//				"hide_attrib_percentage"
-//				{
-//					"attribute_class"	"mult_reload_time"										// THESE ARE ADJUSTED TO FACTOR IN RELOAD START TIMES BEING ABSENT!!
-//					"value"				"1.53"													// Base reload + reload start time is 1.15 (3.82s, 0.955s per)
-//				}
-//				"maxammo primary reduced"
-//				{
-//					"attribute_class"	"mult_maxammo_primary"
-//					"value"				"0.8"
-//				}
-				// Backend stuff
-				"centerfire projectile"															// The centerfire attribute shines here, over the AA Gun.
-				{
-					"attribute_class"	"centerfire_projectile"
-					"value"				"1"
-				}
-				"custom projectile model"
-				{
-					"attribute_class"	"custom_projectile_model"
-					"value"				"models/weapons/w_models/w_rocket_original.mdl"			// Oh, yeah, it comes with its own UNIQUE rocket model, too. Try and spot it!
-				}
-			}
-			"visuals"																			// Fun fact. A lot of these sound-scripts were left over in release TF2C. Weird. They mighta' been testing this.
-			{
-				"sound_single_shot"		"Weapon_QuakeRPG.Single"
-				"sound_burst"			"Weapon_QuakeRPG.SingleCrit"
-				"sound_reload"			"Weapon_QuakeRPG.Reload"
-				"sound_special1"		"Weapon_QuakeRPG.Explode"
-				"explosion_effect"		"ExplosionCore_MidAir_Classic"							// NOWP v2.7.5 - Okay. Since the old particles as-is were kinda bad, let's try a sorta hybrid between stock and Classic particles!!
-//				"trail_effect"			"rocket_trail_classic"
-			}
-			"visuals_red"
-			{
-//				"trail_effect_crit"		"rocket_trail_classic_crit_red"
-				"explosion_effect_crit"	"ExplosionCore_MidAir_red_crit"
-			}
-			"visuals_blu"
-			{
-//				"trail_effect_crit"		"rocket_trail_classic_crit_blue"
-				"explosion_effect_crit"	"ExplosionCore_MidAir_blue_crit"
-			}
-			"visuals_grn"
-			{
-//				"trail_effect_crit"		"rocket_trail_classic_crit_green"
-				"explosion_effect_crit"	"ExplosionCore_MidAir_green_crit"
-			}
-			"visuals_ylw"
-			{
-//				"trail_effect_crit"		"rocket_trail_classic_crit_yellow"
-				"explosion_effect_crit"	"ExplosionCore_MidAir_yellow_crit"
-			}
-			"mouse_pressed_sound"		"#weapons/quake_ammo_pickup_remastered.wav"				// You can point to ANY sound that's loaded, not just the ones in "sound/ui/..." !
-			"drop_sound"				"#weapons/quake_rpg_reload_remastered.wav"
 		}
 
-//-----
-// (ID 4415) |	Pioneer / Trailblazer			|	Tags: (v2.1.5), (New), (Demoman), (Primary), (Utility), (Weapon), (Retired)
-//-----
-// [Authors: YumYumShisa & co. (Models, "Original GL v2" https://gamebanana.com/mods/196107) | Strange Sentinel & co. (Models, "Pioneer" https://steamcommunity.com/sharedfiles/filedetails/?id=2218875324) | Kiyoshi (Anims, "Original GL v2" https://gamebanana.com/mods/196107) | id Software (Sounds, "Quake" https://store.steampowered.com/app/2310) | A Paint Bucket Named Huey (Mats, "Quake GL MKIII " https://gamebanana.com/mods/481052)]
-// [Overview: Demoman - A GL for consistency, with centered projectiles. Also has cool bounce noises! See: Original]
-//
-// I thought it to be thematically appropriate to finally give Demoman an Original-like! So, not to let Soldier have all the fun, Demoman also gets a Quake weapon! Not much to say, really, it's simplicity itself.
-// I am really proud of how the viz turned out for this weapon, though! I tried my best to mimic the Original's aesthetics with both the model and sounds, and think it turned out well! I love the Quake GL bounces. And hey, those use trickery to work~
-// Only qualm is, the animations in thirdperson are weird. But, whateverrrr...
-//--------------------------------------------------
 		"4415"
 		{
-			"name"						"TF_WEAPON_ORIGINAL_GL"									// This weapon is like, a mishmash of a lot of completely different elements - like a frankenstein's monster of Quake
-			"prefab"					"weapon_grenade_launcher"
 			"show_in_armory"			"0"
-			"anim_slot"					"primary"												// Weird choice... but it's the anim set that best matches this weirdly shaped weapon!
-
-			"item_quality"				"vintage"												// Vintage: This item is superseded by an official inclusion, and it's not in the spirit to make it work differently.
-			"item_name"					"Vintage Trailblazer"									// I admit, more of a Pyro weapon name, but I had to think of something since I couldn't just call it "The Pioneer" like I wanted to...
-			"item_type_name"			"Retired Grenade Launcher"
-			"item_description"			"Projectile always fires from the center
-Functions identically to Grenade Launcher
-
-T'is like music to the ears."
-			"item_logname"				"quake_gl"
-			"item_iconname"				"quake_gl"
-			"image_inventory"			"backpack/weapons/w_models/w_bet_grenadelauncher"
-			"model_world"				"models/weapons/w_models/w_bet_grenadelauncher.mdl"		// The model for this GL was scuffed as hell! I had to spend a while manually fixing the smoothing...	
-			"model_player"				"models/weapons/v_models/v_bet_grenadelauncher_demo.mdl" //('Smoothing' is basically what separates your curved surfaces from hard edges. Imagine a table with no edges at all - that's what this Grenade Launcher was like!)
-			"attach_to_hands"			"2"
-			"used_by_classes"
-			{
-				"demoman"				"1"
-			}
-			"static_attrs"
-			{
-				"NOWP weapon"							"1"
-				"min_viewmodel_offset"					"-5 0 -5"
-				"class select override vcd"				"class_select_gunboats_sticky"
-			}
-			"attributes"
-			{
-//				"mod weapon autoreload"															// TF2C v2.1.2 - Since they added "tf2c_centerfire_preference", I figured it might be a good chance to test a more quake-like variant. Maybe? Maybe. If nothing else, to give it an identity again...
-//				{
-//					"attribute_class"	"use_ammo_meter"										// TO-DO: Test this variant more!!!
-//					"value"				"1"
-//				}
-//				"Reload time increased"
-//				{
-//					"attribute_class"	"DISPLAY_ONLY"
-//					"value"				"1.33"
-//				}
-//				"hide_attrib_percentage"
-//				{
-//					"attribute_class"	"mult_reload_time"										// THESE ARE ADJUSTED TO FACTOR IN RELOAD START TIMES BEING ABSENT!!
-//					"value"				"1.6625"												// Base reload + reload start time is 1.25 (3.00s, 0.75s per)
-//				}
-//				"maxammo primary reduced"
-//				{
-//					"attribute_class"	"mult_maxammo_primary"
-//					"value"				"0.8"
-//				}
-				// Backend stuff
-				"centerfire projectile"
-				{
-					"attribute_class"	"centerfire_projectile"
-					"value"				"1"
-				}
-				"custom projectile model"
-				{
-					"attribute_class"	"custom_projectile_model"								// THE BOUNCE SOUNDS ARE HERE! They make use of some otherwise unused sound entries, so it might break in the future.
-					"value"				"models/weapons/w_models/w_bet_grenadelauncher_grenade.mdl"	// If you're curious why, they make used of an unused Surfaceproperty, "deathmatch_grenade", that has its own world collide sounds. This mod replaces those!
-				}
-			}
-			"visuals"																			// TO-DO: Investigate other surfaceprops to hook into if they remove deathmatch_grenade for some reason
-			{
-				"sound_single_shot"		"Weapon_QuakeGL.Single"
-				"sound_burst"			"Weapon_QuakeGL.SingleCrit"
-				"sound_reload"			"Weapon_QuakeRPG.Reload"
-				"sound_special1"		"Weapon_QuakeRPG.Explode"
-				"explosion_effect"		"ExplosionCore_MidAir_Classic"
-//				"trail_effect"			"pipebomb_trail_classic"								// Honestly I feel like the pipe bomb timers + TC should take priority over the visuals
-				"animation_replacement"
-				{
-					"ACT_MP_ATTACK_STAND_PRIMARY"				"ACT_MP_ATTACK_STAND_SECONDARY"
-					"ACT_MP_ATTACK_CROUCH_PRIMARY"				"ACT_MP_ATTACK_CROUCH_SECONDARY"
-					"ACT_MP_ATTACK_SWIM_PRIMARY"				"ACT_MP_ATTACK_SWIM_SECONDARY"
-
-					"ACT_MP_RELOAD_STAND_PRIMARY_END"			"ACT_MP_RELOAD_STAND_SECONDARY_END"	// Yeah, I've got nothin'
-					"ACT_MP_RELOAD_CROUCH_PRIMARY_END"			"ACT_MP_RELOAD_CROUCH_SECONDARY_END"
-					"ACT_MP_RELOAD_SWIM_PRIMARY_END"			"ACT_MP_RELOAD_SWIM_SECONDARY_END"
-				}
-			}
-			"visuals_red"
-			{
-				"explosion_effect_crit"	"ExplosionCore_MidAir_red_crit"
-			}
-			"visuals_blu"
-			{
-				"explosion_effect_crit"	"ExplosionCore_MidAir_blue_crit"
-			}
-			"visuals_grn"
-			{
-				"explosion_effect_crit"	"ExplosionCore_MidAir_green_crit"
-			}
-			"visuals_ylw"
-			{
-				"explosion_effect_crit"	"ExplosionCore_MidAir_yellow_crit"
-			}
-			"mouse_pressed_sound"		"#weapons/quake_ammo_pickup_remastered.wav"
-			"drop_sound"				"#weapons/quake_rpg_reload_remastered.wav"
 		}
 //-----
 // (ID 4416) |	Shark			|	Tags: (Clock), (New), (Civillian), (Primary), (Utility), (Weapon)
@@ -44699,17 +42861,22 @@ If you are seeing this text ingame, let me know immediately!"
 		{
 			"name"						"TF_WEAPON_SHOTGUN_PRIMARY"
 			"prefab"					"weapon_shotgun"
+			"item_class"				"tf_wearable"
+			"item_slot"					"primary"
 			"baseitem"					"1"
 			"item_quality"				"vintage"
 			"item_name"					"medieval changes"
+			"item_type_name"			"Info"
 			"item_description"			"All weapons that are not relevant have been hidden
+
 Civilian has no aura
+
 Some weapons (pugilist's protector, battering cannon) have been rebalanced
-List of hidden weapons may not be perfect, let me know if there are any issues!"
-			"image_inventory"			"backpack/workshop/weapons/c_models/c_ham/c_ham"
-			"item_slot"					"primary"
-			"model_world"				"models/weapons/w_models/w_shotgun.mdl"
-			"model_player"				"models/weapons/v_models/v_shotgun_engineer.mdl"
+
+Engineer can construct (nerfed) dispensers"
+			"image_inventory"			"backpack/medieval_inv"
+			"model_world"				"models/weapons/w_models/w_drg_ball.mdl"
+			"model_player"				"models/weapons/w_models/w_drg_ball.mdl"
 			"attach_to_hands"			"2"
 			"used_by_classes"
 			{
@@ -44718,20 +42885,30 @@ List of hidden weapons may not be perfect, let me know if there are any issues!"
 		}
 		"10"
 		{
+			"tags"
+			{
+				"bots_cant_use"			"1"
+			}
 			"name"						"TF_WEAPON_SHOTGUN_SOLDIER"
 			"prefab"					"weapon_shotgun"
+			"item_class"				"tf_wearable"
+			"item_slot"					"secondary"
 			"baseitem"					"1"
 			"hidden"					"1"
 			"item_quality"				"vintage"
 			"item_name"					"medieval changes"
+			"item_type_name"			"Info"
 			"item_description"			"All weapons that are not relevant have been hidden
+
 Civilian has no aura
+
 Some weapons (pugilist's protector, battering cannon) have been rebalanced
-List of hidden weapons may not be perfect, let me know if there are any issues!"
-			"image_inventory"			"backpack/workshop/weapons/c_models/c_ham/c_ham"
+
+Engineer can construct (nerfed) dispensers"
+			"image_inventory"			"backpack/medieval_inv"
 			"item_slot"					"secondary"
-			"model_world"				"models/weapons/w_models/w_shotgun.mdl"
-			"model_player"				"models/weapons/v_models/v_shotgun_soldier.mdl"
+			"model_world"				"models/weapons/w_models/w_drg_ball.mdl"
+			"model_player"				"models/weapons/w_models/w_drg_ball.mdl"
 			"attach_to_hands"			"2"
 			"used_by_classes"
 			{
@@ -44740,20 +42917,30 @@ List of hidden weapons may not be perfect, let me know if there are any issues!"
 		}
 		"11"
 		{
+			"tags"
+			{
+				"bots_cant_use"			"1"
+			}
 			"name"						"TF_WEAPON_SHOTGUN_HWG"
 			"prefab"					"weapon_shotgun"
+			"item_class"				"tf_wearable"
+			"item_slot"					"secondary"
 			"baseitem"					"1"
 			"hidden"					"1"
 			"item_quality"				"vintage"
 			"item_name"					"medieval changes"
+			"item_type_name"			"Info"
 			"item_description"			"All weapons that are not relevant have been hidden
+
 Civilian has no aura
+
 Some weapons (pugilist's protector, battering cannon) have been rebalanced
-List of hidden weapons may not be perfect, let me know if there are any issues!"
-			"image_inventory"			"backpack/workshop/weapons/c_models/c_ham/c_ham"
+
+Engineer can construct (nerfed) dispensers"
+			"image_inventory"			"backpack/medieval_inv"
 			"item_slot"					"secondary"
-			"model_world"				"models/weapons/w_models/w_shotgun.mdl"
-			"model_player"				"models/weapons/v_models/v_shotgun_heavy.mdl"
+			"model_world"				"models/weapons/w_models/w_drg_ball.mdl"
+			"model_player"				"models/weapons/w_models/w_drg_ball.mdl"
 			"attach_to_hands"			"2"
 			"used_by_classes"
 			{
@@ -44762,20 +42949,30 @@ List of hidden weapons may not be perfect, let me know if there are any issues!"
 		}
 		"12"
 		{
+			"tags"
+			{
+				"bots_cant_use"			"1"
+			}
 			"name"						"TF_WEAPON_SHOTGUN_PYRO"
 			"prefab"					"weapon_shotgun"
+			"item_class"				"tf_wearable"
+			"item_slot"					"secondary"
 			"baseitem"					"1"
 			"hidden"					"1"
 			"item_quality"				"vintage"
 			"item_name"					"medieval changes"
+			"item_type_name"			"Info"
 			"item_description"			"All weapons that are not relevant have been hidden
+
 Civilian has no aura
+
 Some weapons (pugilist's protector, battering cannon) have been rebalanced
-List of hidden weapons may not be perfect, let me know if there are any issues!"
-			"image_inventory"			"backpack/workshop/weapons/c_models/c_ham/c_ham"
+
+Engineer can construct (nerfed) dispensers"
+			"image_inventory"			"backpack/medieval_inv"
 			"item_slot"					"secondary"
-			"model_world"				"models/weapons/w_models/w_shotgun.mdl"
-			"model_player"				"models/weapons/v_models/v_shotgun_pyro.mdl"
+			"model_world"				"models/weapons/w_models/w_drg_ball.mdl"
+			"model_player"				"models/weapons/w_models/w_drg_ball.mdl"
 			"attach_to_hands"			"2"
 			"used_by_classes"
 			{
@@ -44792,66 +42989,102 @@ List of hidden weapons may not be perfect, let me know if there are any issues!"
 		}
 		"13"
 		{
+			"tags"
+			{
+				"bots_cant_use"			"1"
+			}
 			"name"						"TF_WEAPON_SCATTERGUN"
 			"prefab"					"weapon_scattergun"
+			"item_class"				"tf_wearable"
+			"item_slot"					"primary"
 			"baseitem"					"1"
 			"item_quality"				"vintage"
 			"item_name"					"medieval changes"
+			"item_type_name"			"Info"
 			"item_description"			"All weapons that are not relevant have been hidden
+
 Civilian has no aura
+
 Some weapons (pugilist's protector, battering cannon) have been rebalanced
-List of hidden weapons may not be perfect, let me know if there are any issues!"
-			"image_inventory"			"backpack/workshop/weapons/c_models/c_ham/c_ham"
-			"model_world"				"models/weapons/w_models/w_scattergun.mdl"
-			"model_player"				"models/weapons/v_models/v_scattergun_scout.mdl"
+
+Engineer can construct (nerfed) dispensers"
+			"image_inventory"			"backpack/medieval_inv"
+			"model_world"				"models/weapons/w_models/w_drg_ball.mdl"
+			"model_player"				"models/weapons/w_models/w_drg_ball.mdl"
 			"attach_to_hands"			"2"
 		}
 		"14"
 		{
+			"tags"
+			{
+				"bots_cant_use"			"1"
+			}
 			"name"						"TF_WEAPON_SNIPERRIFLE"
 			"prefab"					"weapon_sniperrifle"
+			"item_class"				"tf_wearable"
+			"item_slot"					"primary"
 			"baseitem"					"1"
 			"item_quality"				"vintage"
 			"item_name"					"medieval changes"
+			"item_type_name"			"Info"
 			"item_description"			"All weapons that are not relevant have been hidden
+
 Civilian has no aura
+
 Some weapons (pugilist's protector, battering cannon) have been rebalanced
-List of hidden weapons may not be perfect, let me know if there are any issues!"
-			"image_inventory"			"backpack/workshop/weapons/c_models/c_ham/c_ham"
-			"model_world"				"models/weapons/w_models/w_sniperrifle.mdl"
-			"model_player"				"models/weapons/v_models/v_sniperrifle_sniper.mdl"
+
+Engineer can construct (nerfed) dispensers"
+			"image_inventory"			"backpack/medieval_inv"
+			"model_world"				"models/weapons/w_models/w_drg_ball.mdl"
+			"model_player"				"models/weapons/w_models/w_drg_ball.mdl"
 			"attach_to_hands"			"2"
 		}
 		"15"
 		{
 			"name"						"TF_WEAPON_MINIGUN"
 			"prefab"					"weapon_minigun"
+			"item_class"				"tf_wearable"
+			"item_slot"					"primary"
 			"baseitem"					"1"
 			"item_quality"				"vintage"
 			"item_name"					"medieval changes"
+			"item_type_name"			"Info"
 			"item_description"			"All weapons that are not relevant have been hidden
+
 Civilian has no aura
+
 Some weapons (pugilist's protector, battering cannon) have been rebalanced
-List of hidden weapons may not be perfect, let me know if there are any issues!"
-			"image_inventory"			"backpack/workshop/weapons/c_models/c_ham/c_ham"
-			"model_world"				"models/weapons/w_models/w_minigun.mdl"
-			"model_player"				"models/weapons/v_models/v_minigun_heavy.mdl"
+
+Engineer can construct (nerfed) dispensers"
+			"image_inventory"			"backpack/medieval_inv"
+			"model_world"				"models/weapons/w_models/w_drg_ball.mdl"
+			"model_player"				"models/weapons/w_models/w_drg_ball.mdl"
 			"attach_to_hands"			"2"
 		}
 		"16"
 		{
+			"tags"
+			{
+				"bots_cant_use"			"1"
+			}
 			"name"						"TF_WEAPON_SMG"
 			"prefab"					"weapon_smg"
+			"item_class"				"tf_wearable"
+			"item_slot"					"secondary"
 			"baseitem"					"1"
 			"item_quality"				"vintage"
 			"item_name"					"medieval changes"
+			"item_type_name"			"Info"
 			"item_description"			"All weapons that are not relevant have been hidden
+
 Civilian has no aura
+
 Some weapons (pugilist's protector, battering cannon) have been rebalanced
-List of hidden weapons may not be perfect, let me know if there are any issues!"
-			"image_inventory"			"backpack/workshop/weapons/c_models/c_ham/c_ham"
-			"model_world"				"models/weapons/w_models/w_smg.mdl"
-			"model_player"				"models/weapons/v_models/v_smg_sniper.mdl"
+
+Engineer can construct (nerfed) dispensers"
+			"image_inventory"			"backpack/medieval_inv"
+			"model_world"				"models/weapons/w_models/w_drg_ball.mdl"
+			"model_player"				"models/weapons/w_models/w_drg_ball.mdl"
 			"attach_to_hands"			"2"
 			"attributes"
 			{
@@ -44864,67 +43097,108 @@ List of hidden weapons may not be perfect, let me know if there are any issues!"
 		}
 		"17"
 		{
+			"tags"
+			{
+				"bots_cant_use"			"1"
+			}
 			"name"						"TF_WEAPON_SYRINGEGUN_MEDIC"
 			"prefab"					"weapon_syringegun"
+			"item_class"				"tf_wearable"
+			"item_slot"					"primary"
 			"baseitem"					"1"
 			"item_quality"				"vintage"
 			"item_name"					"medieval changes"
+			"item_type_name"			"Info"
 			"item_description"			"All weapons that are not relevant have been hidden
+
 Civilian has no aura
+
 Some weapons (pugilist's protector, battering cannon) have been rebalanced
-List of hidden weapons may not be perfect, let me know if there are any issues!"
-			"image_inventory"			"backpack/workshop/weapons/c_models/c_ham/c_ham"
-			"model_player"				"models/weapons/v_models/v_syringegun_medic.mdl"
+
+Engineer can construct (nerfed) dispensers"
+			"image_inventory"			"backpack/medieval_inv"
+			"model_world"				"models/weapons/w_models/w_drg_ball.mdl"
+			"model_player"				"models/weapons/w_models/w_drg_ball.mdl"
 			"attach_to_hands"			"2"
 		}
 		"18"
 		{
+			"tags"
+			{
+				"bots_cant_use"			"1"
+			}
 			"name"						"TF_WEAPON_ROCKETLAUNCHER"
 			"prefab"					"weapon_rocketlauncher"
+			"item_class"				"tf_wearable"
+			"item_slot"					"primary"
 			"baseitem"					"1"
 			"item_quality"				"vintage"
 			"item_name"					"medieval changes"
+			"item_type_name"			"Info"
 			"item_description"			"All weapons that are not relevant have been hidden
+
 Civilian has no aura
+
 Some weapons (pugilist's protector, battering cannon) have been rebalanced
-List of hidden weapons may not be perfect, let me know if there are any issues!"
-			"image_inventory"			"backpack/workshop/weapons/c_models/c_ham/c_ham"
-			"model_world"				"models/weapons/w_models/w_rocketlauncher.mdl"
-			"model_player"				"models/weapons/v_models/v_rocketlauncher_soldier.mdl"
+
+Engineer can construct (nerfed) dispensers"
+			"image_inventory"			"backpack/medieval_inv"
+			"model_world"				"models/weapons/w_models/w_drg_ball.mdl"
+			"model_player"				"models/weapons/w_models/w_drg_ball.mdl"
 			"attach_to_hands"			"2"
 		}
 		"19"
 		{
+			"tags"
+			{
+				"bots_cant_use"			"1"
+			}
 			"name"						"TF_WEAPON_GRENADELAUNCHER"
 			"prefab"					"weapon_grenade_launcher"
+			"item_class"				"tf_wearable"
+			"item_slot"					"primary"
 			"baseitem"					"1"
 			"show_in_armory"			"0"
 			"item_quality"				"vintage"
 			"item_name"					"medieval changes"
+			"item_type_name"			"Info"
 			"item_description"			"All weapons that are not relevant have been hidden
+
 Civilian has no aura
+
 Some weapons (pugilist's protector, battering cannon) have been rebalanced
-List of hidden weapons may not be perfect, let me know if there are any issues!"
-			"image_inventory"			"backpack/workshop/weapons/c_models/c_ham/c_ham"
-			"model_world"				"models/weapons/w_models/w_grenadelauncher.mdl"
-			"model_player"				"models/weapons/v_models/v_grenadelauncher_demo.mdl"
+
+Engineer can construct (nerfed) dispensers"
+			"image_inventory"			"backpack/medieval_inv"
+			"model_world"				"models/weapons/w_models/w_drg_ball.mdl"
+			"model_player"				"models/weapons/w_models/w_drg_ball.mdl"
 			"attach_to_hands"			"2"
 		}
 		"20"
 		{
+			"tags"
+			{
+				"bots_cant_use"			"1"
+			}
 			"name"						"TF_WEAPON_PIPEBOMBLAUNCHER"
 			"prefab"					"weapon_stickybomb_launcher"
+			"item_class"				"tf_wearable"
+			"item_slot"					"secondary"
 			"baseitem"					"1"
 			"show_in_armory"			"0"
 			"item_quality"				"vintage"
 			"item_name"					"medieval changes"
+			"item_type_name"			"Info"
 			"item_description"			"All weapons that are not relevant have been hidden
+
 Civilian has no aura
+
 Some weapons (pugilist's protector, battering cannon) have been rebalanced
-List of hidden weapons may not be perfect, let me know if there are any issues!"
-			"image_inventory"			"backpack/workshop/weapons/c_models/c_ham/c_ham"
-			"model_world"				"models/weapons/w_models/w_stickybomb_launcher.mdl"
-			"model_player"				"models/weapons/v_models/v_stickybomb_launcher_demo.mdl"
+
+Engineer can construct (nerfed) dispensers"
+			"image_inventory"			"backpack/medieval_inv"
+			"model_world"				"models/weapons/w_models/w_drg_ball.mdl"
+			"model_player"				"models/weapons/w_models/w_drg_ball.mdl"
 			"attach_to_hands"			"2"
 			"static_attrs"
 			{
@@ -44935,34 +43209,50 @@ List of hidden weapons may not be perfect, let me know if there are any issues!"
 		{
 			"name"						"TF_WEAPON_FLAMETHROWER"
 			"prefab"					"weapon_flamethrower"
+			"item_class"				"tf_wearable"
+			"item_slot"					"primary"
 			"baseitem"					"1"
 			"show_in_armory"			"0"
 			"item_quality"				"vintage"
 			"item_name"					"medieval changes"
+			"item_type_name"			"Info"
 			"item_description"			"All weapons that are not relevant have been hidden
+
 Civilian has no aura
+
 Some weapons (pugilist's protector, battering cannon) have been rebalanced
-List of hidden weapons may not be perfect, let me know if there are any issues!"
-			"image_inventory"			"backpack/workshop/weapons/c_models/c_ham/c_ham"
-			"model_world"				"models/weapons/w_models/w_flamethrower.mdl"
-			"model_player"				"models/weapons/v_models/v_flamethrower_pyro.mdl"
+
+Engineer can construct (nerfed) dispensers"
+			"image_inventory"			"backpack/medieval_inv"
+			"model_world"				"models/weapons/w_models/w_drg_ball.mdl"
+			"model_player"				"models/weapons/w_models/w_drg_ball.mdl"
 			"attach_to_hands"			"2"
 		}
 		"22"
 		{
+			"tags"
+			{
+				"bots_cant_use"			"1"
+			}
 			"name"						"TF_WEAPON_PISTOL"
 			"prefab"					"weapon_pistol"
+			"item_class"				"tf_wearable"
+			"item_slot"					"secondary"
 			"baseitem"					"1"
 			"show_in_armory"			"0"
 			"item_quality"				"vintage"
 			"item_name"					"medieval changes"
+			"item_type_name"			"Info"
 			"item_description"			"All weapons that are not relevant have been hidden
+
 Civilian has no aura
+
 Some weapons (pugilist's protector, battering cannon) have been rebalanced
-List of hidden weapons may not be perfect, let me know if there are any issues!"
-			"image_inventory"			"backpack/workshop/weapons/c_models/c_ham/c_ham"
-			"model_world"				"models/weapons/w_models/w_pistol.mdl"
-			"model_player"				"models/weapons/v_models/v_pistol_engineer.mdl"
+
+Engineer can construct (nerfed) dispensers"
+			"image_inventory"			"backpack/medieval_inv"
+			"model_world"				"models/weapons/w_models/w_drg_ball.mdl"
+			"model_player"				"models/weapons/w_models/w_drg_ball.mdl"
 			"attach_to_hands"			"2"
 			"used_by_classes"
 			{
@@ -44971,18 +43261,28 @@ List of hidden weapons may not be perfect, let me know if there are any issues!"
 		}
 		"23"
 		{
+			"tags"
+			{
+				"bots_cant_use"			"1"
+			}
 			"name"						"TF_WEAPON_PISTOL_SCOUT"
 			"prefab"					"weapon_pistol"
+			"item_class"				"tf_wearable"
+			"item_slot"					"secondary"
 			"baseitem"					"1"
 			"item_quality"				"vintage"
 			"item_name"					"medieval changes"
+			"item_type_name"			"Info"
 			"item_description"			"All weapons that are not relevant have been hidden
+
 Civilian has no aura
+
 Some weapons (pugilist's protector, battering cannon) have been rebalanced
-List of hidden weapons may not be perfect, let me know if there are any issues!"
-			"image_inventory"			"backpack/workshop/weapons/c_models/c_ham/c_ham"
-			"model_world"				"models/weapons/w_models/w_pistol.mdl"
-			"model_player"				"models/weapons/v_models/v_pistol_scout.mdl"
+
+Engineer can construct (nerfed) dispensers"
+			"image_inventory"			"backpack/medieval_inv"
+			"model_world"				"models/weapons/w_models/w_drg_ball.mdl"
+			"model_player"				"models/weapons/w_models/w_drg_ball.mdl"
 			"attach_to_hands"			"2"
 			"used_by_classes"
 			{
@@ -44993,33 +43293,85 @@ List of hidden weapons may not be perfect, let me know if there are any issues!"
 		{
 			"name"						"TF_WEAPON_REVOLVER"
 			"prefab"					"weapon_revolver"
+			"item_class"				"tf_wearable"
+			"item_slot"					"primary"
 			"baseitem"					"1"
 			"item_quality"				"vintage"
 			"item_name"					"medieval changes"
+			"item_type_name"			"Info"
 			"item_description"			"All weapons that are not relevant have been hidden
+
 Civilian has no aura
+
 Some weapons (pugilist's protector, battering cannon) have been rebalanced
-List of hidden weapons may not be perfect, let me know if there are any issues!"
-			"image_inventory"			"backpack/workshop/weapons/c_models/c_ham/c_ham"
-			"model_world"				"models/weapons/w_models/w_revolver.mdl"
-			"model_player"				"models/weapons/v_models/v_revolver_spy.mdl"
+
+Engineer can construct (nerfed) dispensers"
+			"image_inventory"			"backpack/medieval_inv"
+			"model_world"				"models/weapons/w_models/w_drg_ball.mdl"
+			"model_player"				"models/weapons/w_models/w_drg_ball.mdl"
 			"attach_to_hands"			"2"
 		}
 		"25"
 		{
+			"tags"
+			{
+				"bots_cant_use"			"1"
+			}
 			"name"						"TF_WEAPON_PDA_ENGINEER_BUILD"
 			"prefab"					"weapon_pda"
 			"baseitem"					"1"
 			"item_quality"				"vintage"
 			"item_name"					"medieval changes"
+			"item_type_name"			"Info"
 			"item_description"			"All weapons that are not relevant have been hidden
+
 Civilian has no aura
+
 Some weapons (pugilist's protector, battering cannon) have been rebalanced
-List of hidden weapons may not be perfect, let me know if there are any issues!"
-			"image_inventory"			"backpack/workshop/weapons/c_models/c_ham/c_ham"
+
+Engineer can construct (nerfed) dispensers"
+			"image_inventory"			"backpack/medieval_inv"
 			"model_world"				"models/weapons/w_models/w_builder.mdl"
 			"model_player"				"models/weapons/v_models/v_builder_engineer.mdl"
 			"attach_to_hands"			"2"
+			"attributes"
+			{
+				"allowed in medieval mode"
+				{
+					"attribute_class"	"allowed_in_medieval_mode"
+					"value"				"1"
+				}
+				"builder medieval jump pads only"
+				{
+					"attribute_class"	"builder_medieval_jump_pads_only"
+					"value"				"1"
+				}
+				"hide_attrib_additive"
+				{
+					"attribute_class"	"set_teleporter_mode"
+					"value"				"1"
+				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mod_dispenser_cost"
+					"value"				"2"
+				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mult_dispenser_rate"
+					"value"				"0.1"
+				}
+				"hide_attrib_additive"
+				{
+					"attribute_class"	"add_buildings_max_level"
+					"value"				"-2"
+				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mod_sentrygun_cost"
+					"value"				"999"
+				}
+			}
 		}
 		"26"
 		{
@@ -45060,18 +43412,28 @@ List of hidden weapons may not be perfect, let me know if there are any issues!"
 		}
 		"29"
 		{
+			"tags"
+			{
+				"bots_cant_use"			"1"
+			}
 			"name"						"TF_WEAPON_MEDIGUN"
 			"prefab"					"weapon_medigun"
+			"item_class"				"tf_wearable"
+			"item_slot"					"secondary"
 			"baseitem"					"1"
 			"item_quality"				"vintage"
 			"item_name"					"medieval changes"
+			"item_type_name"			"Info"
 			"item_description"			"All weapons that are not relevant have been hidden
+
 Civilian has no aura
+
 Some weapons (pugilist's protector, battering cannon) have been rebalanced
-List of hidden weapons may not be perfect, let me know if there are any issues!"
-			"image_inventory"			"backpack/workshop/weapons/c_models/c_ham/c_ham"
-			"model_world"				"models/weapons/w_models/w_medigun.mdl"
-			"model_player"				"models/weapons/v_models/v_medigun_medic.mdl"
+
+Engineer can construct (nerfed) dispensers"
+			"image_inventory"			"backpack/medieval_inv"
+			"model_world"				"models/weapons/w_models/w_drg_ball.mdl"
+			"model_player"				"models/weapons/w_models/w_drg_ball.mdl"
 			"attach_to_hands"			"2"
 		}
 		"30"
@@ -45085,17 +43447,31 @@ List of hidden weapons may not be perfect, let me know if there are any issues!"
 		{
 			"name"						"TF_WEAPON_BUILDER_SPY"
 			"prefab"					"weapon_sapper"
+			"item_class"				"tf_wearable"
+			"item_slot"					"building"
 			"baseitem"					"1"
 			"item_quality"				"vintage"
 			"item_name"					"medieval changes"
+			"item_type_name"			"Info"
 			"item_description"			"All weapons that are not relevant have been hidden
+
 Civilian has no aura
+
 Some weapons (pugilist's protector, battering cannon) have been rebalanced
-List of hidden weapons may not be perfect, let me know if there are any issues!"
-			"image_inventory"			"backpack/workshop/weapons/c_models/c_ham/c_ham"
-			"model_world"				"models/weapons/w_models/w_sapper.mdl"
-			"model_player"				"models/weapons/v_models/v_sapper_spy.mdl"
+
+Engineer can construct (nerfed) dispensers"
+			"image_inventory"			"backpack/medieval_inv"
+			"model_world"				"models/weapons/w_models/w_drg_ball.mdl"
+			"model_player"				"models/weapons/w_models/w_drg_ball.mdl"
 			"attach_to_hands"			"2"
+			"atributes"
+			{
+				"sapper cant sap"
+				{
+					"attribute_class"	"sapper_cant_sap"
+					"value"				"0"
+				}
+			}
 		}
 		"32" // First TF2Classic item
 		{
@@ -45252,6 +43628,11 @@ List of hidden weapons may not be perfect, let me know if there are any issues!"
 					"attribute_class"	"override_mult_deploy_time_anim"
 					"value"				"1.0"
 				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mult_maxammo_secondary"
+					"value"             "0.25"
+				}
 			}
 		}
 		"36"
@@ -45295,6 +43676,11 @@ List of hidden weapons may not be perfect, let me know if there are any issues!"
 				{
 					"attribute_class"	"special_taunt"
 					"value"				"1"
+				}
+				"hide_attrib_percentage" //Is this really nessesary? Probably not...
+				{
+					"attribute_class" 	"mult_maxammo_primary"
+					"value" 			"0.5"
 				}
 			}
 		}
@@ -46667,7 +45053,7 @@ List of hidden weapons may not be perfect, let me know if there are any issues!"
 		{
 			"name"						"Medeviler"
 			"show_in_armory"			"1"
-			"item_class"				"tf_weapon_anchor"
+			"item_class"				"tf_weapon_grenadelauncher"
 			"item_slot"					"primary"
 			"anim_slot"					"melee"
 			"bucket"					"99"
@@ -46692,47 +45078,13 @@ Give up your primary to enable tactician bonuses"
 			{
 				"class select override slot"		"melee"
 				"tactician bonus enable"				"1"
-				"linked item id"						"70"
+				"hidden separator"						"1"
+				"clip size penalty"						"0"
+				"damage penalty"						"0"
+				"mod use custom ammo type"				"3"
+				"maxammo metal reduced"					"-1"
+				"umbrella recharge rate increased" "4444444444444444444"
 				"allowed in medieval mode"				"1"
-			}
-			"mouse_pressed_sound"		"#ui/item_metal_weapon_pickup.wav"
-			"drop_sound"				"#ui/item_metal_weapon_drop.wav"
-		}
-		"70"
-		{
-			"name"						"Medeviler"
-			"show_in_armory"			"1"
-			"item_class"				"tf_weapon_scattergun"
-			"item_slot"					"primary"
-			"anim_slot"					"melee"
-			"bucket"					"99"
-			"item_name"					"Tactician Bonus"
-			"item_description"			"
-Give up your primary to enable tactician bonuses"
-			"item_type_name"			"NONE"
-			"item_slot"					"secondary"
-			"anim_slot"					"FORCE_NOT_USED"
-			"item_quality"				"vintage"
-			"propername"				"1"
-			"image_inventory"			"backpack/workshop/weapons/c_models/c_ham/c_ham"
-			"model_player"				"models/weapons/w_models/w_drg_ball.mdl"
-			"extra_wearable"			"models/player/items/captain_sniper_coat/captain_sniper_coat.mdl"
-			"used_by_classes"
-			{
-				"mercenary"				"1"
-			}
-			"loadondemand"				"1"
-			"act_as_wearable"			"1"
-			"static_attrs"
-			{
-				"class select override slot"		"melee"
-				"tactician bonus enable"			"1"
-				"linked item id"					"12390"
-				"clip size penalty"					"0"
-				"damage penalty"					"0"
-				"maxammo primary reduced"			"0"
-				"mod use custom ammo type"			"1"
-				"allowed in medieval mode"			"1"
 			}
 			"mouse_pressed_sound"		"#ui/item_metal_weapon_pickup.wav"
 			"drop_sound"				"#ui/item_metal_weapon_drop.wav"
@@ -46921,7 +45273,7 @@ A medieval battering ram and cannon combined and repurposed into a shoulder-moun
 				"Blast radius decreased"
 				{
 					"attribute_class"	"mult_explosion_radius"
-					"value"				"0.5"
+					"value"				"0.7"
 				}
 				"clip size penalty"
 				{
@@ -46967,10 +45319,6 @@ A medieval battering ram and cannon combined and repurposed into a shoulder-moun
 //-----
 // (4429, 4430, 4431, 4432) |	Chargin' targe + Buffalo Steak primary replacement Nerf	|	Tags: (Clock), (New), (Demoman), (Heavy) (Utility), (Dupe), (Nerf)
 //-----
-		"4432" //Buffalo Steak Sandvich by shualdock
-		{
-			"show_in_armory"			"0"
-		}
 //-----
 // (4433) |	Civ sword	|	Tags: (Clock), (New), (Civilian)
 //-----
@@ -47073,19 +45421,23 @@ A medieval battering ram and cannon combined and repurposed into a shoulder-moun
 		{
 			"show_in_armory"			"0"
 		}
-		"3562"
-		{
-			"show_in_armory"			"0" // No
-		}
-		"3563"
+		"3565"
 		{
 			"show_in_armory"			"0"
 		}
-		"3565"
+		"3581"
 		{
-			"show_in_armory"			"0" // I'm actually pretty sure this would be mostly medievally feasable, depending on when exactly we define medieval. Still, no. That'd be bonkers OP.
+			"show_in_armory"			"0"
 		}
-		"3569"
+		"3585"
+		{
+			"show_in_armory"			"0"
+		}
+		"4204"
+		{
+			"show_in_armory"			"0"
+		}
+		"3563"
 		{
 			"show_in_armory"			"0"
 		}
@@ -47093,26 +45445,459 @@ A medieval battering ram and cannon combined and repurposed into a shoulder-moun
 		{
 			"show_in_armory"			"0"
 		}
+		"3580"
+		{
+			"show_in_armory"			"0"
+		}
+		"10237"
+		{
+			"show_in_armory"			"0"
+		}
+		"10232"
+		{
+			"show_in_armory"			"0"
+		}
 		"3576"
 		{
 			"show_in_armory"			"0"
 		}
-		"3580"
+		"5415"
 		{
 			"show_in_armory"			"0"
 		}
-		"3581"
-		{
-			"show_in_armory"			"0" // Honestly, I'm considering it, especially considering its lack of medieval primaries.... but i'll hold off for now
-		}
-		"3580"
+		"5416"
 		{
 			"show_in_armory"			"0"
 		}
-		// Miku change?
-		"4204"
+		"10233"
 		{
 			"show_in_armory"			"0"
+		}
+		"3569"
+		{
+			"show_in_armory"			"0"
+		}
+		"1148" //Vaccinator by shualdock
+		{
+			"show_in_armory"			"0"
+		}
+		"2023" //Mann Co. Supply Crate Key (Scout) by shualdock
+		{
+			"show_in_armory"			"0"
+		}
+		"2024" //Mann Co. Supply Crate Key (Soldier) by shualdock
+		{
+			"show_in_armory"			"0"
+		}
+		"2025" //Mann Co. Supply Crate Key (Pyro) by shualdock
+		{
+			"show_in_armory"			"0"
+		}
+		"2026" //Mann Co. Supply Crate Key (Demoman) by shualdock
+		{
+			"show_in_armory"			"0"
+		}
+		"2027" //Mann Co. Supply Crate Key (Heavy) by shualdock
+		{
+			"show_in_armory"			"0"
+		}
+		"2029" //Mann Co. Supply Crate Key (Medic) by shualdock
+		{
+			"show_in_armory"			"0"
+		}
+		"2031" //Mann Co. Supply Crate Key (Spy) by shualdock
+		{
+			"show_in_armory"			"0"
+		}
+		"2030" //Mann Co. Supply Crate Key (Sniper) by shualdock //Moved
+		{
+			"show_in_armory"			"0"
+		}
+		"5158"
+		{
+			"show_in_armory"			"0"
+		}
+
+		"4437" // This one is just for fun. -Clock
+		{
+			"name"						"TF_WEAPON_ENGIESWORD"
+			"prefab"					"weapon_wrench"
+			"item_class"				"tf_weapon_wrench"
+			"show_in_armory"			"1" // Well, in you come ig.
+			"anim_slot"	                "melee"
+
+			"propername"				"1"
+			"item_name_color"			"255 240 183 255"
+			"item_name"					"Grand design" //I think this works well. -Clock
+			"item_type_name"			"Hammer"
+			"item_description"			"
+As Engineer explains it, it gains “experience” to “level up” his buildings. 
+(It's definitely magic.)" //Idk man I struggled with this one. -Clock
+			"item_logname"				"warhammer"
+			"item_iconname"				"Warhammer"
+			"image_inventory"			"backpack/weapons/w_models/w_warhammer" // Uses NOWP's new model, since this was always intended to be an engie weapon (and also give me an excuse to get rid of the very questionably balanced weapon)
+			"model_world"				"models/weapons/w_models/w_warhammer_engie.mdl" // THIS MODEL IS EDITED! It's just a rotation, but still, worth making a note of. Still, since I assume EVERYONE has this model now, I'll seperate this one.
+			"model_player"				"models/weapons/v_models/v_warhammer_demoman.mdl"
+			"extra_wearable"			"models\player\items\engineer\invasion_life_support_system.mdl" // extra wearable to make it more identifiable. It's not perfect, and I'd prefer a new arm, but this will have to do. -Clock's assistant
+			"attach_to_hands"			"2"
+			"used_by_classes"
+			{
+				"engineer"				"1"
+			}
+			"static_attrs"
+			{
+				"unique weapon"							"1"
+				"medieval changes"						"1"
+//				"provide on active"						"1"
+				"melee range multiplier"				"1.5"
+				"melee bounds multiplier"				"1.35"
+				"class select override vcd"				"taunt01"
+				"add condition on hit weapon"			"0"
+			}
+			"attributes"  // Credit where it's due, this is similar to another engineer sword elsewhere in the code. 5254. However that one's just a wrench held strangely. -Clock
+			{
+				"max health additive bonus" //Anyways, unlike the other more combat focused melees engie has, instead of making your buildings more disposable and fluid, this one makes you work around them more to make them stronger than baseline!
+				{
+					"attribute_class"	"add_maxhealth" // Geez, upon revisiting this, this has a lot of stats, but I can't really think of a way to cut down on them... -Clock
+					"value"				"25"
+				}
+				"move speed bonus"
+				{
+					"attribute_class"	"mult_player_movespeed"
+					"value"				"1.07"
+				}
+				"damage bonus"
+				{
+					"attribute_class"	"mult_dmg"
+					"value"				"1.15"
+				}
+				"engy building health penalty"
+				{
+					"attribute_class"	"mult_engy_building_health"
+					"value"				"0.5"
+				}
+				"building support decrease"														// NOWP v3.2.1 - Finally got around to adding a unique single-stat to summarize if an Engineer weapon sorta just does worse at all 3 metrics. The input number is the average of the 3 modifiers rounded to the nearest 5!
+				{
+					"attribute_class"	"DISPLAY_ONLY"
+					"value"				"0.5"
+				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mult_repair_value"
+					"value"				"0.29"
+				}
+				"hide_attrib_percentage" //Note the lack of a sapper damage penalty, this is intentional
+				{
+					"attribute_class"	"upgrade_rate_mod"
+					"value"				"0.43"
+				}
+				"hide_attrib_percentage" //In fact, if at all possible, I would like these buildings to take LESS damage from sapper, because I can already see spies intentionally sacking to destroy these buildings because some spies hate engies having fun.	
+				{
+					"attribute_class"	"mult_construction_value"
+					"value"				"0.75"
+				}
+				"crit mod disabled"
+				{
+					"attribute_class"	"mult_crit_chance"
+					"value"				"0"
+				}
+				"hide_attrib_additive"
+				{
+					"attribute_class"	"mult_decloak_rate"										// For the balisong/vanish, the lowest possible number i've found it can be before the game just goes "no, screw you" and rejects it. -Clock
+					"value"				"0.02"
+				}
+				"hidden separator"
+				{
+				    "attribute_class"   "hidden_separator"
+					"value"             "1"
+				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mult_dmg_crit_multiplier"
+					"value"				"1"
+				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mult_dmg_vs_burning"
+					"value"				"1"
+				}
+				"engy building health bonus" //About equivilent to one extra level! On any other wrench this could be a problem, but turtling with this thing would be an IMMENSELY dumb choice. -Clock
+				{
+					"attribute_class"	"DISPLAY_ONLY"
+					"value"				"1.2"
+				}
+				"engy dispenser radius increased" //These three are mostly just to encourage you to remember that these exist
+				{
+					"attribute_class"	"mult_dispenser_radius"
+					"value"				"1"
+				}
+				"minicrits become crits"
+				{
+					"attribute_class"	"minicrits_become_crits"
+					"value"				"0"
+				}
+			} // *The duke comes REALLY close. -Clock
+			"visuals"
+			{
+
+				"sound_melee_miss"		"Weapon_Sword.Swing"
+				"sound_melee_hit"		"Weapon_Sword.HitFlesh"
+				"sound_melee_hit_world"	"Weapon_Sword.HitWorld"
+				"sound_burst"			"Weapon_Sword.SwingCrit"
+//				"sound_special1"		"Weapon_Sword.HitHeads"									// It's not technically haunted, so no whispers!
+			}
+			"mouse_pressed_sound"		"#ui/item_knife_large_pickup.wav"
+			"drop_sound"				"#ui/item_metal_weapon_drop.wav"
+		}
+
+		"4458"
+		{
+			"name"						"TF_WEAPON_PARTY_POPPER"
+//			"prefab"				    "weapon_flaregun"
+			"item_class"				"tf_weapon_flaregun" // for some reason, using a flaregun prefab adds unavoidble crit vs burning text.
+			"show_in_armory"			"1"
+			"item_slot"					"secondary"
+			"anim_slot"					"item1"
+			"bucket"					"1"
+			"bucket_position"			"2"
+			"show_in_armory"			"1"
+			"propername"				"1"
+			"item_name"					"Party Popper"
+			"item_type_name"			"Firework Launcher"
+			"item_description"			"This weapon will reload when not active
+
+It's time to party!
+
+Model by: usernamecipher on Gamebanana"
+			"item_logname"				"firework"
+			"item_quality"              "unique"
+			"image_inventory"			"backpack/weapons/c_models/c_firework_flare/c_firework_flare"
+			"model_world"				"models/weapons/c_models/c_firework_flare/c_firework_flare.mdl"
+			"model_player"				"models/weapons/c_models/c_firework_flare/c_firework_flare.mdl"
+			"attach_to_hands"			"1"
+			"used_by_classes"
+			{
+				"pyro"					"1"
+			}
+			"static_attrs"
+			{
+				"unique weapon"							"1"
+				"cannot use stored crits NO DISPLAY"				"1"
+				"mod use custom ammo type"				"2"
+				"launch upwards on damage"				"325"
+				"blast dmg to self increased hidden"	"1.5"
+//				"damage flat bonus"						"15"
+//				"reload time increased hidden"			"0.9"
+				"override projectile type"				"2"
+				"mod rocket gravity upward force"		"0.5"
+//				"energy weapon no ammo"					"1"
+//				"Projectile speed increased hidden"		"1.7"
+//				"mod max primary clip override"			"-1"
+				"punch angle mod add hidden"			"0.35"
+//				"custom projectile model"				"models/weapons/w_models/w_tear_jerker/w_tear_jerker_flare.mdl" // no unique model here, same one the Scorch Shot uses. You won't see it much anyways, it's too fast.\
+				"custom projectile model"				"models/weapons/c_models/c_firework_flare/c_firework_flare_proj.mdl"
+				"no damage falloff over distance"		"1" // disable falloff and rampup. These being disabled for flareguns seems to be tied to flares, not the gun itself.
+				"custom rampup"							"1"
+				"custom projectile origin offset"		"6 0 0" // the barrel on the model's pretty long, this helps account for that.
+			}
+			"attributes"
+			{
+				"flares explode"
+				{
+					"attribute_class"	"DISPLAY_ONLY"
+					"value"				"1"
+				}
+//				"crit vs players below feet"
+//				{
+//					"attribute_class"	"crit_vs_player_under_feet"
+//					"value"				"1" // out of ideas? crit vs player under feet. It solves all* your problems.
+//				}
+				// Scratch that, crit people in the air. It's a firework, it'll be funny.
+				// The below 3 attributes and their comments are copied straight from pyro's reserve shooter, with minicrits swapped for crits.
+				"mod crit airborne simple min height"										// Pyro's Reserve Shooter works a bit differently, since the standard one's attrib needs blast-launches, so this one minicrits ALL airborne players. With a catch;
+				{
+					"attribute_class"	"crit_airborne_simple_min_height"					// Here, this var controls how high above the ground a target needs to be in hU's before it can apply. This means you can't usually just minicrit people jumping off the ground normally.
+					"value"				"70"												// Normal jumps at regular gravity on a flat surface are about 50 hU's up at their apex, I believe. 20 extra just to make it a little more foolproof!
+				}																			// The only thing that could throw a wrench in the plans is probably Scout, he double-jumps about 90 hU's, but setting it that high would make this attrib basically never work for Airblasts
+				"hide_attrib_additive"		
+				{
+					"attribute_class"	"crit_airborne_simple"								// The NORMAL one also grandfathered in, in case Pyro runs into someone blast jumping or jumppad launched. This is hidden since it's not really the normal use-case.
+					"value"				"1"
+				}
+				"crit vs cond no dot"														// For some extra consistency for airblasting minicrits. This doesn't work 100% either, it whiffs a lot, but the two (or three!) combined should make up the windfall of eachother!
+				{
+					"attribute_class"	"single_crit_vs_playercond_no_dot"
+					"value"				"111"
+				}
+//				"fire rate bonus"
+//				{
+//					"attribute_class"	"mult_postfiredelay"
+//					"value"				"0.9" // make sure "reload time increased hidden" above matches this so the animation speeds up
+//				}
+//				"damage bonus"
+//				{
+//					"attribute_class"	"DISPLAY_ONLY"
+//					"value"				"1.15"
+//				}
+//				"hide_attrib_percentage"
+//				{
+//					"attribute_class"	"mult_dmg"
+//					"value"				"1.1667" // puts it at 35 damage base with a 105 damage crit
+//				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mult_projectile_speed"
+					"value"				"1.818181"
+				}
+//				"maxammo secondary increased"
+//				{
+//					"attribute_class"	"mult_maxammo_secondary"
+//					"value"				"1.5"
+//				}
+				"hide_attrib_additive"
+				{
+					"attribute_class"	"mod_rocket_gravity"
+					"value"				"0.25"
+				}
+				"allowed in medieval mode"
+				{
+					"attribute_class"	"allowed_in_medieval_mode"
+					"value"				"1"
+				}
+				"special taunt"
+				{
+					"attribute_class"	"special_taunt"
+					"value"				"1"
+				}
+				"single wep deploy time hidden"
+				{
+					"attribute_class"	"mult_single_wep_deploy_time"
+					"value"				"0.85"
+				}
+//				"hide_attrib_percentage"
+//				{
+//					"attribute_class"	"fuse_mult"
+//					"value" 			"0.325" // explodes shortly after it stops emitting the trail
+//				}
+				"rocket limited lifetime"
+				{
+					"attribute_class"	"rocket_lifetime"
+					"value"				"0.75"
+				}
+				"Blast radius decreased"
+				{
+					"attribute_class"	"mult_explosion_radius"
+					"value" 			"0.5"
+				}
+				"limited range DISPLAY ONLY" // best way I could find to convey that they explode after a time
+				{
+					"attribute_class"	"DISPLAY_ONLY"
+					"value"				"1"
+				}
+				"no afterburn"
+				{
+					"attribute_class"	"DISPLAY_ONLY"
+					"value" 			"1"
+				}
+				"crit mod disabled"
+				{
+					"attribute_class"	"mult_crit_chance"
+					"value"				"0"
+				}
+				"self dmg push force hidden"
+				{
+					"attribute_class"	"mult_dmgself_push_force"
+					"value"				"0.265"
+				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"weapon_enemy_knockback_mod"
+					"value"				"0.4" // less knockback in the explosion itself, leading to more consistently throwing people upwards even if you don't hit near their feet.
+				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mult_maxammo_secondary"
+					"value"				"0.5"
+				}
+//				"hide_attrib_additive" // I think this actually ends up doing explosive damage instead of fire? This is just omitted to cleanly remove afterburn. After burn on this would just be annoying.
+//				{
+//					"attribute_class"	"set_dmgtype_ignite"
+//					"value" 			"1"
+//				}
+			}
+			"visuals"
+			{
+				"sound_single_shot"		"Weapon_PartyPopper.Single"
+				"sound_burst"			"Weapon_PartyPopper.SingleCrit"
+				"sound_special1"		"Weapon_PartyPopper.Explode"
+//				"explosion_effect"		"ExplosionCore_MidAir_Flare"
+				// This has fully custom particles, mostly made to practice more complex particles.
+				// Main effects are:
+				// "partypopper_explosion_MidAir_[team]" - fireworks explosion
+				// "partypopper_explosion_MidAir_[team]_crit" - crit fireworks explosion
+				// "partypopper_trail_PARENT_[team]" - firework trail with confetti
+				// no custom crit trail, just use an existing one :P
+				// And a few extras for potential use elsewhere:
+				// "partypopper_explosion_clean_MidAir_[team]" - fireworks explosion with no sparks, just a quick flash, team-colored pulse, and smoke.
+				// "partypopper_explosion_clean_MidAir_[team]_crit" - same as above, but with the additional crit effects.
+				// "partypopper_trail_PARENT_clean_[team]" - trail without the confetti. Could be used well for low-profile projectiles. Use yellow team for a good team-neutral color, it just works best with the fire.
+				// All particle effects created by Clock's assistant, textures used are just base TF2 textures.
+				// Update as of v1.3 - partypopper2 at the start for new particles.
+			}
+			"visuals_red"
+			{
+				"trail_effect"			"partypopper2_trail_PARENT_red"
+				"trail_effect_crit"		"flaregun_trail_crit_red" // "critical_rocket_red" is the old one. Crit flare trails still just work better tbh.
+				"explosion_effect"		"partypopper2_explosion_MidAir_red"
+				"explosion_effect_crit"	"partypopper2_explosion_MidAir_red_crit"
+			}
+			"visuals_blu"
+			{
+				"trail_effect"			"partypopper2_trail_PARENT_blue"
+				"trail_effect_crit"		"flaregun_trail_crit_blue"
+				"explosion_effect"		"partypopper2_explosion_MidAir_blue"
+				"explosion_effect_crit"	"partypopper2_explosion_MidAir_blue_crit"
+			}
+			"visuals_grn"
+			{
+				"trail_effect"			"partypopper2_trail_PARENT_green"
+				"trail_effect_crit"		"flaregun_trail_crit_green"
+				"explosion_effect"		"partypopper2_explosion_MidAir_green"
+				"explosion_effect_crit"	"partypopper2_explosion_MidAir_green_crit"
+			}
+			"visuals_ylw"
+			{
+				"trail_effect"			"partypopper2_trail_PARENT_yellow"
+				"trail_effect_crit"		"flaregun_trail_crit_yellow"
+				"explosion_effect"		"partypopper2_explosion_MidAir_yellow"
+				"explosion_effect_crit"	"partypopper2_explosion_MidAir_yellow_crit"
+			}
+			"mouse_pressed_sound"		"#ui/item_light_gun_pickup.wav"
+			"drop_sound"				"#ui/item_light_gun_drop.wav"
+		}
+
+		"5305"
+		{
+			"attributes"
+			{
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mult_maxammo_secondary"
+					"value"				"0.2"
+				}
+			}
+		}
+
+		"5305"
+		{
+			"attributes"
+			{
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mult_maxammo_metal"
+					"value"				"0.125"
+				}
+			}
 		}
 	}
 	"attributes"

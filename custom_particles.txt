@@ -59,6 +59,7 @@ particles_manifest
 	"file"		"particles/environmental_fx.pcf"
 	"file"		"!particles/medicgl.pcf"
 	"file"		"!particles/powerup_fx.pcf"
+	"file"		"particles/fire_01.pcf"
 	"file"		"particles/flamethrower_mvm.pcf"
 	"file"		"particles/coin_spin.pcf"
 	"file"		"particles/stamp_spin.pcf"
@@ -110,6 +111,7 @@ particles_manifest
 // NOWP - Split into parts since each .pcf seems to have a max file-size of 1 MB before crashing the game on load....
 	"file"  	"!particles/nowp_wpnfx.pcf"				// New-Old Weapons Pack's Particles. NEEDS to be Global Precache or else some particles don't load ever (?????).
 	"file"  	"!particles/nowp_drg_cm5k.pcf"			// New-Old Weapons Pack's Particles (Cow Mangler 5000). Yes, a file for a single weapon. This has way too many particles...
+	"file"  	"!particles/nowp_drg_4thlaw.pcf"		// New-Old Weapons Pack's Particles (Al Coholic's 4th Law)
 	"file"  	"!particles/nowp_flamethrower.pcf"		// New-Old Weapons Pack's Particles (Flamethrowers)
 	"file"  	"!particles/nowp_medigun.pcf"			// New-Old Weapons Pack's Particles (Mediguns)
 // HACK FIX
@@ -122,6 +124,11 @@ particles_manifest
 // INVENTORIUM - few additions here
 	"file"  	"!particles/firetracertest.pcf"
 	"file"  	"!particles/partypopper.pcf"
+	"file"  	"!particles/partypopper_new.pcf"
 	"file"  	"!particles/hurtheal.pcf"
 	"file"  	"!particles/tinyboom.pcf"
+	"file"  	"!particles/invtrm_1_2_1_tracers.pcf"
+	"file"  	"!particles/invtrm_1_2_1_trails.pcf"
+	"file"  	"!particles/invtrm_1_2_1_explosions.pcf"
+	"file"  	"!particles/invtrm_1_2_1_flames.pcf"
 }
