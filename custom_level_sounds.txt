@@ -22513,13 +22513,13 @@
 // ------------------------------------------------------------------------------------ //
 // Modificated SMG
 // ------------------------------------------------------------------------------------ //
-//"Weapon_MSMG.Single"
-//{
-//	"channel"	"CHAN_WEAPON"
-//	"soundlevel"	"SNDLVL_94dB"
-//	"volume"	"1.0"
-//	"wave"		")weapons/msmg_shoot.wav"
-//}
+"Weapon_MSMG.Single"
+{
+	"channel"	"CHAN_WEAPON"
+	"soundlevel"	"SNDLVL_94dB"
+	"volume"	"1.0"
+	"wave"		")weapons/msmg_shoot.wav"
+}
 
 // ------------------------------------------------------------------------------------ //
 // TOMMY
