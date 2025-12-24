@@ -563,7 +563,7 @@ Model: TF2"
 				"melee range multiplier increased"		"1.35"
 				"melee bounds multiplier"				"1.55"
 //				"explode on death"	"1" // What does this do??? //Bad things. -Clock
-				"custom hand viewmodel"		"models/weapons/c_models/c_engineer_arms_delldozer.mdl"
+				"custom hand viewmodel"		"models/weapons/c_models/c_engineer_arms_gunslinger.mdl"
 				"allowed in medieval mode"				"1" // Because why not!
 			}
 			"attributes" //I only realise this now as I finish my rework here, isn't this just less memey buffgineer? -Clock							
@@ -2116,6 +2116,11 @@ Note: Nerfed. -Clock"
 				{
 					"attribute_class"	"custom_projectile_model"
 					"value"				"models/flag/bag_o_explosives.mdl"
+				}
+				"spawn entity on detonation"
+				{
+					"attribute_class"	"spawn_entity_on_detonation"
+					"value"				""
 				}
 				"hidden separator"
 				{
