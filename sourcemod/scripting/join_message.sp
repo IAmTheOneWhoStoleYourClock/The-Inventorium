@@ -26,7 +26,7 @@ public void OnPluginStart()
     HookEvent("player_spawn", Event_player_spawn, EventHookMode_Post);
 }
 
-char heading[] = "READ THIS\n \nTo finish installing custom assets,\ngo to your TF2C download folder.\n(TF2C install on windows is C:/Program Files (x86)\n/Steam/steamapps/sourcemods/tf2classic by default)\nThere should be an assets folder inside that folder.\nIf there isn't, go to https://tinyurl.com/4xpwbupn and download it there.\nOtherwise the download instructions are inside the folder.";
+char heading[] = "READ THIS\n \nTo finish installing custom assets,\ngo to your TF2C download folder.\n(TF2C install on windows is C:/Program Files (x86)\n/Steam/steamapps/sourcemods/tf2classic by default)\nThere should be an assets folder inside that folder.\nIf there isn't, go to tinyurl.com/InventoriumTF2C and download it there.\nOtherwise the download instructions are inside the folder.\nFor those having errors with new content, restart your game.";
 char show[32];
 
 public void OnClientDisconnect_Post(int client)
@@ -60,7 +60,7 @@ public int MenuHandler1(Menu menu, MenuAction action, int param1, int param2)
   {
     case MenuAction_Display:
     {
-      char buffer[400];
+      char buffer[450];
       Format(buffer, sizeof(buffer), heading, param1);
  
       Panel panel = view_as<Panel>(param2);
