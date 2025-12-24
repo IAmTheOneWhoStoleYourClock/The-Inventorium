@@ -155,6 +155,7 @@ Model: Valve, 5p3tch"
 //				"add condition on hit self"				"111 10.0"
 				"heal on hit for slowfire"				"30"
 				"allowed in medieval mode"		        "1"
+				"mod use custom ammo type"				"4"
 				"min_viewmodel_offset"					"10 0 -10"
 				"meter_label"							"JAR"
 				"add condition on hit weapon"			"101 10"
@@ -262,6 +263,7 @@ Model: TF2"
 				"heal on hit for slowfire"				"20"
 //				"add condition on hit self"				"111 10.0"
 				"allowed in medieval mode"		        "1"
+				"mod use custom ammo type"				"4"
 				"min_viewmodel_offset"					"10 0 -10"
 				"meter_label"							"JAR"
 				"add condition on hit weapon"			"101 5"
@@ -5967,6 +5969,7 @@ Model: TF2"
 			"static_attrs"
 			{
 				"Mannly weapon"							"1"
+				"Heavily modified"						"1"
 				"Sourcemod user"						"1"
 				"linked item id"						"11083"
 				"sapper cant sap"						"1"
@@ -5988,10 +5991,18 @@ Model: TF2"
 			"item_slot"					"utility"
 			"anim_slot"					"building"
 			"bucket"					"1"
+			"bucket_position"			"2"
             "show_in_armory"			"1"
 			"item_name"					"The Snack Attack"
 			"item_type_name"			"Sapper?"
-			"item_description"			"Get a loaf of this guy.
+			"item_description"			"Eat to regain up to 120 health
+(And have regrets later)
+
+Alt-fire: Share... this... with a friend!
+(Small health pack, 
+Super MfD on enemy pickup)
+
+Get a loaf of this guy.
 
 Model: TF2"
 			"item_quality"              "unique"

@@ -155,6 +155,7 @@ Model: Valve, 5p3tch"
 //				"add condition on hit self"				"111 10.0"
 				"heal on hit for slowfire"				"30"
 				"allowed in medieval mode"		        "1"
+				"mod use custom ammo type"				"4"
 				"min_viewmodel_offset"					"10 0 -10"
 				"meter_label"							"JAR"
 				"add condition on hit weapon"			"101 10"
@@ -262,6 +263,7 @@ Model: TF2"
 				"heal on hit for slowfire"				"20"
 //				"add condition on hit self"				"111 10.0"
 				"allowed in medieval mode"		        "1"
+				"mod use custom ammo type"				"4"
 				"min_viewmodel_offset"					"10 0 -10"
 				"meter_label"							"JAR"
 				"add condition on hit weapon"			"101 5"
@@ -306,7 +308,7 @@ Model: TF2"
 				"custom projectile model"
 				{
 					"attribute_class"	"custom_projectile_model"
-					"value"				"models/weapons/c_models/c_breadmonster/c_breadmonster_milk.mdl"
+					"value"				"models/weapons/c_models/c_breadmonster/c_breadmonster_milk_inv.mdl"
 				}
 				"torso scale"
 				{
@@ -410,8 +412,8 @@ Model: Valve, Mnemo"
 				"hit self on miss"						"0.8"
 				"less jump height"						"0.8"
 				"fire rate penalty"						"2"
-				"crit mod disabled"						"0"
 				"minicrit vs tranqed players negative"	"110"
+				"crit mod disabled"						"0"
 				"apply self knockback"			"-300"
 			}
             "visuals"
@@ -674,7 +676,7 @@ Model: TF2"
 			"item_quality"              "unique"
 			"image_inventory"			"backpack/workshop/weapons/c_models/c_scout_sword/c_scout_sword"
 			"model_world"				"models/weapons/c_models/c_scout_sword/c_scout_sword.mdl" //Reskins of unique weapons aren't common. But they are cool
-			"model_player"				"models/weapons/v_models/v_scout_sword_inv9.mdl"
+			"model_player"				"models/weapons/v_models/v_scout_sword_inv.mdl"
 			"attach_to_hands"			"2"
 			"used_by_classes"
 			{
@@ -3602,6 +3604,7 @@ Model: TF2" //Don't worry, it'll come soon, I promise. -A liar, also known as Cl
 			{
 				"Mannly weapon"							"1"
 //				"Heavily modified"						"1" // I don't think this is fair, considering i'm just emulating base game here....
+				"custom lunchbox throwable model"		"models\items\plate_banana.mdl"
 			}
 			"attributes" // Apperently they "fixed" this not working on lunchboxes in the latest patch?!? Quite odd, but it lets me make this like base game now?
 			{
@@ -4907,6 +4910,10 @@ Model: TF2"
 //      "1147" //Quick-Fix by SilentFox3, edited by shualdock
 		"1148" //Vaccinator by shualdock
 		{
+			"tags"
+			{
+				"bots_cant_use"			"1" // Never pop uber for some reason.
+			}
 			"name"						"TF_WEAPON_VACCINATOR"
 			"prefab"					"weapon_medigun"
 			"show_in_armory"			"1"
@@ -5892,10 +5899,12 @@ Model: BONEMAN, Mr. Bunce, TF2"
             "name"						"TF_WEAPON_APSAP"
             "prefab"					"weapon_sapper"
             "show_in_armory"			"1"
-			"item_name"					"The Ap-Sap"
+			"propername"				"1"
+			"item_name"					"Ap-Sap"
 			"item_type_name"			"Aperture Science Compact Core"
 			"item_quality"              "unique"
-			"item_description"			"Found in the ruins of an abandoned research facility. Enjoy hours of lively one-sided conversation at work.
+			"item_description"			"
+Found in the ruins of an abandoned research facility. Enjoy hours of lively one-sided conversation at work.
 
 Model: TF2" //Portal 2 establishes that Aperture somehow exists in every universe. I wonder what happens to them in TF2's...
 			"image_inventory"			"backpack/weapons/c_models/c_p2rec/c_p2rec"
@@ -5909,6 +5918,22 @@ Model: TF2" //Portal 2 establishes that Aperture somehow exists in every univers
 			"static_attrs"
 			{
 				"Mannly weapon"							"1"
+				"Heavily modified"						"1"
+			}
+			"attributes"
+			{
+				"sapper damage penalty" // Done through a hidden nerf on the disguise kit, everthing else has a buff to counteract it
+				{
+					"attribute_class"	"DISPLAY_ONLY"
+					"value"				"0.2"
+				}
+			}
+			"static_attrs"
+			{
+				"provide on active"						"1"
+				"sapper damage leaches health"			"10"
+				"sapper damages self"					"2"
+				"sapper self-destruct"					"3"
 			}
 			"visuals"
 			{
@@ -5922,7 +5947,14 @@ Model: TF2" //Portal 2 establishes that Aperture somehow exists in every univers
             "show_in_armory"			"1"
 			"item_name"					"The Snack Attack"
 			"item_type_name"			"Sapper?"
-			"item_description"			"Get a loaf of this guy.
+			"item_description"			"Eat to regain up to 120 health
+(And have regrets later)
+
+Alt-fire: Share... this... with a friend!
+(Small health pack, 
+Super MfD on enemy pickup)
+
+Get a loaf of this guy.
 
 Model: TF2"
 			"item_quality"              "unique"
@@ -5937,6 +5969,59 @@ Model: TF2"
 			"static_attrs"
 			{
 				"Mannly weapon"							"1"
+				"Heavily modified"						"1"
+				"Sourcemod user"						"1"
+				"linked item id"						"11083"
+				"sapper cant sap"						"1"
+			}
+			"visuals"
+			{
+				"animation_replacement"
+				{
+					"ACT_VM_DRAW"			"ACT_BREADSAPPER_VM_DRAW"
+					"ACT_VM_DRAW_DEPLOYED"	"ACT_BREADSAPPER_VM_DRAW"
+					"ACT_VM_IDLE"			"ACT_BREADSAPPER_VM_IDLE"
+				}
+			}
+        }
+		"11083" //Snack Attack by shualdock
+        {
+            "name"						"TF_WEAPON_SNACK_ATTACK" //The last bread weapon...
+            "item_class"				"tf_weapon_lunchbox"
+			"item_slot"					"utility"
+			"anim_slot"					"building"
+			"bucket"					"1"
+			"bucket_position"			"2"
+            "show_in_armory"			"1"
+			"item_name"					"The Snack Attack"
+			"item_type_name"			"Sapper?"
+			"item_description"			"Eat to regain up to 120 health
+(And have regrets later)
+
+Alt-fire: Share... this... with a friend!
+(Small health pack, 
+Super MfD on enemy pickup)
+
+Get a loaf of this guy.
+
+Model: TF2"
+			"item_quality"              "unique"
+			"image_inventory"			"backpack/weapons/c_models/c_breadmonster_sapper/c_breadmonster_sapper"
+			"model_world"				"models/weapons/c_models/c_breadmonster_sapper/c_breadmonster_sapper.mdl"
+			"model_player"				"models/weapons/c_models/c_breadmonster_sapper/c_breadmonster_sapper.mdl"
+			"attach_to_hands"			"1"
+			"used_by_classes"
+			{
+				"mercenary"					"1"
+			}
+			"static_attrs"
+			{
+				"Mannly weapon"							"1"
+				"sapper cant sap"						"1"
+				"custom lunchbox throwable type"		"1"
+				"custom lunchbox throwable model"		"models\items\plate_breadmonster.mdl"
+				"mult lunchbox throwable velocity"		"0.85" // So you can't force feed people as easily
+				"apply cond on pickup wearer"			"4 115 5"
 			}
 			"visuals"
 			{
@@ -5956,8 +6041,7 @@ Model: TF2"
 			"item_name"					"The Red-Tape Recorder"
 			"item_type_name"			"Reel-to-Reel Tape Recorder"
 			"item_quality"              "unique"
-			"item_description"			"Highlights players near you to you while being held
-
+			"item_description"			"
 First you, then your toys!
 
 Model: Z, Ducksink, SquareEnix, Mr. Bunce"
@@ -5987,8 +6071,13 @@ Model: Z, Ducksink, SquareEnix, Mr. Bunce"
 				}
 				"sapper damage penalty" //With the downside that sappers can't destroy buildings, only lock them up
 				{
-					"attribute_class"	"mult_sapper_damage"
+					"attribute_class"	"DISPLAY_ONLY"
 					"value"				"0.15" //Needs to do at least a little damage to prevent potential issues -Clock
+				}
+				"hide_attrib_percentage" // See Ap-Sap
+				{
+					"attribute_class"	"mult_sapper_damage"
+					"value"				"0.75"
 				}
 			}
         }
@@ -6589,6 +6678,11 @@ Model: TF2"
 					"attribute_class"	"mult_disguise_speed"
 					"value"				"0.5"
 				}
+				"silent cloak"
+				{
+					"attribute_class"	"DISPLAY_ONLY"
+					"value"				"1"
+				}
 				"cannot pickup dropped weapons while cloaked"
 				{
 					"attribute_class"	"cannot_pickup_dropped_weapons_while_cloaked"
@@ -6602,6 +6696,10 @@ Model: TF2"
 			}
 			"mouse_pressed_sound"		"#ui/item_watch_pickup.wav"
 			"drop_sound"				"#ui/item_watch_drop.wav"
+			"visuals"
+			{
+				"sound_special1"		"Weapon_Null"
+			}
         }
 		"1196" //Quäckenbirdt by shualdock
         {
@@ -7547,6 +7645,7 @@ Cloaked teammates can attack
 				"Mannly weapon"							"1"
 				"class select override vcd"				  "taunt01"
 				"decrease player capture value civ universal" "-2"
+				"mult melee smack delay"			"0.01"
             }
             "attributes"
             {
@@ -7564,6 +7663,11 @@ Cloaked teammates can attack
 				{
 					"attribute_class"	"mult_dmg_crit_multiplier"
 					"value"				"0.76" //Numbers are fudged so crits hit for exactly 80. -Clock
+				}
+				"hide_attrib_percentage"
+				{
+					"attribute_class"	"mult_postfiredelay"
+					"value"				"1.4"
 				}
 				"crit mod disabled"
 				{
@@ -13369,6 +13473,7 @@ Model: TF2"
 			"static_attrs"
 			{
 				"Mannly weapon"							"1"
+				"always draw tracer"					"1"
 			}
 			"attributes" //A more traditional ambassador, at least for the moment. Will hopefully be able to replace this when I can make the ambi more polished. -Clock
 			{
@@ -29904,6 +30009,14 @@ Model: nano393"
 			{
 				"spy"					"1"
 			}
+			"attributes"
+			{
+				"hide_attrib_percentage" // See Ap-Sap
+				{
+					"attribute_class"	"mult_sapper_damage"
+					"value"				"8"
+				}
+			}
 			"static_attrs"																		// In Live TF2, it seems like all other functions of any sapper, incl. nonstock ones, are handled through some mess of weapon scripts, buildable object scripts, and hardcoded bullshit. Ach!!
 			{
 				"NOWP weapon"							"1"
@@ -34555,7 +34668,7 @@ Model: Svdl"
 			"name"						"TF_WEAPON_TRAP_CONC"									// THIS IS FOR FUTURE REFERENCE! Due to a technical bug on TF2C's end, I can't implement this or anything similar to this,
 			"item_class"				"tf_weapon_pipebomblauncher"							// and be HAPPY about it, unless they refactor how items in the same "internal slot" conflict. And it's unlikely they will! But, still...
 			"show_in_armory"			"1"
-			"item_slot"					"secondary" //Ugh. persistence bug....
+			"item_slot"					"utility"
 //			"item_slot"					"building"												// Spy (and other classes that use off-class weps for the matter) has this issue with item slots.
 			"anim_slot"					"building"												// Without going too in-depth, because of how scuffed his Revolver's slots are, it disallows me using ANY weapon over his Sapper...
 			"bucket"					"1"														// Quick fix for non-selectable Sapper, these two make this item your "Second secondary" (subslot 1 of loadout slot 1)
@@ -34687,7 +34800,7 @@ Model: DioJoestar"
 				"fire rate penalty hidden"				"2.35"									// So you don't get to spam these. It's like a hair under 2s or so between throws.
 				"min_viewmodel_offset"					"5 -2 -4"
 				"punch angle mod mult hidden"			"0"
-//				"meter_label"							"TRIPMINE"
+				"meter_label"							"TRIPMINE"
 				"mod use custom ammo type"				"4"										// Fixes ammo issues ON THE OFF CHANCE this ever can be moved to Secondary / Building Slot
 			}
 			"visuals"
@@ -34757,11 +34870,8 @@ Model: DioJoestar"
 			}
 			"name"						"TF_WEAPON_TRAP_CONC"									// NOTE: THIS IS DISPLAY-ONLY FRONTEND! The actual weapon is handled elsewhere; this is just minimal stuff copied over so the game can load it properly.
 			"prefab"					"weapon_sapper"
-			"show_in_armory"			"0" // Slot's borked....
-			"bucket"					"2" //Can't use it anyways!
-
-			"item_class"				"tf_wearable"
-			"item_slot"					"building"
+			"show_in_armory"			"1"
+			"bucket"					"1"
 //			"act_as_wearable"			"1"														// Toggling this does a few things; if it's enabled, then it doesn't cause issues with the 3d playermodel display, but also doesn't render as a weapon you're holding out. Mmn...
 
 			"item_name_color"			"204 204 250 255"
@@ -34785,7 +34895,8 @@ Model: DioJoestar"
 			"static_attrs"
 			{
 				"NOWP weapon"							"1"
-				"linked item id"						"3591"									// Item ID of the actual weapon instead of this thing.
+				"Sourcemod user"						"1"
+				"linked item id"						"3443"									// Item ID of the actual weapon instead of this thing.
 				"sapper cant sap"						"1"										// Prevents building your sapper with commands...
 			}
 			"attributes"																		// ONLY HAVE WHAT YOU ABSOLUTELY NEED VISIBLE HERE!! This is frontend text from the real weapon, but all these stats are dummied out.
@@ -34810,110 +34921,6 @@ Model: DioJoestar"
 					"attribute_class"	"DISPLAY_ONLY"
 					"value"				"1.25"
 				}
-			}
-			"mouse_pressed_sound"		"#ui/item_nvg_pickup.wav"
-			"drop_sound"				"#ui/item_metal_weapon_drop.wav"
-		}
-		"3590"
-		{
-			"tags"
-			{
-				"bots_cant_use"			"1"
-			}
-			"name"						"TF_WEAPON_TRAP_CONC"
-
-			"item_class"				"tf_weapon_grenadelauncher" // If the spy already has a sapper replacement, cause an item conflict so they don't get this.
-			"item_slot"					"utility" // TO DO: Are there any other slots that work for this?
-			"anim_slot"					"building"
-			"show_in_armory"			"1"
-			"bucket"					"99"
-
-			"item_name_color"			"204 204 250 255"
-			"item_name"					"Trap: Concussive Tripmine"
-			"item_type_name"			"Gadget"
-			"item_description"			"BACKEND"
-			"image_inventory"			"backpack/weapons/w_models/w_tripmine"
-			"model_world"				"models/weapons/w_models/w_tripmine.mdl"
-			"model_player"				"models/weapons/w_models/w_drg_ball.mdl"
-			"attach_to_hands"			"2"
-			"used_by_classes"
-			{
-				"mercenary"					"1"
-			}
-			"static_attrs"
-			{
-				"linked item id"						"3592"									// Next check
-				"clip size penalty"						"0" //Should never be usable regardless, as the next check will delete this. Still, better safe than sorry.
-				"damage penalty"						"0"
-				"max health additive bonus"				"1000"
-			}
-			"mouse_pressed_sound"		"#ui/item_nvg_pickup.wav"
-			"drop_sound"				"#ui/item_metal_weapon_drop.wav"
-		}
-		"3591"
-		{
-			"tags"
-			{
-				"bots_cant_use"			"1"
-			}
-			"name"						"TF_WEAPON_TRAP_CONC"
-
-			"item_class"				"tf_weapon_sapper" // If the spy already has a basic sapper, cause an item conflict so they don't get this.
-			"item_slot"					"utility" // TO DO: Are there any other slots that work for this?
-			"anim_slot"					"building"
-			"show_in_armory"			"1"
-			"bucket"					"99"
-
-			"item_name_color"			"204 204 250 255"
-			"item_name"					"Trap: Concussive Tripmine"
-			"item_type_name"			"Gadget"
-			"item_description"			"BACKEND"
-			"image_inventory"			"backpack/weapons/w_models/w_tripmine"
-			"model_world"				"models/weapons/w_models/w_tripmine.mdl"
-			"model_player"				"models/weapons/w_models/w_drg_ball.mdl"
-			"attach_to_hands"			"2"
-			"used_by_classes"
-			{
-				"mercenary"					"1"
-			}
-			"static_attrs"
-			{
-				"linked item id"						"3590" // This sapper will stick around..... Eh. You'd have to cheat to even select it and it doesn't do anything. So it should be fine.
-				"max health additive bonus"				"100"
-			}
-			"mouse_pressed_sound"		"#ui/item_nvg_pickup.wav"
-			"drop_sound"				"#ui/item_metal_weapon_drop.wav"
-		}
-		"3592"
-		{
-			"tags"
-			{
-				"bots_cant_use"			"1"
-			}
-			"name"						"TF_WEAPON_TRAP_CONC"
-
-			"item_class"				"tf_weapon_shotgun_hwg" // If the spy already has a basic sapper, cause an item conflict so they don't get this.
-			"item_slot"					"utility" // TO DO: Are there any other slots that work for this?
-			"anim_slot"					"building"
-			"show_in_armory"			"1"
-			"bucket"					"99"
-
-			"item_name_color"			"204 204 250 255"
-			"item_name"					"Trap: Concussive Tripmine"
-			"item_type_name"			"Gadget"
-			"item_description"			"BACKEND"
-			"image_inventory"			"backpack/weapons/w_models/w_tripmine"
-			"model_world"				"models/weapons/w_models/w_tripmine.mdl"
-			"model_player"				"models/weapons/w_models/w_drg_ball.mdl"
-			"attach_to_hands"			"2"
-			"used_by_classes"
-			{
-				"mercenary"					"1"
-			}
-			"static_attrs"
-			{
-				"linked item id"						"3443" // This sapper will stick around..... Eh. You'd have to cheat to even select it and it doesn't do anything. So it should be fine.
-				"max health additive bonus"				"105"
 			}
 			"mouse_pressed_sound"		"#ui/item_nvg_pickup.wav"
 			"drop_sound"				"#ui/item_metal_weapon_drop.wav"
@@ -35178,8 +35185,8 @@ Model: Neodos, Harribo, POOtato"
 			"prefab"					"weapon_sapper"
 			"show_in_armory"			"1"
 
-			"item_class"				"tf_wearable"											// Replaces your Sapper item with a wearable, pretty much the only thing it won't complain about. Said wearable does almost nothing by itself and just equips another weapon!
-//			"act_as_wearable"			"1"														// Toggling this does a few things; if it's enabled, then it doesn't cause issues with the 3d playermodel display, but also doesn't render as a weapon you're holding out. Mmn...
+//			"item_class"				"tf_wearable"											// Replaces your Sapper item with a wearable, pretty much the only thing it won't complain about. Said wearable does almost nothing by itself and just equips another weapon!
+			"act_as_wearable"			"1"														// Toggling this does a few things; if it's enabled, then it doesn't cause issues with the 3d playermodel display, but also doesn't render as a weapon you're holding out. Mmn...
 
 			"propername"				"1"
 			"item_name_color"			"204 204 250 255"
@@ -35200,6 +35207,7 @@ Model: Neodos, Harribo, POOtato"
 			"static_attrs"
 			{
 				"NOWP weapon"							"1"
+				"Sourcemod user"						"1"
 				"linked item id"						"3549"									// Item ID of the actual weapon instead of this thing.
 				"sapper cant sap"						"1"										// Prevents building your sapper with commands...
 			}
@@ -42077,6 +42085,11 @@ Model: Spike Nitros"
 					"attribute_class"	"bodyshot_damage_modify" // Much cleaner way of implenting this stat
 					"value"				"20"
 				}
+				"hide_attrib_additive"
+				{
+					"attribute_class"	"mult_dmg_vs_buildings"
+					"value"				"20"
+				}
 				"longer damage falloff distance show"
 				{
 					"attribute_class"	"DISPLAY_ONLY"
@@ -44347,7 +44360,7 @@ Anims: OF Team" //TO DO: Think of an even fancier sounding but still awful choco
 					"attribute_class"	"mult_spread_scale"
 					"value"				"2"
 				}
-				"Reload time increased"
+				"hide_attrib_percentage" // Had to hide it, not enough space with the credits...
 				{
 					"attribute_class"	"mult_reload_time"
 					"value"				"1.15"
@@ -76716,6 +76729,7 @@ Model: donhonk, blaholtzen"
 				"fire rate penalty hidden"				"1.2"
 				"custom rampup"							"3"
 				"longer damage falloff distance"		"3"
+				"dmg bonus vs buildings hidden"			"2"
 				"always draw tracer"					"1"
 				"mod use custom ammo type"				"1"
 				"mod zoomed dont hide viewmodel"		"1"
@@ -86218,8 +86232,7 @@ Model: TF2"
 			"item_quality"				"vintage"												// Vintage: This item is superseded by an official inclusion, and it's not in the spirit to make it work differently. An older version of sorts!
 			"item_name"					"Vintage PDA: High Flyer"								// Had to rename this guy too, since the retail TF2C one has the EXACT same name! (PDA: Jump Pad, that is)
 			"item_type_name"			"Retired Construction PDA"
-			"item_description"			"NOTE FOR LATER: Update buildings plugin to support changing jumppad health
-
+			"item_description"			"
 Just the thing we need, for fightin' on a
 blazin' hot summer's day 'round these parts...
 
@@ -86239,6 +86252,7 @@ Wearable: void~, boomsta, Manton Megabytes, feral construction worker"
 			"static_attrs"
 			{
 				"NOWP weapon"							"1"
+				"Sourcemod user"						"1"
 //				"hide extra wearable on active"			"1"
 			}
 			"attributes"	// Based on: PDA: Jump Pad (a building added in TF2C v2.1.0)
@@ -86249,6 +86263,11 @@ Wearable: void~, boomsta, Manton Megabytes, feral construction worker"
 					"value"				"1"
 				}
 
+				"engineer jumppad build rate multiplier"
+				{
+					"attribute_class"	"jumppad_build_rate_multiplier"
+                    "value"				"1.25"
+				}
 				"mod jumppad cost custom"
 				{
 					"attribute_class"	"mod_jumppad_cost"
@@ -90230,6 +90249,41 @@ Wearable: Texman, JPRAS, 'R' DoubleTap"
 				}
 			}
 		}
+
+		"27"
+		{
+			"name"						"TF_WEAPON_PDA_SPY"
+			"prefab"					"weapon_pda_spy"
+			"baseitem"					"1"
+			"attributes"
+			{
+				"hide_attrib_percentage" // For Ap-Sap
+				{
+					"attribute_class"	"mult_sapper_damage"
+					"value"				"0.2"
+				}
+			}
+		}
+
+		"31"
+		{
+			"name"						"TF_WEAPON_BUILDER_SPY"
+			"prefab"					"weapon_sapper"
+			"baseitem"					"1"
+			"item_description"			"#TF_Weapon_Spy_Sapper_Desc"
+			"model_world"				"models/weapons/w_models/w_sapper.mdl"
+			"model_player"				"models/weapons/v_models/v_sapper_spy.mdl"
+			"attach_to_hands"			"2"
+			"attributes"
+			{
+				"hide_attrib_percentage" // See Ap-Sap
+				{
+					"attribute_class"	"mult_sapper_damage"
+					"value"				"5"
+				}
+			}
+		}
+
 //-----
 // (4427 & 4428) |	RAM'S RAM	|	Tags: (Clock), (New), (Soldier), (Utility), (Buff (better))
 //-----
@@ -93188,7 +93242,7 @@ their construction and repair damage!
 				"fire rate penalty"
 				{
 				    "attribute_class"   "mult_postfiredelay"
-					"value"             "0.2"
+					"value"             "10"
 				}
 				"voice pitch scale"
 				{
@@ -100032,7 +100086,8 @@ Model: Valve, Blaze005, Stachekip, Dr. Pyspy, videofreak" //https://gamebanana.c
 ''Is fresh, have a taste!''
 
 Model: Sweeny
-Anims: Kylul"
+Anims: Kylul
+Various Assets: CWC"
 			"item_logname"				"gourdgoader"
 			"item_iconname"				"Gourd Goader"
 			"model_player"				"models/weapons/v_models/v_pumpshotty/v_pumpshotty_multishot_heavy.mdl"
@@ -100084,6 +100139,7 @@ Anims: Kylul"
 			"visuals_red"
 			{
 				"trail_effect_crit"		"invtrm_1_2_1_trail_bulletproj_nosparks_red_crit"
+				"explosion_effect_crit"	"invtrmcopy_halloween_explosion_crit_red"
 			}
 			"visuals_blu"
 			{
@@ -100093,10 +100149,12 @@ Anims: Kylul"
 			"visuals_grn"
 			{
 				"trail_effect_crit"		"invtrm_1_2_1_trail_bulletproj_nosparks_green_crit"
+				"explosion_effect_crit"	"invtrmcopy_halloween_explosion_crit_green"
 			}
 			"visuals_ylw"
 			{
 				"trail_effect_crit"		"invtrm_1_2_1_trail_bulletproj_nosparks_yellow_crit"
+				"explosion_effect_crit"	"invtrmcopy_halloween_explosion_crit_yellow"
 			}
 			"mouse_pressed_sound"		"#ui/shotgun_alt_pickup_vermin.wav"
 			"drop_sound"				"#ui/shotgun_alt_drop_vermin.wav"
@@ -104425,7 +104483,7 @@ by an enemy, gain %s1s of Revenge Haste!"
 		"69058"
 		{
 			"name"	                "sapper is radar custom"
-			"description_string"	"Outlines enemies within radius when active"
+			"description_string"	"Outlines nearby enemies to you while active"
 			"description_format"	"value_is_additive"
 			"effect_type"	        "positive"
 		}
@@ -106262,6 +106320,23 @@ to a friend and yourself"
 			"description_string"	"%s1% max jumppad health"
 			"description_format"	"value_is_percentage"
 			"effect_type"			"negative"
+		}
+		"17640"
+		{
+			"name"					"silent cloak"
+			"attribute_class"		"jarate_backstabber"
+			"description_string"	"Cloaking is slient
+(Decloaking is unneffected)"
+			"description_format"	"value_is_additive"
+			"effect_type"			"positive"
+		}
+		"17641"
+		{
+			"name"					"engineer jumppad build rate multiplier"
+			"attribute_class"		"jumppad_build_rate_multiplier"
+			"description_string"	"Increases Jumppad build speed by %s1%"
+			"description_format"	"value_is_percentage"
+			"effect_type"			"positive"
 		}
 //
 //
